@@ -1,0 +1,173 @@
+#!/usr/bin/ruby
+
+# project launcher
+
+require 'find'
+require 'rubygems'
+require 'appscript'
+include Appscript
+
+DEV_ROOT = "~/development"
+MAX_DEPTH = 2
+PROFILES =<<__END_PROFILES__
+rails:
+  detection:
+    folders:
+      - app
+      - config
+      - db
+      - log
+      - public
+      - test
+      - vendor
+  tasks:
+    - label: Dev Log
+      command: rake log:clear; tail -f log/development.log
+    - label: Rails Console
+      command: ruby script/console
+    - label: IRB
+      command: irb
+    - label: Mongrel
+      command: mate .; mongrel_rails start
+    - label: Testing
+      command: rake
+    - label: Terminal
+      command:
+erlang:
+  detection:
+    folders:
+      - ebin
+      - src
+  tasks:
+    - label: Erlang
+      command: mate .; erl
+    - label: Terminal
+      command:
+default:
+  tasks:
+    - label: Terminal
+      command: mate .
+__END_PROFILES__
+
+class DevLauncher
+  @@terminal = app('Terminal')
+  @@profiles = YAML::load(PROFILES)
+  @@default_profile = @@profiles.delete('default')
+  
+  def initialize(project_name)
+    @window = nil
+    
+    needs_pwd = true
+    matches = find_project(project_name)
+    if matches.empty?
+      matches = find_project(project_name, File.expand_path(DEV_ROOT))
+      needs_pwd = false
+    end
+    
+    case matches.length
+    when 0
+      puts "Error:  nothing found matching #{project_name}"
+      exit
+    when 1
+      @project_folder = needs_pwd ? File.join(Dir.pwd, matches.first) : matches.first
+    else
+      # TODO : pick one?
+      puts "Too many matches:\n\t#{matches.join("\n\t")}"
+      exit
+    end
+    
+    detect_project_type
+  end
+  
+  def find_project(name_fragment, root_folder = nil)
+    matches = []
+    Find.find(root_folder ||= Dir.pwd) do |path|
+      # limit to MAX_DEPTH
+      partial_path = path.gsub(root_folder, '')
+      Find.prune if partial_path =~ /^\./
+      depth = partial_path.split('/').length
+      Find.prune if depth > MAX_DEPTH + 1
+      
+      # look for directory matching name fragment
+      if FileTest.directory?(path)
+        if path =~ /#{name_fragment}/i
+          matches << path
+          Find.prune
+        end
+      end
+      
+      next
+    end
+    matches
+  end
+  
+  def detect_project_type
+    folders, files = Dir["#{@project_folder}/*"].map{|f| File.basename(f) }.partition{|f| FileTest.directory?("#{@project_folder}/#{f}") }
+    @profile = @@profiles.find do |name,config|
+      if name == "default"
+        true
+      else
+        case config['detection']
+        when nil, "true"
+          true
+        when Hash
+          ((! config['detection'].has_key? 'folders') ||
+             config['detection']['folders'].all? {|f| folders.include?(f) }) &&
+          ((! config['detection'].has_key? 'files') ||
+             config['detection']['files'].all? {|f| files.include?(f) })
+        end
+      end
+    end
+    
+    if @profile
+      @profile = @profile[1]
+    else
+      @profile = @@default_profile
+    end
+    
+    unless @profile
+      puts "Error: could not find a matching development profile"
+      exit
+    end
+    
+    puts "using profile: #{@profile.to_yaml}"
+  end
+  
+  def run_profile
+    @profile['tasks'].each do |tab|
+      run tab
+    end
+  end
+  
+  def run(action)
+    @window && new_tab(action) || new_window(action)
+  end
+  
+  def new_window(action)
+    @first_tab = @@terminal.do_script(build_project_command(action))
+    @window = eval @first_tab.to_s.gsub(/\.tabs.*$/, '') # nasty hack.  is there a legit way to find my mommy?
+  end
+
+  def new_tab(action)
+    @window.frontmost.set(true)
+    app("System Events").application_processes["Terminal.app"].keystroke("t", :using => :command_down)
+    while (@window.tabs.last.busy.get)
+      # we're not on the new tab yet.  wait a bit...
+      sleep 1
+    end
+    @@terminal.do_script(build_project_command(action), :in => @window.tabs.last.get)
+  end
+  
+  def build_project_command(action)
+    ["cd #{@project_folder}",
+     "echo -n -e \"\\033]0;#{action['label']}\\007\"",
+     "clear",
+     action['command'] || 'clear'].join(';')
+  end
+end
+
+if __FILE__ == $0
+  project_name = ARGV.shift
+  d = DevLauncher.new(project_name)
+  d.run_profile
+end

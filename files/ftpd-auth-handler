@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'digest/sha1'
+require 'mysql'
+require 'yaml'
+
+# Available ENV variables:
+# AUTHD_ACCOUNT
+# AUTHD_PASSWORD
+# AUTHD_LOCAL_IP
+# AUTHD_LOCAL_PORT
+# AUTHD_REMOTE_IP
+
+UID = 123 # replace with your user id
+GID = 123 # replace with your group id
+
+RAILS_ROOT = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+config = YAML.load(IO.read("#{RAILS_ROOT}/config/database.yml"))['production']
+user = {}
+
+begin
+  dbh = Mysql.real_connect(config['host'], config['username'], config['password'], config['database'])
+  res = dbh.query("SELECT * FROM users WHERE state = 'active' AND login = '#{ENV['AUTHD_ACCOUNT'].gsub(/'/, "''")}' LIMIT 1")
+  user = res.fetch_hash
+  res.free
+rescue Mysql::Error => e
+ensure
+  dbh.close if dbh
+end
+
+if user['crypted_password'].nil?
+  # no active user with given login
+  puts "auth_ok:0"
+else
+  # validate given password
+  hashed_pw = Digest::SHA1.hexdigest("--#{user['salt']}--#{ENV['AUTHD_PASSWORD']}--")
+  if user['crypted_password'] != hashed_pw
+    puts "auth_ok:0"
+  else
+    puts "auth_ok:1"
+    puts "uid:#{UID}"
+    puts "gid:#{GIT}"
+    puts "dir:#{RAILS_ROOT}/private/ftp/#{user['login']}"
+  end
+end
+
+puts "end"

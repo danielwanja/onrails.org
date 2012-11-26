@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+# munin plugin to render rails response time graphs
+# link to /etc/munin/plugins/avg_response_time and /etc/munin/plugins/max_response_time
+
+require 'open-uri'
+PORT = ENV['PORT'] || "8888"
+
+def config
+  title = File.basename($0).split('_').map{|s| s.capitalize }.join(' ')
+  config=<<__END_CONFIG__
+graph_title #{title}
+graph_vlabel response time
+graph_category rails
+total.label total
+rendering.label rendering
+db.label db
+__END_CONFIG__
+  puts config
+end
+
+def get_data( read_only=false )
+  qs = read_only ? '?debug' : ''
+  puts open("http://127.0.0.1:#{PORT}/#{File.basename($0)}#{qs}").read
+end
+
+case ARGV.first
+when 'config'
+  config
+when 'debug'
+  get_data(true)
+else
+  get_data
+end

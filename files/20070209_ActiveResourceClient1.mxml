@@ -1,0 +1,111 @@
+<!-- 
+   http://onrails.org 
+   Daniel Wanja, Lee Marlow
+-->
+<?xml version="1.0" encoding="utf-8"?>
+<EventDispatcher xmlns:mx="http://www.adobe.com/2006/mxml" xmlns="flash.events.*" 
+	 implements="mx.core.IMXMLObject"
+	>
+	<mx:Script>
+		<![CDATA[
+	 	import mx.rpc.AsyncToken;
+		
+	    private var document:Object;
+		private var baseUrl:String;
+		private var resourceName:String;
+		private var path:String;
+		private var resultHandler:Function;
+		private var faultHandler:Function;
+
+		//FIXME: move to constructor or attribte than can also be set via mxml.		
+		public function defineResource(baseUrl:String, resourceName:String, defaultResultHandler:Function=null, defaultFaultHandler:Function=null):void {
+		 	this.baseUrl = baseUrl;
+		 	this.resourceName =  resourceName;
+		 	this.path = baseUrl+"/"+resourceName;
+		 	this.resultHandler = defaultResultHandler;
+		 	this.faultHandler = defaultFaultHandler;
+		}
+		public function initialized(document:Object, id:String):void  {
+			this.document = document;
+		}
+		
+		public function list():AsyncToken {		
+			watchIndex.url= path+".xml";
+			return watchIndex.send();
+		}		
+
+		public function show(id:Number):AsyncToken {
+			watchShow.url = path+"/"+id+".xml";
+			return watchShow.send();
+		}
+
+		public function create(data:Object):AsyncToken {
+			watchCreate.url= path+".xml"
+			return watchCreate.send(data);
+		}
+		
+		public function deleteItem(id:Number):AsyncToken {
+			watchDelete.url = path+"/"+id+".xml";
+			return watchDelete.send();
+		}
+		
+		public function update(data:Object):AsyncToken {
+			watchUpdate.url = path+"/"+data.id+".xml?_method=put"; // Shouldn't have to a "put" but HttpService forces POST or GET
+			return watchUpdate.send(data);
+		}
+		
+			
+		]]>
+	</mx:Script>
+	
+	<!-- Note: The url shown is only a sample, 
+	           url is rebuild for every call using baseUrl and resourceName -->
+	<mx:HTTPService id="watchIndex" 
+					url="http://localhost:3000/watches.xml" 
+				  	resultFormat="e4x"
+					useProxy="false"
+			  		result="resultHandler(event)"
+					fault="faultHandler(event)"
+				  />
+	<mx:HTTPService id="watchCreate"
+		     		url="http://localhost:3000/watches.xml"
+			  		method="POST"
+					resultFormat="e4x"
+					contentType="application/xml" 
+			  		useProxy="false" 
+			  		result="resultHandler(event)"
+					fault="faultHandler(event)"
+			  		/>
+    
+	<mx:HTTPService id="watchShow"
+		     		url="http://localhost:3000/watches/1.xml"
+			  		method="GET"
+					resultFormat="e4x"
+			  		useProxy="false" 
+			  		result="resultHandler(event)"
+					fault="faultHandler(event)"
+			  		/>
+			  		
+	<mx:HTTPService id="watchDelete"
+		     		url="http://localhost:3000/watches/1.xml"
+			  		method="POST"
+					resultFormat="e4x"
+			  		useProxy="false" 
+			  		result="resultHandler(event)"
+					fault="faultHandler(event)"
+			  		>
+		        <mx:request xmlns="">
+		        	<_method>delete</_method>
+		        </mx:request>		
+	</mx:HTTPService>
+
+	<mx:HTTPService id="watchUpdate"
+		     		url="http://localhost:3000/watches/1.xml"
+			  		method="PUT"
+					resultFormat="e4x"
+			  		useProxy="false" 
+					contentType="application/xml"			  		
+			  		result="resultHandler(event)"
+					fault="faultHandler(event)"
+			  		/>
+</EventDispatcher>
