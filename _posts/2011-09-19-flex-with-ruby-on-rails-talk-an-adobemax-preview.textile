@@ -1,0 +1,10 @@
+---
+layout: post
+title: !binary |-
+  RmxleCBXaXRoIFJ1Ynkgb24gUmFpbHMgdGFsayAtIEFuIEFkb2JlTWF4IHBy
+  ZXZpZXc=
+typo_id: 5091
+---
+<iframe src="http://player.vimeo.com/video/29279457" width="400" height="300" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+
+This is a presentation I gave in September 2011 at the <a href="http://ria5280.org">Denver RIA Developers Group</a>  showing how to create a Flex application that interacts with a Ruby on Rails server. In fact it was schedule for the Flash Builder track of Adobe Max but was bumped to the the <a href="http://www.360flex.com/about/360max/">360Flex Unconference</a> as it was deemed too specialized for the general track. In this presentation I will show you how to interact with Rails using REST, nested resources, nested attributes and the newest kid on the block, the bulk-api allowing to transfer complex data structures between your rich client application and your Rails server. You will get a good overview on how Rails works and how to quickly build a Flex application on top of Ruby on Rails.

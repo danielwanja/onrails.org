@@ -1,0 +1,13 @@
+---
+layout: post
+title: !binary |-
+  SW1wb3J0IHlvdXIgTWFjSGVpc3Qgc2VyaWFscyB0byBBcHBTaGVsZg==
+typo_id: 4894
+---
+If you have purchased the latest MacHeist nano bundle, you might have noticed that there is no option this time to export as an AppShelf file.  I felt a little guilty spamming my twitter followers to get my three free bonus apps (Airburst Extreme, Tracks, and Burning Monkey Solitaire), so to atone, I'm sharing a script that will translate your reciept into an AppShelf import file.  Just save your receipt page from the browser, then pass the filename to this script as an argument:
+
+    RUBYOPT=rubygems ruby generate-appshelf.import.rb MacHeist-Serial.html
+
+The script will create an import file named "nano-bundle-3.appshelf" in your current directory.  Enjoy!
+
+<script src="http://gist.github.com/325458.js?file=generate-appshelf-import.rb"></script>

@@ -1,0 +1,7 @@
+---
+layout: post
+title: !binary |-
+  TGVlJ3MgUmFpbHNDb25mUGxhbiBhdCBNeUNvbmZQbGFu
+typo_id: 490
+---
+Following <a href="http://onrails.org/articles/2007/05/09/railsconf-2007-here-we-come">Daniel's</a> lead, here are the <a href="http://myconfplan.com/users/lmarlow/conferences/RailsConf2007">talks</a> that I'm thinking of attending.&nbsp; So far I only looked at the titles of the talks, I'm sure I'll do some switching once I look at them more in depth.&nbsp; Anyway, if you decide to look Daniel up while you're there, you might want to look me up too, so I can translate his Swiss accent for you.<br /><br /><a href="http://www.biego.com/">Chris</a>, <a href="http://www.gatelys.com/">Sol</a> and <a href="http://nicholaswright.org/blog/">Nick</a>... tag... your turn.<br />

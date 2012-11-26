@@ -1,0 +1,11 @@
+---
+layout: post
+title: !binary |-
+  U25lYWsgcGVlayBvZiBVc2FnZSBSZXBvcnQgZm9yIEFtYXpvbiBXZWIgU2Vy
+  dmljZXPDouKAnsKi
+typo_id: 5032
+---
+I have <a href="http://awsusageanalyzr.tumblr.com/">been working</a> on a tool to visualize your Amazon Web Services usage logs for EC2, RDS, SQS, S3, SDB (and soon CF). There will be a limited free version and a full version that has the dashboard and the drill down for each of the services. This tool is still in development but my todo list is getting shorter...so you can have a sneak peek here:<br/>
+
+<object width="400" height="300"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=10251397&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=10251397&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="300"></embed></object><p><a href="http://vimeo.com/10251397">Sneak peek of Usage Report for Amazon Web Servicesâ„¢</a> from <a href="http://vimeo.com/user507500">daniel wanja</a>.</p>
+ 

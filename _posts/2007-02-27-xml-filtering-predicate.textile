@@ -1,0 +1,70 @@
+---
+layout: post
+title: !binary |-
+  WE1MIEZpbHRlcmluZyBQcmVkaWNhdGU=
+typo_id: 266
+---
+I need to filter some XML data based on several conditions. I found the following article "<a href="http://www.darronschall.com/weblog/archives/000214.cfm">E4X: Predicate Filtering with Regular Expressions</a>" from Darron  that provides a nice overview of filtering using e4x. I haven't found any more detailed information on using predicates so I checked out the <a href="http://www.ecma-international.org/publications/standards/Ecma-357.htm">ECMAScript for XML 
+(E4X) Specification  2nd edition</a>. See  page 52 for details. But in short the filter can be an expression and use && and ||, the logical and and or. 
+
+<typo:code>
+filtered = list.item.( /^4567.*/.test( number ) || /^D.*/.test( name ) ); </typo:code>
+
+Here is the full test case:
+
+
+<typo:code>
+
+package tests.actionscript
+{
+
+import flexunit.framework.*;
+
+public class TestXml extends TestCase
+{
+
+public function testXMLFiltering():void {
+ var list:XML =  <list>  
+  <item>
+     <name>Kamesh</name>
+     <number>12345</number>
+ </item>
+ <item>
+     <name>Daniel</name>
+     <number>12345</number>
+ </item>
+ <item>
+     <name>Robin</name>
+     <number>12345</number>
+ </item>
+ <item>
+     <name>George</name>
+     <number>4567</number>
+ </item>
+ <item>
+     <name>Adam</name>
+     <number>4567</number>
+ </item>
+ <item>
+     <name>Dean</name>
+     <number>4567</number>
+     <policy>yes</policy>
+ </item>
+ </list>
+
+var filtered:XMLList = list.item.( /^D.*/.test( name ) ); Assert.assertEquals(2, new XMLListCollection(filtered).length);
+filtered = list.item.( /^4567.*/.test( number ) ); 
+Assert.assertEquals(3, new XMLListCollection(filtered).length);
+
+filtered = list.item.( /^4567.*/.test( number ) && /^D.*/.test( name ) ); 
+Assert.assertEquals(1, new XMLListCollection(filtered).length);
+
+filtered = list.item.( /^4567.*/.test( number ) || /^D.*/.test( name ) ); 
+Assert.assertEquals(4, new XMLListCollection(filtered).length);
+
+}
+
+} // class
+
+} // package
+</typo:code>

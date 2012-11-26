@@ -1,0 +1,21 @@
+---
+layout: post
+title: !binary |-
+  VGV4dE1hdGUgZmlsZXR5cGUgZGV0ZWN0aW9uIGZvciBzY3JpcHQvcnVubmVy
+  IFJhaWxzIHNjcmlwdHM=
+typo_id: 351
+---
+So you're building some righteous automation for your killer web 2.0 app, placing scripts in @RAILS_ROOT/script@ that you can call from cron for nightly maintenance, etc.  To bootstrap your rails environment, you decide to use the shebang feature of script/runner, available since "changeset 5189":http://dev.rubyonrails.org/changeset/5189.  When you start to edit the script in TextMate (you *are* using TextMate, aren't you?) there is no syntax highlighting to be found!  It's all plain text with no colors, and none of your ever-so-helpful keyboard macros work!  Frightful.  Well, take a deep breath, because together, we're going to get the filetype detection magic working for you.
+
+Before we get started, it's helpful to know how filetype detection works.  TextMate does a couple of different types of filetype detection -- the first is based off of the extension, so if you named your script with a @.rb@ extension, you are probably wondering what in the world I'm rambling about.  Dude.  It just works.
+
+However, if you followed the rails convention for scripts, and did not use an extension with your filename, keep reading.  The second type of detection works by scanning the so called "shebang" line at the top of the script which tells the shell (and in this case TextMate) which interpreter to use to evaluate your script -- this is how we will tell TextMate that script/runner really means ruby.
+
+First of all, you'll need to fire up the Bundle Editor and select "Languages" from the drop-down filter.  Expand the "Rails" node, and then select the "Ruby on Rails" language.  On the right side, you should see the definition being used by TextMate to detect the Ruby on Rails scope.  If you have not modified your bundle, you'll probably see that it is using a @fileTypes@ to look for @.rxml@ files.  This is where we want to insert the following line:
+
+@	firstLineMatch = '^#!.*(script/runner)';@
+
+Here's a screenshot of what it should look like when you are done:
+!http://onrails.org/files/BundleEditor-ROR.gif!
+
+Now go back to your script and enjoy all the colorized, scope-aware editing goodness that is TextMate!

@@ -1,0 +1,32 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNMb2dWaXN1YWxpemVyIG1lZXRzIEFwb2xsby4=
+typo_id: 314
+---
+<img src="http://onrails.org/files/20070328RailsLogVisualizerLogo.gif" border="0" height="80" width="79" alt="20070328RailsLogVisualizerLogo.gif" align="right" />It's not complete yet, but for the curious out there, here is a first and "ruff" version of the RailsLogVisualizer as a pure Apollo application. The previous version was an OSX application that was embedding a Ruby http server that was used to load the Rails log files, as a Flex application didn't provide a mean to load files directly. Here comes Apollo and lifts that restriction. So I thought...let's try to rewrite the file loading in Actionscript. Well this is my first attempt, during the port I broke a couple of features that will need more attention in the future. Also I haven't tried to load any file bigger than 40Mb. And I haven't implemeted the incremental loading of large files that I had with the Ruby version. Also the keyboard navigation isn't working...so just use the mouse for now. That's the next thing I'll need to fix. Let me know what you find at daniel@onrails.org or just add some comments on this entry.
+
+Things that broke during the port:
+* Hourly breakdown of daily request.
+* Breakdown ofHttp methods (Get, post, delete, head).
+
+Things I'll need to add next:
+* Improve progress indicator during file load and data parsing.
+* Refactor interaction to allow keyboard support (basically rewrite using Cairngorm).
+* Improve the File Browser.
+* Support for RESTFull controllers (detect _method parameters (i.e. ?_method=put)).
+* Add chart of action over time.
+
+How to install:
+
+1) If you haven't yet downloaded the Apollo Runtime, get it here:  <a href="http://labs.adobe.com/downloads/apolloruntime.html">Apollo runtime (8Mb)</a>.
+
+2) Download the Rails Log Visualizer:
+<a href="http://onrails.org/files/RailsLogVisualizer0.4.air">RailsLogVisualizer0.4.air (480Kb)</a>  (right click and 'Download Linked File'). On a side note don't click directly as the mime type on this server for .air files is not yet set. For more info see Mike Chambers <a href="http://weblogs.macromedia.com/mesh/archives/2007/03/setting_the_mim.html">entry</a> on the subject.
+
+
+3) Follow the installation steps that Apollo provides. It's a little strange at first as they have a custom installer.
+
+
+
+

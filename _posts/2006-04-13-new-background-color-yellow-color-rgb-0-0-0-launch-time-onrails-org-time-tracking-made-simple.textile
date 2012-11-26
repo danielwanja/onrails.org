@@ -1,0 +1,21 @@
+---
+layout: post
+title: !binary |-
+  PHN0eWxlPi5uZXcge2JhY2tncm91bmQtY29sb3I6IHllbGxvdzsgY29sb3I6
+  IHJnYigwLCAwLCAwKTsgfSA8L3N0eWxlPjxzcGFuIGNsYXNzPSJuZXciPiBM
+  QVVOQ0ggPC9zcGFuPnRpbWUub25yYWlscy5vcmcsIHRpbWUgdHJhY2tpbmcg
+  bWFkZSBzaW1wbGUh
+typo_id: 51
+---
+!/files/launch_timeonrails.gif!
+
+We call it <a href="http://time.onrails.org">time.onrails.org</a>. It's a new FREE online time tracking product for the consultant and programmer that bills by the hour or works on multiple projects.
+
+We (Lee and I) have been using it for awhile now to track our Rails consulting work. It's really the fastest way to count your hours across multiple projects. And we tried many of the solutions out there.
+
+See <a href="http://time.onrails.org">time.onrails.org</a> for an overview or go straight to <a href="http://time.onrails.org/account/signup">signup</a> and be up and running in 5 seconds. 
+
+Let us know what you think at time@onrails.org. 
+
+Enjoy! 
+Daniel

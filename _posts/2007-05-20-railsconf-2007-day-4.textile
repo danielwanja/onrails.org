@@ -1,0 +1,238 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIDIwMDcgLSBEYXkgNA==
+typo_id: 1473
+---
+<h2>The Rails Way Jamis Buck, Michael Koziarski</h2>
+
+See the <a href="http://therailsway.com/">http://therailsway.com/</a>
+
+#railsway on irc.freenode.net for questions at the end of the presentation.
+
+<typo:code lang="ruby">
+class TheRailsWay < BLog
+ authored_by :jamis
+ authored_by :koz
+end
+</typo:code>
+
+Instead of teaching you how to build things in Rails, Jamis and Koz will show us they things <b>should</b> be built.
+
+* The Fat controller (Anti-pattern). Use Skinny Controller instead . Move logic out of controller to Model (i.e total_invoice), easier to test, can use form_for, ...
+
+* With Scope. Is always abused. Step back and think "Is there a simpler way than using with_scope?". I.e. implement an accessor to the attribute you need in your scope instead of using with_scope. I.e. current_organization. If the fix is worth than the initial desease don't do it.
+
+<typo:code lang="ruby">
+	attr_read :current_organization.
+	helper_method :current_organization.
+</typo:code>
+
+* Use self commenting code. Use before 'some_explicit_method_name' instead of a before_create method. An example of transforming some code where the intend was not explicit into the following code using before_create.
+
+<typo:code lang="ruby">
+class Expense < ActiveRecord::Base
+  before_create :mate_created_now_if_created_today
+  
+  protected 
+
+  def mate_created_now_if_created_today
+  	if self.created_at Time.now.beginning_of_day
+		self.create_at = Time.now
+  	end
+  end
+end
+</typo:code>
+
+* Associations. 
+
+<typo:code lang="ruby">
+@john.documents #use this
+Document.find_all_by_user_id(@john.id) # instead of  this
+ 
+@john.documents.find(:all, :conditions=>["title like ?" "%koz%"] # use this
+Document.find(:all, ...) # instead of 
+
+#This becomes even easier to read when the search conditions become more elaborate, 
+#i.e. Find all documents by john tagged with 'cool'? 
+#This should be coded as 
+cool.documents.find_by_user_id(@john.id)  
+Document.find(:all, ...) #instead of using with now much more conditions . 
+
+#Even better add a method explicating the association:  @john.docouments.taged_with(@cool) 
+#or 
+@cool.documents_authored_by(@john). 
+#But just use one, don't repeat yourself. 
+#You can get fancy you can use assosciation extensions: @john.documents.tagged_with(@cool). 
+</typo:code>
+
+* Cargo-cult. Don't just copy-paste the re-factoring you find on the RailsWay, try to understand the principles behind it. Make sure the concept applies to your code.
+
+<typo:code lang="ruby">
+# Dont' use of !!
+def account_code?
+  !! @account_code.nil?
+end
+
+# use. More intention revealing
+def account_code?
+  @account_code ? true : false
+end
+</typo:code>
+
+* Share edit/new form. Don't build the associations if required in the controller. Move it to a model class method.
+
+<typo:code lang="ruby">
+ def self.build_with_associations
+	returning new do |billable|
+      blillable.booking = Book.build_with_assocations
+   end
+ end
+ # some code omitted...man, the speakers are going to fast for my typing!
+</typo:code>
+
+
+*  Simplifying non restfull routes. Use map.with_options. Also format and indent nicely your routes.
+
+<b>Now onto some QA.</b>
+
+Q: Is the code from the code gonna be posted?
+A: Yes, on the website.
+
+Q: In the Account code example, could you use @account_code.
+A: That would test something different as an empty string would return true. It depends on the requirement. 
+
+Q: Guidelines or best practices for overriding to_param?
+A: If you want prettier Urls you can provide a to_param. Otherwise don't bother.
+
+Q: returning?
+A: returning passes an object to a block and returns the object.
+
+Q: Cascading validations?
+A: Validations can be tricky in that case. They don't have a best practices to present on that right at this moment. But don't worry about that too much. 
+
+Q: Koz. Can you clarify what's the context key is (in the routes)?
+A: Forces a params[:context] = "www"
+
+Q: How long does it take to do a typical RailsWay articles
+A: 1 day or 2. But it depends.
+
+Q: has_many : through. What about multiple : through? I.e. A through B through C through D?
+A: I.e. A give me all yours Ds? If you really need it...add a custom method to the top.
+
+Q: Attributes on join tables and conditions? Multiple associations? I.e has_many and has_one_current (through)
+A: I.e. document has_many versions, current_version.  Implementation doesn't really matter, but if current_version has business meaning make it an explicit method.
+
+Q: What is your advice on keeping a database column private? I.e. a Model cannot access a column.
+A: We don't see much value in that. Document this to not "touch" this. But try to find a solution. This can be difficult has private methods can be circumvented by send. Just make it explicit.
+
+Q: Final words of wisdom? 
+A: The RailsWay has been a little quiet, but now that the conference has been wrapping up, we will dive back into it.
+
+Q: How do you answer questions that relate to deprecated features?
+A: We try to keep it to Rails 1.2.
+
+<h2>JRuby on Rails: A Taste of Honey (for the Enterprise)</h2>
+
+by Charles Nutter and Thomas Enebo JRuby Core Developer, Sun Microsystems.
+
+Enterprise can be "doing cool new things and cool new ways". 
+
+* The talk will cover
+** JRuby 101
+** Justifications
+** JRuby on Rails
+** Deployment Options
+** Migrations
+* They are Java developers (10+ year)
+* Working to build out JVM dynlang support
+*JRuby 101. JRuby is:
+** Ruby (1.8ish)
+** A non-Java language for the Java platform
+** A new way to look at Ruby and the JVM
+** Helping to expand Ruby's reach
+** Helping the world better unstand Ruby
+** Really Cool
+* JRuby is NOT:
+** An attempts to pollute or fork Ruby
+** An admission that Java sucks
+** The answer to every problem with Ruby
+** An attempt to alter Ruby or add incompatible features
+** Slow
+* But it's Java, Too
+
+<typo:code lang="ruby">
+	include Java
+	import java.lang.ArrayList
+	list = ArrayList.new
+</typo:code>
+
+* The rest you know
+** Obvious libraries pre-installed: Rubygems, Rake, Rspect
+** Mongrel supports JRuby (no remote gem)
+** Rails "just works". Major orgs now investing in JRuby on Rails. Some folks where wondering if they "just" spawn a Ruby process.
+* Justification or "Why would you do such a thing?"
+** Supporting the Status Quo (JRuby supports' Ruby 1.8's String)
+** Supports ActiveSupport::MultiByte
+** Exposing Java Unicode
+** Ruby 2.0 String on the way...
+* Threading
+** JRuby supports Ruby's Thread API
+** JVMs are native-threaded (uses multiple cores)
+** JRuby Supports thread pooling
+* JRuby on Rails the basics
+** Many gems just work
+** Rails commands just work. rails myapp, rake db:migreate
+** jruby script/server #==> WEBBrick
+* Some differences
+** MySQL driver works.
+** JDBC...different and faster. (database.yml needs url: and driver: com.mysql.jdbc.Driver)
+** JNDI for connection pooling (jndi: java:comp/env/jdbc/MyAppPool)
+** Broad database support (DB2, Derby, HSQLDB, JavaDB, MS Access, Mimer SQL, MySQL, PostgreSQL,...and many more)
+** ActiveRecord-JDBC: as no schema management API. MySQL pass 100% of tests, Derby and PostgreSQL have 17 failing tests out of 1000+ tests. Others at varying levels, but coming along. Oracle supports started recently and has less than 100 failed tests for now.
+* Differentiation
+** No Native Extensions. Require ports. Mongrel done, Hpricot done, RMagick in progress. We're looking for porters and recommendations
+** Command-line Performance. Java is not slow...except at startup. It's an issue for now. Don't expect stella CLI performance.
+* Demo
+** Building, running, and deploying a JRuby on Rails application
+
+<typo:code lang="ruby">
+	tar xzf jruby.tar.gz
+	jruby_env
+	jruby -v
+	jruby -S gem rails -y
+	jruby -S gem install gem_plugin
+	jruby -S gem install mongrel
+	jruby -S gem install activerecord-jdbc -y
+	cp lib/mysql.jar jruby/lib
+	jruby script/server
+	http://localhost:3000
+	envirvonment.rb 
+		if RUBY_PLATFORM =! /java/
+			require 'jdbc_driver' #I missed the proper code!
+		end
+	jruby script/generate migration entry
+	jruby -S rake db:migrate
+	# they continue to use the Rails generators and add standard Rails code
+
+   cp -rp ../goldspike vendor/plugins
+   jruby -S rake war:standalone:create
+	# Assemble a .war file that deploys your Rails application as a standard J2EE application.
+	http://localhost:8080/buggy/entries/list # Rails via J2EE
+</typo:code>
+
+* Thanks You..but there is more.
+** There is a new option.
+** jruby -S gem install GlassFish-10.0.0.0-java.gem --no-wrappers
+** glashfish command. Command line to start J2EE server.
+* Migration
+** It can be done!
+** MySQL: works, Dearby/JavaDB: nearly 100%, others...depends.
+** Fixtures: Usually bugs are YAML rather than DB
+** Options: 1) use something else,. 2) Use an equivalent Java library 3) Port the library... 4)5)6) # I missed these
+* Deployment
+** Mongrel
+** More common approach is .war file
+** A Grizzly/GlassFish v3 option.
+* Demo: Calling Java libraries from JRuby
+

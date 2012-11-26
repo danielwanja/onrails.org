@@ -1,0 +1,11 @@
+---
+layout: post
+title: !binary |-
+  RnJlZSBSYWlscyBUcmFpbmluZw==
+typo_id: 2311
+---
+From my perspective (as someone who has been doing "Rails":http://www.rubyonrails.com development full time for the past two years or so) it's hard to believe, but there still are web developers who aren't familiar with Rails.  I was recently approached by an old friend about doing a training session on "Mono":http://www.mono-project.com/Main_Page.  The last time we had been in close contact, I was exploring Mono and excited about the possibility of a .NET environment on Linux.  Of course, that was before I discovered ActiveRecord and became a card-carrying Rails fan club member.
+
+I told him that while that would probably be fun, I'd rather talk about something I didn't have to learn for the presentation, and by the way, had he ever considered having a session on Rails?  Well, I'm just back from the first segment of the course, which consisted of installing a Rails development stack in an Xubuntu virtual machine.  Due to bandwidth limitations and a delayed start, that was all we accomplished tonight, but the remainder of the course (actually learning about Rails) will be in two weeks.  We will provide a ready-to-go virtual machine to anyone interested in an introduction to Rails, and there are a few seats still available.
+
+So if you or someone you know will be in the Denver area at 6:30 on June 28 (the day before the iPhone!), and have a couple of hours to be -indoctrinated- introduced to Rails, drop me a line [my gmail account is rubysolo].

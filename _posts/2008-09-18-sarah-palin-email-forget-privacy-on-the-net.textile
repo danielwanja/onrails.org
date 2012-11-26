@@ -1,0 +1,32 @@
+---
+layout: post
+title: !binary |-
+  U2FyYWggUGFsaW4gRW1haWwuLi5mb3JnZXQgcHJpdmFjeSBvbiB0aGUgbmV0
+  Lg==
+typo_id: 3994
+---
+I was watching <a href="http://www.billoreilly.com/">Bill O'reilly</a> on Fox and just saw that Sarah Palin's email account was hacked and leaked to on the internet...that's 11 or more hours after the fact apparently and I wanted to do a quick check if they managed to stop the propagation of these emails. I said to myself, left see  if I can get access to the full text in less than 5 minutes starting on Google. Well, it didn't work out, but many source reported the information, but most of the sites that have it are currently down. But in short, on the net just forget about privacy. I know, you don't want your private stuff to be out there, but it eventually will be. I don't want the picture of my kids on the net...but if they once get indexed by on of the bots...google and others..they are out there. Now I hope my emails don't become public...but emails are not secure anyhow unless you encrypt them. 
+
+So here is what my quick search returned:
+
+* Watched Bill Oreilly and heard about the hack.
+* Checked cnn.com home page...nothing.
+* Search google and followed the first link...which was a link to a Yahoo <a href="http://news.yahoo.com/s/ap/20080917/ap_on_el_pr/palin_hacked">news story</a>, with not much information.
+* Then <a href="http://search.twitter.com ">searched</a> twitter and followed a link from chrisgen to <a href="http://pastebin.com/f7fb944c5">http://pastebin.com/f7fb944c5</a>
+* That link was point to the following links on artvoice.com with some pictures of the email
+**	<a href="http://blogs.artvoice.com/techvoice/2008/09/17/hackers-break-into-sarah-palins-inbox/">http://blogs.artvoice.com/techvoice/2008/09/17/hackers-break-into-sarah-palins-inbox/</a>
+**	<a href="http://blogs.artvoice.com/techvoice/wp-content/uploads/2008/09/011.jpg">http://blogs.artvoice.com/techvoice/wp-content/uploads/2008/09/011.jpg</a>
+**	<a href="http://blogs.artvoice.com/techvoice/wp-content/uploads/2008/09/04.jpg">http://blogs.artvoice.com/techvoice/wp-content/uploads/2008/09/04.jpg</a>
+**	<a href="http://blogs.artvoice.com/techvoice/wp-content/uploads/2008/09/03.jpg">http://blogs.artvoice.com/techvoice/wp-content/uploads/2008/09/03.jpg</a>
+**	<a href="http://blogs.artvoice.com/techvoice/wp-content/uploads/2008/09/02.jpg">http://blogs.artvoice.com/techvoice/wp-content/uploads/2008/09/02.jpg</a>
+* Checked out <a href="http://digg.com/2008_us_elections/The_Incident_Did_4Chan_Anon_Hack_Palin_s_Yahoo_Email">digg</a> which pointed to  <a href="http://www.sarahpalinisnthillaryclinton.com/">http://www.sarahpalinisnthillaryclinton.com/</a>
+* Which highlighted some name that I fed to the google machine: Ivy Frye Nizich, Michael
+* Which pointed to two interesting links, the first being down:
+**	<a href="http://wikileaks.org/leak/sarah-palin-hack-2008/email-index.txt">http://wikileaks.org/leak/sarah-palin-hack-2008/email-index.txt</a>
+**	<a href="http://www.mahalo.com/Sarah_Palin_Email">http://www.mahalo.com/Sarah_Palin_Email</a>
+
+Well that was futile search, but I wanted to see how news spreads on the internet and how the force will try to stop it. Now it's time to check out <a href="http://kotaku.com/5033529/the-iphone-force-unleashed-in-action">Star Wars the Force Unleashed</a> for the iPhone.
+
+Now for the readers of my blog, this has nothing to do with Flex or Rails, but hey! Also if you wonder what I was doing watching O'Reilly, let's simply say I watch many news source from many countries and like diversity of information, but very often I don't share his or Fox way of propaganda, but I enjoy the topics addressed. 
+
+That's the most political blog ever as I don't want to bug my readers here, I'm definitively less expressive than my friend <a href="http://zablanc.blogspot.com/">John</a>, but in any case and for the future or the country my children, go <a href="http://www.barackobama.com/index.php">Obama</a>!

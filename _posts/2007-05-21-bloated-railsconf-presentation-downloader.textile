@@ -1,0 +1,87 @@
+---
+layout: post
+title: !binary |-
+  QmxvYXRlZCBSYWlsc0NvbmYgUHJlc2VudGF0aW9uIERvd25sb2FkZXI=
+typo_id: 1567
+---
+I've updated my downloader from <a href="/articles/2007/05/21/download-railsconf-2007-presentations">earlier</a> to include all sorts of fancy options.  It no longer requires wget, it just uses open-uri.  It can give the files a fancy name.  It can be told where to download the files to.  It will skip files that won't download for some reason.  It will even butter your toast if you can find the correct command line switch.
+
+It's about 3 times bigger than the previous one.  But maybe you can learn a little more about <a href="http://www.ruby-doc.org/core/classes/OptionParser.html">optparse</a>, <a href="http://code.whytheluckystiff.net/hpricot/">hpricot</a>, file handling, and error handling along the way.
+
+Here it is:
+
+<typo:code lang="ruby">
+#!/usr/bin/env ruby
+
+require 'optparse'
+
+OPTIONS = { :Verbose => false,
+            :Force => false,
+            :DownloadDir => '.',
+            :DescriptiveFilenames => true
+          }
+OptionParser.new do |opts|
+  opts.banner = "Usage: #{$0} [options]"
+
+  opts.on("-v", "--[no-]verbose", "Run verbosely, default #{OPTIONS[:Verbose]}") do |verbose|
+    OPTIONS[:Verbose] = verbose
+  end
+  opts.on("-f", "--[no-]force", "Force downloads, default #{OPTIONS[:Force]}") do |force|
+    OPTIONS[:Force] = force
+  end
+  opts.on("-d", "--[no-]descriptive", "Use long descriptive filenames, default #{OPTIONS[:DescriptiveFilenames]}") do |long|
+    OPTIONS[:DescriptiveFilenames] = long
+  end
+  opts.on("-p", "--path PATH", "Path to download to, default #{OPTIONS[:DownloadDir]}") do |path|
+    OPTIONS[:DownloadDir] = path
+  end
+  opts.on_tail("-h", "--help", "Print help message") do |help|
+    puts opts
+    exit
+  end
+end.parse!
+
+require 'rubygems'
+require 'hpricot'
+require 'open-uri'
+require 'fileutils'
+
+BASE_URL = 'http://www.web2expo.com'
+
+def log(str)
+  puts str if OPTIONS[:Verbose]
+end
+
+def download(href, filename)
+  url = "#{BASE_URL}#{URI.escape(href)}"
+  download_file = File.join(OPTIONS[:DownloadDir], filename)
+  if OPTIONS[:Force] || !File.exists?(download_file)
+    log "downloading #{File.basename(href)}..."
+    begin
+      File.open(download_file, 'w') { |f| f.write(open(url).read)}
+      log "\tsaved as #{download_file}"
+    rescue Object => e
+      FileUtils.rm(download_file)
+      $stderr.puts "ERROR downloading #{url}: #{e.message}"
+    end
+  else
+    log "skipping #{File.basename(href)}... already downloaded as #{download_file}"
+  end
+end
+
+FileUtils.mkdir_p(OPTIONS[:DownloadDir])
+h = Hpricot(open("#{BASE_URL}/pub/w/51/presentations.html"))
+h.search('div.presentation').each do |presentation_node|
+  href = presentation_node.at('a[@href^="/presentations/rails2007/"]')[:href]
+  if OPTIONS[:DescriptiveFilenames]
+    name = presentation_node.at('b a').inner_text.strip
+    text = presentation_node.inner_text
+    speaker = text[/Speaker\(s\):\s+(.*)\s*$/, 1]
+    date = Date.parse(text[/Presentation Date:\s+(.*)\s*$/, 1])
+    filename = [speaker, date, name, File.basename(href)].compact.map { |s| s.to_s.strip.gsub(/[^\w\.]/, '_').squeeze('_') }.join('-')
+  else
+    File.basename(href)
+  end
+  download(href, filename)
+end
+</typo:code>

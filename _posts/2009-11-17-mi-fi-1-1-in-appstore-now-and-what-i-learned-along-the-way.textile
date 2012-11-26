@@ -1,0 +1,50 @@
+---
+layout: post
+title: !binary |-
+  TWktRmkgMS4xIGluIEFwcFN0b3JlIE5vdyBhbmQgd2hhdCBJIGxlYXJuZWQg
+  YWxvbmcgdGhlIHdheS4uLg==
+typo_id: 4881
+---
+During <a href="http://www.360idev.com/">360idev</a> (Sept 27-30) I wrote a small app to check the battery and connectivity level of my <a href="http://www.verizonwireless.com/multimedia/360_demos/mifi_2200_hotspot/">Mifi Card</a>. I didn't think many people would have an iPhone and a Mifi card. The iPhone is already 3g, but effectively there is not tethering allowed and the AT&T network is crapy. Nevertheless I thought my <a href="http://itunes.apple.com/us/app/mi-fi/id333601535?mt=8">Mi-Fi App</a> could be useful to others and along the way I would learn what it takes to submit an app to the AppStore. 
+
+<br/>
+I submitted the app on September 29th (during 360idev) and it was approved on October 12th. I submitted two other version since and last Monday I started collecting details of my experience of the AppStore, thoughts on the process, and various tibits around the web regarding this app and started writing this blog entry, but didn't finished it as it was getting too late. Then last week I stumbled upon this article of <a href="http://www.rogueamoeba.com/utm/2009/11/13/airfoil-speakers-touch-1-0-1-finally-ships/">Rogue Amoeba</a> which detailed their experience with the store. I could relate on the feeling of waiting to know if you apps goes through or not, but fortunately the process took only two weeks for the first release. However I only had a Verizon card and was so eager to submit my app that I didn't wait to find someone with a Sprint card. And of course the first version didn't work with the Sprint card. Around the time the first version was approved I wrote a fix to support the Sprint cards and submitted that fix as version 1.1. Thanks to <a href="http://twitter.com/2busy2blog/">@2busy2blog</a> and <a href="http://twitter.com/pdsphil">pdsphil</a> for helping supporting the Sprint version. Then before it got approved Verizon put out a firmware update for their Mi-Fi card which of course broke version 1.1 (and 1.0). So I updated my Mi-Fi card and wrote a new version which additionally added support for the GSM version of the Mi-Fi card thanks to <a href="http://twitter.com/jkkmobile/">@jkkmobile</a>. That's when I made a mistake...I wasn't sure how to submit a new version when there is one waiting for approval so I just replaced the binary. What I didn't know is that updating the binary puts you to the back of the queue. And I submitted version 1.1 two weeks before, and it took two more weeks to approve this "new" version 1.1 which was fortunately approved. Now I am not sure how they tested my app as it requires a piece of hardware. So maybe part of the two weeks is to find an approver that had a mifi card.
+
+<br/>
+So all this approval process was new to me and indeed very frustrating when you are used to deploy several times a day fixes to your application in a "web" world. Now this is just a different paradigm and wether you  like it or not thats' the rules you need to play with (for the moment). That means several things. First your application must be tested way better before submitting and be more resilient to different scenarios. If you really have a bug that "Kills" you are just out of luck. It's similar to developers writing games for the Nintendo DS...once you ship it...tough luck.  Note the situation is slightly better, but if you have a fatal bug then  people may never give it a second look, not time to cover up issues in a timely fashion. So Apple must find a way to allow fixes to be submitted and approved in a shorter time frame. Maybe two queues for approvals? Now I must admit the Rogue Amoeba guys had a different issue and they had to cripple their application just to have it approved and that for reasons that don't make sense. Again this was an update to an application that was previously approved, so the wait time has to be way shorter and then again there needs to be some sort of "appeal" process where developers can justify why the app really should be approved. 
+
+<br/>
+Now you may argue why an approval process at all, why don't let the user decide what to install. You may certainly not agree with me, but I like the fact that I can install apps and know they won't reck my iPhone. I don't think with an OS and an SDK like the iphone that this could be automated. Maybe an automation build where the apps are compiled by Apples and the compiler could check for any api call infringements? That would be fair, no? I don't think no approval process is viable for the Apple as this would open the door to malware applications and even though many more savvy users would avoid bad apps the majority of users could end up just downloading any thing, would have issues, and that would be a bigger nightmare than facing the unhappy users. So in the mean time the iPhone development ecosystem is what it is and the platform is too cool to ignore. I'll be working on several more iPhone apps over the next few months.
+
+<h2>But will it make me rich?</h2>
+
+ Well, that was not the intend of the Mi-Fi app and I sold it for $0 and I can assume that I won't make it up in numbers. So what are the numbers?
+
+<div style="text-align:center;"><img src="http://onrails.org/files/download.png" alt="download.png" border="0" width="500" /></div>
+
+As of today a little more than 2000 downloads which includes 695 upgrades. Wouhao, AT&T must really suck to have that many people that may potentially have an iPhone and a Mi-Fi card. Note these number are ridiculous compared to certain apps that get downloaded thousands a time a day, but hey, it's all about learning here for me :-)
+
+The interesting thing is that when Andy Ihnatko <a href="http://twitter.com/Ihnatko/statuses/5030359521">tweeted about it </a>and Robert Scoble <a href="http://friendfeed.com/scobleizer/c3263f8f/ihnatko-this-is-must-have-iphone-app-for-mifi">re-tweeted it</a> the downloads made a nice bump:
+
+<cite>"This is a must-have iPhone app for MiFi users: shows complete status of device. http://j.mp/2HBsso -- big thanks to @2busy2blog - Andy Ihnatko"</cite>
+
+And it shows of the iPhone community is active as many iPhone blogs picked on it, here are a few reviews:
+
+<ul>
+<li><a href="http://www.macsparky.com/2009/10/23/mifi-iphone-application">http://www.macsparky.com/2009/10/23/mifi-iphone-application</a></li>
+<li><a href="http://www.gadgetreview.com/2009/10/mi-fi-iphone-app-monitors-your-mifis-battery-connections-and-more.html">http://www.gadgetreview.com/2009/10/mi-fi-iphone-app-monitors-your-mifis-battery-connections-and-more.html</a></li>
+<li><a href="http://jkontherun.com/2009/10/23/iphone-app-monitors-mifi-3g-usage/">http://jkontherun.com/2009/10/23/iphone-app-monitors-mifi-3g-usage/</a></li>
+<li><a href="http://www.gottabemobile.com/2009/10/23/do-you-use-mifi-with-your-iphoneipod-touch-theres-an-app-for-that">http://www.gottabemobile.com/2009/10/23/do-you-use-mifi-with-your-iphoneipod-touch-theres-an-app-for-that</a></li>
+<li><a href="http://www.iphonefreak.com/2009/11/mi-fi-app-for-the-iphone-ipod-touch-gets-an-update.html">http://www.iphonefreak.com/2009/11/mi-fi-app-for-the-iphone-ipod-touch-gets-an-update.html</a></li>
+<li><a href="http://www.appstorehq.com/mi-fi-iphone-78445/app">http://www.appstorehq.com/mi-fi-iphone-78445/app</a></li>
+<li><a href="http://appsearch.justanotheriphoneblog.com/mi-fi-iphone-78445/app">http://appsearch.justanotheriphoneblog.com/mi-fi-iphone-78445/app</a></li>
+<li><a href="http://iphoneblips.dailyradar.com/story/iphone-app-monitors-mifi-3g-usage/">http://iphoneblips.dailyradar.com/story/iphone-app-monitors-mifi-3g-usage/</a></li>
+<li><a href="http://www.zatznotfunny.com/2009-10/the-mifi-updates/">http://www.zatznotfunny.com/2009-10/the-mifi-updates/</a></li>
+<li><a href="http://technews.am/conversations/gottabemobile.com/iphone_mifi_app_needs_still_needs_some_work">http://technews.am/conversations/gottabemobile.com/iphone_mifi_app_needs_still_needs_some_work</a></li>
+<li><a href="http://gearshrine.com/iPhone/opinion:iphone-app-monitors-mifi-3g-usage/">http://gearshrine.com/iPhone/opinion:iphone-app-monitors-mifi-3g-usage/</a></li>
+</ul>
+
+So this was a good first learning experience and hopefully there will be more.
+
+Enjoy!
+Daniel

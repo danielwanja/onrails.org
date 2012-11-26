@@ -1,0 +1,22 @@
+---
+layout: post
+title: !binary |-
+  RmxleCB2cy4gUk9S
+typo_id: 14
+---
+*Ed just asked me:* "Why, ultimately would you say ROR is better than Flex? Thereâ€™s a great debate at the moment. 
+
+*My _swiss_ style answer:* "This is a very interresting question. I effectively use
+both technologies with different customers on different projects. And
+I like both, they have different strength. Flex 1.5 answers only the
+UI question and doesn't help with the persistence side of a project.
+Flex 2.0 will provides some answers to the persistence integration
+with their Enterprise Services. Flex is really awesome to build a
+custom UI. Rails on the other hand provides lots of power if you have
+control on the database schema and is a full "web" stack. It provides
+a nice framework to build the views and provides some pretty powerfull
+ways to create dynamic html pages. Rails can we very productive. So in
+other words, I don't prefer one over the other. It really depends on
+the specifics of the problem to be solved, the technical expertise of
+a customer and the future direction a customer wants to go to define
+if one technology is more appropriate than another."

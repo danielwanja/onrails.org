@@ -1,0 +1,48 @@
+---
+layout: post
+title: !binary |-
+  VGltZS5vbnJhaWxzLm9yZyBpcyBjbG9zaW5nIQ==
+typo_id: 4886
+---
+I just send an email to thousands of users to notify them that time.onrails.org is closing down. I don't think many of these users are active but just in case I wanted everyone to be able to get their data out of the system if so they wished. 
+
+I will turn down the service on March 17th at 9pm.
+
+Now why in the hell would I close this service. In brief I created it for myself on the plane to RubyConf 2005, thought it was cool and opened it to the public in April 2006. I haven't updated the code much since many years and just don't have the time to add new features, and trust me Rails code from 2005 looks slightly different than nowadays  Rails code. 
+
+For posterity here is the "official" announcement blog entry of the creation of the service:
+
+<a href="http://onrails.org/articles/2006/04/13/new-background-color-yellow-color-rgb-0-0-0-launch-time-onrails-org-time-tracking-made-simple">April 13, 2006 - LAUNCH time.onrails.org, time tracking made simple! </a>
+
+And here are <a href="http://onrails.org/articles/category/time-onrails-org">few more articles</a> related to time.onrails.org.
+
+Here is part of the email I send to the users:
+
+<cite>
+Time.onrails.org is closing down March 17th 2010 at 9pm Mountain time.
+
+You can export your time entry for each project by clicking on the export buttons at the bottom of each project page or you can export your full account by just login and then go to this url:
+
+Â  Â  http://time.onrails.org/export/xml/user
+
+This will export each of the projects will all sections including the notes.
+
+Please start transitioning to a new service now.
+
+As a replacement service I would suggest harvest (http://www.getharvest.com/) which offers a free plan which allows for 2 projects, 4 clients, unlimited invoicing for 1 user absolutely FREE. 
+
+Thank you to all the users over the years I hope you enjoyed this free service. Time.onrails.org enjoyed thousands of users and I received many nice complimenting emails for the service over the years. The main reason that I close this service is that I am starting to use harvestapp for my own time tracking. I wrote time.onrails.org back in 2005 just for fun and thought it could be useful to others. It fulfilled my needs of keeping track of time for the various customer projects I worked on over the last few years.
+
+Since we moved to slicehost it was very stable and I just have good things to say about slicehost, they are just great. Recently one of the slice time.onrails.org was running on had issues and got moved twice over two days. Again slicehost was on top of that situation and I just sat back and they did all the work. But this also reminded me that I cannot just keep the service running without giving it the time and effort it deserves and just now I don't have that time as I am working on other projects, such as http://appsden.com.
+
+So I went on the search for a replacement service and Â looked at many out there. And Harvest just added the timestamp feature, which is exactly how I track time, their app is more fleshed out than time.onrails.org, so I decided to move over to use their services.
+
+The great news is while I tweeted about my move to Harvest, Doug, which I knew from his time in Denver mentioned that he now works for Harvest. So he put me in contact with the cofounder and I asked him if they could get some deal for my current users, and they where very responsive and create a special promo code. Thanks for that and I hope you try and enjoy their services. Just for disclaimer I didn't ask for any monetization or anything for referring you to Harvest, the idea was just to have an alternate offering in case you needed one. But they offered me a free Solo plan, so hey, at least I got that out of this whole ordeal.
+
+Please don't hesitate to contact me for any question at daniel@onrails.org.
+
+Thank you again for having tried out or being a user of time.onrails.org over all these years.
+
+Kind regards,
+Daniel Wanja
+</cite>

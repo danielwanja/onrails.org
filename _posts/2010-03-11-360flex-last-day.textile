@@ -1,0 +1,26 @@
+---
+layout: post
+title: !binary |-
+  MzYwRmxleCBsYXN0IGRheS4=
+typo_id: 4897
+---
+What a conference! The talks where really awesome so far. Not exactly sure what I will attend today. I might attend  "Optimize it! ActionScript Tips for iPhone Games" followed by "Adobe is from Mars, Microsoft is from Uranus: A View from the Client". Then I will have to split early to catch a flight to Salt Lake City for the <a href="http://mtnwestrubyconf.org/2010/">MountainWest RubyConf 2010</a>. 
+
+<h3>Optimize it! ActionScript Tips for iPhone Games Renaun Erickson</h3>
+
+Renaun is Plaform Evangelist for Adobe since last week. He will put up the slides and code on his <a href="http://renaun.com/blog/">blog</a> later today. Many of the tips are good for any Flash/Flex app not just for iPhone ones.
+
+* Packager for iPhone (PFI)
+* LLVM cross compiles
+
+He will focus the talk on Memory/Cpu/Mouse Move and Game Timers.
+
+Instead of going to the Flex/Silverlight talk, sorry Jun and Eric, I went to Nate Beck's talk on pushbutton. And Doug McCune had something special <a href="http://dougmccune.com/blog/2010/03/10/nate-becks-birthday-surprise-at-360flex/">planned</a> for Nate's birthday...
+
+<object width="400" ><param name="movie" value="http://www.youtube.com/v/xEkUyNdj_4E&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/xEkUyNdj_4E&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="400" ></embed></object>
+
+Flex 4: It's a Wrap
+
+<object width="400" ><param name="movie" value="http://www.youtube.com/v/PeTakZ-_sF0&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/PeTakZ-_sF0&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="400"></embed></object>
+
+Thank's Tom and John...the conference was awesome!

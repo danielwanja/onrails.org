@@ -1,0 +1,18 @@
+---
+layout: post
+title: !binary |-
+  RXhjZXB0aW9uYWwgU2xpY2Vob3N0IHN1cHBvcnQ=
+typo_id: 2597
+---
+Our server that hosts onrails.org and time.onrails.org died on Sunday. Before we could react <a href="http://www.slicehost.com/">Slicehost</a> migrated us to new hardware and everything was up and running. Thanks guys, awesome support!
+
+The events where the following: 
+
+* [Slicehost] Sep 1, 2007 3:04 PM, Emergency Server Reboot and HW Migration - onrails
+* [Montastic] Sep 1, 2007 3:20 PM, Website status: unreachable
+* [Slicehost] Sep 1, 2007 3:44 PM, Emergency HW Migration #2 - onrails. 
+* [Montastic] Sep 1, 2007 4:12 PM,  Website status: OK
+
+[Slicehost] indicates emails we received from Slicehost, and [Montastic] emails from the <a href="http://www.montastic.com/">monitoring</a> system we use. Slicehost warned us of the situation and action they are taking before our monitoring system found out that the service was down. Well, apparently they migrated us to new hardware that had another issue (bad memory) and they moved us a second time to different hardware. Well no data was lost, all our service are up and running and I didn't have to cut short my BBQ. Thanks!
+
+Update1: Well something is wrong with the template of our blogs. I am not sure it's related to the update of hardware as it was working last night. More to come.

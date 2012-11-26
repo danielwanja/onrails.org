@@ -1,0 +1,24 @@
+---
+layout: post
+title: !binary |-
+  SSdkIHJhdGhlciBiZSBvbiBSQUlMUy4=
+typo_id: 10
+---
+This statement is pretty true right now, Rails is just  a pleasant development environment. Mike Clark left this sticker at my desk at one of the places I am currently doing a Rails project at. 
+
+!http://static.flickr.com/20/71974492_e856007f89.jpg! 
+
+For another client I am doing a Flex project and work with many great java developers. I thought I would put the sticker in a visible spot and see their reactions. Well, it didn't fail, some of the comments where pretty funny. Here they go:
+
+* That's a big statement.
+* We'll run you out on a rail.
+* So you would rather be on rails, hein?
+* HuHan!
+* You really are a geek.
+* Where did you get it? You didn't get one for me?
+* He's a convert.
+* You are pushing the Ruby stuff today!
+* It looks like it should have a Lenin on it.
+* I'd rather be fishing.
+
+The "Lenin" one I didn't totally get, even after a long discussion, but I sounded pretty funny to me. As you see, give me a sticker and will say good things about you. No, that's not the case, I just think Mike Clark and Dave Thomas are putting a very compelling training together, and with these two guys you will learn more in three days than you would ever in any other places. Check out "http://pragmaticstudio.com":http://pragmaticstudio.com and their new Rails Studio, coming to Denver in January.

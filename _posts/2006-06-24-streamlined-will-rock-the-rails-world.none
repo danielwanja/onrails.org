@@ -1,0 +1,29 @@
+---
+layout: post
+title: !binary |-
+  U3RyZWFtbGluZWQgLSBXaWxsIFJPQ0sgdGhlIFJhaWxzIFdvcmxk
+typo_id: 116
+---
+<a href="http://streamlined.relevancellc.com/">Streamlined</a> is an open source framework for quickly creating data-centric applications with Ruby on Rails.
+Today Justin Gehtland announced during his 'Ajax on Rails' talk that Streamlined will be released at OSCON in July. I can best describe Streamlined as 'dynamic scaffolding' done right. Streamlined is a model driven way of generating data centric UI's. Justin demoed how to create and modify a data entry application. It provides search, crud functionality, support relationship between model, and way more. The framework adheres to the convention over configuration approach and provides a default behavior of the application than can easily be refined and enhanced. As opposed to scaffolding it doesn't generate code for the controller but provides a basic behavior. This will <strong>ROCK</strong> the software development world and accelerate many projects. 
+<p/>
+<strong>From the Streamlined website:</strong>
+<br/>
+In the Abendsen release, Streamlined has been focused on solving the problems of our customers and our internal projects. Right now, Streamlined is focused on:
+<ul>
+<li>Generator for churning out the initial views and configuration</li>
+<li>A declarative DSL for managing views, including relationship management, field selection, etc.</li>
+<li>Full Ajax-enabled management views with sorting, paging and live search (with configurable field-inclusion)</li>
+<li>A criteria query extension to Active Record</li>
+<li>Context-sensitive help</li>
+<li>An extensible component system for representing relationships at runtime</li>
+<li>Export to xml/csv</li>
+<li>REST-ful web service layer around all models</li>
+<li>Atom support</li>
+<li>Auto user-management and inclusion of declarative role-based authorization</li>
+<li>Choice of layouts (Yahoo Grids or CSS Framework)</li>
+<li>Theme support</li>
+<li>Includes Javawin for in-browser windowing</li>
+</ul>
+<br/>
+This is the feature set we'll release at OSCON in July.

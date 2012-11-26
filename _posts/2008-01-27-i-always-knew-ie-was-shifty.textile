@@ -1,0 +1,44 @@
+---
+layout: post
+title: !binary |-
+  SSBBbHdheXMgS25ldyBJRSBXYXMgU2hpZnR5
+typo_id: 3228
+---
+While working on a Rails project, I stumbled upon a (probably) obscure positioning bug in IE, triggered by the ubiquitous "Yellow Fade Technique", of all things.  The symptom, as reported by the user, was that form elements on a page were "jumping around" when items were added to the cart.  I've distilled the issue down to what I believe is the smallest reproduction of the issue, which I present to you now, in glorious validated HTML 4.01 strict:
+
+
+<typo:code lang="html">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+  <head>
+    <title>IE Shifting Bug</title>
+    <style type="text/css">
+      div { position: relative;}
+    </style>
+  </head>
+  <body>
+    <div style="float:right; width:49%">
+      <div style="display:none;">
+        some hidden content
+      </div>
+      <div id="container">
+        <label>Overlap Me:</label>
+        <input type="text" value="<< this should shift">
+        <input type="submit" value="&laquo;this too">
+      </div>
+    </div>
+    
+    <!-- trigger to illustrate the bug: -->
+    
+    <p>
+      <input type="button" value="apply background color"
+        onclick="document.getElementById('container').style.backgroundColor = 'yellow'">
+    </p>
+    
+  </body>
+</html>
+</typo:code>
+
+If you view this page in IE (I'm using version 7), when you apply the background color to the container div, the two form elements jump to the left, overlapping the label element.  Interestingly enough, this seems to require the convergence of many things, including the floated outer div, the hidden content above, the relative position on all the divs, etc.  If you remove any of them from the equation, things work as expected.  In an even more bizarre twist, the _length_ of the label seems to come into play as well -- if you add even one more character to the label text, things return to "normal".
+
+In the extremely unlikely event that anyone else has run across this issue, hopefully I can save you a couple of hours of frustration.  I worked around the issue by overriding the position of the "container" div (to "static"), although given the fragility of the trigger, any number of small changes should work as well.

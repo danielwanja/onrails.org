@@ -1,0 +1,32 @@
+---
+layout: post
+title: !binary |-
+  RG93bmxvYWQgUmFpbHNDb25mIDIwMDcgUHJlc2VudGF0aW9ucw==
+typo_id: 1519
+---
+<p><strong>Updated: <a href="/articles/2007/05/21/bloated-railsconf-presentation-downloader">Now more bloated!</a></strong></p>
+
+Run this to get the <a href="http://www.web2expo.com/pub/w/51/presentations.html">RailsConf 2007 presentations</a>:
+
+<typo:code lang="ruby">
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'hpricot'
+require 'open-uri'
+
+base = 'http://www.web2expo.com'
+h = Hpricot(open("#{base}/pub/w/51/presentations.html"))
+
+h.search('div .presentation > a[@href^="/presentations/rails2007/"]').each do |a|
+  url = "#{base}#{a[:href]}"
+  if File.exists?(File.basename(url))
+    puts "skipping #{url}... already downloaded"
+  else
+    puts "downloading #{url}..."
+    `wget --quiet #{url}`
+  end
+end
+</typo:code>
+
+I might clean it up more later to name the files better and not use wget, but this was quick and easy... not to mention a way to use everyone's favorite parsing tool: <a href="http://code.whytheluckystiff.net/hpricot/">Hpricot</a>.

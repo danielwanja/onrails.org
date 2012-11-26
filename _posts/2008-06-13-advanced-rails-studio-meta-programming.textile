@@ -1,0 +1,7 @@
+---
+layout: post
+title: !binary |-
+  QWR2YW5jZWQgUmFpbHMgU3R1ZGlvOiBNZXRhIFByb2dyYW1taW5n
+typo_id: 3705
+---
+Chad is giving a very nice presentation walking us through meta programming step by step. You can see the code examples we are creating during his talk, but just looking at the code will note give the whole picture.

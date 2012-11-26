@@ -1,0 +1,13 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHMgUm9ja3Mh
+typo_id: 2640
+---
+I am trying so see the result of a change in a Java program....5 minutes compilation...5 minutes deployment. Arggggggggggg! 
+
+Rails Rocks! Change + refresh = done! 
+
+Short term memory is good, hopefully I will forget that experience soon.
+
+;-)

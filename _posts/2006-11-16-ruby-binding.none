@@ -1,0 +1,9 @@
+---
+layout: post
+title: !binary |-
+  UnVieSBiaW5kaW5n
+typo_id: 186
+---
+What is <code>binding</code>?  It basically holds the current state of the application... it knows what <code>self</code> is (or was when <code>binding</code> was invoked).  What else does it know?  I'm not sure, it's something I'd like to investigate further.  Can the binding be interrogated?  Can it be manipulated?
+
+Let me know if you have good pointers to info about it.  I'll check Pickaxe when I get home.

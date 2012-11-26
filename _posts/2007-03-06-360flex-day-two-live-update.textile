@@ -1,0 +1,52 @@
+---
+layout: post
+title: !binary |-
+  MzYwRmxleCAtIERheSB0d28=
+typo_id: 279
+---
+All right, here we go again. 
+
+08:30am *Flex Data Services by Jason Williams* FDS is a J2EE Application that provides data synchronization between a client and a server. Provides Messaging, RPC Services and Data Management. All these services use service adapters on the server to get the job done. All the other services are build on top of Messaging. Jason goes through the various ways to configure these services, way to much data to blog about. Jason will post his slides online. I will point to them as soon as I gound out.
+
+10:00am *Flex Builder Secrets by David Zuckerman* Change in plan, I won't attend the Modules presentation as I played with Module last week and it works pretty well. So Let's see if there are some good FlexBuilder secrets out there. If not that will give me some time to play with handling Rails Errors from Flex. I'll blog about that shortly. David will briefly show some editing features, the will dive into hacking FlexBuilder, hacking the property inspector and use the APIs exposed by FlexBuilder. David is part of the FlexBuilder development team and is currently working on 'Find all references' and Refactoring support. 
+
+|apple-shirt-t	|	Open Type|
+|apple				|	Turns an identifier into a 'navigate to' link|
+|ctrl-o		| Outline view |
+
+David mentions' that everything he shows now is at our risks and can damage the installation. He shows or the color syntax settings can be modified. There are defined in the Colors.xml file inside of a .jar file that is part of an eclipse plugin. Note sure that I want to mess with that stuff.  Graphical Property Inspector. You can create your own customer common property inspector. This inspector is defined by by an xml file.  David nows describe how to extend FlexBuilder using java. I guess that these notes won't be to useful, so hopefully he will provide his slides.
+
+01:00pm *MXML vs. AS3 by Ted Patrick* His goal is that we understand MXML as a medium to write applications. Apparently I am the trouble maker for the bad sound with the mikes that the presenters experienced since the beginning of the conference..as my EDVO card may interferer with their microphones. So I will start taking notes offline and post them here after the talks are over. MXML gets translated to AS3, so it's the same. MXML Tags are instances of AS3 classes. 100% compatible, 100% the same. To see how the translation work use the compiler flag -keep-generated-actionscript. Best way to understand inner workings and what's going behind the scenes.
+
+02:30pm *E4X by Danny Patterson* Danny co-authored the ActionScript 3 with Design Patterns book. He described the new XML related classes and showed examples for each of them: . XML, XMLList, QName, Namespace. 
+
+Filtering:  
+
+	catalog.product.(price < 50).name, 
+
+or using a variable 
+
+	var findPrice =50;
+	catalog.product.(price < findPrice).name
+
+Chained Filter: 
+
+	catalog.product..(name.toString().length >0).(price < 50).name
+
+Namespaces
+
+<typo:code>
+	//xmlns
+	var envelop = <soap:envelop xmlns:soap="{uri}" />
+	envelop.body = <soap:body xmlns:soap="{uri} />
+	//Namespace
+	var soap:Namespace = new Namespace(uri);
+	envelop.soap::body = new XML();
+	//Default namespace
+	default xml namespace = soap;
+	envelop.body = new XML()
+</typo:code>
+
+04:00pm *Flex and Flash Together by Jesse Warden* Jesse goes fast through lots of material. *Call Flash from Flex directly* But he shows how to load a swf file using the SWFLoader into flex, cast the loader.content to the interface you would to use, then then Flex can call the methods you want on the Flash movie.. You can do that today with the Actionscript 3 plugin for Flash 8. *addFrameScript* addFrameScript(39, stop)...show a way to load dynamically code inside you application by using Embed...he uses this to build a nice Flash components that can be used straight from Flex. He makes a compelling case of using Flex and Flash together.
+
+

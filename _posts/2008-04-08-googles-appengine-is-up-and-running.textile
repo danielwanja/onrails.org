@@ -1,0 +1,15 @@
+---
+layout: post
+title: !binary |-
+  R29vZ2xlJ3MgYXBwZW5naW5lIGlzIHVwIGFuZCBydW5uaW5nLg==
+typo_id: 3451
+---
+<a href="http://code.google.com/appengine/">Appengine</a> is Google's answer to Amazon's web services (ec2, s3, ...). I just signed up and got the following message: "Thanks for checking in! When space in the Google App Engine preview release becomes available, we'll notify you by emailing..."
+
+While waiting you can read there <a href="http://code.google.com/appengine/docs/gettingstarted/">doc</a> or download the <a href="http://code.google.com/appengine/downloads.html">SDK</a>.
+
+They have some <a href="http://appgallery.appspot.com/">demo apps</a>. Also, the runtime or development language of choice seems to be Python...hopefully Ruby is next on the line.
+
+Update: 11:14pm Got an Invitation to try Google App Engine saying my account has been activated. The account allows me to create 3 applications.
+
+

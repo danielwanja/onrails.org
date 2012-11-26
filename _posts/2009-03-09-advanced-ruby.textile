@@ -1,0 +1,50 @@
+---
+layout: post
+title: !binary |-
+  QWR2YW5jZWQgUnVieSAtIERheSAx
+typo_id: 4299
+---
+Let's get started. I'm at the <a href="http://pragmaticstudio.com/ruby/">Advanced Ruby</a> training. Here are the topics we gonna cover
+
+* Blocks, Procs, and Closures
+* Ruby 1.9
+* Your Own, Private Ruby
+* Design in a Dynamic Language
+* Messin' with Types
+* ...make it fast.
+* The Ruby Object Model
+* Metaprogramming
+* Making Domains-Specific Languages
+* Concurrency
+* Exotic Control Flow
+* Library Organization
+* Debugging and Profiling
+* JRuby
+* Ruby Extras
+* Distributed Programming
+* Onward and Upward!
+
+In fact when I saw the topics that will be covered by Dave Thomas and Chad Fowler, and the fact that some of my collogues from Pinnacol where attending I had to join...Oh yea, it's a 25 minute drive from home too.
+
+So this morning I woke up and installed Ruby 1.9. I didn't use multiruby as many do I just downloaded <a href="ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.1-p0.tar.gz">Ruby 1.9.1-p0</a> from http://www.ruby-lang.org/en/downloads. These are the steps to install:
+<pre>
+cd ruby-1.9.1-p0
+autoconf
+./configure --prefix=/usr/local/ruby1.9
+make
+sudo make install
+</pre>
+
+Then you can check the version by
+
+<typo:code> 
+$/usr/local/ruby1.9/bin/ruby -v 
+ruby 1.9.1p0 (2009-01-30 revision 21907) [i386-darwin9.6.0]
+$/usr/local/ruby1.9/bin/irb 
+RUBY_VERSION 
+=> "1.9.1"
+</typo:code>
+
+I didn't add /usr/local/ruby1.9/bin to my path, so the default ruby is still my mack default, 1.8.6 of my mac (ruby 1.8.6 (2008-03-03 patchlevel 114) [universal-darwin9.0]).
+
+Keep on reading to see some of the code we are walking through. This said it's hard to convey how much value Chad and Dave are passing along with all their deep explanations of each of the examples...

@@ -1,0 +1,272 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIDIwMDcgLSBEYXkgMw==
+typo_id: 1460
+---
+<h2>Bring Ruby to the Enterprise. Not the Other Way 'Round by Cyndi Mitchell (Thoughworks)</h2>
+
+Enterprise used to mean "To boldly go where no one went before". Now it means "loose time, things that add no value, bloat-ware, incompetency, and corruption"
+We now have to reclaim the enterprise. Many of the people in this room and RoR planting the seed for a paradigm shift. Many now saw the light and start using RoR in the enterprise. In any case they all need new systems to communicate with old systems. 
+If we get involved we can show them a better way. Help the Enterprise climb the learning curve faster. Thoughworks announces RubyWorks a full fledged ready to deploy Rails environment. JRuby provide for many Enterprise to make good on their existing Java investments while starting with Ruby On Rails. Lot of indicators showing that we are in the position to reclaim the Enterprise with Ruby On Rails. The core team shows the way of a better way of developing software. There is now a gap in the market in showing the Enterprise the Ruby On Rails way. "We" should be bold enough to bring Ruby On Rails to Enterprise.
+
+Note: Thoughworks is a sponsor of RailsConf.
+
+<h2>Keynote by Tim Bray (Sun)</h2>
+
+Tim Bray, "Web Guy". 
+Tim starts to asks a few questions?
+
+* "Who are you guys?"
+** Startup? 35%
+** Not startups? 35%
+** Service providers? 20%
+
+* Very first web programming framework? 10 people.
+* Which framework are you coming from?
+** Java? Many.
+** Microsoft? Less
+** Php? Lots.
+
+He did write lots of Ruby code that is in production, but hasn't yet done lots with Rails.
+
+Sun can give server to "worthy" open source projects. Sun also sponsors conference like this...and "Ladies and Gentlemen's your are watching a paid commercial". But we are putting our Money where our mouth is. Growing the Rails eco-system is good for everyone.
+
+He is now showing NetBeans (pre-alpha release 6.0). You can run Rake Targets. Debugger running a .rhtml session. 
+
+The most visible thing Sun has done is to hire the JRuby guys.  Charles Nutter comes on stage. So Tim asks him "Why JRuby". To bring Ruby in Enterprise where Ruby is not so well accepted, wast number of existing Java libraries, JVM good virtual machine. Another question Charles mentions is "When to use JRuby?". At the end of the month will come a first release candidate for JRuby 1.0. 
+
+He now asks Cindy from Thoughworks to explain why they use JRuby for Thoughworks Studio? She mentions that JRuby is not too disruptive for many of these Enterprises. 
+
+Why is Sun doing this? For quite some years sun was saying "The answer is Java. What is your question?". Tim mentions is their business to help developers by selling them servers, the Solaris OS, Netbeans, Big Computers (2TB ram) starting at only $535000.-, Identity Management Solutions. The problem they are trying to solve, is that Sun is good a selling big boxes to bank, but they need to grow their business, and growth comes from the developers...the CEOs will follow. That's why we love you...because we are greedy. 
+
+So how do we do money on free products? There is a three part mantra. 1) Adoption. If people don't adopt your tools you won't make money. Free removes friction to adoption. 2) Deployment. Once they have adopted you tools, they need to use it. Only once it's deployed, customers see the value of your tools. 3) Monetization at the point of value. The hypothesis is that no serious business, will deploy any serious applications, and will not be ready to pay to support it. This will lead to greater prosperity down the road.
+
+Let's assume Rails succeeds beyond our wildest dreams. Are all our problems over? In the best possible scenario...Java will never go away, .Net will never go away, PHP will never go away, Cobol will never go away. The number of applications written is growing. The Network is heterogeneous, and the systems we deploy will need to cooperate. DEAL WITH IT. It's arguably an unsolved problem, it's a tax on our creativity. There a couple of solutions. 1. Run ruby on the Java platform. 3.  The Community. 
+
+How do we get all these things talking to each other? The right answer is <a href="http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">REST</a>.
+
+What's said on Twitter during the keynote:
+<img src="http://onrails.org/files/20070519RailsConfTwitter.gif" border="0" height="408" width="764" alt="20070519RailsConfTwitter.gif" align="" />
+
+<h2>Custom Rails Helpers: Keeping Your Views DRY by Glenn Vanderburg</h2>
+
+There are Rails APIs you never heard off unless you are writing helpers. 
+
+<b>Simple Helpers</b>
+
+<typo:code lang="ruby">
+	def sort_header(field, label=field.titleize)
+		content_tag(:th, :class => 'sort_header') do
+     		link_to label, :sort => field
+ 		end
+	end
+</typo:code>
+
+Good for small stuff. For larger amounts use strings &lt;&lt;EOS, %{}, StringIO. Or use Biulder:XmlMarkup. render:partial.
+
+Use HTML options
+<typo:code lang="ruby">
+	def sort_header(field, label=field.titleize, html_options={})
+		options = {:class=> 'sort_header').merge(html_options)
+		content_tag(:th, :class => 'sort_header') do
+     		link_to label, :sort => field
+ 		end
+	end
+</typo:code>
+
+<b>Generating Javascript</b>
+
+What about this?
+<typo:code lang="ruby">
+	def filter_select(name, select_options)
+		field_id ="field_#{name}"
+		select_tag(name, build_option_tags(select_options), 
+                  {:id => field_id})
+		observe_field(field_id, :on => 'changed',
+			       :function => "$('filter_form').submit(); return false;"
+	end
+</typo:code>
+
+Javascript Helpers
+
+* Rails Recipes, Recipe 2.
+* When other helpers generate javascript, use them
+* application.js
+
+Learn Javascript, learn Prototype.
+
+<typo:code lang="ruby">
+	def filter_select(name, select_options)
+		field_id ="field_#{name}"
+		select_tag(name, build_option_tags(select_options), 
+                  {:id => field_id})
+		observe_field(field_id, :on => 'changed',
+			       :function => "MyApp.change_filter();"
+	end
+</typo:code>
+
+<b>Form Builders</b> 
+
+form_for, field_for
+
+<typo:code lang="ruby">
+	class TaggedBuilder < ActionView::Helpers::FormBuilder
+		def text_field(label, *args)
+		end
+	end
+</typo:code>
+ 
+Glenn will put the slides <a href="http://wiki.oreillynet.com/wiki/railsconf2007/index.cgi?PresentationSlides">online</a>.
+
+<h2>Date Warehouses with ActiveWarehouse by Anthony Eden</h2> 
+
+The talk is in line with the tutorial on 
+
+* <a href="http://activewarehouse.rubyforge.org/">http://activewarehouse.rubyforge.org/</a> and on 
+* <a href="http://anthonyeden.com/2006/12/20/activewarehouse-example-with-rails-svn-logs">http://anthonyeden.com/2006/12/20/activewarehouse-example-with-rails-svn-logs</a>
+
+* ActiveWarehouse::Dimension
+* ActiveWarehouse::Fact
+* ActiveWarehouse::Cube
+
+<typo:code lang="ruby">
+	class RevisionReportsController < ApplicationController
+	  def index
+	    @report = ActiveWarehouse::Report::TableReport.new(
+	      :title => "Sales by Region",
+	      :cube_name => :sales, 
+	      :column_dimension_name => :date, 
+	      :row_dimension_name => :store
+	    )
+		render_report(@report)
+	  end
+	end
+</typo:code>
+
+<b>Dimension Mixin</b>
+
+acts_as_hierarchy_dimension
+acts_as_slowly_changing_dimension
+
+<b>Data Builders</b>
+
+rake warehouse:build_date_dimension
+rake warehouse:build_random_data # for testing
+
+<b>Role-Playing Dimensions</b>
+
+This uses views. ActiveRecord was extended to use views. Added migrations to views.
+
+script/generate dimension_view creation_date_view
+
+<b>ActiveWarehouse ETL</b>
+
+ETL=Extract, Transform, Load. Or how to get data into the datawarehouse. This is a separate project installed as a gem.
+
+Foreign Key Lookup Transform, Decode Transform, Type Transform, SHA1 Transform, String to Date Transform, Date to String Transform, Default Value Transform, Ordinal Transform, Custom Transform, Row Level Transform.
+
+Loading. Write to multiple output, truncate tables with preprocessor, bulk load through adapters (that support it).
+
+<b>Who is using ActiveWarehouse</b>
+
+* blurb. 16 Dimension Tables, 8 Fact Tbles, Orders, User Registration, Uploads.
+* rubyforemmmultiworks.
+* Department of Defense. Used for portions of a safety data warehouse. Provided the initial genesis of the ActiveWarehouse plugin.
+
+<b>What's Next?</b>
+
+* Improvement in the Aggregation and Querying systems
+* Efficient Construction and Storage of Aggregates
+* Support for MDX for querying
+
+<b>Resources</b>
+
+Anthony recommends the following book which highlights many of the principals applied in ActiveWarehouse:
+
+<a href="http://www.amazon.com/exec/obidos/ASIN/0471200247/ralphkimballc-20/104-5050702-4100704">The Data Warehouse Toolkit: The Complete Guide to Dimensional Modeling</a>  
+
+
+<h2>Open Mic</h2>
+
+(Let me know if I've got your names wrong!).
+
+<b><a href="http://masterview.org/">MasterView Template Plugin/Gem</a></b>
+
+By Jeff Barczewski and Deb Lewis
+<a href="http://rubyforge.org/projects/masterview">http://rubyforge.org/projects/masterview</a>
+<a href="http://masterview.org/">http://masterview.org/</a>
+
+Generates a template and partials from an existing html design by simply adding some tags.
+
+WYSIWYG + Designer Friendly
+Has a plugin in and is documented
+
+<b><a href="http://yikesite.com/">YikeSite</a></b>
+
+Jeff Warrick from Canada
+Simple Content Management.
+A different approach to content management. 99% his client need to make edit at one small thing on a site. Adds an Admin and Edit button on a page and allows simply to change the content, wording, and formatting. Uses liquid template. The Admin interface allows to add, edit, and remove pages and organize them hierarchically.
+
+<b><a href="http://revolutionhealth.com/">revolutionhealth</a></b>
+
+by Eric Battin.
+Health portal.  You can create a page from any content of the portal, or create new content. Eric shows the clipping functionality.  Pretty slick. Then he shows the edit mode of a page. 
+
+See <a href="revolutiononrails.blogspot.com">revolutiononrails.blogspot.com</a>
+
+<b>cnu config</b>
+
+Allows to overlay yaml files and access the configuration through a "dot" syntax.
+
+CnuConfig.config.ConfigDemo("url")
+CnuConfig.config.moch_object.moch_method("IL", "Chicago")
+CnuConfig.confi.RailsConf.year
+
+Will be packaged as a gem and will be on Rubyforge next week.
+
+<b><a href="http://rubyforge.org/projects/cruisecontrolrb/">CruiseControl.rb</a></b>
+by Alexey Verkhovsky
+
+This are the step required to install and use cruisecontrol rb.
+
+Download cruisecontrolrb-1.1.0
+cruise add MyProject --url file:///sv-repo/passing_project
+cruise start
+http://localhost:3333
+
+<b><a href="http://pibb.com">Group Discussion Tool</a></b>
+By Bryan Alan. 
+He wrote the openid plugin. The Group Discussion Tool is build around openid.
+<a href="http://pibb.com">http://pibb.com/</a>
+OpenId is pretty awesome.
+
+<b><a href="http://divinecaroline.com/">divinecaroline</a></b>
+A content management system. They wrote a plugin to do distributed page caching.
+Only works on Mac and Linux. 
+(I didn't get the name of the plugin)
+
+<b>mywaves</b>
+
+Share, watch, and publish video to mobile phones. Lot's of video channels, i.e. RailsConf. You can put a channel on your blog or myspace page. 
+
+<img src="http://onrails.org/files/20070519_mywaves.jpg" border="0" height="145" width="300" alt="20070519_mywaves.jpg" align="" />
+
+<b><a href="http://liquidrail.com/">The Mole Plugin</a></b>
+
+Fernand Galiana
+liquidrail.com
+
+Awesome plugin allowing to determine how your application is REALLY used.
+
+<img src="http://www.liquidrail.com/assets/2007/4/15/snitch_molet.png" style="width:450px;height:350px;"/>
+
+<b><a href="http://statisfy.net/">Statisfy.net</a></b>
+
+Last year he tried to demonstrate something (valuesource) but his computer didn't work. Now he works on BountySource
+
+<a href="http://statisfy.net/">Statisfy.net</a> real time status usage of your site. Where people come to your application visualized on google maps.
+
+
+
+

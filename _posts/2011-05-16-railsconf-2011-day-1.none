@@ -1,0 +1,335 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIDIwMTEgLSBEYXkgMQ==
+typo_id: 5076
+---
+RailsConf 2011 - Day 1
+
+Today is the tutorial days.
+
+<h2>Tutorial 1 : html5tutorial</h2>
+
+I started RailsConf with the "Building Web Apps with HTML5: Beyond the Buzzword" by Mike Subelsky (<a href="https://twitter.com/#!/subelsky">@subelsky</a>).<br/>
+
+He prepared twelve html5 exercises that walked the about 250 attendees through various features of html5 over a 2.5 hour session. It's fun to have time to work on these features. The high point was having about 200 computers using Websockets to send data back and forth with his server. He created a small ruby program that used EventMachine::WebSocket and it was holding up quite well all these connections.<br/>
+
+You can download his tutorial and all files from https://github.com/subelsky/html5tutorial. Look at the tutorial.html file for instructions.<br/>
+
+Here are a few highlights of his talk:<br/>
+
+<h4>1 - Feature Detection</h4>
+
+By using the <a href="http://www.modernizr.com/">Modernizr</a>  library, we used modernizr-1.7.js, you can detect difference html5 of your browser. <br/>
+
+For example:<br/>
+
+<ul>
+<li>Modernizr.canvas</li>
+<li>Modernizr.websockets</li>
+</ul>
+
+<h4>2 - Basic Canvas Drawing</h4>
+
+You can get a 2d context and draw on the canvas via that context. You can use <i>fillRect</i> and other primitives like <i>moveTo</i> and <i>lineTo</i> to draw.<br/>
+	
+<pre>
+    var canvas = document.getElementById("main");
+    var context = canvas.getContext("2d");
+    context.fillRect(0,0,20,20);
+</pre>
+<br/>
+
+<canvas id="canvas_ex2_1" width="450" height="40"></canvas>
+
+<script>
+var canvas = document.getElementById("canvas_ex2_1");
+var context = canvas.getContext("2d");
+context.fillStyle = "red";
+context.fillRect(0,0,20,20);
+</script>
+
+<p>Here I just created a loop to generate 180 rectangles. Note they are clipped due to the width of the canvas.</p>
+
+<p/>
+
+<canvas id="canvas_ex2_2" width="450" height="40"></canvas>
+
+<script>
+     var canvas = document.getElementById("canvas_ex2_2");
+     var context = canvas.getContext("2d");
+     for (var i=0;i<180;i++) {
+     	context.fillStyle = i % 2 == 0 ? "red" : "blue";
+     	var w = 5
+     	context.fillRect(i*w+1,0,w-1,19);
+     }
+</script>
+
+<h4>3 - Canvas Image Manipulation</h4>
+
+<pre>
+    var img = new Image();
+    img.src = "http://www.flickr.com/photos/50183640@N05/5616041841/";
+    img.onload = function() {
+    context.drawImage(img,0,110);
+    };
+</pre>
+<br/>
+
+<canvas id="canvas_ex3" width="200" height="150"></canvas>
+
+<script>
+	var canvas = document.getElementById("canvas_ex3");
+	var context = canvas.getContext("2d");
+	var img = new Image();
+	img.src = "http://onrails.org/files/20110516_water.jpg";
+	img.onload = function() {
+		context.drawImage(img,0,0);
+	};	
+</script>
+<br/>
+
+<h4>4 - Basic Animation</h4>
+
+In this exercise we first load a new image then trap the keystroke and call the up method. Note we use jquery:<br/>
+
+<pre>
+	var characters = new Image();
+	characters.src = "http://onrails.org/files/20110516_characters.gif";
+
+	characters.onload = function() {
+	  $(window).keyup(move);
+	};
+</pre>
+
+In the move the x+y coordinates are updated accordingly and is cleared and redrawn.<br/>
+
+<pre>
+	  context.clearRect(0,0,width,height);
+	  context.drawImage(characters,33,0,32,32,x,y,32,32);	
+</pre>
+
+Use the left and right arrow keys<br/>
+<p>
+<canvas id="canvas_ex4" width="450" height="150"></canvas>
+<script src="http://onrails.org/files/jquery-1.5.2.js" ></script>
+<script>
+function Exercise4() {}
+
+Exercise4.prototype.run = function() {
+	var canvas = document.getElementById("canvas_ex4");
+	var context = canvas.getContext("2d");
+	var characters = new Image();
+	characters.src = "http://onrails.org/files/20110516_characters.gif";
+
+	characters.onload = function() {
+	  $(window).keyup(move);
+	};
+
+	var x, y;
+	x = y = 0;
+	
+	var height = $(canvas).height();
+	var width = $(canvas).width();
+
+	function move(event) {
+	  switch (event.which) {
+	    case 38:
+	      if (y > 0) { y -= 10; }
+	      break;
+	    case 40:
+	      if (y < height) { y += 10; }
+	      break;
+	    case 37:
+	      if (x > 0) { x -= 10; }
+	      break;
+	    case 39:
+	      if (x < width) { x += 10; }
+	      break;
+	    default:
+	      break;
+	  }
+
+	  context.clearRect(0,0,width,height);
+	  context.drawImage(characters,33,0,32,32,x,y,32,32);
+	}
+}
+var ex4 = new Exercise4();
+ex4.run();
+</script>
+
+
+<h4>5 - Fun With Forms</h4>
+
+In this exercise we look at few attributes of the <i>input</i> tag like the <i>placeholder</i> and <i>autofocus</i> attributes.
+<pre>
+	&lt;input id=&quot;username&quot; placeholder=&quot;Your name&quot; autofocus&gt;
+	&lt;input id=&quot;fn&quot; placeholder=&quot;First name&quot;&gt;
+</pre>
+
+Use the slider below to scale the image:<br/>
+<table border="0">
+	<tr>
+		<td>
+			<input id="username" placeholder="Your name"><br/>
+			<input id="fn" placeholder="First name"><br/>
+			<input id="ls" placeholder="Last name"><br/>
+			<input id="ad" placeholder="Address" ><br/>
+			<input id="size" type="range" min="4" max="320" step="8" value="60">
+		</td>
+		<td>
+			<canvas id="canvas_ex5" width="250" height="250"></canvas>
+		</td>
+	</tr>	
+</table>
+<br/>
+
+We listen to the change event of the size input and call the draw() function. Note the last two of the drawImage below is the new width and height which will give us the scaling effect.<br/>
+
+<pre>
+	&lt;input id=&quot;size&quot; type=&quot;range&quot; min=&quot;4&quot; max=&quot;320&quot; step=&quot;8&quot; value=&quot;60&quot;&gt;
+</pre>
+
+<pre>
+	function draw() {
+	  context.clearRect(0,0,width,height);
+	  context.drawImage(characters,33,0,32,32,0,0,sizeAmt,sizeAmt);
+	}	
+</pre>	
+<script>
+function Exercise5() {}
+
+Exercise5.prototype.run = function() {
+	var canvas = document.getElementById("canvas_ex5");
+	var context = canvas.getContext("2d");
+
+	var characters = new Image();
+	characters.src = "http://onrails.org/files/20110516_characters.gif";
+
+	var x, y;
+	x = y = 0;
+	var sizeAmt = 60;
+
+	var height = $(canvas).height();
+	var width = $(canvas).width();
+
+	var sizeEl = $('#size');
+	sizeEl.change(function() { 
+	  sizeAmt = Number(sizeEl.val());
+	  $('#ad').val(sizeEl.val())
+	  draw5();
+	});
+
+	function draw5() {
+	  context.clearRect(0,0,width,height);
+	  context.drawImage(characters,33,0,32,32,0,0,sizeAmt,sizeAmt);
+	}
+	draw5();
+}
+
+var ex5 = new Exercise5();
+ex5.run();
+</script>
+
+<h4>6 - Local Storage</h4>
+
+If you are in Google Chrome press option-command-j to bring up the javascript console. The you can enter key-values pair associated with the page. It's like a client side cookie.<br/>
+
+<pre>
+	localStorage.setItem('shaz','bot')
+	localStorage.getItem('shaz')
+	localStorage.length // return 1
+	localStorage.clear()
+</pre>
+
+<h4>7 - Canvas Cleanup</h4>
+
+The canvas itself can be styled like any element. Here we set a black background:
+<p>
+<canvas id="canvas_ex4" class="dark-canvas" width="450" height="50"></canvas>
+<pre>
+  canvas { 
+    background-color: black;
+  }
+
+  input { display: block; }	
+</pre>	
+
+<style>
+  .dark-canvas { 
+    background-color: black;
+  }
+
+  canvas { 
+    background-color: #ccc;
+  }
+
+  input { display: block; }
+</style>
+
+<h4>8 - Web Sockets</h4>
+
+That was the fun part of the presentation, mike created the a small <a href="https://github.com/subelsky/html5tutorial/blob/master/server/server.rb">ruby application</a> and had over 200 clients connecting to it. <br/>
+
+Here is an extract of the ruby program:<br/>
+<typo:code lang="ruby">
+	class TutorialServer
+	  def run
+	    EventMachine.run do
+	      EventMachine::WebSocket.start(:host => @host, :port => @port) do |socket|
+	        socket.onmessage do |msg|
+	          @logger.info "received: #{msg}"
+	          broadcast(msg)
+	        end
+	      end
+	      EventMachine::add_periodic_timer(10) { broadcast(JSON.generate({ :type => "ping" })) }
+	    end
+	  end
+
+	  def broadcast(msg)
+	    @sockets.keys.each { |socket| socket.send(msg) }
+	  end
+	end
+	TutorialServer.new('0.0.0.0',8011).run
+</typo:code>
+
+Then when the users moved the character image using the keyboard each keystroke was sent to his server.<br/>
+
+<typo:code lang="javascript">
+// create the socket	
+var ws = new WebSocket("ws://exp.subelsky.com:8011");
+
+// sent to position+name to server
+ws.send(JSON.stringify({ name: name, x: x, y: y, type: "move" }));
+</typo:code>
+
+Ultimately he wanted to drive multiple clients from his server...but we ran out of time to dive into this. <br/>
+
+<h4>And much more..</h4>
+Mike covered additionally these topics: Embedded Media, Geolocation, Web Workers,  Offline App<br/><br/>
+
+Well that was a couple of hours well spent! Go check out his material on github.<br/>
+
+<h2>Tutorial 2 : Building Bulletproof Views</h2>
+
+Now I'm at a great presentation from  John Athayde &amp; Bruce Williams on how to make elegant html, css and javascript. The slides will be posted online. <br/>
+
+Here are some of the topics:<br/>
+
+<ul>
+<li>The Art of Template Writing</li>
+<li>Nailing Navigation</li>
+<li>Maintainable Forms</li>
+<li>Don't Fear the Object</li>
+<li>Going Mobile</li>
+<li>packaging Assets</li>
+<li>Questions &amp; Discussion</li>
+</ul>
+
+<p/>
+
+And the day is not over...Ignite Rails tonight.<br/>
+
+Enjoy!<br/>
+
+Daniel Wanja

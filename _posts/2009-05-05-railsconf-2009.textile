@@ -1,0 +1,41 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIDIwMDk=
+typo_id: 4382
+---
+Slides of the presentations can be found <a href="http://en.oreilly.com/rails2009/public/schedule/proceedings">here</a> as they are released
+
+Follow "official" news on <a href="http://twitter.com/railsconf">Twitter</a>.
+ 
+<a href="http://blogs.sun.com/arungupta/entry/rails_conf_2009_day_2">DHH Keynote</a> notes and <a href="http://assets.en.oreilly.com/1/event/24/Rails%203%20and%20the%20Real%20Secret%20to%20High%20Productivity%20Presentation.pdf">slides</a>.   The video is <a href="http://railsconf.blip.tv/file/2081411/">here on blip.tv</a>
+
+Video on the tutorials day from the <a href="http://railsenvy.com/2009/5/5/railsconf-2009-tutorials-day">Railsenvy</a> team.
+
+More videos on <a href="http://railsconf.blip.tv/">blip.tv</a>.
+
+And lots of <a href="http://picfog.com/tag/railsconf">pictures</a>.
+
+Some good notes from <a href="http://blogs.sun.com/arungupta/entry/rails_conf_2009_day_1">day1</a>.
+
+Please tweet links to @danielwanja for any good blog articles that does live coverage. I'll post the links here.
+
+We have Solomon White that regularly blogs on http://onrails.org covering the conference...let's see the note he takes ;-)
+
+Ruby Heroes:
+
+<div style="border: 1px solid grey">
+RT @igrigorik: congrats to #railsconf ruby heroes! cheers guys! @brynary, @tmm1, @luislavena, @pat, @dkubb, @jnunemaker
+</div>
+
+* Bryan Helmkamp	http://www.brynary.com/
+* Aman Gupta	http://github.com/tmm1	
+* Luis Lavena	http://blog.mmediasys.com/
+* Pat Allan	http://freelancing-gods.com/
+* Dan Kubb	http://github.com/dkubb/
+* John Nunemaker	http://railstips.org/
+
+
+
+
+

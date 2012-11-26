@@ -1,0 +1,36 @@
+---
+layout: post
+title: !binary |-
+  QmVzdCB3YXkgdG8gcmVzZXQgYSBmb3JtIHVzaW5nIENhaXJuZ29ybT8=
+typo_id: 292
+---
+I just implemented some code that doesn't feel quite right, but works and would like your input on the matter. A Payment Entry form will be used by the user several times in the life of a Flex application to enter different type of payments. So every time the user wants to pay, the form needs to cleared. I can see these different ways:
+
+1. Ask the form to clear all it's fields
+
+2. Bind the fields to a model, and reset the model with the default fields values
+
+3. Create a new instance of the form.
+
+It's a rather complex form with multiple steps (tabs) and the user can quit the form at any moment. So option 1 and 2 needs to reset not only the fields but also the state of each component used on the form. Therefore I opted for approach three which goes as follows:
+
+The view contains following code that replaces the form with a new instance:
+
+<typo:code>
+public function clearPaymentInformation():void {
+	var index:Number =  content.getChildIndex(enterPaymentView);
+	content.removeChild(enterPaymentView);
+	enterPaymentView = new EnterPaymentInformation()
+	content.addChildAt(enterPaymentView, index);
+}
+</typo:code>
+
+Now we have a PayInvoiceCommand that needs to invoke this function. That's where what doesn't feel right as the command has to know the view. With the newer version of Cairngorm the command gets information using a delegate, then updates the model. The view is bound to the model. But the command shouldn't have to know the view. But for option 3 I didn't find another way around. So I  use an adapted version of the ViewLocator (as my view are not ViewHelpers) to which I register the view upon creation. Then in the command I use 
+<typo:code>
+WebComponentsViewLocator.getInstance().getView("paymentView").clearPaymentInformation();
+model.paymentViewState = WebComponentsModelLocator.PAYMENT_VIEW_STATE_ENTER_PAYMENT;
+</typo:code>
+
+Is there anyone out there that uses the same approach. If no, thats maybe a good answer that I am on the wrong track. Maybe I should issue an event from the command and have the view listen to the event. This would decouple both, but still doesn't feel quite right. Maybe I just had a too long day. So any insight is welcome on how you deal with "reseting" forms in your Cairgorm applications. Thanks in advance.
+
+Time for MotorStorm!

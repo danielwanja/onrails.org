@@ -1,0 +1,21 @@
+---
+layout: post
+title: !binary |-
+  U29tZXRoaW5nIGluIHRoZSBBSVI/IA==
+typo_id: 3300
+---
+<a href="http://www.360conferences.com/360flex/">360Flex</a> in Atlanta starts this monday. I was at the first 360Flex conference last year and it was a blast. I will miss going to that one. Also it seems that many Flex User Groups meetings around the world (Atlanta, <a href="http://groups.google.com/group/bangalorefx/browse_thread/thread/8bc14b067958e5af">Bangalore</a>, <a href="http://www.pokercoder.com/">London</a>, <a href="http://rmaug.com/">Denver</a>, <a href="http://adobeusergroup.be/index.php?option=com_content&task=view&id=49&Itemid=6">Amsterdam</a>) will held on this monday. When so many planets will align perfectly something special is bound to occur.
+
+So more specifically from the Special Meeting invites:
+
+    *  Exclusive user group video presentation by Adobe Chief Software Architect, Kevin Lynch
+    * In-person presentation from Adobe Platform Evangelist, Kevin Hoyt
+    * And...<strong>important product news!</strong>
+
+That can mean only one thing. It's gonna be soon time to recompile all my apps ;-)
+
+
+Update 1: the Denver meeting is not on the 25th but on March 11th.
+Update 2: Ted Patrick <a href="http://www.onflex.org/ted/2008/02/flex-30-and-air-10-are-days-away.php">announces</a> yesterday that the Flex 3.0 and AIR 1.0 releases is days away.
+Update 3: <a href="http://www.adobe.com/products/flex/">Flex 3.0</a> and <a href="http://www.adobe.com/products/air/">AIR 1.0</a> are out. Go try out <a href="http://www.adobe.com/cfusion/entitlement/index.cfm?e=flex3email">FlexBuilder</a> if you haven't yet, it's the easiest way to get started.  
+ 

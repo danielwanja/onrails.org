@@ -1,0 +1,7 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHMgMS4yLjEgcmVsZWFzZWQ/IC0gQW5zd2VyOiB5ZXM=
+typo_id: 226
+---
+It looks like Rails 1.2.1 is out, but I haven't seen an announcement yet (nor one for 1.2.0).&nbsp; Changeset <a href="http://dev.rubyonrails.org/changeset/5990">5990</a> created a tag for 1.2.1 and the gem is on rubyforge already.&nbsp; Maybe it's a good time to freeze those apps to a release version instead of riding on edge all the time.<br /><br />Happy Railing!<br /><br /><b>Update:</b> The <a href="http://weblog.rubyonrails.com/2007/1/19/rails-1-2-rest-admiration-http-lovefest-and-utf-8-celebrations">announcement</a> came not too long after my post.<br />

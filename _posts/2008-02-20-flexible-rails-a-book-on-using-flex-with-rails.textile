@@ -1,0 +1,10 @@
+---
+layout: post
+title: !binary |-
+  RmxleGlibGUgUmFpbHM6IEEgYm9vayBvbiB1c2luZyBGbGV4IHdpdGggUmFp
+  bHMu
+typo_id: 3281
+---
+
+As many of you know I really enjoy using Flex with Rails. So I finally picked-up a copy of <a href="http://manning.com/armstrong/">FlexibleRails</a> which is written by Peter Armstrong  and started browsing through it last week-end. For anyone out there trying to enrich their application with some Flex or even writing the whole UI in Flex, check out this book as it's a good starting point and Peter addresses many of the aspects that you will be faced with. Peter goes through several iterations of creating an application and introduces the reader to using Flex against a RESTful Rails application, he refactors the application to Cairngorm, uses AMF. So congratulations Peter of getting this done!
+

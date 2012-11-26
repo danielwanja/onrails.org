@@ -1,0 +1,19 @@
+---
+layout: post
+title: !binary |-
+  aW5saW5lIFJKUw==
+typo_id: 18
+---
+In my previous article I was playing with RJS templates and finding easy way to generate them. Well Thomas just posted some new goodies see http://mir.aculo.us/articles/2006/01/21/new-inline-rjs-for-rails. For quick updates no need to have a separte .rjs file.
+
+<typo:code lang="ruby">
+class UserController < ApplicationController 
+  def refresh 
+    render :update do |page| 
+      page.replace_html('user_list', 
+        :partial => 'user', :collection => @users) 
+      page.visual_effect :highlight, 'user_list' 
+    end 
+  end 
+end
+</typo:code>

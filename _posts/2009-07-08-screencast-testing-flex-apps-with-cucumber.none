@@ -1,0 +1,17 @@
+---
+layout: post
+title: !binary |-
+  U2NyZWVuY2FzdDogVGVzdGluZyBGbGV4IEFwcHMgd2l0aCBDdWN1bWJlcg==
+typo_id: 4584
+---
+I was playing with Cucumber and FunFx to drive a Flex application and it's really cool and created this screencast to show how this all works together. The first 5 minutes  I build a Restfulx scaffolded Flex application. The following 5 minutes I configure the Flex app with FunFx, which is required to be able to drive the app from Cucumber. Then the main part which is 20 minutes of creating three cucumber scenarios that drives the Flex application. Check it out:
+
+<object width="400" height="300"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=5502928&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=5502928&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="300"></embed></object><p><a href="http://vimeo.com/5502928">Testing Flex Apps with Cucumber</a> from <a href="http://vimeo.com/user507500">daniel wanja</a>
+
+The source code can be found on <a href="http://github.com/danielwanja/cucumberwithflex/tree/master">github</a>
+
+Enjoy!
+Daniel
+
+<br/>
+UPDATE:  An updated version (and slightly) different version of the screencast can be found <a href="http://onrails.org/articles/2009/07/13/screencast-testing-flex-apps-with-cucumber-take-2">here</a>.

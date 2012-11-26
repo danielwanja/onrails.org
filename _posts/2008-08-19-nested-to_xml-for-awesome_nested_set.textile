@@ -1,0 +1,225 @@
+---
+layout: post
+title: !binary |-
+  TmVzdGVkIHRvX3htbCBmb3IgYXdlc29tZV9uZXN0ZWRfc2V0
+typo_id: 3936
+---
+I was updating an example build using the better_nested_set to use the  awesome_nested_set. One thing that I didn't find in awesome_nested_set are some helper methods that are returning a full tree of the nested set as one XML document. With better nested set I could do 
+
+<typo:code lang="ruby">
+Category.result_to_attributes_xml(Category.root.ancestors)
+</typo:code>
+
+So I have added the following _full_xml_ method to my nested active record to recurse all the children. Note that the _full_method_ calls the _full_method_ on the children passing along the xml builder that is created by the to_xml method and passed as the _xml_ variable to block, thus building a nested XML document.
+
+<typo:code lang="ruby">
+class Category < ActiveRecord::Base
+  belongs_to :parent, :class_name => "Category"
+  acts_as_nested_set     
+  
+  def full_xml(builder=nil)     
+    to_xml(:builder => builder, :skip_instruct => true) do |xml|
+      children.each { |child| child.full_xml(xml) }
+    end
+  end
+  
+end    
+</typo:code>
+
+
+Obviously it would be nice that the awesome_nested_set provides such a method.
+
+So let's assume I create the following nested structure:
+
+<typo:code lang="ruby">
+Category.transaction do
+  root = Category.create(:name => "Main Category")
+
+  cameras = Category.create(:name => "Cameras & Photo")  
+  cameras.move_to_child_of(root)
+  Category.create(:name => "Bags", :qty_in_stock => 2).move_to_child_of(cameras)
+  Category.create(:name => "Accessories", :qty_in_stock => 12).move_to_child_of(cameras)
+  Category.create(:name => "Analog Cameras", :qty_in_stock => 0).move_to_child_of(cameras)
+  Category.create(:name => "Digital Cameras", :qty_in_stock => 5).move_to_child_of(cameras)
+
+  phones = Category.create(:name => "Cell Phones")
+  phones.move_to_child_of(root) 
+  Category.create(:name => "Accessories", :qty_in_stock => 8).move_to_child_of(phones)
+  Category.create(:name => "Phones", :qty_in_stock => 20).move_to_child_of(phones)
+  Category.create(:name => "Prepaid Cards", :qty_in_stock => 3).move_to_child_of(phones)
+
+  dvds = Category.create(:name => "Dvds")
+  dvds.move_to_child_of(root) 
+  Category.create(:name => "Blueray", :qty_in_stock => 10).move_to_child_of(dvds)
+  Category.create(:name => "HD DVD", :qty_in_stock => 0).move_to_child_of(dvds)
+  Category.create(:name => "DVD", :qty_in_stock => 100).move_to_child_of(dvds)
+
+end   
+</typo:code>
+
+I can now get the whole nested structure in one go:
+
+<typo:code lang="ruby">
+Category.roots.first.full_xml
+</typo:code>
+
+And get the following XML in return.
+
+<typo:code lang="xml>
+<category>
+  <created-at type="datetime">2008-08-18T14:46:07Z</created-at>
+  <description nil="true"></description>
+  <id type="integer">1</id>
+  <lft type="integer">1</lft>
+  <name>Main Category</name>
+  <parent-id type="integer" nil="true"></parent-id>
+  <qty-in-stock type="integer" nil="true"></qty-in-stock>
+  <rgt type="integer">28</rgt>
+  <updated-at type="datetime">2008-08-18T14:46:07Z</updated-at>
+  <category>
+    <created-at type="datetime">2008-08-18T14:46:07Z</created-at>
+    <description nil="true"></description>
+    <id type="integer">11</id>
+    <lft type="integer">2</lft>
+    <name>Dvds</name>
+    <parent-id type="integer">1</parent-id>
+    <qty-in-stock type="integer" nil="true"></qty-in-stock>
+    <rgt type="integer">9</rgt>
+    <updated-at type="datetime">2008-08-18T14:46:07Z</updated-at>
+    <category>
+      <created-at type="datetime">2008-08-18T14:46:07Z</created-at>
+      <description nil="true"></description>
+      <id type="integer">14</id>
+      <lft type="integer">3</lft>
+      <name>DVD</name>
+      <parent-id type="integer">11</parent-id>
+      <qty-in-stock type="integer">100</qty-in-stock>
+      <rgt type="integer">4</rgt>
+      <updated-at type="datetime">2008-08-18T14:46:07Z</updated-at>
+    </category>
+    <category>
+      <created-at type="datetime">2008-08-18T14:46:07Z</created-at>
+      <description nil="true"></description>
+      <id type="integer">13</id>
+      <lft type="integer">5</lft>
+      <name>HD DVD</name>
+      <parent-id type="integer">11</parent-id>
+      <qty-in-stock type="integer">0</qty-in-stock>
+      <rgt type="integer">6</rgt>
+      <updated-at type="datetime">2008-08-18T14:46:07Z</updated-at>
+    </category>
+    <category>
+      <created-at type="datetime">2008-08-18T14:46:07Z</created-at>
+      <description nil="true"></description>
+      <id type="integer">12</id>
+      <lft type="integer">7</lft>
+      <name>Blueray</name>
+      <parent-id type="integer">11</parent-id>
+      <qty-in-stock type="integer">10</qty-in-stock>
+      <rgt type="integer">8</rgt>
+      <updated-at type="datetime">2008-08-18T14:46:07Z</updated-at>
+    </category>
+  </category>
+  <category>
+    <created-at type="datetime">2008-08-18T14:46:07Z</created-at>
+    <description nil="true"></description>
+    <id type="integer">7</id>
+    <lft type="integer">10</lft>
+    <name>Cell Phones</name>
+    <parent-id type="integer">1</parent-id>
+    <qty-in-stock type="integer" nil="true"></qty-in-stock>
+    <rgt type="integer">17</rgt>
+    <updated-at type="datetime">2008-08-18T14:46:07Z</updated-at>
+    <category>
+      <created-at type="datetime">2008-08-18T14:46:07Z</created-at>
+      <description nil="true"></description>
+      <id type="integer">10</id>
+      <lft type="integer">11</lft>
+      <name>Prepaid Cards</name>
+      <parent-id type="integer">7</parent-id>
+      <qty-in-stock type="integer">3</qty-in-stock>
+      <rgt type="integer">12</rgt>
+      <updated-at type="datetime">2008-08-18T14:46:07Z</updated-at>
+    </category>
+    <category>
+      <created-at type="datetime">2008-08-18T14:46:07Z</created-at>
+      <description nil="true"></description>
+      <id type="integer">9</id>
+      <lft type="integer">13</lft>
+      <name>Phones</name>
+      <parent-id type="integer">7</parent-id>
+      <qty-in-stock type="integer">20</qty-in-stock>
+      <rgt type="integer">14</rgt>
+      <updated-at type="datetime">2008-08-18T14:46:07Z</updated-at>
+    </category>
+    <category>
+      <created-at type="datetime">2008-08-18T14:46:07Z</created-at>
+      <description nil="true"></description>
+      <id type="integer">8</id>
+      <lft type="integer">15</lft>
+      <name>Accessories</name>
+      <parent-id type="integer">7</parent-id>
+      <qty-in-stock type="integer">8</qty-in-stock>
+      <rgt type="integer">16</rgt>
+      <updated-at type="datetime">2008-08-18T14:46:07Z</updated-at>
+    </category>
+  </category>
+  <category>
+    <created-at type="datetime">2008-08-18T14:46:07Z</created-at>
+    <description nil="true"></description>
+    <id type="integer">2</id>
+    <lft type="integer">18</lft>
+    <name>Cameras &amp; Photo</name>
+    <parent-id type="integer">1</parent-id>
+    <qty-in-stock type="integer" nil="true"></qty-in-stock>
+    <rgt type="integer">27</rgt>
+    <updated-at type="datetime">2008-08-18T14:46:07Z</updated-at>
+    <category>
+      <created-at type="datetime">2008-08-18T14:46:07Z</created-at>
+      <description nil="true"></description>
+      <id type="integer">6</id>
+      <lft type="integer">19</lft>
+      <name>Digital Cameras</name>
+      <parent-id type="integer">2</parent-id>
+      <qty-in-stock type="integer">5</qty-in-stock>
+      <rgt type="integer">20</rgt>
+      <updated-at type="datetime">2008-08-18T14:46:07Z</updated-at>
+    </category>
+    <category>
+      <created-at type="datetime">2008-08-18T14:46:07Z</created-at>
+      <description nil="true"></description>
+      <id type="integer">5</id>
+      <lft type="integer">21</lft>
+      <name>Analog Cameras</name>
+      <parent-id type="integer">2</parent-id>
+      <qty-in-stock type="integer">0</qty-in-stock>
+      <rgt type="integer">22</rgt>
+      <updated-at type="datetime">2008-08-18T14:46:07Z</updated-at>
+    </category>
+    <category>
+      <created-at type="datetime">2008-08-18T14:46:07Z</created-at>
+      <description nil="true"></description>
+      <id type="integer">4</id>
+      <lft type="integer">23</lft>
+      <name>Accessories</name>
+      <parent-id type="integer">2</parent-id>
+      <qty-in-stock type="integer">12</qty-in-stock>
+      <rgt type="integer">24</rgt>
+      <updated-at type="datetime">2008-08-18T14:46:07Z</updated-at>
+    </category>
+    <category>
+      <created-at type="datetime">2008-08-18T14:46:07Z</created-at>
+      <description nil="true"></description>
+      <id type="integer">3</id>
+      <lft type="integer">25</lft>
+      <name>Bags</name>
+      <parent-id type="integer">2</parent-id>
+      <qty-in-stock type="integer">2</qty-in-stock>
+      <rgt type="integer">26</rgt>
+      <updated-at type="datetime">2008-08-18T14:46:07Z</updated-at>
+    </category>
+  </category>
+</category>
+</typo:code>
+
+How do you deal with that situation?

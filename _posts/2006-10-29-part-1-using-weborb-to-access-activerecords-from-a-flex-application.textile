@@ -1,0 +1,32 @@
+---
+layout: post
+title: !binary |-
+  UGFydCAxOiBVc2luZyBXZWJPUkIgdG8gYWNjZXNzIEFjdGl2ZVJlY29yZHMg
+  ZnJvbSBhIEZsZXggYXBwbGljYXRpb24u
+typo_id: 171
+---
+On Friday I started for a customer an investigation in providing a Flex front-end for an Ruby on Rails backend using WebORB. In parallel I will push this investigation further for myself in order to find a nice mechanisms to support CRUD operations with relationship support using WebORB. Over the next couple of weeks I will write some of my findings on this blog. So this week-end I started to put in place an environment where I can unit test the interaction between Flex and Ruby on Rails using WebORB. In this first part I will show how to extend WebORB to perform a deep find, how to write a Flex unit test to test asynchronous remote calls, and how to use  Ruby on Rails fixtures  for the Flex unit tests.
+<p/>
+This is an extract of the 'final' version of the Flex unit test (as of Part 1 of the article). The full version is at the end of the article. 
+<typo:code>
+public function testGetFirstCustomer():void {
+	var activeRecordService:RemoteObject = getActiveRecordService(onGetFirstCustomerResult); 
+	create_fixtures(["customers", "addresses", "orders", "items"], doGetCustomerFirstCustomer, activeRecordService);
+}  		
+private function doGetCustomerFirstCustomer(activeRecordService:Object):void {
+	var options:Object = {'include':['bill_to_address', {'orders':'items'}]};
+	activeRecordService.get("Customer", 1, options);		   			
+}
+private function onGetFirstCustomerResult(event:Event, token:Object=null):void 
+{
+	assertTrue(event.toString(), event is ResultEvent); // First param is message.
+	var customer:Object = ResultEvent(event).result;
+	assertEquals("Daniel", customer.name);
+	assertEquals("Littleton", customer.bill_to_address.city);
+	assertEquals(2, customer.orders.length);    // 2 order
+	assertEquals(3, customer.orders[0].items.length); // the first has 3 items
+	assertEquals("Remote Control", customer.orders[0].items[2].product); 
+}  		
+  		
+</typo:code>
+

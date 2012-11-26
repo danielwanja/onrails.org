@@ -1,0 +1,8 @@
+---
+layout: post
+title: !binary |-
+  Rmxhc2ggTWVkaWEgU2VydmVyKHMpIGluIFJ1Ynk/
+typo_id: 3487
+---
+While preparing an application to be presented during our <a href="http://en.oreilly.com/rails2008/public/schedule/detail/1213">talk</a> for RailsConf I was looking for a "Flash Media Server" written in Ruby that could record video form a Flash Player. I found <a href="http://code.google.com/p/rubyizumi/">rubyizumi</a> but it doesn't support recording (to my understanding). In Javaland they are a couple, <a href="http://osflash.org/red5">red5</a>  and <a href="http://code.google.com/p/demou/">demou</a>, but they are too convoluted for just a demo. Red5 allows Ruby scripting which is pretty cool. I found one which I really like and will certainly use which is named <a href="http://haxevideo.org/">haxe Video</a> which is written in <a href="http://haxe.org/">haXe</a> and is very succinct and works. It's open source and can be found on <a href="http://code.google.com/p/haxevideo">googlecode</a>. Of course there is Adobe's <a href="http://www.adobe.com/products/flashmediaserver/">Flash Media Server</a> but I would prefer finding a Ruby specific solution. Do you know any Flash Media Server written in Ruby? Drop me a line or a comment.
+

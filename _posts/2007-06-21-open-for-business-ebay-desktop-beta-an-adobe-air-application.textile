@@ -1,0 +1,19 @@
+---
+layout: post
+title: !binary |-
+  T3BlbiBGb3IgQnVzaW5lc3M6IGVCYXkgRGVza3RvcCBCZXRhIC0gYW4gQWRv
+  YmUgQUlSIEFwcGxpY2F0aW9uLg==
+typo_id: 2319
+---
+The invitations are going out! So, if you haven't yet, go <a href="http://www.projectsandimas.com/">signup</a> for the eBay Desktop beta (code name Project "San Dimas"") at <a href="http://www.projectsandimas.com/">http://www.projectsandimas.com/</a>. 
+
+The eBay Desktop is an Apollo Application, oops, Adobe AIR application, that is developed by our friends <a href="http://thillerson.wordpress.com/">Tony Hillerson</a> and <a href="http://www.craftymind.com/">Sean Christmann</a> from EffetiveUI for eBay. As they had their hand full applying the finishing touch to the beta, they asked Lee and myself to help with the beta Signup program and administration site which is a Ruby on Rails application. How cool is that! Thanks guys for the opportunity to work on such a visible project...
+
+Now if you know Sean you will understand why using the eBay Desktop is fun. When Sean is not coding he is playing games, and he want's any application to be fun and playful. Even when he gives talks he manages to <a href="http://www.youtube.com/watch?v=iNnRrzKuzt4">demonstrates</a> how to program a WII controller. It's cool that <a href="http://alanlewis.typepad.com/">Alan Lewis</a> gave them the creative freedom to create some new user experience concepts on top of the existing eBay apis.
+
+Ken, my desk _neighbor_ at one of my clients asked why would you need something like Adobe AIR? Well in the case of the eBay Desktop, you are provided with an immersive experience, having a dedicated application will encourage the user to stay within that application and not get (too) distracted. The desktop also allows to save custom searches and additional information locally, thus providing functionality that may not be available by the existing eBay apis. It could also allow for functionality like  drag&drop of images and text from the file system to create online auctions, use a connected camera to snap pictures, scan bar codes to retrieve product information, and so on...    
+
+<img src="http://onrails.org/files/20070620_eBayDesktop.jpg" border="0" width="450" alt="20070620_eBayDesktop.jpg" />
+
+PS: Hey Sean what's your blog...or are you too busy coding?
+

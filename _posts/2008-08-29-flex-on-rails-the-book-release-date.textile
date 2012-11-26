@@ -1,0 +1,21 @@
+---
+layout: post
+title: !binary |-
+  RmxleCBvbiBSYWlsczogdGhlIGJvb2sgLSByZWxlYXNlIGRhdGU/
+typo_id: 3960
+---
+As you may know we started a while back with <a href="http://thillerson.blogspot.com/">Tony</a> on concocting some of our experiments, war stories, successes, discoveries, real life project experience on using Flex with Rails into a book titled "Flex on Rails: Building Rich Internet Applications With Adobe Flex 3.0 and Rails 2.0". We are now "code complete", wrote all the chapters and are in what I suspect (/hope) is the final editing stage. Yea!... well, that may end up being a longer process than I imagined and was told that it may take up to four month once the final manuscript is accepted. Nevertheless it was funny seeing our book appear on different book selling website as pre-order. Being my first (published) book I was curious and did some googling to see when it will be really ready. It's pretty 'funny' to see how the dates are moving as the days go buy, but in short here is a quick overview on when the book will be released according to google...note..we are not totally done yet...so I wouldn't really announce a date yet, but if google says...then it must be true :-) !!! Well, I was really hoping it hits the shelves earlier than some of these:
+<ul>
+<li>1/16/2009 <a href="http://www.buy.com/prod/flex-on-rails-building-rich-internet-applications-with-adobe-flex-3-0/q/loc/106/208500393.html">buy.com</a> - $29.70
+<li>02/28/2009 <a href="http://www.amazon.co.uk/Books/s?ie=UTF8&rh=n%3A266239%2Cp_27%3ADaniel%20Wanja&field-author=Daniel%20Wanja&page=1">amazon.co.uk</a>  - $28.79
+<li>May 29, 2008 <a href="http://search.oreilly.com/?author=Daniel+Wanja&i=1&q=flex&u1=q&u2=author">oreilly.com</a>
+<li>12/26/2008 <a href="http://www.biggerbooks.com/bk_detail.aspx?ISBN=9780321543370">biggerbooks.com</a> - $38.21
+<li>12/1/2008 <a href="http://www2.loot.co.za/shop/product.jsp?lsn=0321543378">loot.co.za</a> -  R385.00
+<li>12/26/2008 <a href="http://www.ecampus.com/book/9780321543370">ecampus.com</a> - $38.99
+<li>2008/12/2 <a href="http://monoclip.jp/by/kyow/monodtl/40755">monoclip.jp</a>
+<li>2009/01 <a href="http://bookweb.kinokuniya.jp/guest/cgi-bin/booksea.cgi?ISBN=0321543378">bookweb.kinokuniya.jp</a>
+<li>2009/01<a href="http://www.amazon.co.jp/Flex-Rails-Building-Internet-Applications/sim/0321543378/1"> www.amazon.co.jp</a> -  5,772(&#31246;&#36796;) &#12371;&#12398;&#21830;&#21697;&#12399;1500&#20870;&#20197;&#19978;&#22269;&#20869;&#37197;&#36865;&#26009;&#28961;&#26009;
+</ul>
+
+
+

@@ -1,0 +1,16 @@
+---
+layout: post
+title: !binary |-
+  V2ViU25hcHNob3QgMC4zIC0gYSBzaW1wbGUgKGFuZCBwb3dlcmZ1bCkgQWRv
+  YmUgQUlSIGFwcGxpY2F0aW9uLg==
+typo_id: 2675
+---
+I finally got around an recompiled WebSnapshot for AIR beta 2. While doing this I've added some cool new features. 
+
+<img src="http://onrails.org/files/websnapshot_3.jpg" alt="websnapshot_3.jpg" border="0" width="495"  />
+
+<a href="http://myspyder.net/tools/websnapshot/">Download Info</a>
+
+Check the Auto Save box and start drag and dropping URL's from your browser into the address bar of WebSnapshot. Quickly you'll get some pretty cool snapshots of WebSites in png format. You can now have Full Page, Browser Size snapshots in addition to the Thumbnail snapshot like before. You can define the scale of how much the size needs to be reduced before saving and other parameters that define how the snapshot is taken.
+
+I moved the project to the MySpyder.net website and you can <a href="http://myspyder.net/tools/websnapshot/">download</a> it and find more information <a href="http://myspyder.net/tools/websnapshot/">here</a>.

@@ -1,0 +1,87 @@
+---
+layout: post
+title: !binary |-
+  UnVubmluZyBtb2RfcmFpbHMgb24gTGVvcGFyZCAoT1NYIDEwLjUp
+typo_id: 3712
+---
+From the command line:
+
+<typo:code>
+gem install passenger
+sudo passenger-install-apache2-module
+</typo:code>
+
+The Apache 2 module was successfully installed.
+
+Please edit your Apache configuration file, and add these lines:
+
+   LoadModule passenger_module /Library/Ruby/Gems/1.8/gems/passenger-1.0.5/ext/apache2/mod_passenger.so
+   RailsSpawnServer /Library/Ruby/Gems/1.8/gems/passenger-1.0.5/bin/passenger-spawn-server
+   RailsRuby /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
+
+
+Hey...where is the configuration. Google told me to read this blog entry: http://www.fuzzylizard.com/archives/2008/05/29/947/
+
+So copy these three lines and add them to the end of this file:  /etc/apache2/httpd.conf 
+
+$ sudo mate /etc/apache2/httpd.conf 
+
+Start and stop Apache go the to the System Preferences|Sharing and select the Web Sharing  service:
+
+<div style="text-align:center;"><img src="http://onrails.org/files/20080616_syspref.jpg" alt="20080616_syspref.jpg" border="0" width="467" height="382" /></div>
+
+Then the install script gives you the following instructions.
+
+<typo:code>
+Deploying a Ruby on Rails application: an example
+
+Suppose you have a Ruby on Rails application in /somewhere. Add a virtual host
+to your Apache configuration file, and set its DocumentRoot to
+/somewhere/public, like this:
+
+
+   <VirtualHost *:80>
+      ServerName www.yourhost.com
+      DocumentRoot /somewhere/public
+   </VirtualHost>
+
+
+And that's it! You may also want to check the Users Guide for security and
+optimization tips and other useful information:
+
+  /Library/Ruby/Gems/1.8/gems/passenger-1.0.5/doc/Users guide.html
+
+Enjoy Passenger, a product of Phusion (www.phusion.nl) :-)
+http://www.modrails.com/ 
+</typo:code>
+
+Now where is "my" apache configuration file? And more important where is yours? On the command line do
+
+$ ls /etc/apache2/users/
+
+And I see daniel.conf, so let's edit that one. I am developing one Rails app in this folder: /Users/daniel/SvnProjects/for/stockportfolio/rails. So let's define this application in that conf file:
+
+$ sudo mate  /etc/apache2/users/daniel.conf
+
+<typo:code>
+<Directory "/Users/daniel/SvnProjects/for/stockportfolio/rails/">
+    Order allow,deny
+    Allow from all
+</Directory>
+
+<VirtualHost *:80>
+   ServerName dev.stockportfolio.com
+   DocumentRoot /Users/daniel/SvnProjects/for/stockportfolio/rails/public
+</VirtualHost>
+</typo:code>
+
+Note the /public at the end of the folder in the DocumentRoot. 
+Now I am adding dev.stockportfolio.com in my /etc/hosts file. So just add the following line
+
+<typo:code>
+127.0.0.1  dev.stockportfolio.com
+</typo:code>
+
+Now go back to the system preference sharing tab and restart the web service. Now you have your application running ... in production mode. Just point your browser to dev.stockportfolio.com.
+
+Enjoy Daniel!

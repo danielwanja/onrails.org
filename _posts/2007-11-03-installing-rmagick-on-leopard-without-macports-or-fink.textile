@@ -1,0 +1,97 @@
+---
+layout: post
+title: !binary |-
+  SW5zdGFsbGluZyBSTWFnaWNrIG9uIExlb3BhcmQgKHdpdGhvdXQgTWFjUG9y
+  dHMgb3IgRmluayk=
+typo_id: 2690
+---
+I've recently upgraded to OS X 10.5 (Leopard), and all-in-all, I'm pleased with the experience.  My biggest issue has been the default stacks behavior--the icon changes to the last thing added to the stack, making visual identification unnecessarily cumbersome.  I worked around this annoyance (as outlined "here":http://www.ryanirelan.com/past/2007/10/31/leopard-stack) by changing the sort to name rather than date added, and adding a dummy folder named "_1" that will sort to the top.  For extra bonus points, I customized the icon of the dummy folder.  For some yet unknown reason, the most recently downloaded item still peeks through from time to time, but it's much better than before.
+
+Maybe it's my Windows history showing through, but I went with the "clean-sweep" erase and install method.  For a non-developer, I'd probably recommend the upgrade (and in fact I used that method for my Father-in-law's MacBook), but I had lots of custom bits scattered about my machine, and didn't want to be chasing any incompatibility gremlins.
+
+So now, to get my development environment set up on the new machine...  Leopard includes a fairly complete Rails stack out of the box, with a non-"broken":http://hans.fugal.net/yodl/blosxom.cgi/mac/ruby-pack.html Ruby, readline support, and most of the commonly used gems.  Read more "here
+":http://trac.macosforge.org/projects/ruby/wiki/WhatsNewInLeopard.
+
+MySQL was not included, but the latest installer (mysql-5.0.45-osx10.4-i686.dmg) for 10.4 from dev.mysql.com downloads worked (mostly) fine.  The Server and the StartupItem install and operate correctly.  The PrefPane installs, but does not appear to actually do ... anything.  I'll have to work on that, but I can live without it for now.  After a bit of manual hacking on my database dump file from Tiger (where I was running a 5.1.x beta of MySQL), all my databases are back in place.
+
+One last piece that I needed for my Rails apps--RMagick.  I know it's possible to install RMagick and its dependencies, um, "autoRMagickally" via a package management system like MacPorts or Fink, but I prefer not to.  For some background on why not, you can read this "article at hivelogic":http://hivelogic.com/narrative/articles/using_usr_local.  The last time I was rebuilding my laptop and desktop near the same time, I put together a shell script to automate the process of installing RMagick.  I got it back out and dusted off the cobwebs, and voila!  RMagick on Leopard.  (note: replace wget with "curl -O", if you don't have wget installed on your machine)  Here's the code:
+
+
+<typo:code lang="sh" title="install_rmagick.sh">
+#!/bin/sh
+wget http://download.savannah.gnu.org/releases/freetype/freetype-2.3.5.tar.gz
+tar xzvf freetype-2.3.5.tar.gz
+cd freetype-2.3.5
+./configure --prefix=/usr/local
+make
+sudo make install
+cd ..
+
+wget http://superb-west.dl.sourceforge.net/sourceforge/libpng/libpng-1.2.22.tar.bz2
+tar jxvf libpng-1.2.22.tar.bz2
+cd libpng-1.2.22
+./configure --prefix=/usr/local
+make
+sudo make install
+cd ..
+
+wget ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v6b.tar.gz
+tar xzvf jpegsrc.v6b.tar.gz
+cd jpeg-6b
+ln -s `which glibtool` ./libtool
+export MACOSX_DEPLOYMENT_TARGET=10.5
+./configure --enable-shared --prefix=/usr/local
+make
+sudo make install
+cd ..
+
+wget ftp://ftp.remotesensing.org/libtiff/tiff-3.8.2.tar.gz
+tar xzvf tiff-3.8.2.tar.gz
+cd tiff-3.8.2
+./configure --prefix=/usr/local
+make
+sudo make install
+cd ..
+
+wget http://jaist.dl.sourceforge.net/sourceforge/wvware/libwmf-0.2.8.4.tar.gz
+tar xzvf libwmf-0.2.8.4.tar.gz
+cd libwmf-0.2.8.4
+make clean
+./configure
+make
+sudo make install
+cd ..
+
+wget http://www.littlecms.com/lcms-1.17.tar.gz
+tar xzvf lcms-1.17.tar.gz
+cd lcms-1.17
+make clean
+./configure
+make
+sudo make install
+cd ..
+
+wget ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/GPL/gs860/ghostscript-8.60.tar.gz
+tar zxvf ghostscript-8.60.tar.gz
+cd ghostscript-8.60/
+./configure  --prefix=/usr/local
+make
+sudo make install
+cd ..
+
+wget ftp://mirror.cs.wisc.edu/pub/mirrors/ghost/GPL/current/ghostscript-fonts-std-8.11.tar.gz
+tar zxvf ghostscript-fonts-std-8.11.tar.gz
+sudo mv fonts /usr/local/share/ghostscript
+
+wget http://imagemagick.site2nd.org/imagemagick/ImageMagick-6.3.5-9.tar.gz
+tar xzvf ImageMagick-6.3.5-9.tar.gz
+cd ImageMagick-6.3.5
+export CPPFLAGS=-I/usr/local/include
+export LDFLAGS=-L/usr/local/lib
+./configure --prefix=/usr/local --disable-static --with-modules --without-perl --without-magick-plus-plus --with-quantum-depth=8 --with-gs-font-dir=/usr/local/share/ghostscript/fonts
+make
+sudo make install
+cd ..
+
+sudo gem install RMagick
+</typo:code>

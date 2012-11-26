@@ -1,0 +1,7 @@
+---
+layout: post
+title: !binary |-
+  VXBkYXRlZCBSYWtlIENvbW1hbmQgQ29tcGxldGlvbg==
+typo_id: 345
+---
+Here's another update to a <a href="http://onrails.org/articles/2006/11/17/rake-command-completion-using-rake">previous post</a>.<br /><br /><ol><li>A bug was fixed that caused the first task to be omitted from the task list.</li><li>A new feature was added to allow rake not to be the first command on the command line.&nbsp; Now you get completion for both rakes in the following command: <typo:code>rake db:migrate VERSION=0 && rake db:migrate</typo:code><br /></li><li>Another feature for quicker rake command completion development, &lt;sarcasm&gt;a feature everyone has been waiting for&lt;/sarcasm&gt;.&nbsp; This feature just adds the rake completion script itself to the cache dependency list, so the cache will be refreshed while you are playing with the command completion script.&nbsp; This should make tweaking the script much easier in the future.</li></ol>As always, <a href="http://onrails.org/files/rake-completion.rb">enjoy</a>.<br />

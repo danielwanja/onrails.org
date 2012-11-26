@@ -1,0 +1,12 @@
+---
+layout: post
+title: !binary |-
+  RmxleCB0ZXN0IGNvdmVyYWdlPw==
+typo_id: 4064
+---
+It's hard to imaging writing a Rails application without using <a href="http://eigenclass.org/hiki.rb?rcov">rcov</a> and get that fuzzy feeling you tested most if not all you application. Or at least get a good idea of what's tested. I <a href="http://weblogs.macromedia.com/swebster/archives/2007/11/unit_testing_an.html">heard</a> way back that Alex Uhlmann was working on some test coverage tools, but I didn't see anything coming out from Adobe. I haven't used test coverage for my Flex apps, but want to start. Any body has any good hints, stories, frameworks they use for test unit coverage in Flex? A quick google search pointed me to this <a href="http://www.joeberkovitz.com/blog/2008/04/12/flex-air-code-coverage-announce/">article</a> describing <a href="http://code.google.com/p/flexcover/">Flexcover</a>, just what I was looking for. Please share your experience.
+
+Thanks!
+Daniel.
+
+UPDATE: I am playing with FlexCover and just saw this "Flexcover is a joint effort with Alex Uhlmann of Adobe Consulting, who has been working on a related set of ideas.". So I guess this is really Alex's work that Steven was referring to which is now open source under the MIT license. Cool!

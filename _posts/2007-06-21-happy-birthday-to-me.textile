@@ -1,0 +1,7 @@
+---
+layout: post
+title: !binary |-
+  SGFwcHkgQmlydGhkYXkgdG8gTWUh
+typo_id: 2320
+---
+42! No way, that's twice the legal drinking ages in most of the US states, 2.625 times the Swiss legal drinking age. I have been a professional programmer half my life and I am still having fun. I am now the oldest coder on most of the projects I work on :-) Ruby and Ruby on Rails is inspiring me in trying to write elegant and better code. But it's really working on awesome projects and working with awesome people that inspires me to continue developing software. This said I will be away from my computer today. I will go to the Zoo with the kids and then to the pool. Couldn't be much better. Have fun!

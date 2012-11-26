@@ -1,0 +1,7 @@
+---
+layout: post
+title: !binary |-
+  T25yYWlscy5vcmcgbW92ZWQgdG8gU2xpY2Vob3N0Lg==
+typo_id: 217
+---
+I wanted to move this blog to Mediatemple as I liked their concept of a Ruby on Rails Container. After signing up and following the instructions I realized that Lee did such a good job of setting up time.onrails.org on Slicehost, and we are really impressed with the performance of the servers, that it was even easier for us to just move this blog to slicehost. Some nice aspect of Mediatemple are that they provide an https connection included with their base price, but I didn't like that the default Ruby version was 1.8.2. and not 1.8.4 and MySQL was 4.1.11 and no 5. 

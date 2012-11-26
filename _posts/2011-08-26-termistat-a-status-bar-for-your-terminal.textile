@@ -1,0 +1,14 @@
+---
+layout: post
+title: !binary |-
+  VGVybWlzdGF0IDogYSBzdGF0dXMgYmFyIGZvciB5b3VyIHRlcm1pbmFs
+typo_id: 5089
+---
+When running background processes that produce detail logging, it's often difficult to strike the right balance between providing overall status information and details about the current step in the process.  It's helpful to be able to see "tail-like" information at the detail level to monitor and debug your processes; however, it's also helpful to be able to know summary information, such as the overall progress through the entire task.  You can intersperse "record 1 of n" lines in your output, but they are easy to miss in all the noise.
+
+In order to be able to display both types of information concurrently, I built a simple gem called <a href="http://github.com/rubysolo/termistat">termistat</a>, which allows you to display a status bar for summary information at the top of your terminal in addition to the original detailed output.  It was meant to be a whyday contribution, but I didn't quite finish it in time to be released on whyday...oh well.
+
+Here's a screenshot of termistat in action:
+<img src="http://www.onrails.org/files/file_copy.png" alt="termistat screenshot" />
+
+Termistat requires the ffi-ncurses gem (which requires the ncurses library to be on your system), and has a configuration DSL to customize the appearance somewhat.  Check it out and let me know if you have any ideas for improvement!

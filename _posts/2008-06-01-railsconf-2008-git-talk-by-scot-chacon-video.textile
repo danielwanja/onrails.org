@@ -1,0 +1,15 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIDIwMDggR2l0IFRhbGsgYnkgU2NvdHQgQ2hhY29uIFZpZGVv
+typo_id: 3645
+---
+<strong>Update</strong>: Scott did a voice-over with his slides he presented at Railsconf, so to get the full presentation, head-over at <a href="http://www.gitcasts.com/posts/railsconf-git-talk">gitcasts</a> now. The video here after is only a subset of the talk, so first go check out his <a href="http://www.gitcasts.com/posts/railsconf-git-talk">gitcast</a>. 
+
+Most awesome talk of RailsConf 2008. 
+
+<object width="400" height="300">	<param name="allowfullscreen" value="true" />	<param name="allowscriptaccess" value="always" />	<param name="movie" value="http://www.vimeo.com/moogaloop.swf?clip_id=1099027&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" />	<embed src="http://www.vimeo.com/moogaloop.swf?clip_id=1099027&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="300"></embed></object><br /><a href="http://www.vimeo.com/1099027?pg=embed&sec=1099027">RailsConf 2008 Git Talk by Scot Chacon Video</a> on <a href="http://vimeo.com?pg=embed&sec=1099027">Vimeo</a>.
+
+As everyone in the Rails community is moving towards using Git, there are many new concepts to grasp and Scott provides an astonishing, fast passed and very visual presentation providing everything you need to master git. He published the slides on his gitcasts website (http://www.gitcasts.com/git-talk). Also checkout his pdf http://peepcode.com/products/git-internals-pdf
+
+Warning: I apparently didn't choose the right conversion ratio and the image is a little squeezed...and again...I was still sitting at the back of the room.

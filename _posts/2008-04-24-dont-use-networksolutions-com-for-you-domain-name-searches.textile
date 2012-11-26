@@ -1,0 +1,12 @@
+---
+layout: post
+title: !binary |-
+  RG9uJ3QgdXNlIG5ldHdvcmtzb2x1dGlvbnMuY29tIGZvciB5b3UgZG9tYWlu
+  IG5hbWUgc2VhcmNoZXMuLi4=
+typo_id: 3483
+---
+I frequently get "great" ideas and reserve some domain names. Call me silly, but this makes the ideas more tangible even if I never work on them. I book my domain names through 1and1.com, for about $7 a year, but I do usually the search on netsol.com . So I searched for some names this morning, then decided to abandon, my idea didn't need a separate domain for now, and to my surprise I got the following dialog when leaving the site:
+
+<img src="http://onrails.org/files/20080424_netsol.jpg" alt="20080424_netsol.jpg" border="0" width="392" height="262" />
+
+So what does that mean? Well, it seems if I click OK they will hide the names I searched for from others users who are doing searches for 4 days. So my recommendation: don't use networksolutions.com for your search. 

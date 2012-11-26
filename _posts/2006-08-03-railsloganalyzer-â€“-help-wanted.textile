@@ -1,0 +1,10 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNMb2dBbmFseXplciDDouKCrOKAnCBoZWxwIHdhbnRlZA==
+typo_id: 124
+---
+I need some Mac users to test and give feed back on a very early version of the RailsLogAnalyzer.  This app is an OSX app and not deployed on a server, so I would like to find out the obvious bug that may occur on different Macs. I tried it on my own MacBook Pro, G5	server, and on an old PowerBook G4. But then again the people most likely to use it are Rails developers that may have differences in their environment.
+
+So if you like to take risks :-), understand the basic structure of a Rails app, have a production.log you want to analyze, and are not afraid of some scary bugs then read on...
+

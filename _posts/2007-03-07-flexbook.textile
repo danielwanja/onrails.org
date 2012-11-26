@@ -1,0 +1,15 @@
+---
+layout: post
+title: !binary |-
+  RmxleEJvb2s=
+typo_id: 285
+---
+<img src="http://onrails.org/files/20070306_FlexBook1.jpg" border="0" height="160" width="246" alt="20070306_FlexBook1.jpg"  />
+<img src="http://onrails.org/files/20070306_FlexBook2.jpg" border="0" height="249" width="310" alt="20070306_FlexBook2.jpg" align="right" />
+
+This is the most amazing example of a Flex component I saw. I missed the 'Making Components' at the 360Flex conference in favor of the E4X talk. But thankfully the  E4X talk finished early and left me 15 minutes seeing the end of the Making Components talk...and I was blown away. Ely Greenfield presented how he created the FlexBook component and presented some of the important concepts behind it. I know Flex is powerful but I didn't realize you can achieve what Ely did, so maybe this is just the start. So check out these two examples to get a fell what your browser can do for you:
+
+http://demo.quietlyscheming.com/book/app.html
+http://demo.quietlyscheming.com/book/Anatomy.html
+
+Ely also showed some Apollo application that implements paged browsing...Like Firefox on steroids!!. 

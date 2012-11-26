@@ -1,0 +1,75 @@
+---
+layout: post
+title: !binary |-
+  QmxpbmtzYWxlIEFQSQ==
+typo_id: 162
+---
+Today Blinksale published it's data API. See "http://www.blinksale.com/api":http://www.blinksale.com/api/ for the details. 
+
+It's good news for time.onrails.org as now we can use the api to generate a draft Blinksale invoice with one click. I have started coding the integration and expect to release it once I have completed extensive testing. 
+
+In short, time.onrails.org interacts in the following way with Blinksale:
+
+# get list of client names
+# get highest invoice number 
+# create invoice
+
+Let's have a peek at how this is implemented.
+
+*Accessing Blinksale*
+
+A _Blinksale_ class is provided to interact with your Blinksale data. You need to provide your blinksale id, username, and password. 
+
+<typo:code>
+@blinksale = Blinksale.new 'blinksaleid', 'username', 'password'
+</typo:code>
+
+In time.onrails.org we will let you define your Blinksale credentials once to avoid having to retype them each time you create an invoice. Storing the password is optional, and if not provided it will be prompted each time. A _use_ssl_ flag can also be specified if you have a paid Blinksale subscription. This is of course recommended for security reasons.
+
+*Get the list of clients*
+
+<typo:code>
+clients = @blinksale.clients
+names = clients.collect { |c| c.name }
+</typo:code>
+
+*Get the highest invoice number*
+
+<typo:code>
+invoices = @blinksale.invoices
+invoices.collect{|invoice| invoice.number}.max  
+</typo:code>
+
+*Create An Invoice*
+
+<typo:code>
+invoice_data =  BlinksaleGenerator.to_xml(INVOICE)
+new_invoice = @blinksale.invoices.new invoice_data
+new_invoice.save
+</typo:code>
+
+
+BlinksaleGenerator is a time.onrails.org class that helps creating the following 'invoice' xml.
+
+<pre>
+<?xml version="1.0" encoding="UTF-8"?>
+<invoice>
+   <client>http://#{blinksaleid}.blinksale.com/clients/#{@client_id}</client>
+   <number>34</number>
+   <date>2006-09-27</date>
+   <terms>30</terms>
+   <currency>USD</currency>
+   <lines>
+     <line>
+       <name>Consulting</name>
+       <quantity>2.0</quantity>
+       <kind>Hours</kind>
+       <unit_price>150.00</unit_price>
+       <taxed>false</taxed>
+     </line>
+   </lines>
+ </invoice>
+</pre> 
+
+The integration is pretty straight forward. Don't you think? Thanks Scott and your team for this cool application. To find out more on the blinksale api see the online documentation at "http://www.blinksale.com/api":http://www.blinksale.com/api
+

@@ -1,0 +1,14 @@
+---
+layout: post
+title: !binary |-
+  Q29tcGFzc2lvbmF0ZSBDb21tdW5pY2F0aW9ucy4gQSBkaWZmZXJlbnQga2lu
+  ZCBvZiBSYWlscyBhcHBsaWNhdGlvbi4=
+typo_id: 3739
+---
+I have been working with Sean and Lee on <a href="http://www.compassionatecommunications.com">Compassionate Communications</a> a Ruby on Rails website. My role was small thanks to the <a href="http://www.activemerchant.org/">ActiveMerchant</a> plugin, I helped with the online payment but my part was done in no time. The site launched just before Rails Conference and I wanted to write about what the site is. It's about giving, reaching out, helping...but I didn't find the right words to describe it. The team at <a href="http://www.compassionatecommunications.com/">Compassionate Communications</a> made the following video that captures the essence of what they want to achieve way better I could describe..so go check it out.
+
+<div id="video_container" style="border: 1px solid rgb(204, 204, 204); padding: 4px;">
+<embed id="mediaplayer" width="420" height="280" flashvars="usefullscreen=false&volume=100&width=420&height=280&file=http://www.compassionatecommunications.com/videos/promo.flv&image=http://www.compassionatecommunications.com/images/video_logo.png" quality="high" name="mediaplayer" style="" src="http://www.compassionatecommunications.com/swfs/mediaplayer.swf" type="application/x-shockwave-flash"/>
+</div>
+
+

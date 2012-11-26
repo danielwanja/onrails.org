@@ -1,0 +1,172 @@
+---
+layout: post
+title: !binary |-
+  QWR2YW5jZWQgUnVieSAtIERheSAy
+typo_id: 4302
+---
+I just missed the first half hour of the training due to a long commute due to a little snow in Denver. 
+
+Chad completed the design discussion on Inheritance .vs. Composition, using mixins and modules.
+
+<typo:code> 
+1.class.ancestors
+=> [Fixnum, Integer, Numeric, Comparable, Object, Kernel, BasicObject]
+
+1.class.instance_methods(false)
+=> [:to_s, :-@, :+, :-, :*, :/, :div, :%, :modulo, :divmod, :fdiv, :**, :abs, :magnitude, :==, :<=>, :>, :>=, :<, :<=, :~, :&, :|, :^, :[], :<<, :>>, :to_f, :size, :zero?, :odd?, :even?, :succ]
+
+m = 1.method(:inspect)
+=> #<Method: Fixnum(Kernel)#inspect>
+</typo:code>
+
+We are moving on to performance.
+
+<h2>...make it fast.</h2>
+
+Rails doesn't scale and Ruby is slow. This said Ruby is arguably the slowest of the scripting languages with a naive implementation. But for 99% of the work we do, it's fast enough...Now let's talk about that last 1%.
+
+Premature optimization is the root of all evil - Donald Knuth.
+
+<h3>Benchmarking</h3>
+
+In 1.9
+<typo:code lang="ruby">require 'benchmark'
+puts Benchmark.measure {(1..1000000).map{|num| ""+num.to_s}}
+  0.940000   0.050000   0.990000 (  1.001714)
+</typo:code>
+
+In 1.8
+<typo:code lang="ruby">puts Benchmark.measure {(1..1000000).map{|num| ""+num.to_s}}
+  1.800000   0.050000   1.850000 (  1.850319)
+</typo:code>
+
+Yea, 1.9 is twice as fast.
+
+Now to compare approaches, here using map or inject...which one is the fastest:
+
+<typo:code lang="ruby">require 'benchmark'
+Benchmark.bm do |b|
+  b.report("map") {(1..1000000).map{|num| ""+num.to_s}}
+  b.report("inject") {(1..1000000).inject(""){|accum, num| ""+num.to_s}}
+end
+      user     system      total        real
+map  1.970000   0.070000   2.040000 (  2.077786)
+inject  1.910000   0.010000   1.920000 (  1.978541)</typo:code>
+
+<h3>Don't Use Ruby</h3>
+
+* C (or OCAML?) extensions
+* Sockets
+* DL
+* Don't use Ruby at all
+
+DL is "Pure Ruby" way of calling native code form shared libraries.
+
+<typo:code lang="ruby">require 'dl/import'
+require 'dl/struct'
+</typo:code>
+
+<h3>memoization</h3>
+
+<typo:code lang="ruby">def fib(n)
+ @k||={}
+ n<=2 ? 1 : (@k[n-1]||=fib(n-1))+(@k[n-2]||=fib(n-2))
+end
+
+puts fib(200)
+280571172992510140037611932413038677189525
+
+Program exited with code #0 after 0.02 seconds</typo:code>
+
+Now the same code as above without the cluttering
+
+<typo:code lang="ruby">def fib(n)
+  if n <= 2 
+      1
+  else
+     fib(n-1) + fib(n-2)
+  end
+end
+
+alias :pre_memoized_fib :fib
+
+def fib(n)
+  @cache ||= {}
+  @cache[n] ||= pre_memoized_fib(n)
+end
+</typo:code>
+
+<h2>The Ruby Object Model</h2>
+
+Now we move onto the essence of an Object in Ruby.
+
+* self is the "current object"
+* self always as a value
+* two things change self: 1) method calls 2) class or module definition
+
+<typo:code lang="ruby">class << str   # << opens up the singleton class. Arrows seem to go wrong way.
+  p self  # ghost class: <Class:#<String:0x1d0ec>> - class of the class String
+  def speak
+    puts "miaow"
+  end
+end
+
+puts str.speak
+
+class Dave
+  class << self   # puts the methods into the singleton class and becomes class methods
+    def do_something      
+    end
+  end
+end
+
+class Person < Struct.new(:name, :age)
+  def greet
+      puts "Hello #{self.name}"
+  end
+end
+
+f = Person.new("Chad", 28)
+</typo:code>
+
+<typo:code lang="ruby">module Logger
+  def log(msg)
+    puts msg
+  end
+end
+
+class Album
+  include Logger
+end
+
+
+Album.ancestors # => [Album, Logger, Object, Kernel]
+# Note that Logger becomes ancestor of Album...It's insert a generated class named after the module that shares the method table.
+</typo:code>
+
+Module can extend an object:
+
+<typo:code lang="ruby">module Speak
+  def hello
+     puts "hello"
+  end
+end
+
+str = "cat"
+str.extend Speak
+
+puts str.hello
+</typo:code>
+
+<h2>Metaprogramming</h2>
+
+After the break we will be diving into metaprogramming. I saw his talk at the Advanced Rails Studio a while back and took <a href="http://onrails.org/articles/2008/06/13/advanced-rails-studio-meta-programming">some notes</a> then. I will therefore sit back, relax, and code along his examples.
+
+<h2>Library Organization</h2>
+
+
+
+
+
+
+

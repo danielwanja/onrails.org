@@ -1,0 +1,23 @@
+---
+layout: post
+title: !binary |-
+  QW4gZUNvbW1lcmNlIHBsYXRmb3JtIGluIFJ1Ynkgb24gUmFpbHM=
+typo_id: 70
+---
+I have the chance to be part of an amazing team since last October that created a new generation of eCommerce platform using Ruby on Rails that will power hundreds  of high profile ecommerce websites. The first website powered by this platform is
+
+"www.nationaltabletennis.com":http://www.nationaltabletennis.com
+
+Gately's, the company behind this development had the foresight one year ago to start the development from scratch of the three major applications forming the platform...using Ruby on Rails. This decision was driven by their technical director, Solomon White, who saw the potential of Rails that not many realized at that time and decided to form a top notch team. The three applications are order management, store builder, and the storefront engine. The storefront engine can drive multiple stores. You can get an idea of what such a store looks a like at "www.nationaltabletennis.com":http://www.nationaltabletennis.com. However most of the development went into the two back-end applications, that not only look amazing, but offers possibilities that will make news in the future. 
+
+Each of the three components of the platform consist of a large application by it-self. The storefront and the store builder are new applications and the order management replaces an older php applications. Together these applications have well over one hundred model classes. This is just to give an idea of the scale of the applications.
+
+Now, the question is how well is Ruby On Rails adapted for larger scale development with a team of 5 developers and 1 designer? 
+
+	Ruby On Rails kicks ass. 
+
+The many decisions that the Rails environment takes for you allows you to concentrate  on what is important, like business logic, user interaction, quality. You spend very little time in the plumming of the application asking yourself where things should go or what artifacts should be used. Rails did these descisions for you. In addition, the different ways you have to exercise immediately a code change without any delay, by the console, through unit tests, or via a page refresh provides a dynamism to the development cycle that cannot be described in words but needs to be experienced. You can perform a quantity of changes in an hour that cannot be done in other environments like java. Not only code changes, but with the database migrations you can go back and forth between different data model structures, just to experiment. You start not just coding the first thing you decided on, but you start going in a "Oh, let's try this" mode. Not all is shiny however. We had some difficulties sharing code between the three systems that had common model, views, and controllers. This was for the access rights. For some mysterious reasons I didn't feel using the Plugins Engine that specifically addresses this problem. So I started to role-my-own, lighter version of a plugin engine, which works but is still causing some headaches from time to time. On the other hand,  using the plugin architecture to share common code that doesn't rely on views, is a simple and great solution. Furthermore to integrate the three applications we used secured,  RESTfull http requests. This approach is so much simpler than webservices and with Rails you can modify the two applications that needs interaction in parallel, refining the interaction protocol, again seeing the results of any change immediately.
+
+There is way more to describe, but as a former Java Enterprise developer and a former Microsoft Solution Developer, I can say that Ruby On Rails just kicks ass and leaves these other environments in the shadow.  
+
+If you are starting a new enterprise or web development project, you got to consider Ruby on Rails!

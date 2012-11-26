@@ -1,0 +1,28 @@
+---
+layout: post
+title: !binary |-
+  SWduaXRlIERlbnZlciAtIDYgaG91cnMgbGVmdCB0byByZWdpc3RlciAtIGl0
+  J3MgZnJlZSBhbmQgYXQgYW4gSXJpc2ggUHVi
+typo_id: 3973
+---
+Ignite Denver: you can register <a href="http://ignitedenver.eventbrite.com/">here</a> and read more about it <a href="http://ignitedenver.blogspot.com/">here</a>
+ 
+When: Wednesday, September 10, 2008 from 06:00 PM - 11:00 PM (MT)
+
+Where: Fado Irish Pub, 1735 19th Street, Denver, CO 
+
+
+<img src="http://bp0.blogger.com/_OcPqJoX43Cc/SIVPJigDFVI/AAAAAAAAABY/uOrX7PGf8hk/S660/ignite_logo_small.png" />
+
+Some of the talks planned for Denver on the 10th:
+
+* Kevin Hoyt - The wonderful world of Cigars
+* Rob McNealy - Social media for low tech companies (AskAFloorGuy.com)
+* Peter Batty - Future Location and Social Networking - Location aware applications are a hot topic in the social networking space at the moment. This presentation will talk about a different approach to this space, focusing on future location - where will you and your friends be in the future? This is harder to implement than an approach based on current location but more useful if you can do it successfully. We will talk about some of the challenges in this area and the many cool applications of this technology.
+* Brian Holmes - how to swear in French
+* Jim Hutchison - The glamorous world of Entertainment Business lighting and how rockstar-ish it can and cannot be, followed by a side order of ridiculously simply difficult lighting math chased with industry information and quirky stories.  Living like a rockstar is fun!
+* Andrew Hyde - TechStars is a entrepreneur boot camp that every summer selects and seed funds 10 startups.  From an inside viewpoint, what is the experience like?  What are the biggest lessons, and the biggest challenges of starting the startup.
+* Scott Dudley - Digital Theatrics
+* Dave Taylor - Filmbuzz (get your hollywood news fix!)
+* Jun Heider - 5 minute intro to the world of Hackintosh
+

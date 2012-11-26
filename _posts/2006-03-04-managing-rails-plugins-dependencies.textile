@@ -1,0 +1,30 @@
+---
+layout: post
+title: !binary |-
+  TWFuYWdpbmcgUmFpbHMgUGx1Z2lucyBkZXBlbmRlbmNpZXM=
+typo_id: 35
+---
+Rails has a nice plugin system allowing to add common code to a project. A plugin should really be independent from any other plugins. But we also use plugins to share code among different projects we are working on and our code depends on existing plugins.  The Rails development team want's to keep the plugin system simple and didn't provide an explicit way to handle these dependencies, which I believe is a good decision.  There is a solution. Simply name the plugins in order off the dependencies you have.  Let's assume you want to add "my_very_own_plugin" plugin that depends on the enumation_mixin,  then simply organize the /vendor/plugins folder as follows, et Voila!:.
+
+<pre>
+/myrailsapp
+	/vendor
+		/plugins
+			/01_acts_as_taggable
+			/01_enumations_mixin 
+			/01_acts_as_versioned
+			/02_my_very_own_plugin
+</pre>
+
+If we look at the Rails::Initializer we can see why this works. Note, this is only an extract of the full class that Rails provides to bootstrap your rails applicaton. The sort on line 4 here after allows this trick.
+
+<typo:code lang="ruby" linenumber="true" >
+module Rails
+  class Initializer
+    def load_plugins
+      find_plugins(configuration.plugin_paths).sort.each { |path| load_plugin path }
+      $LOAD_PATH.uniq!
+    end
+  end
+end
+</typo:code>

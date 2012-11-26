@@ -1,0 +1,28 @@
+---
+layout: post
+title: !binary |-
+  Rm93bGVyIG9uIFJ1YnlHZW1z
+typo_id: 121
+---
+<p>Since Daniel came back from Europe, I figured I'd finally pick up his slack and write an entry. :)
+</p>
+<hr />
+
+<p>Last night I went to the "Boulder-Denver Ruby Group":http://rubyforge.org/projects/bdrg/ where Chad Fowler spoke about all things "RubyGems":http://docs.rubygems.org/.  It was a laid back talk with a recap of gems past, present and future.  Pre-RubyConf 2003 the ruby-talk list would get peppered with questions like <quote>"Where is Ruby's CPAN?"</quote>  At RubyConf 2003, when put on the spot by "David A. Black":http://dablog.rubypal.com/ about the topic, "Matz":http://en.wikipedia.org/wiki/Yukihiro_Matsumoto basically said <quote>"if you build it, it will be included in ruby core.</quote>  That led "Jim Weirich":http://www.onestepback.org/, "Rich Kilmer":http://richkilmer.blogs.com/, Black, and Fowler to spend the next night coding what would become the RubyGems.  They even demo-ed it at the conference.  It has grown quite a bit since then and now could be called the de facto standard for library distribution in Ruby.
+</p>
+
+<p>The latest version of RubyGems is 0.9.0, which has some not so minor scalability improvements.  To get the latest version simple run <code>gem update --system</code>.  Since RubyGems isn't in core yet, you still need to <code>require 'rubygems'</code> or set your <code>RUBYOPT</code> environment variable to <code>rubygems</code>.  There is another way when starting ruby you can pass it the <code>-rubygems</code> argument.  <quote>"But you said it wasn't in _core_... if it's not in core, why does it have it's own argument for the ruby interpreter?""</quote>  It's true, it's not in core.  This is actually just a little trick by Chad et al to make it look it is part of ruby.  The <code>-r</code> argument tell ruby to require whatever parameter follows, so the gem crowd made an <code>ubygems.rb</code> file that only has one line of code in it ... <typo:code lang="ruby">require 'rubygems'</typo:code> ... and from that comes <code>ruby -rubygems</code>.
+</p>
+
+<p>Bundled with gems is its own <code>gem_server</code>.  Firing this up starts up a WebBrick server on port 8808 by default.  Going to "http://localhost:8808":http://localhost:8808 will then display all of the gems you have installed and even link to the rdoc installed locally if it exists and to the docs on the web.  It also can serve gems if you wish.  This means other machines could point to your gem_server and install any of the gems that you have installed.  You do this with the <code>--source</code> argument.  Others could search what gems you have by running <code>gem search -r --source http://your_machine:8808 search_string</code>.  There is even a tool <code>index_gem_repository.rb</code> that will create a directory that can be served by apache as a gem server, in case you want something a little beefier than webrick.
+</p>
+
+<p>One interesting idea that Chad mentioned was making a meta-gem for your projects.  All the gem would declare is its dependencies on the other gems that your project needs.  That way when setting up a new machine you can just install your meta-gem from your gem_server and then it will automatically install all the necessary gems.  *Pretty cool.*
+</p>
+
+<p>Chad did a good job of describing how gems came to be and guiding us through some of the code with some nice anecdotes along the way.
+</p>
+
+<hr />
+
+<p>P.S.  The coolest part of the night was I'm going to be a volunteer at RubyConf `06!  Chad was quick to warn me that there is no glamour involved.  Oh well, I'm excited anyway.</p>

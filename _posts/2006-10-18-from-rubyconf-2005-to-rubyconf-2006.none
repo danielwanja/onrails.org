@@ -1,0 +1,62 @@
+---
+layout: post
+title: !binary |-
+  RnJvbSBSdWJ5Q29uZiAyMDA1IHRvIFJ1YnlDb25mIDIwMDY=
+typo_id: 166
+---
+RubyConf is a great point in time to have a retrospective on the past year.  And what at year it was.  
+<p>
+
+<style>
+.timeline table {
+  _border:none;
+  padding: 5px;
+ }
+.timeline td {
+   border-left: 1px solid #dcdcdc;  
+} 
+.timeline th {
+  text-align: right;
+  vertical-align: top;
+  white-space:nowrap;
+}
+</style>
+<table class="timeline" >
+  <tr>
+    <th>2005 October</th>
+    <td>Started my first paid Ruby On Rails consulting gig to create an eCommerce platform for <strong>Gatelys</strong>. </td>
+  </tr>
+  <tr>
+    <th>October 14th-16th</th>
+    <td><strong>RubyConf 2005</strong> in San Diego, very technical. The creator and some of the key players in making Ruby were there: Yukihiro &quot;<strong>matz</strong>&quot; Matsumoto, Akira Tanaka, Koichi Sasada...  While at the conference I started implementing <strong>time.onrails.org</strong> and started using it internally to log all my consulting time.</td>
+  </tr>
+  <tr>
+    <th>October 19th</th>
+    <td>Lee and I launched <strong>AutumnRidersTees.com</strong>, our first Ruby on Rails online eCommerce website, created for Lee's dad.</td>
+  </tr>
+  <tr>
+    <th>2006</th>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <th>March</th>
+    <td>Gatelys deploys internally the order fulfillment section of their eCommerce Platform.</td>
+  </tr>
+  <tr>
+    <th>April</th>
+    <td>Based on the success off the first part of the eCommerce platform at Gatelys they asked me to work full time on their project. <strong>27th of April: </strong>deployed www.nationaltabletennis.com, the first public facing part of the application went life. Since October I also had spend about 50 development hours on time.onrails.org and thought it was getting pretty usable. So on the <strong>13th of April</strong>, I launched time.onrails.org.</td>
+  </tr>
+  <tr>
+    <th>June</th>
+    <td>Started working on <strong><a href="http://voisen.org/archives/2006/08/28/maestro-documenting-a-web-20-startup/">Maestro</a></strong>,    a new kind of multimedia-based learning platform written in Ruby on Rails. At that point I was over committed with all the different gigs I said yes to. Hopefully I learned a lesson from that. However Maestro was fun and invigorating to work on and you saw it in the results. We spend about 30 hours each in June with Lee and where able to put together an impressive Application under the lead of Sean Voisen. Rails really rocks. <strong>June 21th</strong>: my birthday and <strong>RailsConf 2006</strong>. It was impressive to see how positive the spirit of everyone was at that conference. More than 700 people attended, the rooms where packed,  the presentations where just awesome.</td>
+  </tr>
+  <tr>
+    <th>September</th>
+    <td>Integrated time.onrails.org with <strong>Blinksale</strong> using their <strong>RESTFull</strong> API.</td>
+  </tr>
+  <tr>
+    <th>October</th>
+    <td><p><strong>Time.onrails.org</strong> has now 475 registered users, I estimate around 100 active users. Thanks to everyone who tried the application out, and especially for the users that provided feedback. I started working on the next version, it is a complete rewrite, but will stay as easy to use, with several valuable new features. <strong>Gatelys</strong> deploys Gatelys.com, their flagship store using the eCommerce platform. More than 13 of their high volume stores are now powered by Ruby on Rails. I can tell you, Rails scales.  <strong>RubyConf 2006</strong> is in just two days. I hope I'll see you there...I am the other Denver Ruby on Rails developer with a  French accent. Swiss-French accent to be more precise. </p>
+    <p align="center"><strong>See you at RubyConf! </strong></p></td>
+  </tr>
+</table>

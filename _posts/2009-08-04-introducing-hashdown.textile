@@ -1,0 +1,100 @@
+---
+layout: post
+title: !binary |-
+  SW50cm9kdWNpbmcgSGFzaGRvd24=
+typo_id: 4734
+---
+If your database is normalized, you will almost always end up with small tables (often referred to as reference data or lookup tables) which provide a set of possible values for a particular attribute.  (e.g. Currency, Category, etc.)  A common pattern that emerges in many applications is accessing these records by a symbolic name (as opposed to by id) for purposes of clarity when reading the code.  In C (and friends), the database ids can be mapped to the positions of an enum datatype.  I recently released the "hashdown":https://github.com/rubysolo/hashdown plugin that provides hash-like access for reference data records, and also adds some dropdown option list generation support, since this data is often used to populate select list in forms.
+
+As an example of what hashdown does, suppose we have the following model:
+
+<typo:code lang="ruby">
+class CardType < ActiveRecord::Base
+end
+</typo:code>
+
+with the following data:
+
+<typo:code>
++----+-------+------------------+
+| id | code  | name             |
++====+=======+==================+
+| 1  | visa  | Visa             |
+| 2  | mc    | MasterCard       |
+| 3  | disc  | Discover         |
+| 4  | amex  | American Express |
++----+-------+------------------+
+</typo:code>
+
+By adding the following line to the model:
+
+<typo:code lang="ruby">
+class CardType < ActiveRecord::Base
+  finder :code
+end
+</typo:code>
+
+You get the functionality of a hash-like square-bracket accessor for the model that will let you do something like:
+
+<typo:code lang="ruby">
+@order.card_type = CardType[:visa]
+</typo:code>
+
+The underlying implementation is similar to:
+
+<typo:code lang="ruby">
+def CardType < ActiveRecord::Base
+  def self.[](value)
+    find_by_code(value)
+  end
+end
+</typo:code>
+
+...except it adds a caching layer to boost performance by preventing repeated database access.
+
+
+Adding the following directive:
+
+<typo:code lang="ruby">
+def CardType < ActiveRecord::Base
+  selectable
+end
+</typo:code>
+
+to the model gives you a class method called @select_options@ that can be used to populate a select list like this:
+
+<typo:code lang="ruby">
+<%= form.select :card_type_id, CardType.select_options %>
+</typo:code>
+
+produces:
+
+<typo:code lang="html">
+<input type="select" name="order[card_type_id]" id="order_card_type_id">
+  <option value="1">Visa</option>
+  <option value="2">MasterCard</option>
+  <option value="3">Discover</option>
+  <option value="4">American Express</option>
+</input>
+</typo:code>
+
+By default, this will use the @id@ attribute as the submitted value of the option and call a @display_name@ method (if it exists) for the displayed value of the option, falling back to the @name@ method/attribute.  Each of these can be overridden by passing a symbol attribute / method name, or a lambda that will be executed to generate the value.  For (a contrived) example:
+
+<typo:code lang="ruby">
+<%= form.select :card_type_id, CardType.select_options(:key => :code, :value => lambda{|card_type| card_type.name.reverse }) %>
+</typo:code>
+
+produces:
+
+<typo:code lang="html">
+<input type="select" name="order[card_type_id]" id="order_card_type_id">
+  <option value="visa">asiV</option>
+  <option value="mc">draCretsaM</option>
+  <option value="disc">revocsiD</option>
+  <option value="amex">sserpxE naciremA</option>
+</input>
+</typo:code>
+
+Again, the @select_option@ results are cached for better performance.
+
+This is a pretty small plugin that I'm using to DRY up some code in a current project I'm working on.  Let me know if you have feature requests (or fork and patch it on "GitHub":https://github.com/rubysolo/hashdown!)

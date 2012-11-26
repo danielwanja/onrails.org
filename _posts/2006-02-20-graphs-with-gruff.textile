@@ -1,0 +1,29 @@
+---
+layout: post
+title: !binary |-
+  R3JhcGhzIHdpdGggR3J1ZmY=
+typo_id: 20
+---
+<table>
+<tr>
+<td>!http://static.flickr.com/41/102254185_44b05dcd34.jpg?v=0!</td>
+<td valign="top"><typo:code lang="ruby" >
+class GraphController < BaseTimeController
+   def pages
+      g = Gruff::Pie.new("500x350")
+      g.title = "All Pages" 
+      @current_user.pages.each do |page|
+        g.data(page.title, [page.total]) 
+      end
+      send_data(g.to_blob, 
+                :disposition => 'inline', 
+                :type => 'image/png', 
+                :filename => "timers.png")
+    end
+end
+</typo:code>
+Pretty easy! Wasn't it. Note the code above shows only the first of the graphs. Now if only I could find out how to set the minimum of the Bar chart to 0 instead of the minimum of the serie. Any help is appreciated?
+</td>
+</table>
+
+

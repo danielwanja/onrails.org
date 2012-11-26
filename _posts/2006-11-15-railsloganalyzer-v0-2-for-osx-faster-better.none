@@ -1,0 +1,28 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNMb2dBbmFseXplciB2MC4yIGZvciBPU1ggLSBGYXN0ZXIsIEJldHRl
+  cg==
+typo_id: 179
+---
+Version 0.2 of the RailsLogAnalyzer is still a development version but a great improvement over my first prototype. This version has been rewritten from the ground up and doesn't use a database to store intermediate log file aggreation.
+
+<img src="http://onrails.org/files/RailsLogAnalyzerActionView.gif" border="0" height="396" width="564" alt="RailsLogAnalyzerActionView.gif" align="right" />
+ 
+
+<p/>
+<b>Analyzing your log file data.</b>
+
+Once the log file is loaded you will see a breakdown of your requests by year, month, and day.
+Click on the year, month, or day to see the controllers invocations during that period.
+Click on the controller in the chart to see the method invocations during the selected period.
+The method are further broken down based on their http methods (get, post, delete, ...).
+
+Note: loading a 10Mb  production log file with 30000  requests takes about 10 seconds on my MacBook Pro.
+        loading a 250Mb production log file with 530000 requests takes about 2 minutes.
+        loading a 4.5Gb production log file with 11 million request takes about 45 minutes. 
+The data is loaded in memory and must be reloaded once the application is closed.   
+
+Download it here <a href="http://onrails.org/files/RailsLogAnalyzer_0.2.dmg">RailsLogAnalyzer_0.2.dmg (487KB)</a> and let me know your findings at daniel@onrails.org
+
+

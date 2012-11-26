@@ -1,0 +1,13 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNMb2dWaXN1YWxpemVyIG1lZXRzIEFkb2JlIEFJUg==
+typo_id: 2352
+---
+I recompiled the Log Visualizer with Adobe AIR. You can download it <a href="http://onrails.org/files/RailsLogVisualizer0.5.air">here</a>.
+
+<img src="http://onrails.org/files/20070702RailsLogVisualizer.jpg" border="0"  width="490" alt="20070702RailsLogVisualizer.jpg" align="left" />
+
+I tried it under Windows XP (Parallels) and it seems that the File.browseForOpen doesn't fire the Event.SELECT event under Windows. So the bug is that you can open a file, but the application doesn't know when you selected it. I was contacted by Logan today who wanted to know if there is a Windows version. So sorry for the Windows users out there for the moment. Note that the <a href="http://onrails.org/articles/2007/03/29/railslogvisualizer-meets-apollo">Apollo version</a> of the Log Visualizer was working under windows.
+<br/>
+Download: <a href="http://onrails.org/files/RailsLogVisualizer0.5.air">RailsLogVisualizer0.5.air</a>

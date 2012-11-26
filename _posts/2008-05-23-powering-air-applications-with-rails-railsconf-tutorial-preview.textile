@@ -1,0 +1,10 @@
+---
+layout: post
+title: !binary |-
+  UG93ZXJpbmcgQUlSIEFwcGxpY2F0aW9ucyB3aXRoIFJhaWxzIC0gUmFpbHND
+  b25mIHR1dG9yaWFsIHByZXZpZXcu
+typo_id: 3555
+---
+Last night I gave a 2 1/2 hour tutorial preview at Derailed (Denver's Ruby On Rails User Group) of the <a href="http://en.oreilly.com/rails2008/public/schedule/detail/1213">talk</a> <a href="http://thillerson.blogspot.com/">Tony</a> and myself will be giving at RailsConf next week. This allowed me to understand if we have enough material and what needs to be changed for the different sections we are going to present. I guess we have too much material as I wasn't able to present some of the apps I have created for the presentation.  Attendance was pretty low, about 15 people, but the feedback was excellent and it seems they have appreciated the talk. For the talk we will be showing how to code many of the features and ways in which using <a href="http://www.adobe.com/products/air/">AIR</a> can enhance your Rails application. Lot's of code in the second part. We will cover the different APIs AIR provides such a File system access, Native Drag&Drop, Native Windowing, Dock Notification, Sending binary files to S3 via attachment_fu, taking photos from your webcam and sending them directly to your Rails app (attachment_fu again!), how to manipulate the HTML DOM, and of course a couple of twitter related apps, one using <a href="http://twitter4r.rubyforge.org/">twitter4r</a> and the other spidering twitter.com (I hope I am not the guy who is bringing it down)...and much more. If you intend to attend drop us a line. See you there!
+
+Daniel. 

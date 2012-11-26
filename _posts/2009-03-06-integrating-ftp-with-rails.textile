@@ -1,0 +1,68 @@
+---
+layout: post
+title: !binary |-
+  SW50ZWdyYXRpbmcgRlRQIHdpdGggUmFpbHM=
+typo_id: 4277
+---
+One interesting problem we faced at "VideoPros":http://www.videopros.com was file upload.  In our application domain, the files tend to be orders of magnitude larger than, say, an avatar attachment for your blog post.  HTTP multipart upload works for these large files, but users need an indication that the upload is progressing so they do not refresh the browser or navigate away from the page, killing the upload in mid-stream.  To help out with this first facet of the problem, we implemented an apache handler that tracks file upload progress in front of the rails application.  You can check it out "here":http://drogomir.com/blog/2008/6/18/upload-progress-bar-with-mod_passenger-and-apache.
+
+*UPDATE*: Here's a "good screencast":http://www.railsillustrated.com/screencast-file-uploads-progress-in-rails-passenger.html that goes over getting this set up on OSX -- you'll need some extra arguments to correctly compile and install the apache module.
+ 
+This worked well, but we still got requests for an alternative:  the users wanted to use FTP to upload their files.  The workflow would be: users would connect and upload a batch of video files into their FTP "inbox".  After the upload(s) were complete, the users would create video objects in the database and attach the uploaded files.  As an interesting twist, the users requested the ability to re-use their existing application usernames and passwords to access FTP.  Our goal was to meet this requirement while providing secure, low-maintenance FTP service.
+ 
+A bit of research turned up "PureFTPd":http://www.pureftpd.org/project/pure-ftpd, an open-source implementation touted as secure, with an interesting-sounding feature called "virtual users".  My first hope was that we would be able to use the MySQL Auth feature, which reads usernames and passwords from a MySQL table for authentication.  If your app is like ours, you have a users table with this info, so it doesn't seem to be a stretch that we could get this to work.  However, further investigation uncovered a problem -- Pure's MySQL Auth only supports plaintext, MD5, MySQL password, and UNIX crypt as formats for the password column.  We're using "ReSTful Auth":http://github.com/technoweenie/restful-authentication/tree/master, which means that our password are SHA-1'ed.  This, combined with wanting to define users' home folders programatically rather than storing them in the database, eliminated MySQL auth as a possibility for our implementation.
+ 
+However, all was not lost.  According to the documentation, another option for authentication is "Ext Auth":http://download.pureftpd.org/pub/pure-ftpd/doc/README.Authentication-Modules, which allows you to run an arbitrary process to perform the authentication.  The way this works is pure-ftpd communicates over a socket to another daemon, pure-authd, which launches your authentication process, then sends the plaintext result back to pure-ftpd, which accepts or rejects the login.  Sounds like a good candidate for a Ruby script!
+
+To get started, first install Pure-FTPd.  In my environment, this was as simple as:
+<typo:code lang="sh" title="build-pure-ftpd">
+./configure --with-extauth
+make
+sudo make install
+</typo:code>
+ 
+Next, we need to build an authentication script.  The script receives the username and password (along with source IP / port ...) as environment variables.  It would be trivial to load up our Rails environment and use ActiveRecord to find_by_username, but it would also add several seconds of overhead to load the framework.  I opted to go with the less-DRY but faster method of using the mysql gem directly.  The first order of business is to load the user record that matches the specified username.
+
+<typo:code lang="ruby" title="select-user">
+begin
+  dbh = Mysql.real_connect(config['host'], config['username'], config['password'], config['database'])
+  res = dbh.query(%Q{
+        SELECT *
+          FROM users
+         WHERE state = 'active'
+           AND login = '#{ENV['AUTHD_ACCOUNT'].gsub(/'/, "''")}'
+         LIMIT 1
+        })
+  user = res.fetch_hash
+  res.free
+rescue Mysql::Error => e
+ensure
+  dbh.close if dbh
+end
+</typo:code>
+
+If we can't find a user, we can fail fast and return "auth_ok:0".  If we do find one, we need to mimic the password-hashing scheme from our user model so that we can validate that the password we were given is correct.  If the password does not match, then we fail, otherwise, we send back "auth_ok:1", along with effective UNIX user and group ids and home directory path.  Whether or not the user is authenticated, we send back "end"
+
+<typo:code lang="ruby" title="validate-user">
+if user['crypted_password'].nil?
+  # no active user with given login
+  puts "auth_ok:0"
+else
+  # validate given password
+  hashed_pw = Digest::SHA1.hexdigest("--#{user['salt']}--#{ENV['AUTHD_PASSWORD']}--")
+  if user['crypted_password'] != hashed_pw
+    puts "auth_ok:0"
+  else
+    puts "auth_ok:1"
+    puts "uid:#{UID}"
+    puts "gid:#{GID}"
+    puts "dir:#{RAILS_ROOT}/private/ftp/#{user['login']}"
+  end
+end
+
+puts "end"
+</typo:code>
+  
+Here's the final product: "ftpd-auth-handler":http://onrails.org/files/ftpd-auth-handler
+ 
+This turned out to be a pretty straightforward implementation, but the functionality is quite useful for us.  Shout out to the "VideoPros":http://www.videopros.com crew for agreeing to share this -- hopefully this will help someone who needs to integrate FTP with their Rails app!

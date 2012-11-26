@@ -1,0 +1,57 @@
+---
+layout: post
+title: !binary |-
+  U3dlZXQgd2F5IHRvIHdyaXRlIEZsZXggVW5pdCB0ZXN0cyBmb3IgUmFpbHM=
+typo_id: 2698
+---
+Using ActiveResources from Flex? Using FlexUnit? Here is a nice way to write your tests.
+
+<typo:code lang="ruby" title="Example Test Case">
+package tests
+{
+	import flexunit.framework.*;	
+	import mx.rpc.AsyncToken;
+	import mx.rpc.events.ResultEvent;
+	import resources.Raffles;
+	
+	public class TestRaffles extends BaseTestCase
+	{	
+		private var raffles:Raffles;		
+	    public function TestRaffles(name : String = null)
+	    {
+	        super(name);
+	        fixtures(["raffles"]);
+			 raffles = new Raffles();
+	    }			
+	    public function testRemoteFindRaffle():void
+	    {
+			assertRemote(raffles.show(1));
+	    }
+	    public function assertRemote_testRemoteFindRaffle(data:Object):void
+	    {
+	    	Assert.assertTrue("Raffle show successfully called", data is ResultEvent);  
+	    	assertEquals("MyString", data.result.name);
+	    }		
+	
+	}
+}
+</typo:code>
+
+Note this code is not yet a plugin and is using code you can find here: <a href="http://code.google.com/p/flexonrails/source">http://code.google.com/p/flexonrails/source</a>. I was starting to use it on multiple projects so I thought it was to time find a home for it. Also it is using the org.onrails.rails.ActiveResourceClient Flex class. I would recommend that you use <a href="http://code.google.com/p/as3-active-resource/">Alex MacCaw's ActvieResrouce for Actionscript</a>. I still need to talk with Alex and integrate this fixture loading code with his code. 
+
+The BaseTestCase Flex class is an extended TestCase that provides support for fixtures. Now in your constructor you can define which fixtures you want to reload between each test. Only tests methods starting with "testRemote" will trigger refreshing the fixtures. As you know, when using AMF or HttpService remote invocations are asynchronous and you cannot test the result of a remote call in the same method than where the call is made from. That's why I added the assertRemote method which takes an AsyncToken as parameters. This will automatically invoke a method whos name starts with assertRemote_ followed by the test method name. This simplifies greatly writing asynchronous tests. FlexUnit provides the _addAsync_ method, we just add the convenience assertRemote function to setup all the callbacks.
+
+To make this work for you Flex with Rails project. You need to fixtures_controller.rb to your controllers and setup the following routes:
+
+<typo:code lang="ruby">
+  if RAILS_ENV == "test"
+    map.resources :fixtures, :new => { :test_results => :post }
+    map.crossdomain '/crossdomain.xml', :controller => 'fixtures', :action => 'crossdomain'
+  end
+</typo:code>
+
+You need to extend your Flex TestCase from tests.BaseTestCase. 
+
+Enjoy,
+Daniel.
+ 

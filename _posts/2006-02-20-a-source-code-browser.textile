@@ -1,0 +1,12 @@
+---
+layout: post
+title: !binary |-
+  QSBzb3VyY2UgY29kZSBicm93c2Vy
+typo_id: 21
+---
+"Browse::Source":http://source.onrails.org/repository/browse//BrowseSource  is a simple source code browsing application. It's 100% based on Collaboa, it's mostly the source code browser functionality but uses the file system rather than connecting to subversion.
+
+I recently got a request from Justin to have access to some 'old' rails code ("flexonrails":http://flexonrails.com/) we wrote a while ago, and also Todd asked for the source code of "autumnriders":http://www.autumnriderstees.com/. 
+So I tried "Collaboa":http://collaboa.org/  but it requires to compile subversion from  the source in order to have swig-rb. So I extracted the source code browser from Collaboa and removed the dependency on swig-rb. Now if all you need is to add simple source code browsing...then Browse::Source is what you need. 
+
+Well, we haven't posted yet the two code bases mentionned above, but have a look at the source code browser  source code "Browse::Source":http://source.onrails.org/repository/browse//BrowseSource

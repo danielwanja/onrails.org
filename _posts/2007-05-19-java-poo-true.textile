@@ -1,0 +1,7 @@
+---
+layout: post
+title: !binary |-
+  SmF2YSA9PSBQb28gIyA9PiB0cnVlPw==
+typo_id: 1461
+---
+At Tim Bray's RailsConf keynote, he said, "Java is a 3-legged stool."  Does that mean Java is a pile of crap with three legs?  I'm not sure.  I'm pretty sure it's not what he meant, but I bet some people might agree or think it has even more legs.

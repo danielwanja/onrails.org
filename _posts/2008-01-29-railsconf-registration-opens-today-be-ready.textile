@@ -1,0 +1,11 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIHJlZ2lzdHJhdGlvbiBvcGVucyB0b2RheS4gQmUgcmVhZHkh
+typo_id: 3234
+---
+May 29-June 1, 2008 in Portland, Oregon,
+
+UPDATE: registration is now <a href="http://en.oreilly.com/rails2008/public/content/home">open</a>.
+
+UPDATE2: I'll be presenting with <a href="http://thillerson.blogspot.com/">Tony</a> a 3 hour tutorial on <a href="http://en.oreilly.com/rails2008/public/schedule/detail/1213">Powering AIR Applications with Rails</a>. See you all there!

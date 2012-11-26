@@ -1,0 +1,82 @@
+---
+layout: post
+title: !binary |-
+  Rmxhc2ggUGxheWVyIDEwIE1vYmlsZSBmb3IgaVBob25lPw==
+typo_id: 3954
+---
+<style>
+.qttitle {
+  padding-left: 120px;
+  min-height: 120px;
+  background-image: url(http://images.apple.com/downloads/images/essentials_quicktime20070611.png);
+  background-position: top left;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+
+.playButton {
+  background-color: rgb(20,20,20);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.25em;
+  opacity: .8;
+  filter: alpha(opacity=80);
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  position: relative;
+  top: 50%;
+  zoom: 100%;
+  padding: .5em 1em;
+  color: white;
+}
+
+.playBackground {
+  background-color: rgb(0,0,0);
+  opacity: 0.0;
+  filter: alpha(opacity=0);
+  position: absolute;
+  top: 0px; left: 0px;
+}
+</style>
+
+I was viewing the video of the <a href="http://www.onflex.org/ted/2008/08/360flex-day-1-keynote-by-mark-anders.php">Day 1 Keynote</a> by Mark Anders at 360Flex where he made a reference to a mobile Flash application build in Flex. Mark just skinned a desktop app which turned in into a very iPhone like application which just happen to have the iPhone screen dimensions and behavior. It's 56 minutes in the presentation. Check it out and let me know what you think. I've included a video extract here after (without the sound): 
+
+<script src="http://www.apple.com/library/quicktime/scripts/ac_quicktime.js" language="JavaScript" type="text/javascript"></script>
+<script src="http://www.apple.com/library/quicktime/scripts/qtp_library.js" language="JavaScript" type="text/javascript"></script>
+
+<script type="text/javascript"><!--
+	QT_WritePoster_XHTML('Click to Play', 'http://onrails.org/files/20080827_flexiphoneskin_action-poster.jpg',
+		'http://onrails.org/files/20080827_flexiphoneskin_action.mov',
+		'246', '385', '',
+		'controller', 'true',
+		'autoplay', 'true',
+		'bgcolor', 'black',
+		'scale', 'aspect');
+//-->
+</script>
+<noscript>
+<object width="246" height="385" classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" codebase="http://www.apple.com/qtactivex/qtplugin.cab">
+	<param name="src" value="http://onrails.org/files/20080827_flexiphoneskin_action-poster.jpg" />
+	<param name="href" value="http://onrails.org/files/20080827_flexiphoneskin_action.mov" />
+	<param name="target" value="myself" />
+	<param name="controller" value="false" />
+	<param name="autoplay" value="false" />
+	<param name="scale" value="aspect" />
+	<embed width="246" height="385" type="video/quicktime" pluginspage="http://www.apple.com/quicktime/download/"
+		src="http://onrails.org/files/20080827_flexiphoneskin_action-poster.jpg"
+		href="http://onrails.org/files/20080827_flexiphoneskin_action.mov"
+		target="myself"
+		controller="false"
+		autoplay="false"
+		scale="aspect">
+	</embed>
+</object>
+</noscript>
+	
+That's when he changed the skin:
+<div style="text-align:center;"><img src="http://onrails.org/files/20080827_flexiphoneskin.png" alt="20080827_flexiphoneskin.png" border="0" width="567" height="179" /></div>
+
+That would be cool if we could soon start coding in Flex for the iPhone.
+
+Enjoy!
+Daniel.

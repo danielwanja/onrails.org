@@ -1,0 +1,162 @@
+---
+layout: post
+title: !binary |-
+  U2NyaXB0aW5nIHRoZSBMZW9wYXJkIFRlcm1pbmFs
+typo_id: 2894
+---
+
+
+Hypothetical situation: you're sitting down with your favorite tasty beverage close at hand for some Rails hacking, and what commands do you run every single time?  It's probably something like this:
+
+<typo:code lang="sh" title="RSI">
+cd Projects/KillerApp
+mate .
+rake log:clear
+tail -f log/development.log
+
+[Command - T for new tab]
+cd Projects/KillerApp
+mongrel_rails start
+
+[Command - T for new tab]
+cd Projects/KillerApp
+ruby script/console
+
+[Command - T for new tab]
+cd Projects/KillerApp
+rake
+
+...etc...
+</typo:code>
+
+Hmmm.  We're coding DRY, but this bootstrap process doesn't seem very DRY.  This had been bugging me, so I set out on a Google quest to learn to script Terminal.app in Leopard so that I could do something about it.  I first looked at "AppleScript":http://www.apple.com/applescript/, since that's the de facto scripting language of all things Apple.  Given a specimen, I could decipher what it was trying to do reasonably well, but going the other way was difficult -- starting with a goal, I was generally unsuccessful in trying to express it in AppleScript.  This was the best I could come up with:
+
+<typo:code lang="AppleScript" title="utopia">
+tell executive SteveJobs
+   tell developers at Apple
+      set theScriptingLanguage of OSX to Ruby
+   end tell
+end tell
+</typo:code>
+
+Which was a good thought, but didn't actually do much.  At "RubyConf":http://rubyconf.org/ last year, "Laurent Sansonetti":http://chopine.be/lrz/ talked about "RubyOSA":http://rubyosa.rubyforge.org/, a scripting bridge between Ruby and the Apple Event Manager, which sounds great, because you can code in Ruby and control AppleScript-able applications, like iTunes.  So I ran this:
+
+<typo:code lang="ruby" title="fail">
+require 'rbosa'
+terminal = OSA.app('Terminal')
+</typo:code>
+
+Which resulted in this rather discouraging output:
+
+<typo:code lang="ruby" title="rubyosa-error">
+RuntimeError: Can't get the target bundle signature
+	from /Library/Ruby/Gems/1.8/gems/rubyosa-0.4.0/lib/rbosa.rb:329:in `__scripting_info__'
+	from /Library/Ruby/Gems/1.8/gems/rubyosa-0.4.0/lib/rbosa.rb:329:in `app'
+	from (irb):3
+</typo:code>
+
+Hmmm.  Not exactly useful.  Maybe if I did my coding in iTunes, I could use RubyOSA to build some useful automation.  Hopefully someone at Apple can fix Terminal -- Hint, Hint.  Back to Google...
+
+I eventually ran across Matt Mower's "scripting a better 'cd' and then some":http://matt.blogs.it/entries/00002674.html article.  Beautiful.  Exactly what I wanted.  Except I didn't want to have to switch to iTerm just to use it.  I'm fairly happy with the native Terminal.app in Leopard -- the tabs are nice.  My biggest complaint is that you cannot name individual tabs, which seems like a glaring omission.  Hopefully that will be updated soon.
+
+So Matt's gp command uses another Ruby / Apple event bridge, called "Appscript":http://rb-appscript.rubyforge.org/, which "allows you to control scriptable Mac OS X applications using ordinary Ruby scripts".  Sounds cool, and most of the examples feature TextEdit, which isn't Terminal, but at least is more of a developer application than iTunes, so we seem to be on the right track.
+
+@gem install rb-appscript@, and let's play.  In IRB:
+
+<typo:code lang="irb" title="appscript1">
+>> require 'appscript'
+>> include Appscript
+>> term = app('Terminal')
+=> app("/Applications/Utilities/Terminal.app")
+>> term.windows
+=> app("/Applications/Utilities/Terminal.app").windows
+>> term.windows.first
+=> app("/Applications/Utilities/Terminal.app").windows.first
+</typo:code>
+
+Okay, this is a bit strange -- it seems to just repeat what you say back to you.  After a bit of playing, I understand what's going on.  Some of the methods aren't executed until you explicitly tell them to execute.  For instance:
+
+<typo:code lang="irb" title="appscript2">
+>> term.windows.get
+=> [app("/Applications/Utilities/Terminal.app").windows.ID(915), app("/Applications/Utilities/Terminal.app").windows.ID(498), app("/Applications/Utilities/Terminal.app").windows.ID(667)]
+>> term.windows.first.get
+=> app("/Applications/Utilities/Terminal.app").windows.ID(915)
+</typo:code>
+
+Why?  Most likely, this is for efficiency reasons.  With many of these "Event Bridge" solutions, there is a significant "toll" that must be paid to cross the bridge.  If we can batch together a string of method invocations and send them across the bridge for a single round trip, it performs much better than multiple round trips would.
+
+At any rate, we can now get a handle on the Terminal application and its already-open windows.  The next step is to be able to open new windows and tabs.  There is a somewhat useful tool on the rb-appscript download page called ASDictionary, which can examine an application and dump out the objects and methods that it exposes to the bridge.  Kinda like rdoc for AppleScript.  Running the dictionary against Terminal.app, I found the @do_script(command)@ method, which, when called on the terminal application object, launches a new terminal window and runs the specified UNIX command in it.
+
+<typo:code lang="irb" title="appscript3">
+>> term.do_script("ls")
+=> app("/Applications/Utilities/Terminal.app").windows.ID(951).tabs[1]
+</typo:code>
+
+If you're following along, you should have a new Terminal window containing a listing of the files and folders in your home directory.  Also, notice that the command returns a reference to the first (and only) tab in the new window -- we'll come back to that later.  So, new windows, check; now for new tabs.
+
+The Appscript examples show creating new TextEdit documents by executing:
+
+<typo:code lang="irb" title="appscript4">
+app('TextEdit').documents.end.make(:new => :document)
+</typo:code>
+
+And the Appscript dictionary of Terminal showed the @make@ method, and @window@ and @tab@ classes, so I figured something like this might work:
+
+<typo:code lang="irb" title="appscript5">
+>> window = term.windows.first.get
+=> app("/Applications/Utilities/Terminal.app").windows.ID(915)
+>> window.make(:new => :tab)
+Appscript::CommandError: CommandError
+		OSERROR: -10000
+		MESSAGE: Apple event handler failed.
+		COMMAND: app("/Applications/Utilities/Terminal.app").windows.ID(915).make({:new=>:tab})
+
+	from /Library/Ruby/Gems/1.8/gems/rb-appscript-0.4.0/lib/appscript.rb:505:in `_send_command'
+	from /Library/Ruby/Gems/1.8/gems/rb-appscript-0.4.0/lib/appscript.rb:585:in `method_missing'
+	from (irb):11
+</typo:code>
+
+Appscript is having none of that.  After many frustrating, fruitless attempts to create a new tab, I found a workaround in native AppleScript "here":http://hohonuuli.blogspot.com/2007/11/applescript-for-open-terminal-here.html.  Here's the Appscript translation:
+
+<typo:code lang="irb" title="appscript6">
+app("System Events").application_processes[
+        "Terminal.app"
+     ].keystroke("t", :using => :command_down)
+</typo:code>
+
+Well, okay, sending a Command-T keystroke works, but it's a little disappointing.  Anyone who knows how to programatically create a new tab, feel free to chime in on the comments, and I'll update the script.
+
+@do_script(command)@ also takes an optional parameter specifying options.  One of the available options is @:in@, which tells terminal in which window and tab to run the command.  Putting this together, we can run a command in the new tab we just created:
+
+<typo:code lang="irb" title="appscript7">
+app('Terminal').do_script("ls", :in => window.tabs.last.get)
+</typo:code>
+
+We don't have a handle to the new tab, because it was created via hackery, so we need a handle to its parent window object so we can get at its tabs.  Well, our first command we ran with do_script returned us a handle to the first tab of the window, surely we can get the window from that.  Right?  Anyone?
+
+<typo:code lang="irb" title="appscript8">
+>> tab = term.do_script("ls")
+=> app("/Applications/Utilities/Terminal.app").windows.ID(1159).tabs[1]
+>> tab.window
+RuntimeError: Unknown property, element or command: 'window'
+	from /Library/Ruby/Gems/1.8/gems/rb-appscript-0.4.0/lib/appscript.rb:591:in `method_missing'
+	from (irb):11
+	from :0
+</typo:code>
+
+(Sigh)  Not so much.  Time for a hack on a hack, and this one is just embarrassing.  Observant readers have probably noticed that the tab referenced shows its parent window id in the string of object references.  What if we use that to get a handle to the parent window?  Something like this:
+
+<typo:code lang="irb" title="evil-hack">
+>> window = eval("app(\"/Applications/Utilities/Terminal.app\").windows.ID(1159)")
+=> app("/Applications/Utilities/Terminal.app").windows.ID(1159)
+</typo:code>
+
+I'm not proud of it, but it works.  Again, if someone knows the "right" way to do this, please let me know--although programatically creating a tab should obviate the need for this hack, too.
+
+Another thing I wanted to change from the original script was that with Matt's solution, you need to specify the type of project you are opening, either as a command-line argument, or by symlinking the script to a new name with the type embedded.  I want the computer to figure all that out for me.  Computers are real smart.  So my script includes some configurable heuristics for determining project type based on the folder contents.  You should be able to specify set of files and folders that defines a project type.  For Rails, I used the "skeleton" folders that every Rails app starts with.  I haven't been programming in Erlang very long, so honestly I just guessed at the folders based on some projects I have seen.  If you're a more experienced Erlang programmer, and feel that the project detection or task list should be changed, please let me know.
+
+Matt later enhanced his script to "label the iTerm tabs":http://matt.blogs.it/entries/00002676.html so that you can easily find the tab you need, so naturally I -stole- incorporated this idea too.  It sorta works in Leopard's Terminal--it does change the name of the Terminal window, but the tab name is unaffected, so you still have to flip through the tabs and watch the window name.  This is my biggest request for a feature enhancement for the Terminal,  Hint, Hint again, Apple.
+
+So enjoy.  You can use the script anywhere -- it will look first in your current directory for a matching folder (you only have to specify a non-ambiguous substring of the project folder name), then falls back to the "project root" folder you specify (currently ~/development, 'cause that's what I use.).  You can configure how deep it should recurse your projects so that the disk seeking time doesn't eat up all the time you're saving from not typing the same "cd" commands over and over.
+
+You can download the finished script "here":/files/hack.  I call it hack, because @hack KillerApp@ flows so nicely as a command.  Also, that's the way I roll.  Feel free to send in money, or flattery, or hate mail, I suppose.  Thanks to Matt Mower for the inspiration and also to all the other references I've linked!

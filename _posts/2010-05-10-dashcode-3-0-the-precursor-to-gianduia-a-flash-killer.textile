@@ -1,0 +1,16 @@
+---
+layout: post
+title: !binary |-
+  RGFzaGNvZGUgMy4wIC0gdGhlIHByZWN1cnNvciB0byBHaWFuZHVpYSAtIEEg
+  Rmxhc2ggS2lsbGVyPw==
+typo_id: 5038
+---
+All right beside the cheesy title of this blog entry I did play a few weeks ago with Dashcode 3.0 to build an iPad app for a customer.  After seeing the WWDC 2009 presentation on DashCode 3.0 I  realized how much leaps and bounds DashCode made over the last two years. Checkout the quick screen cast demo here after and let me know what you think!  
+
+After looking into Dashcode 3.0 and doing some online search I found out that Jeff Watkins created several years ago <a href="http://coherentjs.org/">coherentjs</a>,  a Cocoa inspired javascript framework,  and he joined Apple to work on Dashcode. As you can see on <a href="http://coherentjs.org/">http://coherentjs.org/</a> he since left Apple and revived Coherent as a multiple browser framework.
+
+Based on the fact that WWDC 2010 is around the corner is it to be expected that the next version of Dashcode will be announced and among other things should provide an enhanced visual editor, enhanced frameworks, more components, improved datasource support, css transitions support, and iPad support. It could well be that Dashcode 4 is in fact what some refer to as Gianduia. The good thing is that we will find out soon.
+
+Now let's quickly look at what Dashcode currently offers, it's pretty cool:
+
+<object width="400" height="300"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=11633455&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=11633455&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="300"></embed></object><p><a href="http://vimeo.com/11633455">Dashcode 3.0 - An IDE to build HTML apps for iPad, iPhone and Safari</a> from <a href="http://vimeo.com/user507500">daniel wanja</a>.</p>

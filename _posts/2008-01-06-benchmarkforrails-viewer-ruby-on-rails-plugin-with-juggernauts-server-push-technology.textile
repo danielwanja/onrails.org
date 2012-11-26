@@ -1,0 +1,80 @@
+---
+layout: post
+title: !binary |-
+  QmVuY2htYXJrRm9yUmFpbHMgVmlld2VyIFJ1Ynkgb24gUmFpbHMgcGx1Z2lu
+  ICAod2l0aCBKdWdnZXJuYXV0J3Mgc2VydmVyIHB1c2ggdGVjaG5vbG9neSku
+typo_id: 3190
+---
+Release early, release often they say. I don't know if I'm going to release often but this is very early for this project. In fact yesterday I was testing the excellent <a href="http://juggernaut.rubyforge.org/">Juggernaut plugin for Ruby on Rails</a>, a "server push technology", created by <a href="http://www.eribium.org/">Alex McCaw</a> and at the same time I was trying out the <a href="http://code.google.com/p/benchmarkforrails/">BenchmarkForRails</a> plugin. The BenchmarkForRails plugin adds some detailed log information about the time breakdown for a request in the following format:
+<pre>
+- [0.0954] GET /categories -----------------------
+   0.0791 action
+   0.0098 development mode
+   0.0026 finders
+   0.0003 session
+   0.0001 rendering
+   0.0001 filters
+------------------------------ BenchmarkForRails -
+</pre>
+
+Of course I had to look how it was implemented and it didn't take me long, (once I overcame a self inflicted issue for which Alex McCaw helped me out. Thanks man!), to try to combine the BenchmarkForRails, Juggernaut, and Adobe's Flex to create a little Benchmark Viewer that looks as follows:
+
+http://localhost:3000/benchmark/BenchmarkForRails.html
+<img src="http://onrails.org/files/20080105_bencmarkforrailsviewer.jpg" alt="20080105_bencmarkforrailsviewer.jpg" border="0" width="456" height="192" />
+
+Note: that's the only view currently supported. The 'last', 'last 5', 'last', 'last 5 (same), selection will provide different views of your requests but this functionality isn't yet coded. Also filtering by controller and action would be nice.
+
+Like I said this is very early but combining Benchmarking with server push technology offers quite some potential, but let's keep it simple for now...
+
+Well, the installation is not as simple as it could be for the moment I provided some steps here after. To run the application simply start the Juggernaut push server, start you server as usual, and you will see the time details of each request in the viewer. The time is color coded to indicate wether the time was slower (red), faster (green), or same (white) than the previous request of the same type (controller, action, method). 
+
+Note for the installation you must use the http://juggernaut.rubyforge.org/svn/branches/juggernaut_1.0/ version. This is a more recent version than trunk and Alex will put it to trunk soon. Also the Flex client uses the default port 5001 to talk to the push server. If that's an issue for you then you are out of luck. Not for long, as this is the next thing I will change in the Flex application. 
+
+*INSTALLATION*
+
+You need the following plugins: benchmarkforrails, juggernaut, and benchmarkforrails_viewer
+
+a) benchmarkforrails
+<pre>
+$ svn export http://benchmarkforrails.googlecode.com/svn/trunk vendor/plugins/benchmarkforrails
+</pre>
+
+b) juggernaut
+<pre>
+$ svn export http://juggernaut.rubyforge.org/svn/branches/juggernaut_1.0/ vendor/plugins/juggernaut
+$ rake juggernaut:reinstall  
+</pre>
+This creates the conf/juggernaut.yml and conf/juggernaut_hosts.yml file. 
+Note juggernaut has detailed installation instruction. But in short you need the json and the eventmachine gems.
+
+c) benchmarkforrails_viewer
+<pre>
+$ svn export http://onrails.googlecode.com/svn/trunk/plugins/benchmarkforrails_viewer vendor/plugins/benchmarkforrails_viewer
+$ rake benchmarkforrails_viewer:reinstall
+</pre>
+The later copies the UI files into the public/benchmark folder.
+
+
+
+*RUNNING THE VIEWER*
+
+1) Start the juggernaut push_server. 
+<pre>
+	cd vendor/plugins/juggernaut/media/
+	# The first time you need to generate a config file using:
+	 ruby juggernaut -g
+	# Start the push_server
+	 ruby juggernaut 
+</pre>
+
+2) In a different terminal start your rails server, ./script/server
+
+3) Start the BenchmarkForRails Viewer: http://localhost:3000/benchmark/BenchmarkForRails.html
+Note you need the Flash Player 9 installed.
+
+4) Run your application (only in development) as usual and see the request benchmarks in the viewer. 
+
+The next functionality I would like to add is to make the port configurable in the Flex application, to add different views to view the requests. I shall also contact the guys that developed the BenchmarkForRails plugin to see if they could add a  standard ways of plugging different reporting engines. But more importantly I would like to get your feedback. Let me know if this worked for you and if what else you would expect from such a viewer. I am sure I will hear from you if I forgot some details....Yea, like I think this only works for Rails 2. 
+
+Enjoy!
+Daniel

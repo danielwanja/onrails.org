@@ -1,0 +1,27 @@
+---
+layout: post
+title: !binary |-
+  VXBkYXRlOiB0aW1lLm9ucmFpbHMub3JnLiBBZGQgTm90ZXMgdG8geW91ciB0
+  aW1lIGVudHJpZXMh
+typo_id: 80
+---
+<style>
+ .new { 
+     background-color: yellow;
+     color: rgb(0, 0, 0);
+}
+</style>
+<span class="new" >Updated</span> time.onrails.org
+
+The new functionality is  
+<ul>
+<li>Add notes to your time entries.  You can now add notes from the Dashboard or your project pages.</li> 
+<li>Improved CSV export.</li>
+</ul>
+
+Some functionality I am considering next:
+<ul>
+<li>fixing the rendering in Internet Explorer. I just saw this bug since I installed Parallels on my MacBook pro. </li>
+<li>Blinksale integration, I started to write the UI to submit a time section to generate an invoice via Blinksale, but I am still waiting to get access to the api. Unfortunatly I didn't make to the beta of the API. I even tried to convince Josh Williams from Firewheel Design, to let me in on it, but without success. Thanks Josh for the quick response anyhow!</li>
+</ul>
+

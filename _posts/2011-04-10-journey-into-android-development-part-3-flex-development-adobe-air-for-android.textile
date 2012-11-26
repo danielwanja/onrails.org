@@ -1,0 +1,37 @@
+---
+layout: post
+title: !binary |-
+  Sm91cm5leSBpbnRvIEFuZHJvaWQgRGV2ZWxvcG1lbnQgLSBQYXJ0IDMgOiBG
+  bGV4IERldmVsb3BtZW50IChBZG9iZSBBSVIgZm9yIEFuZHJvaWQp
+typo_id: 5067
+---
+Ok, today I'm at the 360Flex conference following Brent Arnold's AIR for Android presentation. We are playing with the Flex SDK 4.5 to build an Android app however we had to sign an NDA, so I cannot say some of the detail unless it's already on the internet. This said I assume that tomorrow Adobe will announce the official release of Flash Builder 4.5.  And a ton's of information was already published:
+
+<ul>
+<li>http://labs.adobe.com/technologies/flex/mobile/</li>
+<li>http://opensource.adobe.com/wiki/display/flexsdk/Download+Flex+Hero</li>
+<li>http://corlan.org/2011/01/12/understanding-flex-mobile-views-and-viewnavigator/</li>
+</ul>
+
+Here is TourDeFlex that shows all the capabilities of the Adobe AIR runtime. <a href="http://www.onrails.org/files/TourDeMobileFlex.apk">Download TourDeFlex</a>. The source code can be found at https://github.com/jamesward/TourDeMobileFlex 
+
+In the training we created a small application that checks the capabilities of your device: <a href="http://www.onrails.org/files/DeviceCapabilities.apk">Download DeviceCapabiliites</a> 
+The application uses the Capabilities api that checks various parameters of your device., such as multi-touch, camera, location. Here is the source code:
+
+<script src="https://gist.github.com/912777.js?file=DeviceCapabilities.mxml"></script>
+
+<script src="https://gist.github.com/912777.js?file=DeviceCapabilitiesHomeView.mxml"></script>
+
+Within Flash Builder in the properties of your project you can go to the Flex Build Packaging | Google Android and create a self-signed certificate.
+Then you can use the Project | Export Release Build... option to create an .apk file for your project.
+
+The application itself is not that exicting but allowed us to discover how to create AIR apps for Android using Flex and Flash Builder.
+
+
+Enjoy!
+
+Daniel.
+
+<b>UPDATE (4/10/11):</b> Et voilÃ  Flex 4.5 is <a href="http://www.adobe.com/devnet/flex/articles/introducing-flex45sdk.html">announced</a>, but the final version will only be downloadable early May. Here is a good <a href="http://www.adobe.com/devnet/flex/articles/mobile-development-flex-flashbuilder.html">article on mobile development.</a>
+
+

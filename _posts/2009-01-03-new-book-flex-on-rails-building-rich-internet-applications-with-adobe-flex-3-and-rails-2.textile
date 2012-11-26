@@ -1,0 +1,229 @@
+---
+layout: post
+title: !binary |-
+  TmV3IEJvb2s6ICJGbGV4IG9uIFJhaWxzOiAgQnVpbGRpbmcgUmljaCBJbnRl
+  cm5ldCBBcHBsaWNhdGlvbnMgd2l0aCBBZG9iZSBGbGV4IDMgYW5kIFJhaWxz
+  IDIiIA==
+typo_id: 4178
+---
+<div style="text-align:center;"><img src="http://onrails.org/files/2009.01.02_CoverSmall.jpg" alt="2009.01.02 CoverSmall.jpg" border="0" width="500" height="333" /></div>
+
+Finally our book on using Flex with Rails is released and will appear over the next few days  in stores around the US and is available on <a href="http://www.amazon.com/gp/product/0321543378?ie=UTF8&tag=flexonrails-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0321543378">Amazon</a>.  I received a couple of copies from the publisher and it felt like an accomplishment to hold a physical version in my hands. I am sure my co-author, <a href="http://thillerson.blogspot.com/">Tony</a>, felt the same. Good job man!  With this release we are also launching <a href="http://flexonrails.com">http://flexonrails.com</a> where you can find all the source code of the book as well as other resources related to Flex and Rails, and our blog <a href="http://blog.flexonrails.com">http://blog.flexonrails.com</a> the blog for everything on Flex with Ruby On Rails...
+
+So here are the top 10 reasons why should you absolutely buy this book even if you are not a programmer....1) Your vision will improve  2) You'll run faster 3) Aging gets reverted 4)... Just kidding, the main reasons for us to write this book was that we really wanted to share many of the experiences and findings we had on using Flex and Rails on many projects, and we are proud of the outcome. It's a book by developers for developers. I'll be blogging in a next entry about the process of writing this book, and will create a screencast presenting the different applications we are creating in the book,  so stay tuned. When writing the book we assumed that you where a developer, either a Flex developer or a Rails developer that needed to  interact with the other side and wanted to add Rails or Flex to it's battery of languages. You will certainly find your way around even if you don't know Flex or Rails. In either case we didn't create a reference book so you won't find all the answers about each api that is available in both frameworks, but you will find everything you need to get started integrating Flex with Rails, and delve into wonderful world of Flex on Rails applications. For the example code we didn't want to build a large application and refine it over time through the chapters, so most chapter contain one or several working applications  used to highlight the major integration aspects explained in that chapter.  And Rails is just fantastic to create small applications on the fly, and Flex and Actionscript is pretty good for that too. So to give you a better overview of the content of this book I have attached the official description and the table of content. For more info come back to <a href="http://blog.flexonrails.com">http://blog.flexonrails.com</a> and <a href="http://flexonrails.com">http://flexonrails.com</a>. I hope you enjoy the book and the sample applications. So go check it out and let us know what you think.
+
+Daniel.
+
+
+
+<h2>Description</h2>
+
+â€œThereâ€™s no question youâ€™re going to be a better Flex and Rails developer when youâ€™re done reading this book.â€
+â€“From the Foreword by Matt Chotin, Senior Product Manager, Adobe Systems, Inc.
+
+Â 
+Adobe Flex enables the rapid development of rich and engaging user experiences. Ruby on Rails dramatically simplifies the development of database-driven web applications. Now thereâ€™s a book that shows how to use the newest versions of both frameworks together to create state-of-the-art Rich Internet Applications (RIAs).
+
+Â 
+Flex on Rails begins with the absolute essentials: setting up your environment for Flex and Rails, passing data with XML, and integrating Flex front-ends with Rails back-ends. Then, using practical, easy-to-understand code examples, the authors take you from the basics to advanced topics only discussed in this book. Techniques covered here includeÂ 
+
+* Constructing sophisticated interfaces that canâ€™t be created with AJAX alone
+
+* Using RESTful services to expose applications for access via APIs
+
+* Testing Flex and Rails together
+
+* Using Flex Frameworks
+
+* Getting Flex into your build/deploy process
+
+* And moreâ€¦Â 
+
+The authors also offer practical introductions to powerful complementary technologies, such as RubyAMF and Juggernaut.
+Â 
+
+Written by developers with extensive experience using both frameworks, this book covers the new Adobe Flex 3 and Ruby on Rails 2 from the ground up. Even if you have minimal experience with Flex or Rails, youâ€™ll learn all you need to know to use them to build exceptional production applications.
+
+
+<h2>Table of Contents</h2>
+<pre>
+Foreword xv
+Preface xvii
+Acknowledgments from Tony Hillerson xxi
+Acknowledgments from Daniel Wanja xxii
+About the Authors xxiv
+Â 
+<strong>PART I: Flex and Rails Essentials</strong>
+Â 
+Chapter 1: Developing with Flex and Rails 3
+Installation: What You Need to Get Running 3
+The Structure of a Flex and Rails Application 6
+The Example Code 9
+Compiling MXML 9
+Running the Rails Server 9
+Summary 9
+Â 
+Chapter 2: Passing Data with XML 11
+XML in Rails 11
+XML in Flex 14
+Getting XML to Flex 17
+Sending XML to Rails 19
+Mapping Data Types 21
+Error Handling 25
+Summary 28
+Â 
+Chapter 3: Flex with RESTful Services 29
+Creating the Stock Portfolio Rails Application 29
+Accessing Our RESTful Application with Flex 39
+Summary 48
+Â 
+Chapter 4: Using Fluint to Test a Flex with Rails Application 49
+Using Fluint to Write Your Flex Unit Tests 50
+The Basics of Testing a Flex Application 51
+Testing a Cairngorm-Based Application 59
+Using Fixtures 79
+Summary 83
+Â 
+Chapter 5: Passing Data with AMF 85
+What Is AMF? 85
+Benefits of AMF 86
+RubyAMF 87
+A Simple RubyAMF Example 95
+A RESTful RubyAMF Integration 101
+Summary 103
+Â 
+Chapter 6: Debugging 105
+Logging 106
+Debuggers 110
+Command Line Debuggers 117
+Debugging Communication 127
+Summary 129
+Â 
+Chapter 7: Data Visualization 131
+Online Analytical Processing (OLAP) 133
+Advanced DataGrid 144
+Charting 147
+Summary 152
+Â 
+Chapter 8: Flex MVC Frameworks 153
+What Do We Mean by a Framework? 153
+Roll Your Own 154
+Cairngorm at a High Level 154
+PureMVC at a High Level 159
+Stuff 163
+Summary 182
+Â 
+Chapter 9: Performance and Optimization 185
+Flex Performance 185
+Rails Performance 206
+Summary 211
+Â 
+<strong>PART II: Cookbook Recipes</strong>
+
+Chapter 10: Source Control Flex and Rails Projects 215
+Goal 215
+Solution 215
+Ignoring Files in Subversion 215
+Git 217
+Discussion 218
+Summary 219
+Â 
+Chapter 11: Building Flex with Rake 221
+Goal 221
+Solution 221
+Rake Is Your Friend 221
+The Rakefile 222
+Summary 225
+Â 
+Chapter 12: Deploying Flex and Rails Applications 227
+Goal 227
+Solution 227
+Capistrano 227
+Deploying with Capistrano 228
+Summary 232
+Â 
+Chapter 13: Read the Source! 233
+Goal 233
+Solution 233
+The Beauty of Open Source 233
+The Rails Source 235
+Flex Source 238
+Generated Flex Source 240
+Summary 243
+Â 
+Chapter 14: Using Observers to Clean Up Code 245
+Goal 245
+Solution 245
+BindingUtils and ChangeWatchers in Flex 245
+Taking Action on ActiveRecord Lifecycle Events 248
+Summary 250
+Â 
+Chapter 15: Authenticating 251
+Goal 251
+Solution 251
+Authenticating Users 251
+Installing restful_authentication 251
+Summary 257
+Â 
+Chapter 16: Reusing Commands with Prana Sequences 259
+Goal 259
+Solution 259
+Sequences 259
+Pranaâ€™s EventSequence 261
+Summary 265
+Â 
+Chapter 17: Hierarchical Data with RubyAMF 267
+Goal 267
+Solution 267
+Nested Sets 267
+Summary 273
+Â 
+Chapter 18: Advanced Data Grid and Awesome Nested Set 275
+Goal 275
+Solution 275
+Overview 275
+Create the Rails Application and Database 275
+Creating a Script to Load the Data 276
+Flex Application 279
+Adding CRUD 282
+Summary 287
+Â 
+Chapter 19: Runtime Flex Configuration with Prana 289
+Goal 289
+Solution 289
+IoC, Eh? 289
+Summary 293
+Â 
+Chapter 20: Server Push with Juggernaut 295
+Goal 295
+Solution 295
+Push Technology 295
+Juggernaut 295
+Creating the Rails Messaging Application 297
+Creating the Flex Messaging Client Application 299
+Summary 301
+Â 
+Chapter 21: Communicating between Flex and JavaScript 303
+Goal 303
+Solution 303
+Communication between Flex and JavaScript 303
+Security 303
+Building the Samples 304
+ExternalInterface 304
+SWFObject and Prototype 305
+ExternalInterface in Action 305
+Flex-Ajax Bridge in Action 309
+Summary 311
+Â 
+Chapter 22: File Upload 313
+Goal 313
+Solution 313
+File Upload 313
+Creating the Rails Application and Installing attachment_fu 315
+Using Flexâ€™s FileReference Class to Upload
+One or Several Files 316
+Using Flex URLLoader Class to Upload a PNG File 318
+Summary 320
+Â 
+Index 321
+</pre>

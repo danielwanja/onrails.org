@@ -1,0 +1,30 @@
+---
+layout: post
+title: !binary |-
+  TW9kdWxlIFRpZGJpdHM=
+typo_id: 184
+---
+I always forget what including versus extending a Module, so here's a little reminder for myself.
+
+<typo:code>
+module UsefulMethods
+  def some_cool_thing
+    1 + 1 == 0
+  end
+end
+
+class IncludeUsefulInstanceMethods
+  include UsefulMethods
+end
+
+class IncludeUsefullClassMethods
+  extend UsefulMethods
+end
+
+puts IncludeUsefulInstanceMethods.new.some_cool_thing # => false
+puts IncludeUsefullClassMethods.some_cool_thing # => false
+</typo:code>
+
+So, including a module basically shoves the module's methods into the class as instance methods, while extending a module puts them in as class methods.
+
+That's it.  By the way, this was inspired by Dave Thomas' metaprogramming talk at the Rails Edge Studio in Denver.

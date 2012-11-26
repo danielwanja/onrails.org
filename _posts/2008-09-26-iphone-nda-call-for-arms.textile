@@ -1,0 +1,22 @@
+---
+layout: post
+title: !binary |-
+  aVBob25lIE5EQSAtIENhbGwgZm9yIGFybXMgW1VwZGF0ZTogTkRBIGxpZnRl
+  ZCA6LSld
+typo_id: 4021
+---
+UPDATE: today (10/01/2008) Apple <a href="http://developer.apple.com/iphone/program/">lifted</a> the iPhone NDA. New agreement will come out in a week (or so).
+
+Until now I wasn't concerned about the iPhone NDA as the iPhone is really cool, there are nice apps appearing on the App Store and face it, this platform is there to stay, the iPhone is just impressively useful and versatile. But recent news on applications being rejected by Apple for undefined reasons and the fact that the pragmatic programmers book on iPhone was pulled due to the NDA, ticked me off. That's what the <a href="http://pragprog.com/news/ubuntu-kung-fu-shippingpodcast-iphone-news">"Prag's"</a> released in their news: "It now appears that Apple does not intend to lift the NDA any time soon. Regrettably, this means we are pulling our iPhone book out of production."
+
+Damn that!  That was THE book I was waiting for. I am a developer, did Objective-C development on NeXTSTEP 15 years ago and follow closely what's going on with the iPhone. I was one of the first admitted  to the iPhone developer program and I am certainly bound by NDA beyond my comprehension, but I was also really hoping that the platform would open up. Early on it made sense as Apple wants to have the "Wow" factor when they first  announce their product, and that's worth millions to them. But now that the phone is out for quite a while, that all Apple competitors have access to all the beta SDKs, let me ask you this: 
+
+WHY?
+
+Why does Apple keeps this NDA...I just doesn't make sense. Let the development community go crazy, share the knowledge, create something unique beyond what you have. Apple, you are making your development community ANGRY.
+
+I tried to find a good reasons why there is still this NDA in place, but there is just no reason. What did I miss? What has Apple to gain? What can we do? 
+
+Please leave your thought as comment here after.
+
+Daniel.

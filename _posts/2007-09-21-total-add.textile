@@ -1,0 +1,28 @@
+---
+layout: post
+title: !binary |-
+  VG90YWwgQUREIQ==
+typo_id: 2634
+---
+As you may have noticed I really like Flex and Ruby On Rails. So my days job is to provide consulting services for Flex and Ruby On Rails. Currently I am working on a cool Ruby On Rails project for a customer in the online food ordering world. Man I get hungry when testing the application we write. I also work for another customer to create a Flex front-end for an online application in the insurance arena (First Notice of Injury, Certificate of Insurance, Payroll report and Web Payment).
+ 
+As if that wasn't enough, I agreed to write a book together with a couple of other cool guys in the Flex and Ruby On Rails arena. That's still far away, but we will provide some more information on this in the coming weeks. If that's not enough I am creating two startups. 
+
+So besides my consulting engagements my professional life looks this:
+
+<div style="text-align:center;"><img src="http://onrails.org/files/20070921_add.gif" alt="20070921_add.gif" border="0" width="466" height="410" /></div>
+
+
+Now if that doesn't qualify as Attention Deficit Disorder. 
+
+I am writing this more as a reflection to myself. At the beginning of the year <a href="http://blog.nanorails.com/">Pascal</a> commented on my blog that execution is everything to turn an idea into a business. We have been working hard on myspyder.net and it's start to be looking really good. Digital-seed has the potential to become a really cool platform for eLearning and has the potential to turn into a big business. The "Book", is more of a personal challenge and interest. 
+
+So besides execution, focus and determination are required to turn an idea into a real business. 
+
+So something will need to give. I still need to continue my consulting engagements in order to bring in money for the food. The "Book" will be a challenge from a writing point of view, but it will be a great learning and self improvement experience. The material for the book is what I have been "geeking" around for the past several years so it's going to be a pleasure to write about it. Phase one for MySpyder is close to completion (still a couple of month). And phase two is really where the beef will be. So right now it looks like DigitalSeed is on the line for me. The contracts are not yet signed, so the door is open for me to pull out. This will hurt the people I started the endeavor with, and I really don't like this. But I cannot stay on board some project unless I can dedicate enough resource to complete it. Let me chew on these thoughts over the week-end.
+
+In Spirit,
+Daniel. 
+ 
+
+

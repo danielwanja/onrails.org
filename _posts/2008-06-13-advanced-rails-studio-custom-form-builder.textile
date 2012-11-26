@@ -1,0 +1,91 @@
+---
+layout: post
+title: !binary |-
+  QWR2YW5jZWQgUmFpbHMgU3R1ZGlvOiBDdXN0b20gRm9ybSBCdWlsZGVy
+typo_id: 3707
+---
+Custom Form Builder
+
+Use a custom form builder to clean up your html.erb files.
+
+<typo:code title="lib/label_form_builder.rb" lang="ruby">
+class LabelFormBuilder < ActionView::Helpers::FormBuilder
+  helpers = field_helpers +
+            %w{date_select datetime_select time_select} +
+            %w{collection_select select country_select time_zone_select} -
+            %w{hidden_field label fields_for} # Don't decorate these
+            
+  helpers.each do |name|
+    define_method(name) do |field, *args|
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      label = label(field, options[:label], :class => options[:label_clas])
+      @template.content_tag(:p, label +'<br/>' + super)  #wrap with a paragraph 
+    end
+  end
+end
+</typo:code>
+
+Then you can remove all the &lt;p&gt; and label tags from you form. 
+
+<typo:code title="app/views/users/edit.html.erb">
+<h1>Editing user</h1>
+
+<% form_for(@user, :builder => LabelFormBuilder) do |f| %>
+  <%= f.error_messages %>
+    <%= f.text_field :name %>
+    <%= f.text_field :address %>
+    <%= f.text_area :comment %>
+    <%= f.check_box :check %>
+    <%= f.submit "Update" %>
+<% end %>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>
+</typo:code>
+
+Add this to your application initializer to have all form use this form builder
+
+<typo:code>
+ActionView::Base.default_form_builder = LabelFormBuilder
+</typo:code>
+Then you can replace
+<typo:code>
+<% form_for(@user, :builder => LabelFormBuilder) do |f| %>
+</typo:code>
+with 
+<typo:code>
+<% form_for(@user) do |f| %>
+</typo:code>
+
+Now the same form with no custom builder was looking like this before. 
+
+<typo:code>
+<h1>Editing user</h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.label :check %><br />
+    <%= f.check_box :check %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>
+</typo:code>

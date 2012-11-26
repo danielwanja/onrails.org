@@ -1,0 +1,18 @@
+---
+layout: post
+title: !binary |-
+  RGVyYWlsZWQgLSBEZW52ZXIgUnVieSBPbiBSYWlscyBVc2VyIEdyb3VwLiBK
+  dW5lIDE1dGgu
+typo_id: 113
+---
+19:15 Doug Fales presentation: <strong>Rails by the Waypoints: Integrating a GPS Unit and a Digital Camera in the Era of the Mashup</strong>. 
+<p>
+Doug will present this talk at RubyConf next week, so this is kind of a dry run for him in front of 25 people at the Derailed (Denver Ruby On Rails User Group)  before the big event. About 5 other people from the attendance will also attend RailsConf. Cool, Denver is in force. Doug explained how he came to Rails and integrating it with GPS data, Flicker and Google maps...that's what happens when you got the crazy idea of running long distances in the middle of no where. Check out <a href="http://walkingboss.org/">http://walkingboss.org/</a> in the next month as he will release a first public version of his application. In short, you can map your walking track recorded by a gps onto a google map and also  upload and link your photos to the track based on the photos time-stamps. Doug now moves onto the "What I learned" writing this application. Site note: the funny thing is that besides Ara, everyone in the attendance uses a Mac. Ok, back to the presentation. Doug sees Ruby on Rails as the glue between the data and the client-side of the application. Another challenge was writing the GPS data mangling libraries. He describes how Ruby helped writing  different blocks of functionalities (Search using the Ferret gem and acts_as_ferret, the data models, tagging, ...). He then describes the cost of development, where Rails offers you lots for free. Finally, he concludes with comments on how rails allows for creativity by solving lots of mundane problems for you and allowing for to keep your momentum.
+<p>
+20:15 Now onto to Ara Howard's presentation: <strong>Meta Programming</strong>
+<p>
+Ara is usually more involved with the Boulder Ruby User Group. He is a Ruby person first, then a Rails person. He got into Ruby about six years ago, and works in all manner of application domains and is specialized in data mangling (not directly his words). He defines Meta-programming as being code that writes code. That can be at compile time or a run time. You can have reflexive meta programming where a language can be used to generate output in the same language. Ruby is a very good meta-programming language and Rails makes heavy use of meta-programming. Rather than going paraphrasing Ara, I would certainly be incorrect as he is covering lot's of ground, check out his <a href="http://fortytwo.merseine.nu/presentations/metaprogramming/slideshow.fcgi?n=0">slides</a> (this link is to his desktop, you can also find the slides at <a href="http://codeforpeople.com/">http://codeforpeople.com</a>).  Note that just the slides won't provide enough background as the narration Ara provides and the code examples augments greatly these slides. So try to catch one of his talks if you can. The nice part of his presentation is that he is presenting advanced aspects of Ruby, the languages, that may be more obscures to people like me that dived into Ruby via Rails. Ruby provides lots of hooks for meta programming like module_eval, class_eval, instance_eval, define_method, eval (being evil). 
+<p>
+<p>
+Two excellent presentations. Thank guys! Now onto Rock Bottom for a beer. 
+

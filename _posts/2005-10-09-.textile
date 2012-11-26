@@ -1,0 +1,11 @@
+---
+layout: post
+title: !binary |-
+  QXBwbGljYXRpb25z
+typo_id: 5
+---
+h1. The future projects we are going to present:
+
+* http://dvds.onrail.org - a small Rails application allowing to search dvd titles, rate and comment them. This project will demonstrate some Flash/Ajax and Rails integration. 
+*  http://flash.onrails.org -  Amf interation with ActiveRecord, allowing to build data-driven Rich Internet Applications.
+* http://time.onrails.org - a nice time record service for every Rails Consultant or software developer that needs to keep track of his time.

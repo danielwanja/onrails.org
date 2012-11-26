@@ -1,0 +1,14 @@
+---
+layout: post
+title: !binary |-
+  NCBzdG9yZXMgb3V0IG9mIDE4OCBoYXMgaVBob25lcyAzRw==
+typo_id: 3860
+---
+
+<div style="text-align:center;"><img src="http://onrails.org/files/20080721_ModelByStores.png" alt="20080721_ModelByStores.png" border="0" width="668" height="201" /></div>
+
+The phones are going faster than they are coming, only one store in each of these states are listed as having one type of the models: Florida, New Hampshire, California and Michigan. So if you take into account that some store list phones that didn't work out of the box as available, the Apples Stores may well be out of stock today.
+
+<div style="text-align:center;"><img src="http://onrails.org/files/20080721_4stores.png" alt="20080721_4stores.png" border="0" width="486" height="103" /></div>
+
+Data from: Apple.com and visualized by <a href="http://hasiphone.com/">hasiphone.com</a>

@@ -1,0 +1,46 @@
+---
+layout: post
+title: !binary |-
+  RmxleCBKb2I6IEZ1bGwgdGltZSBGbGV4IGRldmVsb3BlciAgaW4gRGVudmVy
+  IGF0IFZpZGVvcHJvcy5jb20=
+typo_id: 4170
+---
+Solomon, who also writes on this blog, is currently doing Ruby on Rails work for <a href="">videopros.com</a> and they are looking to hire a Flex developer to complement their small development team. Here are the details...
+
+<div style="text-align:center;"><img src="http://onrails.org/files/VP_Logo_300x100.jpg" alt="VP_Logo_300x100.jpg" border="0" width="300" height="100" /></div>
+
+We seek a Flex on Rails Kingpin to lead our development team. This is for a full-time or contract-to-hire position. Private consultants should not apply. Depending on skill level and commitment an equity stake is available. 
+
+Compensation
+
+* 70-100K
+* Potential Equity
+* Potential Profit Sharing
+
+Skills and Experience
+
+* Ruby on Rails | 2.5 Years minimum
+* Flex | 1 Year minimum
+* Web Services
+* Experience as the lead developer for a commercial project.
+* Agile development
+* Subversion (GIT)
+* Linux
+* MySQL
+* XML
+
+Benefits
+
+* Competitive Salary
+* Health Insurance
+* Long Term Disability Insurance
+
+About Us â€“ The VideoPros Dojo
+
+Dojo means â€œplace of the Way.â€ Much like a martial arts practice hall, the WAY we operate at VideoPros is a pursuit for mastery in the face of adversity and challenge. The true challenge is not between people and external things â€“ but within ourselves. â€¨
+Working at VideoPros means going within yourself and seeing the work you do as a reflection of who you are on the inside. Itâ€™s more than â€œworkâ€ or â€œmy job.â€ We are a place you go to practice being the best you can be â€“ every day.
+
+Apply
+
+VideoPros is motivated to fill this position quickly. To apply, email your resume and one reason why you want to join us at the Dojo to:
+Careers{at}VideoPros{dot}com

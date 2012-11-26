@@ -1,0 +1,12 @@
+---
+layout: post
+title: !binary |-
+  UnVieUthZ2kyMDA3ICgmIzI2MDg1OyYjMjY0MTI7IFJ1YnkgJiMyMDI1MDsm
+  IzM1Njk2OyAyMDA3KQ==
+typo_id: 1050
+---
+<img src="http://onrails.org/files/20070515_rubykaigilogo.gif" border="0" height="93" width="445" alt="20070515_rubykaigilogo.gif" align="" />
+
+I would love to go once to Japan to attend the (now) RubyKaigi conference. This year won't work for me...hey Lee, what about next year?
+
+Find more info <a href="http://jp.rubyist.net/RubyKaigi2007/">here (in Japanese)</a> and <a href="http://translate.google.com/translate?u=http%3A%2F%2Fjp.rubyist.net%2FRubyKaigi2007%2F&amp;langpair=ja%7Cen&amp;hl=en&amp;ie=UTF-8&amp;oe=UTF-8&amp;prev=%2Flanguage_tools">here (in Google translated English)</a>

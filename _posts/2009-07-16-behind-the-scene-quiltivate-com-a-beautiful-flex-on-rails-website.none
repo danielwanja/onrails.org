@@ -1,0 +1,15 @@
+---
+layout: post
+title: !binary |-
+  QmVoaW5kIHRoZSBzY2VuZTogUXVpbHRpdmF0ZS5jb20gYSBiZWF1dGlmdWwg
+  RmxleCBvbiBSYWlscyB3ZWJzaXRlLg==
+typo_id: 4637
+---
+I met Phil several years ago at Derailed, the (Denver Ruby on Rails user group, and for a long time he was curious about how Flex can be integrated with Rails, about the graphical possibilities that Flex offers, the advantages over plain HTML/CSS/Javascript. Then he told me Kacie, his wife, had an idea about a website. She is passionate about quilts and has an eye for details and excellence. Phil is a geek that loves Rails, Kacie loves quilts,  it's like Quilting meets Web 2.0 and <a href="http://quiltivate.com/">quiltivate.com</a> was born. In fact Phil and Kacie hired me to create a Quilt Builder that integrates with <a href="http://quiltivate.com/">Quiltivate.com</a>. Kacie had the vision for the whole concept, a simple to use quilt builder that removes lots of the hassle of calculating how much fabric of what color is needed and allows to play with blocks, shapes and colors. She drew a paper prototype that really highlights the tag line of their site" Innovating Traditional Quilting". <a href="http://quiltivate.com/">Quiltivate.com</a> offer much more than a Quilt Builder, it's a blog and a community centered around the art and craft of quilting. Over the last year I spent a couple of hours here and there, well a little more than that, to transform the  paper prototype into a real Flex application.  Rather than writing about what the tool does and how it does it, let's have a little look at behind the scene of the Quilt Builder with this video:
+
+<object width="400" height="300"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=5619106&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=5619106&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="300"></embed></object><p><a href="http://vimeo.com/5619106">Behind the scene: Quiltivate.com a beautiful Flex on Rails website.</a> from <a href="http://vimeo.com/user507500">daniel wanja</a>.</p>
+
+Check out <a href="http://quiltivate.com/">quiltivate.com</a> for a video on how to really use the Quilt Builder and go try it out. As it's fresh out of the gates their may be a little quirks here and there, so please let me know what you find. So thank you Kacie and Phil for getting me on this project, it was really fun!
+
+Enjoy,
+Daniel.

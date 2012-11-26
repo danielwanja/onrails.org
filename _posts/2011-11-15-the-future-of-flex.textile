@@ -1,0 +1,26 @@
+---
+layout: post
+title: !binary |-
+  VGhlIEZ1dHVyZSBvZiBGbGV4LiA=
+typo_id: 5092
+---
+At first I thought "Wow, Adobe really  messed up their communication". They could have focused on what they are adding, strong support for HTML5 and CSS4, Adobe AIR for Mobile, and not on what they are removing, the Flash Player in the Browser. But then they also announced that they opened sourced Flex via the Apache Foundation. And the main stream media, the blogosphere, and many developers I know went crazy and said Flex is dead, it's over, time to convert all your projects to HTML5.
+
+At a second thought I think it's pretty smart what Adobe did. The saying goes "If you can't beat them, join them". In fact the Flex against HTML fight wasn't one where Adobe had anything to win from. So they just made it loud and clear and now they are saying "We are HTML5". In fact detaching themselves from Flex in appearance allows them to ride the new HTML5 technowave and get in the news when they upgrade their tool, bring out new HTML5 component framework or acquire hot companies like PhoneGap and TypeKit. We are HTML5!!
+
+Adobe has already two great tools for HTML5, Muse and Edge and needs to push them way further and also needs to create or acquire a great HTML component framework such as Sencha so they call build and sell new development tools as well as design tools for the new growing crowd of HTML5 developers.
+
+So where does that leave Flash and Flex. I use a lot Flex in the enterprise, and that's where Adobe just did the most damage in my eyes. Go now try to convince any CTO that Flex is a good idea. Flex is a mature framework and Adobe has a great enterprise offering, but it will be hard to convince anyone that Adobe is still behind that technology after the way they managed their communication. This said I think the move of Flex to the Apache open source foundation is a great one and if managed right will give Flex a good run for years to come. Flex is still a great choice for many enterprise projects and will remain so until a solid and widely adopted HTML component framework emerges. If Adobe is smart they could provide that offering.
+
+Flex is also a great environment to develop "native" mobile applications that can run on iOS and Android. The forthcoming Flex SDK 4.6 will show that potential and it's a great way to create cross platform mobile and tablet applications. Adobe will not kill Adobe AIR for the mobile as it's a too appealing growth market. But that message didn't get through to the main stream media.
+
+As Adobe said Flash for the desktop for games and Adobe AIR for  mobile will be here for a while. But Adobe has the most to gain if they become the major player in the HTML5 field by providing tools, framework and making the web standards evolve. And they are in a good position to get there. To achieve this goal it also means that they will refocus many of their development teams and this will impact Flash and Flex. Moving the Flex SDK and some of the key developers to the Apache Foundation will allow to continue to evolve the SDK regardless of Adobe's new focus. The move a few years ago to the Flex Sparks components and the recent addition of the new mobile components provide a great and mature framework basis for a real open source effort which I believe will have a long life even if it will become a niche environment over the long run. Note I consider Ruby on Rails a niche market, a really great one to be in. Adobe has something great with Adobe AIR for mobile and this is the one area where they could even grow their developers basis if they get their message right. For me AIR for mobile/tablets and the Flex SDK 4.6 is one solution where I can build mobile apps faster than in any other environment and this will be a great business to be in, especially for the enterprise market.
+
+The smart enterprises will realize that Flex is stable and here to stay for the long run, even if it's not in the spotlight. They will start HTML projects in parallel to gradually improve their developer workforce and experience in this area. They will also realize that the HTML5 frameworks and coding technics are evolving so rapidly that it will be time consuming just to keep up. Also these frameworks are not as mature and complete as in the Flex ecosystem. Finding Flex developers is difficult, but finding great HTML/Javascript developers is even harder. This said, there is no denying that pretty quickly the HTML5 tools and frameworks will catchup with what Flex offers today in ease of development for enterprise applications. 
+
+Personally I'm looking forward to see how these HTML5/Javascript tools/libraries will evolve and will play with many of them. 
+
+So where does all this leaves you, the developer. Well, it's for sure time to jump on the new HTML/Javascript bandwagon if you haven't yet. I cannot see many companies starting new enterprise projects with Flex. If you are into mobile or tablet development give the new Flex SDK 4.6 a try, I believe there is a great potential for Flex to become a major player in the mobile development arena...targeting "native" applications and not the browser.  Yep, your heard it here first ;-)
+
+Enjoy,
+Daniel

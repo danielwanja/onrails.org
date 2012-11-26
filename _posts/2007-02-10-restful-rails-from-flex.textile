@@ -1,0 +1,99 @@
+---
+layout: post
+title: !binary |-
+  UkVTVEZ1bCBSYWlscyBmcm9tIEZsZXgu
+typo_id: 239
+---
+As part of the "MySpyder" project I am currently working on we want a Flex front-end to access a RESTFul Ruby on Rails service. You can read more on RESTFul and ActiveResource on <a href="http://www.loudthinking.com/arc/000593.html">David's blog</a>, on the <a href="http://weblog.rubyonrails.org/2006/11/23/rails-1-2-release-candidate-1">"release notes"</a> of Rails 1.2, PeepCode as an excellent <a href="http://peepcode.com/products/restful-rails">screencast</a> (not free) on the subject, and many other places.
+<p/>
+In short using the RESTFul approach allows to expose and manipulate a Rails model via a predefined set of standard Http requests. For example we have an ActiveRecord named Watch which can be manipulated via the following requests:
+
+<table>
+<tr>
+   <th> command </th>
+   <th> url </th>
+</tr>
+
+<tr>
+   <td> index </td>
+   <td># GET /watches.xml</td>
+</tr>
+<tr>
+   <td> show </td>
+   <td># GET /watches/1.xml</td>
+</tr>
+<tr>
+   <td> new </td>
+   <td># GET /watches/new</td>
+</tr>
+<tr>
+   <td> create </td>
+   <td># POST /watches.xml</td>
+</tr>
+<tr>
+   <td> update </td>
+   <td># PUT /watches/1.xml</td>
+</tr>
+<tr>
+   <td> delete </td>
+   <td># DELETE /watches/1.xml</td>
+</tr>
+</table>
+
+<p/>
+<p/>
+This allows for standard CRUD operations. Note rest supports also custom operations and CRUD operations on nested resources (such as a has_many relationship). We won't address them in the article, but I will certainly need them later in the project.
+<p/> 
+The Rails application can determined what format to return based on the content type or the extension of the url. We are only interested in xml for the moment.
+<p/> 
+Some of the advantages of a RESTFul Rails application are that it provides a standard way to organize your controllers, as you will see just in a moment because the controllers are standard most of the code can easily be generated, and because the URL to access the application are standard we can now provide some standard utility class to access a RESTFul server. Rails provides an ActiveResource client class, and I haven't found one yet for Flex. So I started to write one which I will show here after. Now please contact me or add some comments to this blog if you find anything similar or if you want to help me out writing this class. Another cool feature of writing RESTFul Rails controllers is that you get an API for your application nearly for free. This is the main reason we went down that direction.
+<p/>
+Assuming we have an ActiveRecord named Watch we can now generate a RESTFul Ruby on Rails controller issuing the following command
+<typo:code>
+./script/generate scaffold_resource watch
+</typo:code>
+Our server now supports RESTFul http requests.
+<p/>
+Now wouldn't it be nice if we could access the server data from Flex in the following manner:
+<typo:code>
+import mx.rpc.AsyncToken;
+import org.onrails.ActiveResourceClient;
+
+var watches:ActiveResourceClient = new ActiveResourceClient();
+watches.defineResource("http://localhost:3000", "watches", resultHandler, faultHandler);	
+
+// Note that all the calls are performed in parallel and asynchronously.
+watches.list()
+watches.show(8)	
+
+// create				
+var data:XML =	<watch>
+		            <url>www.picnik.com</url>
+					<xpath></xpath>
+					<frequency>10080</frequency>
+				</watch>
+watches.create(data)
+		
+// update			
+data =	<watch>
+            <id>8</id>
+			<frequency>10080</frequency>
+		</watch>				
+data.frequency = 1440;
+watches.update(data)
+
+// delete
+watches.deleteItem(8)
+</typo:code>
+
+Now we can. I started to write the ActiveResourceClient actionscript class to allow this. It's attached at the end of the article. Now, this is a first try I've created this morning. So please be critical and let's improve it together, or even better if you have one or know one that's way better please point me where I can get it.
+<p/>
+To use the ActiveResourceClient just put the ActiveResourceClient.mxml file into the org.onrails folder in your Flex project. Note that you can provide a default result  handler and fault handler or set one handler for each specific call, i.e. the watches.create returns an AsyncToken where a dedicated handler can be specified just to handle the result of the creation.
+<p/>
+Download: <a href="http://onrails.org/files/20070209_ActiveResourceClient1.mxml">ActiveResourceClient.mxml</a> (renamed file to ActiveResourceClient.mxml)
+<p/>
+Enjoy,
+Daniel Wanja.
+
+
+ 

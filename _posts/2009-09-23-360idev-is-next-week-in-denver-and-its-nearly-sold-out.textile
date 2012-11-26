@@ -1,0 +1,34 @@
+---
+layout: post
+title: !binary |-
+  MzYwaURldiBpcyBuZXh0IHdlZWsgaW4gRGVudmVyLi4uYW5kIGl0J3MgbmVh
+  cmx5IHNvbGQgb3V0IQ==
+typo_id: 4803
+---
+<a href="http://360idev.com/">360iDev</a> is around the corner and if you know the organizers or have been to 360flex then you know Denver is the place to be starting next Sunday if you are or wanna be an iPhone developer. The conference starts with a day of tutorials on Sunday then kicks in full gear Monday through Wednesday with three tracks of 80 minute sessions covering all angles of iPhone development from some of the best authorities in the fields.  
+
+You can find the schedule as <a href="http://www.google.com/calendar/ical/f10f3ii076fjkoq17qn9fsphvc%40group.calendar.google.com/public/basic.ics"> ical</a> or <a href="http://360idev.com/downloads/schedule.pdf">download a pdf</a>
+
+
+Here is my schedule:
+
+On Sunday I'll attend the "Hands-On with the Appcelerator platform." session. 
+
+*Monday*
+
+<div style="text-align:center;"><img src="http://onrails.org/files/360idev_monday.png" alt="360idev_monday.png" border="0" width="500"/></div>
+
+*Tuesday*
+
+<div style="text-align:center;"><img src="http://onrails.org/files/360idev_tuesday.png" alt="360idev_tuesday.png" border="0" width="500"  /></div>
+
+*Wednesday*
+
+<div style="text-align:center;"><img src="http://onrails.org/files/360idev_wednesday.png" alt="360idev_wednesday.png" border="0" width="500"  /></div>
+
+If you are not <a href="http://360idev-blogpost.eventbrite.com/">signed up</a> yet...you better hurry.
+
+
+I hope I'll see you there!
+
+Daniel

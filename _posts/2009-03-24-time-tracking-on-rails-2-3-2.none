@@ -1,0 +1,8 @@
+---
+layout: post
+title: !binary |-
+  VGltZSB0cmFja2luZyBvbiBSYWlscyAyLjMuMg==
+typo_id: 4339
+---
+<a href="http://time.onrails.org/">time.onrails.org</a> was first deployed in 2005 and the last time I deployed it was in July 2007. This application is in use by several hundred people daily and several thousands did sign up over the year. It's written in old-style Rails (pre-resources) and I did port it to Rails 1.2 a while back. So today I decided to run the test suite and had a list of deprecation warnings for Rails 2.0. I did fix them all, then decided to run against Rails 2.3.2. A couple of more issues where identified (tests with fixtures should use ActionController::TestCase and ActiveRecord::TestCase) and all tests where passing. I used to have a timezone bug related to the old Rails support of time zones, so I decided to bite the bullet and try out the Rails 2.0 time zone support and found a good description <a href="http://mad.ly/2008/04/09/rails-21-time-zone-support-an-overview/">here</a>. The change was straight forward, et voila, time.onrails.org running on 2.3....not so quick. I did a <em>cap deploy</em> and then realized that I didn't have the latest version of Rails on my deployment system, nor did I have the latest version of the gems. So after a '<em>gem update --system</em> I encountered a gem related issue but with this <a href="http://blog.ra66i.org/archives/informatics/2007/12/23/a-quick-gem-101-faq-gemrunner-name-error/">solution</a>  I was back in business....Et voila, time.onrails.org running on 2.3.2! Note it's still old style Rails and needs a good rewrite, but if you need a free time tracking application, just go try it out. 
+

@@ -1,0 +1,87 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHMgMzogUmFjayBNaWRkbGV3YXJl
+typo_id: 4888
+---
+I'm watching the <a href="https://oreillymedia.webex.com/mw0306l/mywebex/default.do?siteurl=oreillymedia">Rails Online Conference</a>, February 2010 Exploring Rails 3 and really like how they setup the rack middleware.
+
+...From the slides.
+
+<h1>Rack Middleware</h1>
+
+<a href="http://github.com/rack/rack/tree/master/lib/rack">http://github.com/rack/rack/tree/master/lib/rack</a>
+
+<h3>Content Modifying</h3>
+
+<pre>
+Rack::Chunked
+Rack::ContentLength
+Rack::ConditionalGet
+Rack::ContentType
+Rack::Deflater
+Rack::ETag
+Rack::Head
+Rack::MethodOverride
+Rack::Runtime
+Rack::Sendfile
+Rack::ShowStatus
+</pre>
+
+<h3>Behavioral</h3>
+
+<pre>
+Rack::CommonLogger
+Rack::Lint
+Rack::Lock
+Rack::Reloader
+</pre>
+
+<h3>Routing</h3>
+
+<pre>
+Rack::Cascade
+Rack::Recursive
+Rack::Static
+Rack::URLMap
+</pre>
+
+<h1>Rack::Contrib</h1>
+
+<a href="http://github.com/rack/rack-contrib">http://github.com/rack/rack-contrib</a>
+
+<pre>
+Rack::AcceptFormat
+Rack::Access
+Rack::Backstage
+Rack::Callbacks
+Rack::Config
+Rack::Cookies
+Rack::CSSHTTPRequest
+Rack::Deflect
+Rack::Evil
+Rack::HostMeta
+Rack::JSONP
+Rack::LighttpdScriptNameFix
+Rack::Locale
+Rack::MailExceptions
+Rack::NestedParams
+Rack::NotFound
+Rack::ProcTitle
+Rack::Profiler
+Rack::ResponseCache
+Rack::ResponseHeaders
+Rack::RelativeRedirect
+Rack::Signals
+Rack::SimpleEndpoint
+Rack::TimeZone
+</pre>
+
+<h1>Coderack.org</h1>
+
+Check also out <a href="http://coderack.org/">http://coderack.org</a> ...99 pieces of Rack Middleware
+
+<h1>RailsGuide: Rails On Rack</h1>
+
+<a href="http://guides.rubyonrails.org/rails_on_rack.html">http://guides.rubyonrails.org/rails_on_rack.html</a>
+

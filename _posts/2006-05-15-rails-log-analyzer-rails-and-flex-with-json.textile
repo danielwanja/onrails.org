@@ -1,0 +1,70 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHMgTG9nIEFuYWx5emVyIC0gUmFpbHMgYW5kIEZsZXggd2l0aCBKU09O
+typo_id: 103
+---
+ !/files/20060515_railsloganalyzer.gif! 
+
+I started to write a small Rails Log Analyzer that provides some insight on how a given application is used. I've just spent three hours so far, so not too much to show, but I have found the integration of Flex with Rails for read-only purpose of the different time series pretty straight forward. 
+
+h2. In two words...
+
+RAILS: data.to_json
+
+FLEX: JSON.decode(String(srv.lastResult));
+
+h2. On the Rails side 
+
+The controller simply transforms the Hash return by the model into a json textual representation.
+
+<typo:code lang="ruby" title="the controller">
+class DataController < ApplicationController
+
+  def overview
+    render :text => Hit.overview_data.to_json
+  end
+  
+end
+</typo:code>
+
+This is an extract of the method that returns a Hash that contains the time series in an Array. 
+
+<typo:code lang="ruby" title="the model">
+def Hit.overview_data
+    result = {}
+    result[:header] = {:period => {:start => Hit.minimum(:time).to_s(:db), :end => Hit.maximum(:time).to_s(:db)}}
+    result[:sessions_series] =
+           {:by_day => Hit.data_serie(Hit.count(:session, :group => :day, :conditions => 'controller <> "HeartbeatController"'), "sessions by day")    }
+    result
+  end
+</typo:code>   
+
+h2. On the Flex side
+
+<typo:code  title="the view">
+
+   import com.macromedia.serialization.json.*;
+
+   private function resultHandler(event:ResultEvent) : void
+        {
+        	status = "Loaded. Parsing data...";
+            var result:Object = JSON.decode(String(srv.lastResult));
+            header = result.header;
+            ts = getSerie(result.sessions_series.by_day.data);
+
+  }
+
+    <mx:HTTPService id="srv" url="http://10.37.129.2:3000/data/overview" result="resultHandler(event)" />
+
+
+</typo:code>   
+
+
+The service is invoked by the following actionscript call
+
+<typo:code lang="ruby">
+		srv.send()
+</typo:code>
+
+JSON doesn't support Date objects out of the box, but it's a nice way to exchange complex data such a Hash and Map between Rails and Flex. 

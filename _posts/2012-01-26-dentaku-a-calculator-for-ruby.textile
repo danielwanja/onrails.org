@@ -1,0 +1,60 @@
+---
+layout: post
+title: !binary |-
+  RGVudGFrdSAtIGEgY2FsY3VsYXRvciBmb3IgUnVieQ==
+typo_id: 5094
+---
+I'm currently working on a project that requires the use of formulas or expressions to implement business rules (the original system is an Excel workbook), and I needed a way to implement some of the same functionality.  My first thought was to model the formulas in ActiveRecord, clause by clause, using something like `acts_as_nested_set` to handle hierarchies and grouping. However, I've done something similar before, and was never quite satisfied with the result -- it always felt "heavy" -- so I decided to try a different approach this time.
+
+The result is Dentaku, a gem that parses and evaluates Excel-like formulas, allowing the use of named variables that will be substituted for real values at run time.  So far, the result values will be either boolean or numeric, but strings will probably be added soon.
+
+To illustrate how it works, let me set up the following (quite contrived) hypothetical situation:  You're building an upvote system for a Reddit-type site, but the customers do not want to encode all the logic for the system in Ruby -- they need to be able to manage all the rules on the fly.  However, they are willing to be limited to only using a few predefined attributes of the user as all variable inputs to the rules.
+
+The initial ruleset is something like this:  A vote from a "normal" user is worth one point for each week the user has been with the site.  A vote from an "admin" user is worth 100 points.  A vote from a "limited" user is worth one point, and a vote from a "blacklisted" user is worth zero points.  However, users can earn achievements, which update a "bonus" number for the user, and any normal or limited user's vote points are augmented with the bonus, but only after the user has been with the site for at least five weeks. (Hey, I promised contrived, right?)  So how could we accomplish this with Dentaku?
+
+We could create the following rules:
+
+<pre><code>
+    +-------------------------------+----------------------+  
+    | conditions                    | points               |  
+    +-------------------------------+----------------------+  
+    | admin                         | 100                  |  
+    | normal and age_in_weeks < 5   | age_in_weeks         |  
+    | limited and age_in_weeks < 5  | 1                    |  
+    | normal and age_in_weeks >= 5  | age_in_weeks + bonus |  
+    | limited and age_in_weeks >= 5 | 1 + bonus            |  
+    | blacklisted                   | 0                    |  
+    +-------------------------------+----------------------+  
+</code></pre>
+
+Then, given a hash representing the user like:
+
+<typo:code lang="ruby">
+    user = {
+      :admin        => false,
+      :normal       => true,
+      :limited      => false,
+      :blacklisted  => false,
+      :age_in_weeks => 10,
+      :bonus        => 8
+    }
+</typo:code>
+
+we could calculate the points for a vote by the represented user like so:
+
+<typo:code lang="ruby">
+    def calculate_points_for(user, rules)
+      calculator = Dentaku::Calculator.new
+
+      rules.each do |rule|
+        if calculator.evaluate(rule.conditions, user)
+          return calculator.evaluate(rule.points, user)
+        end
+      end
+
+      # no rules matched, default to zero
+      0
+    end
+</typo:code>
+
+So that's what Dentaku is about -- I hope someone else finds it useful.  You can check it out, fork it, etc at the <a href="http://github.com/rubysolo/dentaku">Dentaku</a> Github page, or just `gem install dentaku` and start playing!

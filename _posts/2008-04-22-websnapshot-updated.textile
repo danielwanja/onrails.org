@@ -1,0 +1,19 @@
+---
+layout: post
+title: !binary |-
+  V2ViU25hcHNob3QgVXBkYXRlZC4g
+typo_id: 3480
+---
+
+<div style="text-align:center;"><img src="http://onrails.org/files/websnapshot_1.jpg" alt="websnapshot_1.jpg" border="0" width="450" /></div>
+
+The guys running the Adobe AIR Marketplace contacted me a couple of weeks ago to publish Websnapshot on the market place. Then they kindly gave me a free Thawte code signing certificate. So I republished the app and changed the skin, I used the Darkroom theme found on <a href="http://www.scalenine.com/">scalenine.com</a>. Thawte didn't make it easy on me to get the certificate. The main issue was that I didn't have a phone number associated with my company name, therefore Thawte wanted me to send a phone bill with my company name (thug!) or a notarized letter. I had to resend three times the letter as first they couldn't read it, then it didn't show some required date...Well, finally I got the certificate and could sign the application. I don't believe it will make a difference to many users as most people currently install non-signed apps anyhow. Now that certificate was changed from the initial I used to sign the application it will however require that you uninstall first the application if it was already installed.
+
+You can now find the application on the <a href="http://www.adobe.com/cfusion/exchange/index.cfm?event=extensionDetail&loc=en_us&extid=1460520">Marketplace</a> or <a href="http://myspyder.net/tools/websnapshot/">here</a>.
+
+It's basically the same version than before with just a minor scaling issue fixed. What I need to add next is auto update, custom filenames, saving to s3 and Flickr.
+
+Enjoy!
+Daniel.
+
+ 

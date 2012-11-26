@@ -1,0 +1,36 @@
+---
+layout: post
+title: !binary |-
+  V2ViU25hcHNob3QgLSBhIHNpbXBsZSBBZG9iZSBBSVIgYXBwbGljYXRpb24u
+typo_id: 2306
+---
+UPDATE: new version can be found <a href="http://myspyder.net/tools/websnapshot/">here</a>
+<p/>
+I converted the <a href="http://onrails.org/articles/2007/04/05/web-snapshot-a-simple-apollo-application">original Apollo WebSnapshot</a> Application to Adobe AIR using <a href="http://labs.adobe.com/technologies/flex/flexbuilder3/">FlexBuilder 3</a>. Now WebSnapshot works on OSX and Windows. 
+
+The conversion was straight forward. I changed the root tag of the application from 
+<pre><mx:ApolloApplication></pre> to <pre><mx:WindowedApplication></pre> 
+
+Then I used the new File.browseForSave method to show the save dialog when clicking on the thumbnail. No need anymore for the workaround that was required for this before. One thing I didn't find out (yet) is how to set the file type and default filename in the save dialog. Any pointer is welcome!
+
+Download it now: <a href="http://onrails.org/files/WebSnapshot0.2.air">WebSnapshot0.2.air</a> (right click and &lsquo;Download Linked File&rsquo;)
+
+<img src="http://onrails.org/files/20070613_websnapshot_osx.gif" border="0" height="270" width="500" alt="20070613_websnapshot_osx.gif"  />
+
+<img src="http://onrails.org/files/20070613_websnapshot.gif" border="0" height="285" width="500" alt="20070613_websnapshot.gif" align="" />
+
+
+To run the application you need to <a href="http://labs.adobe.com/downloads/air.html">Adobe Integrated Runtime (AIR)</a>.  Also uninstall Alpha 1 before installing Beta 1 if you had Apollo installed.
+
+To uninstall the runtime on Windows:
+
+   1. In the Windows Start menu, select Settings > Control Panel.
+   2. Select the Add or Remove Programs control panel.
+   3. Select &ldquo;Adobe Apollo 1.0 Alpha1&rdquo; to uninstall the Apollo runtime.
+   4. Click the Change/Remove button. 
+
+To uninstall the runtime on Macintosh:
+
+   1. Delete the /Library/Frameworks/Adobe Apollo.framework directory.
+   2. Delete the /Library/Receipts/Adobe Apollo.pkg file.
+   3. Empty the Trash. 

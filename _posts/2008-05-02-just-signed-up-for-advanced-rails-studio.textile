@@ -1,0 +1,7 @@
+---
+layout: post
+title: !binary |-
+  SnVzdCBzaWduZWQgdXAgZm9yIEFkdmFuY2VkIFJhaWxzIFN0dWRpbw==
+typo_id: 3511
+---
+<a href="http://pragmaticstudio.com/railsadvanced/">It's</a> in Denver on June 12 to 14. And from May 29th to June 1st I'll be at RailsConf. Wouhao...Not sure when I will do customer work, but it's gonna be a fun couple of month ahead. I haven't been at a Rails studio before, but have been at the <a href="http://pragmaticstudio.com/therailsedge/">The Rails Edge Conference</a> and it was a pretty awesome and intense conference, so I expect a lot from the Rails Studio. I'll keep you informed. Of course before that there will be RailsConf 2008, last year I thought it was getting too big for a conference, but it was still really fun to geek out there. So let's get ready!!! Let me know if you attend one or the other of these conferences/trainning.

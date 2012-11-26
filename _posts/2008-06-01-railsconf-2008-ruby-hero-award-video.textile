@@ -1,0 +1,13 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIDIwMDggUnVieSBIZXJvIEF3YXJkcyBWaWRlbw==
+typo_id: 3648
+---
+<a href="http://www.RubyHeroes.com" title="Ruby Heroes"><img alt="Ruby Heroes" src="http://rubyheroes.morphexchange.com/images/rubyhero_button_small.png" /></a>
+
+<object width="400" height="300">	<param name="allowfullscreen" value="true" />	<param name="allowscriptaccess" value="always" />	<param name="movie" value="http://www.vimeo.com/moogaloop.swf?clip_id=1099180&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" />	<embed src="http://www.vimeo.com/moogaloop.swf?clip_id=1099180&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="300"></embed></object><br /><a href="http://www.vimeo.com/1099180?pg=embed&sec=1099180">RailsConf 2008 Ruby Hero Award Video</a>  on <a href="http://vimeo.com?pg=embed&sec=1099180">Vimeo</a>.
+
+The guys over at <a href="http://www.railsenvy.com/">Rails Envy</a> somehow managed to present (and create) the Ruby Heroes Awards at RailsConf...funny as usual. Check out this video extracts from the talk.
+
+UPDATE: what I didn't mention for this video and what remi realized is that I was sitting way back in the room and took only sections of the video and it's quite ruff and shaky.

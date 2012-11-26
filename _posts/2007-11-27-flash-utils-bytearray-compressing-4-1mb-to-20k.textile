@@ -1,0 +1,84 @@
+---
+layout: post
+title: !binary |-
+  Zmxhc2gudXRpbHMuQnl0ZUFycmF5IGNvbXByZXNzaW5nIDQuMU1CIHRvIDIw
+  Sw==
+typo_id: 2868
+---
+I am currently preparing a demo using an mx:OLAPCube and OLAPDataGrid which analyze the Rails svn commit log. however I don't want to deploy a specific server side application as the Cube can load data from XML. So I have an report.xml that is 4.1MB.  I created the following AIR application (ZlibCompressor.mxml) that use the standard compression provided by the ByteArray class to compress this file down to 20Kb. The application that consumes this file (UnzipTest.mxml) uses the URLLoader to read this file straight into a ByteArray and uncompress the data. It's fast!
+
+The key code for compression is the 'compress' and 'uncompress' method provided by the ByteArray. Note the URLLoader dataFormat is set to "binary".
+
+
+<h3>ZlibCompressor.mxml</h3>		
+<typo:code>
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical"
+	nativeDragDrop="onDrop(event)"
+	nativeDragEnter="onDragIn(event)" 	>
+<mx:Script>
+	<![CDATA[
+	import flash.desktop.ClipboardFormats;	
+	import flash.utils.CompressionAlgorithm;
+	public function onDragIn(event:NativeDragEvent):void {
+	    var transferable:Clipboard = event.clipboard;
+	    if (transferable.hasFormat(ClipboardFormats.FILE_LIST_FORMAT)) {
+	            DragManager.acceptDragDrop(this);
+	    }      
+	}
+	public function onDrop(event:NativeDragEvent):void {
+		var fileList:Array = event.clipboard.dataForFormat(ClipboardFormats.FILE_LIST_FORMAT) as Array;
+		if (fileList.length==0) return;
+
+		var inFile:File = fileList[0];
+		var fileStream:FileStream = new FileStream();
+		fileStream.open(inFile, FileMode.READ);
+		var ba:ByteArray = new ByteArray();
+		fileStream.readBytes(ba, 0, fileStream.bytesAvailable);
+		fileStream.close();
+		
+		var newFileName:String = inFile.nativePath+".zlib";
+		ba.compress();
+		
+		var outFile:File = new File(newFileName);
+		fileStream = new FileStream();
+		fileStream.open(outFile, FileMode.WRITE);
+		fileStream.writeBytes(ba, 0, ba.length);
+		fileStream.close();		
+	}					
+	]]>
+</mx:Script>	
+</mx:WindowedApplication>
+</typo:code>
+
+<h3>UnzipTest.mxml</h3>
+<typo:code>
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" creationComplete="loadData()">
+<mx:Script>
+	<![CDATA[
+	import mx.rpc.events.ResultEvent;
+	import flash.utils.ByteArray;
+	
+    import flash.events.*;
+    import flash.net.*;	
+	
+	private function loadData():void {
+ 		var loader:URLLoader = new URLLoader();
+ 		loader.dataFormat = "binary";
+ 		loader.addEventListener(Event.COMPLETE, completeHandler); 
+ 		var request:URLRequest = new URLRequest("../data/report.xml.zlib");
+ 		loader.load(request);
+	}
+	private function completeHandler(event:Event):void {
+        var loader:URLLoader = URLLoader(event.target);
+		var ba:ByteArray = loader.data;
+		ba.uncompress();
+		var s:String = ba.toString();
+		var xml:XML = new XML(s);
+    }
+	]]>
+</mx:Script>	
+</mx:Application>
+</typo:code>
+

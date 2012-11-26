@@ -1,0 +1,94 @@
+---
+layout: post
+title: !binary |-
+  VGhlIFJhaWxzIEVkZ2UgQ29uZmVyZW5jZSBpbiBEZW52ZXIgLSBEYXkgMQ==
+typo_id: 182
+---
+The <a href="http://pragmaticstudio.com/therailsedge/">conference</a> just started 30 minutes ago. I will write down some notes as it moves ahead. On a side note, Chad has a cool t-shirt saying "<strike>Rails</strike> Ruby - Programmer Friendly, Enterprise Ready"...way to go, enterprise here we come.
+
+<p/>
+<b>Meta Programming Ruby by Dave Thomas.</b><br/>
+Extending Ruby for Fun and Profit.<br/>
+Meta programming allows to extend the language by writing code that writes code. This talk is about understanding how it works, but mostly it's to allow us (the attendees) to start writing our own extensions. Dave goes through these four aspects of Ruby that enable meta programming:  classes are open, definitions are active, all method calls have a receiver, classes are objects. 
+<p/>
+
+<b>Ruby Idioms for Rails Programmers by Stuart Halloway</b><br />
+Implicit vs. Explicit - Stuart takes a Java/Struts example and refactors it to a Rails example showing along the way the explicit parts that should be implicit as they don't have anything to do with the business logic you are trying to implement. Basically he moves a 20 lines java method down to 1 lines of ruby.  This was very revealing, but let's not start a java .vs. rails debate here ;-) <br />
+Add Context to Instances - Ruby allows to modify objects to represent context. For instance active records contain the errors context that are triggered during saves, also active record contains wether it's a new record. So breaking apart from a "pure" object model, in Rails these contexts are injected into the objects, this simplifies greatly the development concepts. For example you have on instance of Person that is valid and not new. In java these concepts are broken down in separate concepts but you end up with DAOs, validators, business object, which all need to be tied together. In short Rails is less "pure" but simpler.<br />
+Personalized Object Model - Augmentations by methods on demand (method_missing). sample platter (Symbol#to_proc, Object#with_options, and hundreds more). Domain-Specific Encapsulation - Stuart now describes how Rails provides some domain specific encapsulation to hide some of the internals of your application, i.e. hide_action, add_variables_to_assigns.<br />
+Stuart warns us that he feels strongly about the topics he will cover now, but they may be controversial. Poor Composition Disrupts Flow - Stuart refers to the Smalltalk best practice book (p22, Kent Beck) which states "...keep all the operations at the same level of abstractions...". He diggs through some method examples form Edge Rails that could be 'improved'. <br />
+His presentation can be found at codecite.com
+
+<p/>
+<b>Rails Reflection by Chad Fowler</b><br/>
+Chad is presenting some of the findings of the project he workd for at Naviance. He started showing of a movie of a tool they (him and Bruce Williams) wrote to dynamically and visually create ActiveRecords and add data to it, then be able to export the fixtures. Why use Rails reflection? learn how rails work, simplify maintenance, make Rails do that Rails doesn't do well.<br />
+Chad will go throught some of the reflection possibilities that Rails offer that allowed him to build the tool he just demonstrated.<br />
+
+Active Record Reflection - schema, relationships, callback and errors. Some ActiveRecord reflection examples:
+<pre>
+ActiveRecord::Base.connection.tables.length
+User.column_names
+User.reflections.keys
+</pre>
+Some nifty trick to run migration code from irb is when you execute the following from irb:
+<pre>
+>>irb ActiveRecord::Base.connection
+</pre>
+Now the receiver class (in irb) is the connection which supports migration calls like add_column, drop_table, and so on.
+ 
+<p/>
+Action Controller Reflection - Requests, Filters, Routes. <br/>
+
+<pre>
+self.class.before_filters
+self.class.after_filters
+self.class.included_actions  
+self.class.excluded_actions
+ActionController:Routing::Routes.routes
+</pre>
+
+Chad concludes with the fact that these technique should be used only where appropriate and that many applications don't need such a level of programming. 
+
+<p/>
+<p/>
+
+<b>Ruby Design Patterns by Jim Weirich</b><br/>
+
+A design pattern is a solution to a problem in a context.<br />
+Jim goes in detail through some Ruby implementation of these standard patterns: Template Method Pattern, Strategy Pattern, Singleton Pattern. He also presents the Blank Slate Pattern he used while creating the XmlBuilder library.<br />
+The ruby way:<br/>
+<pre>
+Singleton Pattern => include Singleton
+Observer Pattern => include Observable
+Iterator Pattern => include Enumerable
+Factory Pattern => ClassName.new
+Proxy Pattern => method_missing
+Visitor Pattern => Open classes
+</pre>
+Jim refers to a paper from Peter Norvig from 1996 where he categorize patterns as being Invisible, Formal, and Informal for different languages and mentions that some dynamic languages have fewer restrictions and often don't require explicit patterns or have simpler implementations.
+
+<p/>
+<p/>
+
+<b>ActionPack Demystified by Marcel Molina Jr.</b><br/>
+
+ActionPack = ActionController + ActionView<br/>
+Marcel is going through the internals of ActionPack and will cover lot's of code. So I am not sure how much I will be able to write down...I may try to follow his talk :-). Looking at the internals are useful to understand the larger story of what's going with your application and Rails is a good example of how to write Ruby code or is a good help how to extend Rails.<br/> Yes, he really presents lots of interesting stuff, so I'll better sit back and follow. Right now he is explaining the compilation of the templates and going through the implementation of compile_and_render_template. Marcel want's to see how he feels about presenting this and looks for motivation to re-implement it.
+
+<p/>
+<p/>
+
+<b>Ajax on Rails by Justin Gehtland.</b><br/>
+This talk is about Ajax or the cool crap you can actually see. No meta programming. Justin will walk us through Prototype support in Rails, Scriptaculous Helpers, and Javascript generation. 
+
+<p/>
+That concludes the talks for the day. After dinner there will application presentations by the attendees.
+
+<p/>
+<b>The evening presentations where really cool</b><br/>
+<a href="http://onrails.org/articles/2006/11/15/railsloganalyzer-v0-2-for-osx-faster-better">Rails Log Analyzer</a> by Daniel Wanja. Yes, I presented the new version of the log analyzer. <br/>
+<a href="http://time.onrails.org">Time.onrails.org</a> by Lee Marlow. A time management application Lee and I worked on.<br/>
+<a href="mediapulse.com">iDeal</a> by Brian Spaid from mediapulse.com. A tool to quickly create websites and track user activity. This tool is used by them internally and not yet public.<br/>
+<a href="http://visible-assets.com">RFID Tracking Software</a> by Steve Mui. A cool rails application that allows real time asset tracking. The demo Steve presented was for an hospital that is tracking assets worth over $5000 (i.e. artificial knee) and Hospital workers. The software can track if the assets are in stock, see for specific rooms (i.e. operation room) when assets enter/leave the room. They have rfid scanners that track rfids and log their presence every couple of seconds to a Postgress database. The rails application then summarize and visualize all this data.<br/>
+<a href="http://loopnote.com/">http://loopnote.com/</a> by Martin May. A topic based notification application. You can register to a topic and be notified whenever the topic maintainer notifies you of a change. Notification is by rss, email, text message. You can create your own topics. Besides be nicely designed I believe that this is going to be a pretty popular application. It's not open to the public yet, but the demo was impressive.<br/>
+<a href="showerinabox.com">showerinabox.com</a> by Leslie A Hensley. A funny application allowing to plan a bridal shower and print out some customized bridal shower games. All in Ruby on Rails, using PDFWriter.<br/>

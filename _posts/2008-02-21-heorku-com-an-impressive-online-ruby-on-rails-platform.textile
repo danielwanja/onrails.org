@@ -1,0 +1,35 @@
+---
+layout: post
+title: !binary |-
+  SGVyb2t1LmNvbSAtIEFuIGltcHJlc3NpdmUgb25saW5lIFJ1Ynkgb24gUmFp
+  bHMgUGxhdGZvcm0u
+typo_id: 3291
+---
+You've have to try it to believe it. It's awesome that you can create a Rails application and deploy it all online. Nothing to install, it's all there. I think it's an awesome addition to the Rails world. It may not replace your development environment, but for deployment it's pretty flexible and is based on <a href="">Amazon EC2</a>. 
+
+From their website the feature description is as follows:
+
+* Instant Deployment
+* Create and Edit Online
+* Integrated Stack
+* Elastic Performance
+* Share and Collaborate
+* Import & Export
+* Full Ruby Environment
+* Gems & Plugins
+* Rails Console
+* Generate Code
+* Painless Migrations
+* Rake Console
+
+But you gotta see this to believe it. I made a quick screencast, so if you are not scared of a thick (swiss) french accent, have a look:  (click image to open screencast in separate browser):
+<a href="http://myspyder.net/screencast/heroku" target="_blank">
+<div style="text-align:center;"><img src="http://onrails.org/files/20080220_HerokuSmall.jpg" alt="20080220_HerokuSmall.jpg" border="0" width="319" height="198" /></div></a>
+
+
+I can foresee, at least hope, that they will quickly add support for subversion and for Capistrano based deployment, hence becoming the ultimate deployment platform for Rails in addition to the powerful and flexible environment they already provide.
+
+I signed up and received my invite three days later. If you can't wait send me an email daniel[at]onrails.org, and I sign you up, that will allow to skip the wait.
+
+Enjoy,
+Daniel.

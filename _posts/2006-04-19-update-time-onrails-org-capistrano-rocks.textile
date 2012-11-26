@@ -1,0 +1,37 @@
+---
+layout: post
+title: !binary |-
+  VXBkYXRlOiB0aW1lLm9ucmFpbHMub3JnLiBDYXBpc3RyYW5vIFJvY2tzIQ==
+typo_id: 62
+---
+<style>
+ .new { 
+     background-color: yellow;
+     color: rgb(0, 0, 0);
+}
+</style>
+<span class="new" >Updated</span> time.onrails.org
+
+The new functionality is 
+<ul>
+<li>A first version of data export to text, csv, and xml. See the export icons in the bottom right of the projects and dashboard page.</li>
+<li>A mini system message board. So we can leave you a message, i.e. for planned system maintenance downtime, or to announce new functionality.</li>
+<li>The latest version of the <a href="http://nubyonrails.com/pages/gruff">Gruff Graphs</a></li>
+</ul>
+
+I realized that data export needs some more work  as in Safari the xml doesn't appear unless you do a view source and the csv doesn't load Microsoft Excel directly nor adds a default .csv extension to the generated data.
+
+We will deploy new functionality or fixes issues once a week if possible. Note that we are going to keep this application simple, but any suggestion is welcome. Contact us at <a href="mailto:time@onrails.org">time@onrails.org</a>. 
+
+I deployed the application using Capistrano. It is pretty stressless and consists of the following steps:
+<pre>
+rake remote:disable_web
+rake remote:deploy_with_migrations
+rake remote:enable_web
+</pre>
+
+In this case we had a database migration, the new 'messages' table.
+
+The only issue that persists is that the application doesn't start right away after the deployment and seems to hang for about 10 minutes before comming back to life. The application is hosted on Dreamhost and we don't have full control on how the displatch.fcgi processes are launched.
+
+It's now up and running, so enjoy!

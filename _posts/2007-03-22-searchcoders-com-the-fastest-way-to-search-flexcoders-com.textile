@@ -1,0 +1,10 @@
+---
+layout: post
+title: !binary |-
+  U2VhcmNoY29kZXJzLmNvbSAtIHRoZSBmYXN0ZXN0IHdheSB0byBzZWFyY2gg
+  dGhlIEZsZXhjb2RlcnMgZ3JvdXAu
+typo_id: 299
+---
+
+Tom and Robert just announced that <a href="http://www.searchcoders.com/flex/">Searchcoders.com</a> went live. I had the chance to have met Tom and Robert at the 360flex conference  and they gave me access to the beta of searchcoders.com. I have used google, the yahoo groups and several other means before to search through all the messages of the  <a href="http://tech.groups.yahoo.com/group/flexcoders">flexcoders group</a>, and searchcoders.com just works the best for me.  This group just has  so much great content and is the fastest way to solve many of the issues you may 
+encounter once you start pushing what Flex has to offer. Thank to the community of sharing all this info and thanks to Searchcoders to make it more valuable  and more accessible.

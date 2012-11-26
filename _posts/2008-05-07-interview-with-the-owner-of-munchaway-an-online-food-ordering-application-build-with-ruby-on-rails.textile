@@ -1,0 +1,100 @@
+---
+layout: post
+title: !binary |-
+  SW50ZXJ2aWV3IHdpdGggdGhlIG93bmVyIG9mIE11bmNoQXdheTogYW4gb25s
+  aW5lIGZvb2Qgb3JkZXJpbmcgYXBwbGljYXRpb24gYnVpbGQgd2l0aCBSdWJ5
+  IE9uIFJhaWxzLiA=
+typo_id: 3524
+---
+Interview with the owner of MunchAway: an online food ordering application build with Ruby On Rails. 
+
+<div style="text-align:center;"><img src="http://onrails.org/files/20080506_MunchAwayMenu.jpg" alt="20080506_MunchAwayMenu.jpg" border="0" width="456" height="273" /></div>
+
+I was working at the end of last year and the beginning of this year part time on a cool Ruby on Rails project. I recently contacted the owner of the project and asked him if I could interview him to share his thoughts on different aspects on the project in an interview to be posted on my blog. He shared openly his views on Ruby on Rails, on using a mix of consultants and employes, and on the project in general. I think you find will his answers informative.
+
+Rob, the owner of <a href="http://www.lt2sys.com">lt2sys.com</a> had a vision to make an online food ordering platform that can easily add online food ordering to Restaurants that already use an existing point of sale (basically the touch screens when you order your food at the restaurant). So Rob put together a team of consultants, employees and offshore Rails developers and created the application which has a front-end online ordering, a back-end system to configure new stores, and communication system that interacts with the point of sales. The development of the initial phase took several month and the system is now live serving many restaurants. 
+
+<strong>Interview with the Rob, the owner of lt2sys</strong>
+
+<div style="text-align:center;">On Using Rails</div>
+
+<strong>Question</strong>: What made you choose Ruby on Rails to develop your solution?<br/>
+<strong>Rob</strong>: I made a strategic decision to use what I perceived to be the best available web development technology available.   This was difficult for me because by using Ruby on Rails, I was choosing a technology that I had no personal experience in using.   I read many blogs and product reviews, and discussed this with my internal staff.<br/>
+
+       
+<strong>Question</strong>: Did you consider other technologies like .Net, Java, Php, Phyton?  <br/>
+<strong>Rob</strong>: Beside Ruby, the only other product that I considered besides Rails was .Net.    We have a lot of .NET expertise inhouse, and I had some Java JSP experience.  We had one developer in house with Ruby on Rails expertise..   I didn&rsquo;t really consider Java because I wanted to use something that my internal team would be willing to use.  That came down to Ruby or .NET   We debated this for quite a while.   I ultimately decided on Ruby because of my longterm frustrations of using Microsoft development products.   Every new version of .NET requires more and more resources, the development tools take longer to use, and it seems that Microsoft is constantly changing the languages or key features that you come to rely on. <br/>
+
+      
+<strong>Question</strong>: Where do you see the strong/weak points of Rails? <br/> 
+<strong>Rob</strong>: My in-house developers and I have had a hard time adapting to development with Rails.  This was a key goal of the project &#8211; to develop additional inhouse expertise in Rails.  I was unable to find sufficient time, and one of my senior .Net developers grew frustrated with Rails and stopped developing with it (however he learned Ruby and continues to contribute with that expertise).  On the plus side, for those that understand the Ruby on Rails framework, they do seem to develop new features quickly.<br/>
+     
+<strong>Question</strong>: Would you Rails for another project? <br/>
+<strong>Rob</strong>: From a technology viewpoint, the answer is Yes, but from a business viewpoint I haven&rsquo;t made a decision on that yet.  <br/>
+     
+<strong>Question</strong>:  What do you think of developing and running Rails applications for so many customers? <br/>
+<strong>Rob</strong>:  I took a big risk in utilizing Rails to develop this application.   So far it&rsquo;s working, but the actual performance of the application is just barely acceptable.  We need to optimize the application for further expansion.<br/>
+
+
+ 
+<div style="text-align:center;">On Using a mix on Consultants/Employees/Offshore Resources</div><br/>
+
+<strong>Question</strong>: You used a mix of consultants, employees and offshore resources for this project, can you elaborate on this choice? <br/>
+<strong>Rob</strong>: After I had completed the project&rsquo;s high level design specifications (40+ pages) and a detailed data model in a &ldquo;platform neutral&rdquo; fashion, I was in a position to determine how I wanted to develop the project.  I knew that due to internal resource constraints that outsourcing was the only real alternative to getting the project done in a timely manner.   So I approached the problem of finding outside resources and making a final choice between using Ruby on Rails or .NET more or less simultaneously.   Cost was an issue; but also what concerned me was that since I was not providing an extremely detailed design and I didn&rsquo;t have the right system architecture experience to personally architect an enterprise web application using either Rails or .NET, I wanted the initial developers to be very senior and highly experienced developers who could look at the big picture of systems design and put something together that would support a large number of simultaneous users.   I also needed to transfer a lot of domain knowledge to them, so I decided that going offshore for the initial phase of development would entail a tremendous amount of brain damage at best and a highly risky proposition in any case. So I decided that finding the right developers to initially build the system the right way was in our best interest.  <br/>
+
+ 
+<strong>Question</strong>: How did you ensure proper workflow between the different teams?  <br/>
+<strong>Rob</strong>: The application has a consumer front end, an administrative console, and a communications component with the restaurant..   I put my Ruby on Rails experts on design of the Front End application, my internal Ruby on Rails expert on the Administrative console, and a 2nd internal resource on the communications component.   As I had spec&rsquo;d out the communications component in great detail this was easier to manager.  My ruby on rails experts that were working on the consumer application reviewed the data model and reworked it to make it work better with ruby.  I acted as project manager and worked to explain the domain knowledge to all parties and resolve design issues as they occurred.  It was a very hands on approach.<br/>
+
+
+<strong>Question</strong>: Did you have difficulties finding Rails consultants? <br/>
+<strong>Rob</strong>:  I did.   There didn&rsquo;t seem to be much of a pool locally.  Because I needed to transfer a lot of domain knowledge I wanted to find people locally that could come into the office and work.   I was able to find 2 very key people to do the Ruby on Rails development, but struggled to find a graphics designer that had experience with Ruby on Rails and Liquid.   It seemed to be a very small community of people that actually knew how to work with the technology.<br/>
+
+
+<strong>Question</strong>: How did you select an offshore service provider? <br/>
+<strong>Rob</strong>: I did a number of web searches to find companies offshore that claimed to have experience.  I emailed each and began a dialogue with the ones that responded.   I had several conversations with each company.     Some I dropped off the list because I frankly couldn&rsquo;t understand what there were saying!   Another company I dropped off because I had a conversation with their lead technology guy and he started dissing the technology choices and suggested they could do better.  It seemed like a classic case of NIH. The problem with that was I was looking for a company to take over the project and do new development, not rewrite the product!   I ultimately got down to two companies, both of which seemed acceptable.  I choose one and gave them a project that I felt was low risk to start with.  Even if they failed completely the product would not be in jeopardy.  Fortunately they did a good job and over time have made several enhancements to the product.<br/>
+
+
+<div style="text-align:center;">On Using Hosted environment .vs. hosting your own servers</div><br/>
+
+<strong>Question</strong>: You choose a hosted environment, did you consider using your own servers?  <br/>
+<strong>Rob</strong>: No.   That would require additional investment in IT management  resources that frankly we don&rsquo;t have.<br/>
+
+<strong>Question</strong>: What do you think of Engineyard?  <br/>
+<strong>Rob</strong>: Engine Yard has been a great choice for us because they have acted as the IT department for MunchAway.   It&rsquo;s great that almost every time I call them a real person that knows something answers the phone!<br/>
+
+<div style="text-align:center;">On the Project Development</div>
+
+<strong>Question</strong>: Did the project work as expect?<br/>
+<strong>Rob</strong>:  Performance is an issue for us.   This is really the only issue, and I expect that we will be able to resolve it over time.<br/>
+
+<strong>Question</strong>: Did you encounter issues?<br/>
+<strong>Rob</strong>:   The issue that we ran into was that we expected to provide an application that would be easily maintainable the graphics designers by our users.  This has not been the case, in fact, we have had to retain a graphics designer with Ruby on Rails and Liquid expertise to help us in this area.<br/>
+
+<strong>Question</strong>: What's planned next for the application?  <br/>
+<strong>Rob</strong>: The consumer side of the application needs to be extended so that it can be easily used on IPhone and Blackberry devices.  <br/>
+
+<div style="text-align:center;">On the Application</div>
+
+<strong>Question</strong>: Is this you first online food ordering application you developed?  <br/>
+<strong>Rob</strong>: Not directly.   We originally developed a middleware application that provides the ability for web developers to interface with Restaurant Point of Sale.  This is in use with several different online ordering companies for several years.   MunchAway connects to that middleware and provides the full online ordering solution for restaurants.<br/> 
+
+<strong>Question</strong>: What differentiates your platform from your competitors?  <br/>
+<strong>Rob</strong>: Technically, because our middleware application extracts the restaurant&rsquo;s menu from the point of sale system, we can construct a customer&rsquo;s web ordering system quickly and maintain it very easily. Also, many online ordering solutions do not integrate with the point of sale system at all; they use a fax machine or email as the delivery mechanism for the order.  From a business standpoint we are unique in that we market the product through a well established point of sale dealer network which understands the restaurant customer base and this is a real value add.<br/>
+
+<strong>Question</strong>: Why do you offer a subscription based solution rather than providing one off solutions for you customers?   <br/>
+<strong>Rob</strong>: SAAS makes sense for our customers as we offer the hosting service as well as ongoing product improvement to our entire customer base.<br/>
+
+<div style="text-align:center;">On Running the  Application</div>
+
+<strong>Question</strong>: How restaurants (locations) are now served with your platform? <br/>
+<strong>Rob</strong>: At each restaurant we install our middleware application which acts as the conduit between the MunchAway website and the Restaurant Point of Sale System.   The middleware extracts menus (which incorporates the business rules of ordering each item on the the POS)_and posts them to the MunchAway website; it also accepts orders from the website and posts them on the restaurant point of sale system.  This is a major plus for the restaurant as this eliminates all the labor involved in reentering the order and insures no mistakes are made in the process.<br/>
+
+
+<strong>Question</strong>: How quickly can you add a new customer/new locations? <br/>
+<strong>Rob</strong>: 4 man hours to add the customer&rsquo;s first location, which includes installing the software at the restaurant POS and applying the customer&rsquo;s graphic look and feel to the MunchAway website.  Locations 2 thru X take 1 hour each to setup.<br/>
+
+
+<strong>Question</strong>: Can a customer change the look and feel of your solutions?  <br/>
+<strong>Rob</strong>: No.  This was an original goal of the project, but this has not yet been achieved.   We rely on a graphic designer with ruby on rails and liquid experience to make customer customizations as needed.<br/>
+

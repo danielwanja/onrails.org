@@ -1,0 +1,238 @@
+---
+layout: post
+title: !binary |-
+  Tm8gZmx1ZmYganVzdCBzdHVmZg==
+typo_id: 3
+---
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+
+I
+spent most of my week-end learning new stuff, and I
+also attended the Wedding of Marla and Lee. It has been
+pretty busy and pretty fun.
+
+<br>
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ; font-weight: bold;">
+
+Day
+1.
+
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+<br>
+
+It all started on Friday the 13th. Good day to start a
+seminar with four &quot;Dave Thomas&quot; sessions that where
+pretty impressive, especially that I just read two of
+his &quot;pragmatic&quot; series book, namely
+
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ; color: rgb(54, 84, 131);">
+<u>
+
+The Pragmatic Programmer
+
+</u>
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+
+and
+
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ; color: rgb(54, 84, 131);">
+<u>
+
+Programming Ruby (2nd. Ed.)
+
+</u>
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+
+.
+The talks are 1. OpenSource Ecosystems 2. Ruby for Java
+Programmers 3. Ruby on Rails 4. and the Keynote du
+jour. His first talk &quot;OpenSource Ecosystems&quot; highlights
+the principles behind successful open-source projects
+and how it could be applied to your enterprise
+projects. His keynote presentation on Friday draws
+analogies between the art in engineering and software
+development. Of course his two Ruby talks where as
+entertaining as instructive. Ruby is really worth
+taking a look at...
+
+<br>
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ; font-weight: bold;">
+
+Day
+2.
+
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+<br>
+
+Herding Racehorses and Racing Sheep by Dave Thomas. He
+did it again, an excellent non technical people
+oriented presentation, investigating learning/teaching
+and knowledge mechanism based on the level of people
+(from beginner to expert) based on experiences
+extracted from other professions. (That description
+doesn't give justice to his presentation :-)
+
+The next talk was NakedObjects by
+Eitan Suez. Model driven UI's...just what I was
+looking into for Flex. Foolowing was,
+
+</span>
+<span style="font-family: Trebuchet,Verdana,serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+<em>
+
+AJAX
+
+</em>
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+
+by Justin Gehtland as a presentation going behind the
+buzzword and showing many of the javascript techniques
+used to make google-maps and other dynamic websites.
+
+<br>
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ; font-weight: bold;">
+
+Day
+3.
+
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+<br>
+</span>
+<span style="font-family: Trebuchet,Verdana,serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+<em>
+
+Hibernate
+and J2EE Transaction Integration
+
+</em>
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+
+by Mark Richards. Mark showed ways to make it work and
+presented several gotcha's to be aware of. Better to
+use Hibernate just with Spring if possible. I attended
+three presentations by Bruce Tate,
+
+</span>
+<span style="font-family: Trebuchet,Verdana,serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+<em>
+
+Beyond Java
+and Ruby persistence
+
+</em>
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+
+,
+
+</span>
+<span style="font-family: Trebuchet,Verdana,serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+<em>
+
+Introduction
+to Spring
+
+</em>
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+
+,
+and
+
+</span>
+<span style="font-family: Trebuchet,Verdana,serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+<em>
+
+Beyond
+Java
+
+</em>
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+
+.
+The Spring and Java talks where really interesting and
+informative, his last talk on Ruby persistence, as
+Bruce warned us, was the first time he presented it and
+still a little refinement is needed. Other than that
+Bruce is an excellent speaker worthwhile listening
+too...
+
+<br>
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ; font-weight: bold;">
+
+Reflecting
+on The conference
+
+</span>
+<span style="font-family: 'Lucida Grande',LucidaGrande,Verdana,sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; line-height: normal; font-size-adjust: none; font-stretch: ;">
+<br>
+
+First, you should attend one, it's just a great way to
+learn some of the latest stuff and interact with some
+off the leaders and experts in the field.
+
+<br>
+
+I get really energized when attending these
+conferences, so much to try out, so many new thoughts,
+so many new projects I now want to do, but mostly they
+confirmed a reflection and phase I started a couple of
+months ago. A &quot;Back to basics&quot; phase. My goals was to
+stop trying out everything and not finishing really
+anything. Energy and simplicity are not contradictory.
+I will just spend more time doing less, and more energy
+simplyfing what I do. I just read several of the
+pragmatic series books (automated build, subversion)
+and have a few more to read (JUnit). Although I use
+these approaches during my day job, I didn't do it on
+my midnight projects. Why? Well not 100% sure why, but
+it would have saved me time and headaches. Most likely
+I believe that outside of the constraint of work, I
+used to like to get more creative and less organized,
+but that is changing and I get a lot of satisfaction
+trying to do less and more carefully.. So last month I
+first purged many of my obsolete projects (the
+WebObjets ones, the older java ones, the Cocoa ones)
+and one by one decided what I wanted to keep based on
+what I wanted to achieve...well I ended up with no old
+projects...and just one new one. Yea, that felt good.
+Then I moved the rest of my stuff into subversion.
+After a little issues with French characters in some of
+my documents I got everything working. Now I can trace
+back everychange in my source even for my midnight
+projects. On osx I use SnvX and the merge tool provided
+by the osx dev tools. Pretty slick!!
+
+<br>
+
+So my only new midnight project is integrating Flex and
+RubyOnRails. I will be working hard at ensuring that it
+contains the minimal amount of code to achieve the
+integration, that's it is fully unit tested, and
+integrated with an automated build tool. During my day
+job I use cruisecontrol, I am still debating if I will
+use DamageControl (a Ruby one)...I am currently
+inclined going the Ruby way.
+
+<br>
+
+Well as you see these conferences get me going...
+
+
+</span>
+
+ 

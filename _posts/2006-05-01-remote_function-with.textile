@@ -1,0 +1,15 @@
+---
+layout: post
+title: !binary |-
+  cmVtb3RlX2Z1bmN0aW9uIDp3aXRo
+typo_id: 71
+---
+<typo:code lang="ruby">
+<%= select_tag "content_type",  options_for_select(content_type_options),
+ { :onchange => 
+    remote_function(
+         :url => {:action => 'filter_by_content'}, 
+         :with => 'Form.Element.serialize(this)')  } %>
+</typo:code>
+
+The above code allows to submit via javascript the selected value of a combo box. The remote call is triggered via the _onchange_ event handler of the select tag. Notice the parameters to the remote function call <strong>:url</strong>, as usual, but also the  <strong>:with</strong> parameter.  The <strong>:with</strong> option can be very useful if you need more control on what data needs to be sent to the server. In this case we use Form.Element.serialize that url encodes all the parameters found in a given div (doesn't need to be a form). In this case the _content_type=snippet_ is passed to the server. 

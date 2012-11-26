@@ -1,0 +1,7 @@
+---
+layout: post
+title: !binary |-
+  TXVsdGlwYXJ0IFJlcXVlc3QgLSByZXZpc2l0ZWQ=
+typo_id: 4301
+---
+I just posted on <a href="http://blog.flexonrails.com/">http://blog.flexonrails.com/</a> a post on creating Multipart Request with Flex to post data such as XML, images to a Rails server. Check it out!

@@ -1,0 +1,7 @@
+---
+layout: post
+title: !binary |-
+  U29sJ3MgUmFpbHNDb25mIDIwMDcgcGlja3M=
+typo_id: 515
+---
+are "here":http://www.myconfplan.com/users/solo/conferences/RailsConf2007.  See you in Portland.

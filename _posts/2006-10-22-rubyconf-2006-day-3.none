@@ -1,0 +1,56 @@
+---
+layout: post
+title: !binary |-
+  UnVieUNvbmYgMjAwNiAtIERheSAz
+typo_id: 170
+---
+Here we go again. Let's how long my battery is going to last today.
+
+<table>
+<tr><td><a href="http://codefluency.com/">Bruce Williams </a>posted the cool RubyConf 2006 logo on his <a href="http://codefluency.com/">blog</a>. </td></tr>
+<tr><td><img src="http://onrails.org/files/rubyconf2006-140x85.png" border="0" height="85" width="140" alt="rubyconf2006-140x85.png" align="center" />
+</td></tr>
+
+<tr><td>9am: Streamlined, Justin Gehtland</td></tr>
+<tr><td>Why Streamlined? Remove repetitiveness in web development mostly for back-end type of application. Streamlined is build on top of Ruby on Rails. Build from their needs to build client applications. Goal to bring declarative goodness of ActiveRecord to the view layer. Streamlines is not a code generator like scaffolding. He now moves on to demo an application build with the framework. Streamlined support nicely relationship management. By default a new <i>streamlined</i> folder is add at the same level than the controllers, views, and models level. The streamline folder contains StreamlinedUI class allowing the modify declaratively the default behavior and representation of the views. Note that Justing presents the new css look and feel that Streamlined supports, named 'grail', which looks way better than the prior default look and feel. The default behavior uses Ajax, this can be turned off. No views are generate by default, they are dynamically rendered. For customization that goes beyond the features provided by Streamlined, a view can be generated and customized at will and will then be used instead of the generic view. Supports the acts_as_authenticated plugin, and provides user preferences. Justin now shows some upcoming features, like model specific behavior, layer specific field, tabbed views, multiple windowing toolkits, visual configuration. 
+
+</td></tr>
+
+<tr><td>YARV: on Rails? by Koichi SASADA </td></tr>
+<tr><td>He starts with a tour on how Ruby activities in Japaon, from the RubyConf, to books and magazines. Japanese are very enthusiastic about Ruby. He mentions the <a href="http://translate.google.com/translate?u=http%3A%2F%2Fjp.rubyist.net%2Fmagazine%2F&amp;langpair=ja%7Cen&amp;hl=en&amp;ie=UTF-8&amp;oe=UTF-8&amp;prev=%2Flanguage_tools">Rubyist magazine</a> (this is the link to the google translated version). He now moves on to YARV (Yet Another Ruby Vm). Which is going to be the new interpreter, which will have several advantages and optimizations. The demo continues buy showing a Rails application running on Yarv. YARV passes most of tests, but make 'test/test-all' still reports some errors. He demystifies some of the myth related to yard and mentions that Yarv is not a Silver Bullet.  It doesn't make all programs 50 times faster, nor makes you slim and rich. The whole presentation is pretty funny.  </td></tr>
+	
+<tr><td>You got your Ruby in my CLR!, by John Lam</td></tr>
+<tr><td>no comments for that one...I was heads down coding...</td></tr>
+
+<tr><td>USS Ruby</td></tr>
+<tr><td>Where Star Treck joins Ruby. A one man act, somebody is taping this...I gotta find that link, it's too funny.</td></tr>
+
+<tr><td>Summer of Code 2006 - Google & Ruby Central, Inc.</td></tr>
+<tr><td>Austin Zigler was one mentor of the summer of code. He presents the principles of the Summer of code. 17 volunteers reviewed 96 applications for projects. 84 projects where eligible. 25 found a mentor, and google accepted 10. 3 of projects will be presented here.  Ariel, A Ruby Information Extraction Library, train a program how to scan web pages. Root Port, Makerf, .....<br/>
+<strong>1.</strong> Gregory Brown presents his project, Ruby Reports (<a href="http://ruport.infogami.com/">ruport</a>). Plays also nice with Rails via acts_as_reportable. Gregory is not a Rails programmer, but wanted to get a plugin out there and let it grow. 
+<pre>
+class ChunkyBacon < ActiveRecord::Base
+	acts_as_reportable
+end
+class MyReport < Ruport::Report
+	prepare do
+  		@table = ChunkyBacon.report_table(:all)
+     end
+
+	generate do
+        @table.to_s
+     end
+end
+</pre>
+There are many features like graph generation, pdf support for Ruport, so check it out.<br/>
+<strong>2.</strong> Rockin' the  Pcoket - Ruby on Phones, by Jeff Hughes. He is just another Ruby Hacker that likes phones. He went with Symbian, Nokia mostly. Based on Python for Symbian open source project. Perl did it too. His motivation where that the phone is the ideal platform, every body has one, it's always connected, but where is Ruby. 2 weeks just to get it to compile. Another 2 weeks for linking. He is new to Ruby internal, in one summer he came out with a working prototype. Today, the core interpreter, a simple and basic file io. Future development: GUI, Symbian modules (socket, bluetooth, messaging). Matz is very excited about this project. See<a href="http://ruby-symbian.rubyforge.org/"> http://ruby-symbian.rubyforge.org/</a>
+<br/>
+<strong>3.</strong> Jason Morisson - <a href="soc.jayunit.net">Type inference & Code Completion for RDT</a> Well,  I didn't follow this talk as I was talking with Laurent Sansonetti about RubyOSA as I am waiting eagerly for the WebKit bindings. 
+  </td></tr>
+
+<tr><td></td></tr>
+<tr><td></td></tr>
+
+</table>
+
+<strong>That's all Folks. Another great Ruby conference is under wrap.</strong>

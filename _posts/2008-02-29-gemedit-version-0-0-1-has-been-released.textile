@@ -1,0 +1,29 @@
+---
+layout: post
+title: !binary |-
+  Z2VtZWRpdCB2ZXJzaW9uIDAuMC4xIGhhcyBiZWVuIHJlbGVhc2VkIQ==
+typo_id: 3331
+---
+Check out my first published gem: **gemedit**
+
+A utility to view a gem's source in your favorite editor
+
+Changes:
+
+## 0.0.1 2008-02-27
+
+* 1 major enhancement:
+** Initial release
+
+
+* "http://gemedit.rubyforge.org/":http://gemedit.rubyforge.org/
+
+Specials thanks go to the following gems for making it easy to put this out there:
+* "newgem":http://newgem.rubyforge.org/ by "Dr. Nic Williams":http://drnicwilliams.com/
+* "hoe":http://seattlerb.rubyforge.org/hoe/ by "Ryan Davis":zenspider
+* "rubyforge":http://rubyforge.org/projects/codeforpeople by
+** "Ara T Howard":http://codeforpeople.com/
+** "Ryan Davis":zenspider
+** "Eric Hodel":http://blog.segment7.net/
+
+[zenspider]http://blog.zenspider.com/

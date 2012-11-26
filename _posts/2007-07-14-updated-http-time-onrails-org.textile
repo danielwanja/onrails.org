@@ -1,0 +1,22 @@
+---
+layout: post
+title: !binary |-
+  VXBkYXRlZDogaHR0cDovL3RpbWUub25yYWlscy5vcmc=
+typo_id: 2446
+---
+Time.onrails.org - a simple time tracking application has been updated. 
+
+* Time shifting -  Let's assume you entered time from 08:00-12:00 13:00-17:00. Then you notice that you effectively took a longer lunch. Simply edit the 12:00 to 11:45, then tab to the next field and change 13:00 to 13:15 and press enter. In the same way, if you didn't come back from lunch at all that day. Simply clear out the 13:00-17:00 field and press enter. This will delete this time slot.
+
+*  Running Timers - When a timer is running (i.e. 11:30- ), the time line (day) is highlighted in green. That way it's easy to detect which timers are still running.
+
+* IE6 Support. Time entry was pretty broken with IE. This should have been fixed. I haven't installed IE7...so I assume it doesn't work there. 
+
+* Rails Migration. Behind the scenes Rails was migrated from 1.1.6 to 1.2.3. 
+
+<img src="http://onrails.org/files/20070713_timeonrails.jpg" border="0" height="234" width="534" alt="20070713_timeonrails.jpg" align="" />
+
+Please let me know if you find anything unusual.
+
+Enjoy!
+Daniel.

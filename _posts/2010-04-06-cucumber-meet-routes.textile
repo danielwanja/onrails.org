@@ -1,0 +1,43 @@
+---
+layout: post
+title: !binary |-
+  Q3VjdW1iZXIsIG1lZXQgUm91dGVz
+typo_id: 5034
+---
+I've been loving Rails BDD with Cucumber for the past year or so -- it helps me focus on the next required step to build a feature in my application, and better focus equals better development velocity.  However, one thing I found tedious in starting with Cucumber was defining route matchers in @paths.rb@.
+
+The stock @path_to@ method is implemented as a case statement, allowing you to add a case for each path you want to recognize.  This works, but leaves you feeling a bit un-DRY since you're basically duplicating information in your @routes.rb@ file.
+
+Here's a quick hack to @paths.rb@ that lets you leverage your existing routes:
+
+change
+
+<typo:code lang="ruby">
+    else
+      raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
+        "Now, go and add a mapping in #{__FILE__}"
+    end
+</typo:code>
+
+to
+
+<typo:code lang="ruby">
+    else
+      begin
+        page_name =~ /the (.*) page/
+        path_components = $1.split(/\s+/)
+        self.send(path_components.push('path').join('_').to_sym)
+      rescue Object => e
+        raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
+          "Now, go and add a mapping in #{__FILE__}"
+      end
+    end
+</typo:code>
+
+In your Cucumber steps, you can now use any named route that does not require a parameter.  For example, @users_path@ would become "the users page", and @new_product_path@ would become "the new product page".  As you add new resources, at least the index and new options should work out of the box -- no further edits to @paths.rb@ required!
+
+*UPDATE:*
+
+w00t!
+
+This is "now":http://github.com/aslakhellesoy/cucumber-rails/commit/00a3bd796363c243b2ea15321e8dca62c7f002c6 baked into cucumber-rails!

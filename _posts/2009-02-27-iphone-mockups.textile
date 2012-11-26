@@ -1,0 +1,33 @@
+---
+layout: post
+title: !binary |-
+  aVBob25lIE1vY2t1cHM=
+typo_id: 4271
+---
+The <a href="http://www.balsamiq.com/products/mockups/desktop/next">next version</a> of <a href="http://www.balsamiq.com/products/mockups">Balsamiq</a>, a really cool tool to create low fidelity mockups, will support mocking up of iPhone apps. That's gonna be the quickest way to visuaizel and experiment with you next killer iPhone app idea.
+
+Balsamiq allows to drag and drop components on a canvas and then just add content via text, which will be rendered as an image. So the text on the right below creates the interface on the right. That's too cool.
+
+<table>
+<tr halign="top">
+<td>
+<pre>
+A Simple Label
+- Delete
++ Add and sub-menu, >
+Two Labels, yup
+v A Checkmark, (>)
+* A Bullet, Read >
+_ Space for an icon
+__ Space for a big icon
+On button, ON
+Off button, OFF
+ 
+v And empty row, (above)
+</pre>
+</td>
+<td>
+<img src="http://onrails.org/files/balsmaiq_iphone.png" alt="balsmaiq_iphone.png" border="0" width="222" height="390" />
+</td>
+</tr>
+</table> 

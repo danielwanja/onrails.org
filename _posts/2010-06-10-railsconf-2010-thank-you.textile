@@ -1,0 +1,48 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIDIwMTAgLSBUaGFuayBZb3Uh
+typo_id: 5052
+---
+Wow, RailsConf is over. It ended nicely with <a href="http://twitter.com/@garyvee">@garyvee</a> giving a powerful and entertaining keynote covering many subjects but mostly his standard spiel on connecting with your customers or audience. I read his book, crush it, a while back and enjoyed it. Note since, I haven't been the most active on my blog or websiteâ€¦but I'm working on changing this.
+
+Now of course RailsConf was way more that this keynote. I must admit I really enjoyed Baltimore and having the convention center, the hotel and the port at a five minutes walking distance. It's a great area, I understand that not the whole city is like that, but that doesn't remove anything from the fact that I really appreciate the place right now.
+
+The best thing at this conference is the energy that transpires and I really feel energized and want to start some new Rails venture. It's fun to see so many enthusiasts trying to learn, share, and push the community forward.
+
+I must admit I usually enjoy smaller conferences, like the <a href="http://mtnwestrubyconf.org">MoutainWest RubyConf</a>  or the forthcoming <a href="http://mountainrb.com">Moutain.rb</a>,  better as the tracks are more specialized and geekier. RailsConf tries to have several tracks for everybody but very few are very technical. Maybe the organizers should try to have an advanced track next time. That way the conference would stay appealing for the many people that have been doing Rails/Ruby for years and still be welcoming for beginners.
+
+As usual there are always some talks that just suck. On the tutorial day I attended in the afternoon <a href="http://en.oreilly.com/rails2010/public/schedule/detail/13631">Rails 3 Deep Dive</a>  and it wasn't about Rails 3 nor a deep dive.  Another talk that didn't turn out the way it should have been was <a href="http://en.oreilly.com/rails2010/public/schedule/detail/11230">Scaling Rails on AppEngine with JRuby and Duby</a>  where the speakers where knowledgeable but where note prepared enough and where counting on the wifi to workâ€¦The wifi never works at conference. This said the wifi was usually working pretty well at RailsConf this time. 
+
+I don't wanna focus too much on the talks that didn't work out as most of the talks where great and also not all my talks in the past always worked out they way they could have ;-)
+
+One of the tutorial I really liked was <a href="http://en.oreilly.com/rails2010/public/schedule/detail/13613">Acceptance Testing With Cucumber</a>.  David Chelimsky rocked and just knows his stuff and Aslak hanged in there pretty well.  They had an application prepared with multiple branches that let the audience follow right along. That was great. They didn't have time to access a few of the advanced Cucumber subjectsâ€¦next time make that a full day tutorial.
+
+The first talk I attended on tuesday was <a href="http://en.oreilly.com/rails2010/public/schedule/detail/14502">Building an API with Rails</a>  which was a panel discussion with guys from  Twitter, 37Signals, Github, the NYT and others. I really enjoyed that there was several distinct views on several aspects like on APIs like versioning, security, performance which relates exactly with some customer work I'm currently doing.
+
+Then I went to the Metrics Magic by Aaron Bedra from Relevance which cover tools like RCov,Flog, Flay, Roodi, Reek and how to integrate them with your continuous integration build. For example why don't you make your build fail when it reaches a certain threshold of uncovered code (let's say 20%)â€¦I like that idea. We do generate these stats in our ci builds but don't fail the buildsâ€¦yet.
+
+Another great panel on tuesday was <a href="http://en.oreilly.com/rails2010/public/schedule/detail/13258">The State of Rails e-Commerce</a>. I'm interested in ecommerce since <a href="http://onrails.org/articles/2006/04/27/an-ecommerce-platform-in-ruby-on-rails">the first of Rails project</a> I worked on end of 2005.
+
+Then I went to see <a href="http://www.igvita.com/">Ilya Grigorik</a>  talk on "No callbacks, no threads: async & cooperative web servers with Ruby 1.9"â€¦I just wish all the task where that awesomeâ€¦Ilya tries to push the current stack of Ruby technologies to the next step to try to get the same benefits than what node.js providesâ€¦and he showed us how. Wow.
+
+I'm not gonna list all the talks I attended here, but will provide a few more comments. There where two business oriented talks I enjoyed, the Million Dollar Mongo by Obie Fernandez and Durran Jordan from Hashrocket and the Agile the Pivotal Way talk by Ian MCFarland. Ian's presented how his teams operates and I now see why Pivotal is on such a growth path. There are many cool aspects they are enforcing, one key I believe is to have really agile team members than can switch in an out of each team while still providing continuity to the customer by having one anchor member. Another essential aspect is the culture and how they propagate it buy doing peer programing to the extreme. Obie's talk was an interesting retrospective on a very large project (10'0000 hours) they undertook. What surprised me is that he was pretty negative on his client and also went after some members of the Rails communityâ€¦Well, maybe Hashrocket should stick to smaller projects ;-)
+
+What else was cool? Rich Kilmer gave a nice talk about Authentication in a RESTful World. Again, that's totally relevant to a customer project of mine. One of the best talks out there was <a href="http://en.oreilly.com/rails2010/public/schedule/detail/14404">Rocket Fueled Cucumbers</a> by Joseph Wilk, but I saw only the last quarter as I selected another talk that I decided to leaveâ€¦too late.
+
+<a href="http://twitter.com/mdeiters">Matthew Deiters</a>  also gave a presentation I really enjoyed about "Recommendations in Rails"â€¦something I may have to build in one of my apps very soon. I'm less exited about the fact that he recommends a java tool (Neo4j) to manage your graph of relationsâ€¦but I trust him that it's the best of the solutions out there for now.
+
+Besides the talks <a href="http://www.blueboxgrp.com/">Bluebox</a>  threw a party at a local bar, besides the fact that <a href="http://www.liquidrail.com">Fernand</a>  managed to get us lost on they way and I wasn't sure we would survive the neighborhood we ended up inâ€¦the party was great and we met one of the Bluebox software developers and her mam and had a great time.  At least I think so based on the trouble I had to wake up the next day.
+
+I had fun with the keynotes. Derek Sivers gave a talk which I enjoyed even though it was not related to Rails but it was very entertaining. I really liked Yehuda Katz talk and he his certainly the driving factor behind Rails 3 but he gave a lot of credits to specific members of the community which took on many issues that most thought where impossible to address or change and fixed them.
+
+The Ruby Heroe Awards Ceremony is always fun to watch, and Gregg puts lots of effort into making them happen. Next time just let the winners make a thank speechâ€¦that would stress them a little.
+
+Overall there wasn't enough coverage of Rails 3, I guess that's gonna for next year when everyone migrated all there projects to it.
+
+So reflecting on these 4 past daysâ€¦it was a great conference. A big thanks to the organizers and all the presenters
+
+Now time to kick off a new Rails 3 project.
+
+Enjoy!
+Daniel

@@ -1,0 +1,10 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIDIwMDcgLSBIZXJlIHdlIGNvbWUh
+typo_id: 489
+---
+I just completed a first pass at setting my schedule for RailsConf. 
+<a href="http://myconfplan.com/users/Daniel/conferences/RailsConf2007">Check it out</a>  at MyConfPlan. In any case go check out MyConfPlan which is a pretty cool Rails application.
+As usual I am looking forward meeting many of the people I have met last year. Also if you are from Switzerland and doing Rails work, try to hunt me down, I would love to talk to you. It's also fun that we are going to meet <a href="http://pea2.com">Kirk</a> again, and "old" mate from Denver that is now leaving in Portland.
+

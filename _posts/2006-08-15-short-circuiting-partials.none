@@ -1,0 +1,56 @@
+---
+layout: post
+title: !binary |-
+  U2hvcnQgY2lyY3VpdGluZyBwYXJ0aWFscw==
+typo_id: 126
+---
+I tend to think of partials as mini-components.  I don't like it when the page using the partial "knows" too much about what's in the partial.  For instance, if your partial displays a collection of things but shouldn't display anything if the collection is empty, then you'll usually see something like this:
+
+<typo:code>
+outer page stuff...
+<% unless some_object.has_many_things.empty? %>
+  <h3>My collection of stuff</h3>
+  <%= render :partial => 'my_partial', :locals => { :collection_of_stuff => some_object.has_many_things } %>
+<% end %>
+more outer page stuff...
+</typo:code>
+
+The outer page has to know which collection of things the partial is going to use and performs some display logic around that.  Shouldn't this all be contained in the partial?  The outer page should just know that it is going to use a partial and that's it.  So our outer page will look like this:
+
+<typo:code>
+outer page stuff...
+<%= render :partial => 'my_partial', :locals => { :some_object => some_object } %>
+more outer page stuff...
+</typo:code>
+
+Now it looks like a self-contained component.  Good.  Of course, we now have to put that outer display logic in the partial.
+
+<typo:code>
+<% unless some_object.has_many_things.empty? %>
+  <h3>My collection of stuff</h3>
+  <% some_object.has_many_things.each do |o| %>
+    do some stuff with <%= o %>
+  <% end %>
+<% end %>
+</typo:code>
+
+Now the messy part is the big <code>unless</code> block around the whole partial.  I'd like to just short circuit the whole page if there's nothing to display, similar to what I do in normal methods:
+
+<typo:code>
+def do_something(some_arg)
+  return nil unless some_arg
+  do_something_cool_with_some_arg
+end
+</typo:code>
+
+Can it be as simple as putting a <code>return</code> statement in our partial?  It turns out, yes, it is that easy.
+
+<typo:code>
+<% return if some_object.has_many_things.empty? %>
+<h3>My collection of stuff</h3>
+<% some_object.has_many_things.each do |o| %>
+  do some stuff with <%= o %>
+<% end %>
+</typo:code>
+
+Wow!  One whole line shorter.  It doesn't look like much in this small contrived example, but I think it makes the purpose of the partial clearer and doesn't clutter up the calling page.  Give it a shot.

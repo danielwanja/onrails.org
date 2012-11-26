@@ -1,0 +1,58 @@
+---
+layout: post
+title: !binary |-
+  V2ViIFNuYXBzaG90IC0gYSBzaW1wbGUgQXBvbGxvIEFwcGxpY2F0aW9uLg==
+typo_id: 331
+---
+This simple Apollo Application takes 200x150 thumbnails of a Web page.
+
+<b><a href="http://onrails.org/articles/2007/06/13/websnapshot-a-simple-adobe-air-application">UPDATE: See Web Snapshot - a simple Adobe AIR application</a><b/>
+<div  style="overflow:hidden">
+<img src="http://onrails.org/files/20070404_WebSnapshot.jpg" border="0" height="268" width="586" alt="20070404_WebSnapshot.jpg" />
+</div>
+
+1) Enter the URL of the page you want to "Snap".
+2) Click the Thumbnail 
+3) A file dialog opens and asks for the File to save.
+
+Download it now: <a href="http://onrails.org/files/WebSnapshot0.1.air">WebSnapshot0.1.air</a> (right click and &lsquo;Download Linked File&rsquo;)
+
+It uses the new HTMLControl that Apollo provides, which behind the scene is a full fledged web browser based on KTHML. Check out an extract of the source code:
+
+<typo:code>
+//1. Load the page (asynchronously)
+var html:HTMLControl = new HTMLControl();
+html.width = 400;
+html.height = 300;
+html.load(new URLRequest(url));
+
+//2. Draw and scale the rendered html into a bitmap
+var snapshot:BitmapData = new BitmapData(200, 150);				
+var matrix:Matrix = new Matrix();
+var scaleX:Number = 0.5;
+var scaleY:Number = 0.5;
+matrix.scale(scaleX, scaleY);
+snapshot.draw(htmlContent, matrix);
+
+//3. Save as JPEG
+var jpegEnc:JPEGEncoder = new JPEGEncoder(75); 
+var jpegData:ByteArray = jpegEnc.encode(snapshot);		
+var stream:FileStream = new FileStream() 
+stream.open(file, FileMode.WRITE); 
+stream.writeBytes(jpegData);
+stream.close(); 
+</typo:code>
+
+I found the JPEGEncoder <a href="See http://www.kaourantin.net/2005/10/more-fun-with-image-formats-in-as3.html">here</a>.
+
+And Daniel Dura had a <a href="http://www.danieldura.com/archive/apollo-native-file-dialogs#more-182">trick</a> to use a native save windows.
+
+Note I need to try this application on Windows...I'll do that tomorrow.
+
+Enjoy!
+Daniel
+
+<b>Update:</b>I quickly tried on Windows XP and the save doesn't seem to work. Let me know how it works for you. Thanks.
+
+<b><a href="http://onrails.org/articles/2007/06/13/websnapshot-a-simple-adobe-air-application">UPDATE: See Web Snapshot - a simple Adobe AIR application</a><b/>
+

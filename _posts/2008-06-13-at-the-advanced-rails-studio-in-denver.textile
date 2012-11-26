@@ -1,0 +1,76 @@
+---
+layout: post
+title: !binary |-
+  QXQgdGhlIEFkdmFuY2VkIFJhaWxzIFN0dWRpbyBpbiBEZW52ZXI=
+typo_id: 3704
+---
+We are just starting Day 2. Mike Clark and Chad Fowler are giving the training and are really good at it. They are 24 people taking the training, most not from Denver, and one from Mexico. Right now attendees are not awake and Mike and Chad are trying to wake us up. Yesterday we covered routes, looked at the Rails and Mongrel source code, looked at a RESTful application, covered ActiveResource, and checked ActiveRecord Associations. It's nice to be able to sit back and take time to play with all these goodies without having to deliver code. It's a nice refresher for me. Next step will be meta programming.
+
+<h3>Here are some notes from the ActiveRecord Associations part of the training:</h3>
+
+<strong>Join Model</strong>: has_many :through
+
+<strong>Polymorphic Associations:</strong> has_many :address, :as => :addressable
+
+<strong>Custom Finders:</strong>
+
+<typo:code lang="ruby">
+class User 
+has_many :visits do
+     def recent(limiit - 5)
+          find(:all, :order => 'created_at DESC', :limit => 5)
+     end
+end
+</typo:code>
+
+<strong>Active Record Scoping:</strong>
+
+with_scope   # protected now
+
+before_filter :find_account
+
+<strong>Scoped Relationships:</strong>
+
+<typo:code lang="ruby">
+@event.registations.find(params[:id])
+@user.events.find_by_id(params[:id])
+@event.registations.find(:all, :conditions => "pre_register is true")
+</typo:code>
+<strong>Named Associations:</strong>
+
+<typo:code lang="ruby">
+class Event < ActiveRecord::Base
+     has_many :registrations
+     has_many :pre_registrations,
+                     :class_name => "Registration",
+                     :conditions => "pre_register is true"
+end
+
+@event.pre_registrations
+</typo:code>
+
+<strong>Named Scope:</strong>
+
+<typo:code lang="ruby">
+class Coupon < ActiveRecord::Base
+     named_scope :limit_not_exceeded,   :conditions => "use_count < max_uses"
+     named_scope :usable_in_store,        :conditions => "external_only is false"
+end
+
+Coupon.limit_not_exceeded
+Coupon.usable_in_store
+Coupon.limit_not_exceeded.usable_in_store
+</typo:code>
+
+<strong>Dynamic Named Scope:</strong>
+
+<typo:code lang="ruby">
+class Coupon < ActiveRecord::Base
+     named_scope :not_expired,  lambda { {  :conditions => ['expires_at > ?', Time.now] } }
+     named_scope :used_at_most,   lambda { |uses| {  :conditions => ['use_count <=  ?', uses] } }
+end
+
+Coupon.not_expired
+Coupon.used_at_most(30)
+Coupon.not_expired.used_at_most(10)
+</typo:code>

@@ -1,0 +1,22 @@
+---
+layout: post
+title: !binary |-
+  V2lsbCBNYXJjZWwgTW9saW5hIFN0ZWFsIE1hdHoncyBSdWJ5IFN1cGVyIFBv
+  d2Vycw==
+typo_id: 1391
+---
+I didn't start watching <a href="http://www.nbc.com/Heroes/">Heroes</a> until after I heard <a href="http://richkilmer.blogs.com/">Rich Kilmer</a> and <a href="http://vernix.org/">Marcel Molina</a> talking about it while putting the badges together for RubyConf 2006 in Denver.&nbsp; Had I watched it before maybe I would have been a little scared of Marcel (<a href="http://en.wikipedia.org/wiki/Sylar">Sylar</a>), but he was very nice and didn't <i>seem</i> like a threat to the Ruby world at all.
+
+So, why be scared of Mr. Molina?  You be the judge.
+
+<typo:code lang="ruby">
+class MarcelMolina
+  include Heroes
+  
+  def <=>(other_hero)
+    other_hero.name == 'Sylar' ? 0 : 1
+  end
+end
+</typo:code>
+
+<img src="/files/180px-Sylar3.jpg" width="92" height="116" /> == <img src="/files/marcel.jpg"  width="92" height="116" /> # =&gt; true

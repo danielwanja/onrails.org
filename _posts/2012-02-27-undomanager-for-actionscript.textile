@@ -1,0 +1,12 @@
+---
+layout: post
+title: !binary |-
+  VW5kb01hbmFnZXIgZm9yIEFjdGlvblNjcmlwdA==
+typo_id: 5095
+---
+UndoManager is A simple ActionScript library to add undo/redo functionality to your Flex/ActionScript projects. I just extracted this library from one of the project Iâ€™m working on. 
+
+<a href="http://n-so.com/blog/2012/02/27/undomanager-for-actionscript/">Read more on my new blog</a>
+
+Enjoy!
+Daniel

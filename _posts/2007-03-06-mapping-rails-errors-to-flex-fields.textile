@@ -1,0 +1,97 @@
+---
+layout: post
+title: !binary |-
+  TWFwcGluZyBSYWlscyBFcnJvcnMgdG8gRmxleCBGaWVsZHMu
+typo_id: 280
+---
+<img src="http://onrails.org/files/20070306_signup_errors.jpg" border="0" height="164" width="528" alt="20070306_signup_errors.jpg" align="center" />
+
+We extended the <a href="wheelerstreet">com.wheelerstreet.utils.ValidatorForm</a> to add support for Rails Errors. Saving a form is a two step process. First, client side validation,  the Signup button only gets enabled if the form is valid from a client side point of view. Step 2, server side validation,  the user press the signup button and invokes the Rails UserController#create method
+
+<typo:code>
+class UsersController < ApplicationController
+  def create
+    @user = User.new(params[:user])
+    respond_to do |format|
+      if @user.save
+        self.current_user = @user
+        format.xml  { head :created }
+      else
+        format.xml  { render :xml => @user.errors.to_xml(:dasherize => false) }       end
+    end
+  end
+end
+</typo:code>
+
+If saving the user fails then Rails return the xml version of the errors:
+
+<typo:code>
+@user.errors.to_xml(:dasherize => false)
+</typo:code>
+
+Now we need a generic way to deal with these errors. We created the Flex RailsErrors class to manage the returned xml. And we created the RailsValidationForm  that extends the com.wheelerstreet.utils.ValidatorForm. The RailsValidationForm class can be bound to a RailsErrors instance. So the result handler of the Flex Cairngorm Flex SignupCommand we just set the errors on the model locatorL
+
+<typo:code>
+	var errors:RailsErrors = new RailsErrors(data.result as XML);
+	MySpyderModelLocator.getInstance().signupErrors = errors;
+</typo:code>
+
+The signup.mxml page contains the following signup form 
+
+<typo:code>
+<mx:Canvas 
+		xmlns:mx="http://www.adobe.com/2006/mxml" 
+		xmlns:rails="org.onrails.rails.*"
+>
+
+ <mx:Panel x="162" y="64" title="Signup - Your Account Details.">		 	
+     <!-- Instance of org.onrails.rails.RailsValidationForm  -->
+	 <rails:RailsValidationForm 
+			id="submitForm" 
+			defaultButton="{signupButton}" 
+			validators="{validators}" 
+			fieldMap="{{Email:email, Password:password}}"
+		    railsErrors="{MySpyderModelLocator.getInstance().signupErrors}"					
+	 			x="98" y="89">
+	 		 <mx:FormItem label="email">
+	 		 		 <mx:TextInput id="email" />
+	 		 </mx:FormItem>
+	 		 <mx:FormItem label="Password">
+	 		 		 <mx:TextInput id="password" displayAsPassword="true" />
+	 		 </mx:FormItem>
+	 		 <mx:FormItem label="Confirmation">
+	 		 		 <mx:TextInput id="passwordConfirmation" displayAsPassword="true" />
+	 		 </mx:FormItem>
+	 		 <mx:Button id="signupButton" label="Signup &gt;&gt;" click="signup()" enabled="{MySpyderModelLocator.getInstance().signupButtonEnabled}"/>
+	 </rails:RailsValidationForm>
+ </mx:Panel>
+ <rails:RailsErrorBox x="487" y="64" width="301" height="178"
+ 	errorMessage="errors prohibited this new account to be created"
+ 	errors="{MySpyderModelLocator.getInstance().signupErrors}"  
+ 	visible="{MySpyderModelLocator.getInstance().signupErrors &amp;&amp; MySpyderModelLocator.getInstance().signupErrors.hasErrors()}"
+ />
+</mx:Canvas>
+</typo:code>
+
+The RailsErrorBox just displays the text of all error messages and is only visible if there are any Rails errors.
+
+Now all the magic happens in the  org.onrails.rails.RailsValidationForm railsErrors setter.
+
+<typo:code>
+public function set railsErrors(errors:RailsErrors):void {
+	_railsErrors = errors;
+	if (_railsErrors==null || !_railsErrors.hasErrors()) {
+		resetErrors();
+	} else {
+        for each (var field:String in _railsErrors.fields) {
+        	if (_fieldMap[field]) 
+        		_fieldMap[field].errorString = field + ' ' + _railsErrors.getFieldErrors(field).join(', ');
+        }				
+	}
+}
+</typo:code>  
+
+The key is to associate the Rails error message with the field is simply to set the errorString on the field.
+
+I just created this code this morning at breakfast so it's really a work in progress. For instance it doesn't support Rails attributes that are more than one word. But this goes hand in hand with the ActiveResourceClient and can be useful I hope to others trying to integrate Rails and Flex. So we will create a Google project and post the RailsErrors and RailsValidationForm.
+

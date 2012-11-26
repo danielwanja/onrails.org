@@ -1,0 +1,12 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNMb2dWaXN1YWxpemVyOiAgbm93IG9wZW4gc291cmNlIGFuZCA2IHgg
+  ZmFzdGVyLg==
+typo_id: 200
+---
+I moved the RailsLogAnalyzer to RubyForge and as there was already a project on RubyForge with the same name, so I renamed it to <a href="http://railslogvislzr.rubyforge.org/">RailsLogVisualizer</a>. So <b>RailsLogVisualizer</b> it is. Version 0.3 provide a drastic speed improvement over version 0.2. If you are curious or adventurous you can browse the <a href="http://rubyforge.org/viewvc/?root=railslogvislzr">source code</a> on RubyForge.
+<br/>
+The Project Home Page is <a href="http://railslogvislzr.rubyforge.org/">http://railslogvislzr.rubyforge.org/</a><br/>
+The project is at <a href="http://rubyforge.org/projects/railslogvislzr/">http://rubyforge.org/projects/railslogvislzr/</a><br/>
+Enjoy!

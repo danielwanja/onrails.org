@@ -1,0 +1,62 @@
+---
+layout: post
+title: !binary |-
+  UmFrZSBDb21tYW5kIENvbXBsZXRpb24gVXNpbmcgUmFrZQ==
+typo_id: 191
+---
+<p>This is an update of a <a href="http://onrails.org/articles/2006/08/30/namespaces-and-rake-command-completion">previous</a> post.</p>
+<p>I just watched <a href="http://onestepback.org/">Jim Weirich's</a> talk on <a href="http://rake.rubyforge.org/">Rake</a> at the <a href="http://pragmaticstudio.com/therailsedge/denver.html">Rails Edge Studio</a> and decided to update the command completion script to use Rake itself for caching the tasks.  <a href="http://errtheblog.com/post/33">Err the Blog</a> did an update on my script last month to include caching for a nice speedup, so I took that and made sure the cache is regenerated when the Rakefile or any rake tasks found in your rails app have been updated.  I added this with just some straight ruby code, but Jim's talk made me realize that this type of thing is exactly is what rake is for.  So, here is the updated version:</p>
+
+<typo:code lang="ruby">
+  #!/usr/bin/env ruby
+
+  # Complete rake tasks script for bash
+  # Save it somewhere and then add
+  # complete -C path/to/script -o default rake
+  # to your ~/.bashrc
+  # Nicholas Seckar <nseckar@gmail.com>
+  # Saimon Moore <saimon@webtypes.com>
+  # http://www.webtypes.com/2006/03/31/rake-completion-script-that-handles-namespaces
+  # http://errtheblog.com/post/33
+
+  exit 0 unless File.file?(File.join(Dir.pwd, 'Rakefile'))
+
+  require 'rubygems'
+  require 'rake'
+  DOTCACHE = File.join(File.expand_path('~'), ".rake_task_cache" , Dir.pwd.hash.to_s)
+  RAKE_FILES = FileList[ __FILE__, 'Rakefile', 'lib/tasks/**/*.rake', 'vendor/plugins/*/tasks/**/*.rake']
+  file DOTCACHE => RAKE_FILES do
+    tasks = `rake --silent --tasks`.split("\n").map { |line| line.split[1] }
+    require 'fileutils'
+    dirname = File.dirname(DOTCACHE)
+    FileUtils.mkdir_p(dirname) unless File.exists?(dirname)
+    File.open(DOTCACHE, 'w') { |f| f.puts tasks }
+  end
+
+  Rake::Task[DOTCACHE].invoke
+  tasks = File.read(DOTCACHE)
+
+  exit 0 unless /\brake\b/ =~ ENV["COMP_LINE"]
+
+  after_match = $'
+  task_match = (after_match.empty? || after_match =~ /\s$/) ? nil : after_match.split.last
+  tasks = tasks.select { |t| /^#{Regexp.escape task_match}/ =~ t } if task_match
+
+  # handle namespaces
+  if task_match =~ /^([-\w:]+:)/
+    upto_last_colon = $1
+    after_match = $'
+    tasks = tasks.map { |t| (t =~ /^#{Regexp.escape upto_last_colon}([-\w:]+)$/) ? "#{$1}" : t }
+  end
+
+  puts tasks
+  exit 0
+</typo:code>
+
+<p><strong>Update:</strong> I fixed the bug that <a href="http://onrails.org/articles/2006/11/17/rake-command-completion-using-rake#comment-227">janfri</a> pointed out.  The bug caused the first task to be missed.  I also changed it so it won't abort if rake isn't the first command on the command line.  This will allow stringing multiple commands together.  For instance:</p>
+
+<typo:code>
+rake db:migrate VERSION=0 && rake db:migrate
+</typo:code>
+
+<p><a href="http://onrails.org/files/rake-completion.rb">Enjoy</a></p>

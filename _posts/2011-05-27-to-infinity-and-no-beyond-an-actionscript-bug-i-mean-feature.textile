@@ -1,0 +1,48 @@
+---
+layout: post
+title: !binary |-
+  VG8gSW5maW5pdHkgYW5kLi4uIG5vIGJleW9uZCAtIEFuIEFjdGlvblNjcmlw
+  dCBidWcuLi5JIG1lYW4sIGZlYXR1cmUu
+typo_id: 5085
+---
+So yesterday I was asked about a bug in a legacy Rails and Flex application. There was one company name that wasn't displayed correctly on the front-end. "Infinity Corp Name" was just displayed as "Infinity", so nothing beyond infinity. First I thought it was a joke, but not, a real bug that could cause issues.
+
+So I looked at the code and the service call was a plain HttpService call with the resultFormat set to object. The server returns XML but the Flash Player converts the XML to a tree of objects. This is where it get's funny. In fact when the player converts your hash to Objects it checks if a value is a number or a string...Hey guess what "Infinity followed by something" is a number.
+
+Here are some conversion examples:
+
+<table border="0">
+<tr>
+	<td>String</td>
+	<td>Is Number</td>
+	<td>Converted Number</td>
+</tr>
+<tr>
+	<td>"123"</td>
+	<td>true</td>
+	<td>123</td>
+</tr>		
+<tr>
+	<td>"123 Abc"</td>
+	<td>false</td>
+	<td>NaN</td>
+</tr>		
+<tr>
+	<td>"Infinity"</td>
+	<td>true</td>
+	<td>Infinity</td>
+</tr>		
+<tr>
+	<td>"Infinity Abc"</td>
+	<td>true</td>
+	<td>Infinity</td>
+</tr>		
+</table>
+
+It's the last conversion which is the root of the problem as "Infinity Abc" is a number that when casted translates to Infinity!
+
+So we found the problem but the solution is really don't use the Flash Player to do the conversion for you using the return type "object". Use "e4x" which would turn your object in XML or use JSON and do the conversion yourself.
+
+To Infinity... and beyond!
+
+Daniel

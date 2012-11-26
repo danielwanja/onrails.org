@@ -1,0 +1,68 @@
+---
+layout: post
+title: !binary |-
+  RGVhbGluZyB3aXRoIEhUVFAgZXJyb3JzIGluIGEgRmxleCB3aXRoIFJhaWxz
+  IGFwcGxpY2F0aW9uLg==
+typo_id: 3282
+---
+The Flash Player is restricted in the way it deals with HTTP errors. This is mainly due to provide cross browser consistency and I believe is due to the restrictions the browser imposes on the Flash Player plugin. In fact when your Flex application performs HTTP requests using the HTTPService class, the request is passed by the Flash Player to the browser and in case of an Rails error (500, 404, ...) the response is somehow crippled on the way back.
+
+<h2>Problem</h2>
+So let's consider that the Flex application requests to update a Person but the validation fails. In the update method of our Rails controller the HTTP Status is set to :unprocessable_entity. This corresponds the HTTP error code 422.
+
+<typo:code language="ruby">
+  # PUT /people/1
+  # PUT /people/1.xml
+  def update
+    @person = Person.find(params[:id])
+
+    respond_to do |format|
+      if @person.update_attributes(params[:person])
+        flash[:notice] = 'Person was successfully updated.'
+        format.html { redirect_to(@person) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @person.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+</typo:code>
+
+
+Now in our Flex application by default we cannot identify that the error 422 occured, more annoyingly we cannot retrieve the Rails error messages. All we get back is the following:
+
+<typo:code>
+[FaultEvent fault=[RPC Fault faultString="HTTP request error" faultCode="Server.Error.Request" faultDetail="Error: [IOErrorEvent type="ioError" bubbles=false cancelable=false eventPhase=2 text="Error #2032: Stream Error. URL: http://localhost:3000/people/8.xml?_method=put"]. URL: http://localhost:3000/people/8.xml?_method=put"] messageId="65EBBA92-5911-68D2-1710-18A687C28455" type="fault" bubbles=false cancelable=true eventPhase=2]
+</typo:code>
+
+<h2>Solution</h2>
+
+I haven't found a way to have the status code and error message appear in the Flex application without having to change the Rails application. But fortunately, I was able to deal with that by using an after_filter at the application controller level, hence having only one place in the application to take care of all controllers and requests. The trick is to "hide" the HTTP Status error code in Rails and as the Flex application deals with XML responses, simply check in Flex if the response starts with &lt;errors&gt;. This can then also be dealt with in the Flex application in one place of the application. In a Cairngorm application I had the Delegate transform these "errors" responses to Faults.
+
+Here is an example of the change to the Rails ApplicationController.
+
+<typo:code language="ruby">
+class ApplicationController < ActionController::Base
+  
+  after_filter :flex_error_handling
+  
+  def flex_error_handling
+    response.headers['Status'] = interpret_status(200) if response.headers['Status'] == interpret_status(422)
+  end
+  
+  def rescue_action_in_public(exception)
+    render_exception(exception)
+  end
+  def rescue_action_locally(exception)
+    render_exception(exception)
+  end
+
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_exception
+  def render_exception(exception)
+    render :text => "<errors><error>#{exception}</error></errors>", :status => 200 
+  end
+  
+end
+</typo:code> 
+

@@ -1,0 +1,260 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIDIwMDcgLSBEYXkgMQ==
+typo_id: 1246
+---
+Here we go, RailsConf 2007, has started. It's bigger than ever, more tracks, more sessions. This is the first day where they provide full or half-day tutorials sessions. I will try to cover the different sessions I will attend so stay tuned.
+
+Today I will attend: "Scaling a Rails Application from the Bottom Up." and "Harnessing Capistrano."
+
+<h2><b>Scaling a Rails Application from the Bottom Up. by Jason Hoffman</b></h2>
+
+Jason Hoffman, CTO of Joyent. Did also form Textdrive.
+
+Six part presentation:
+
+I. Introduction and foundation
+II.  Where do I put stuff
+III. What stuff?
+IV. What do I run on this tuf?
+V.  What are the patterns of deployment?
+VI. Lessons learned
+
+His presentation will answer the following questions:
+
+* What is a "scalalble" application?
+* What are some hardware layout?
+* Where do you get the hardware?
+* How do you pay for it?
+* Where do you put?
+* Who runs it?
+* How do you watch it?
+* What do you need relative to an application?
+* What are the commonalities of scalable web architectures?
+* What are the unique bottlenecks for Ruby on Rails applications?
+* What's the best way to start so you make sure everything scales?
+* what are to common mistakes?
+
+Maybe it's a little early, or I am not awake, but the talk seems a little slow. But Jason seems to do a good job at describing how the different people (developer, sysadmin, ...) see scalability.
+
+Ease of management is on log scale. It's not just a Rails issue. A $5000 Dell 1850 costs $1850 to power over 3 year.
+
+This is a really good presentation from a point of view of what is involved to build data center. I should have read better the <a href="http://conferences.oreillynet.com/cs/rails2007/view/e_sess/11694">description</a> of the presentation. 
+
+So I am going to move over to Thomas Fuchs presentation:
+
+<h2><b>Is JavaScript Overrated? Or: How I Stopped Worrying and Put Prototype and script.aculo.us to Full Use by Thomas Fuchs</b></h2>
+
+I am just tuning in to his presentation and he is showing of how to use selectors with Prototype.
+
+DOM traversal: 
+<typo:code lang="javascript">
+$('blech').previous('ul').down('.somesuch',2)
+$('homo-sapiens').descendantOf('australopothecus')
+</typo:code>
+Element methods:
+<typo:code lang="javascript">
+$('a_div').update('blah').show().setStyle({opacity:0.5});
+$('myform').focusFirstElement();
+$('person-example').serialize();
+Element.addMethods('form') {
+  valid: function(element) {
+       // code to valid form
+  }
+}
+</typo:code>
+
+What's new in Prototype 1.5.1: 
+* speedier $$
+* CSS 3 Selectors
+* $('form').request()
+* String .includes .times .toPaddedString(8,2)
+* JSON support i.e. new Date().toJSON();
+* $('blah').firstDescendent()
+* throw $continue deprecated use "return" instead
+* Safari issues fixed
+* YAML compatible 
+
+DOM, Events, Forms, Position:
+
+* new Element(tagName, attributes);
+* $('blech').insert(html|object, position)
+* $('blech').wrap('span'); 
+* $('country').setValue('AT');
+
+Function.prototype: curry(), wrap(), defer(), delay()
+Q: When is the next release of Prototype? 
+A: When it's ready.
+
+A 10 minute break now, the Thomas is going to present Scriptaculous Effects.
+
+<b><a href="http://script.aculo.us/">script.aculo.us</a></b> adds advanced User Interface interaction to the DOM. Extracted from Real-World applications. Started with Fluxiom. The two main parts are Visual effects and Drag&Drop. Today we will only look at the Visual Effects. They are other parts such as Autocompleter, In-Place Editor, Slider control, DOM Builder, and Unit testing. They won't be more advanced components.
+
+Effects engine: the ideas behind the engine is timeline based animations. 
+
+Core Effects:
+* Effect.Move
+* Effect.Opacity
+* Effect.Highlight
+* Effect.ScrollTo
+* Effect.Morph // 1.7+
+* Effect.Parallel
+
+Based on the Effect.Base.prototype class.
+Effect life cycle: intialize(), setup(), update(), finish(). Each frame calls update().
+
+<typo:code lang="javascript">
+Effect.DefaultOptions = {
+	transition: Effect.Transitions.sinoidal,
+	duration: 1.0,
+	fps: 100,
+	sync: false,
+	from: 0.0,
+	to: 1.0,
+	delay: 0.0,
+	queue: 'parallel'
+}
+</typo:code>
+
+Morphing: came out with Scriptaculous 1.7. 
+
+<typo:code lang="javascript">
+$('mydiv').morph('font-size:20px; color:"#abcdef");
+$('mydiv').morph('warning'); //limited to top level classname
+</typo:code>
+
+TimeLines: 
+<typo:code lang="javascript">
+new Effect.Blah('element_2')
+new Effect.Blah('element_2', {duration:0.6, delay:0.3});
+</typo:code>
+You have to be careful with effects created that will run in parallel as the javascript engine are not multi-thread. Better solutions is to use queues:
+<typo:code lang="javascript">
+new Effect.Blah('element_1', {queue:'end'});
+new Effect.Blah('element_2', {queue:'front'});
+</typo:code>
+and use scope:
+<typo:code lang="javascript">
+new Effect.Blah('element_1', {queue:{scope:'blech'}});
+new Effect.Blah('element_2', {queue:{scope:'blech', position:'end'}});
+new Effect.Blah('element_3', {queue:'front'});
+</typo:code>
+
+Utilities:
+<typo:code lang="javascript">
+Element.toggle('element', 'blind');
+Element.tagifyText(element);
+Element.multiple('element', Effect.Fade, {speed:0.05});
+</typo:code>
+
+Do it yourself: Thomas now shows how to create an Effect programatically.
+
+Future features: 
+* Sound without Flash (it's already in the beta release). Sound.paly('sword.mp3'). It uses native sound implementation with Quicktime as fallback.
+* Adjust to new Prototype features. $('blech').fade(); $('blech').slowlyReveal();
+
+<b>Part IV: Testing</b>
+
+Thomas is flying through testing...
+* assert(true)
+* assertEqual(expected, actual)
+* assertEnumEqual(expected, actual)
+* assertNotEqual(expected, actual) 
+* assertMatch
+* assertIdentical
+* assertNotIdentical
+* assertType
+* assertRaise
+* assertRespondTo
+* assertVisible(element)
+* assertNotVisible(element)
+* info(message)
+
+Mostly unit testing, but some functional testing is available.
+Most assert take a message. I.e. assertXYZ(params, message)
+
+* wait(milliseconds, method) // should be last statement in test, but can be nested.
+* rake test:javascripts (browser will popup). Done with the javascript_test plugin. Launches the web server (WEBrick), then controls the browsers (Safari, Firefox, IE), the browser then calls the web server, and list the results (SUCCESS, FAILURE, and ERROR)
+
+Resources:
+* <a href="http://www.prototypejs.org/">www.prototypejs.org</a>
+* <a href="http://wiki.script.aculo.us/scriptaculous/">wiki.script.aculo.us/scriptaculous/</a>
+* <a href="http://pragmaticprogrammer.com/titles/cppsu/index.html">Book: Prototype and script.aculo.us by Pragmatic Programmer</a>
+* <a href="http://www.manning.com/crane3/">Book: Prototype and Scriptaculous in Action by Manning</a>
+* <a href="http://www.oreilly.com/catalog/9780596527440/">Book: Ajax on Rails by O'Reilly</a>
+
+<h2><b>JRuby talk by Charles Nutter and Thomas Enebo</b></h2>
+
+(note taken by Robert Hall, thanks man!)
+
+* 1.8ish--based on Ruby 1.8.5
+* Gems 0.9.1 is pre-installed 
+* Partially compiled--about 80% of Ruby code compiles...rest is run in JIT mode
+* Ruby 1.8 strings supported.   Works with ActiveSupport::MultiByte
+* Ruby 2.0 String support coming
+* Most Ruby apps should work on JRuby 
+--most gems just work
+--Red Cloth, Blue Cloth
+--Hpricot
+* Typical Rails commands just work
+* ports: Mongrel ported, Hpricot ported, RMajick in progress
+*  Ruby thread API supported
+-- native-threaded 1 JRuby thread=1 system thread 
+-- supports thread pooling
+* performance comparable to C Ruby impl
+--Rdoc has issues
+--CLI performance slow
+* JDBC support strong
+--mySQL support strong
+--some postgres issues
+--some Oracle users 
+--many others
+* ActiveRecord JDBC
+* No native extension support
+* Goldspike--JRuby deployment tool
+--Rails plugin for building WAR files
+--app server agnostic 
+--Can be deployed to Java app server as WAR file 
+* Deployment-- MOngrel supported..some issues (forking, process management doesn't work)
+* Access to Java EE features (JMS, JPA, JTA)
+* Java libraries can be wrapped
+* Coming soon
+--A Grizzly/GlassFish V3 option 
+--Lightweight, gem-installable like Mongrel
+--Concurrency, pooling mulit-app like WAR
+* Mephisto demo
+* Main idea--- Ruby as the programming language, Java for the platform and libraries
+* Best of all worlds 
+--Ruby or Rails as the appl layer
+--Java libraries alone or as ported/wrapped gems
+--Java based services--legacy app integration
+--The JVM
+* Acceptable to today's enterprise
+--Java to 'them', Ruby to you 
+* Calling Java from Rails demo
+--RSS reader demo..calling Java library from Rails code
+* Tools--
+  Textmate, Emacs, Vi(m), notepad
+  -- missing some features
+ -- code competion?
+ -- jump to declaration? 
+ -- rename variables?
+ -- popup Rdoc?
+* Presenters claim Best Ruby IDE Available is NetBeans (milestone 9)
+  -- code completion 
+  -- smart syntax highlightings (for Ruby code, RHTML files, etc)
+  -- Rdoc support 
+* Demoed a cool Ruby shell like IRB implemented in Swing..built into NetBeans
+* Jruby 1.0 almost ready
+
+
+LUNCH: will be back at 1:30pm
+
+<h2><b>Harnessing Capistrano by <a href="http://weblog.jamisbuck.org/">Jamis Buck</a></b></h2>
+
+Jamis will focus Capistrano 2.0 today. Some things will not be backward compatible with Capistrano 1.0. 
+
+His slides are online at <a href="http://presentations.jamisbuck.org/railsconf2007/">http://presentations.jamisbuck.org/railsconf2007/</a>.
+
+

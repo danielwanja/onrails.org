@@ -1,0 +1,15 @@
+---
+layout: post
+title: !binary |-
+  V2ViU25hcHNob3QgYW5kIFJhaWxzTG9nVmlzdWFsaXplciBwb3J0ZWQgdG8g
+  QUlSIDEuMA==
+typo_id: 3322
+---
+I ported the <a href="http://www.myspyder.net/tools/websnapshot/">WebSnapshot</a> and <a href="http://www.myspyder.net/tools/railslogvisualizer/">RailsLogVisualizer</a> application to AIR 1.0
+
+<a href="http://www.myspyder.net/tools/websnapshot/"><img src="http://onrails.org/files/20080225_WebSnapshot.jpg" alt="20080225_WebSnapshot.jpg" border="0" width="225" height="137" /></a>
+
+<a href="http://www.myspyder.net/tools/railslogvisualizer/"><img src="http://onrails.org/files/20080225_RailsLogVisualizer.jpg" alt="20080225_RailsLogVisualizer.jpg" border="0" width="225" height="137" /></a>
+
+Enjoy,
+Daniel

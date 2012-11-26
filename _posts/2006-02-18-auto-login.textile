@@ -1,0 +1,80 @@
+---
+layout: post
+title: !binary |-
+  QXV0by1sb2dpbg==
+typo_id: 19
+---
+One of my midnight Rails projects is a "time tracking" application for which I needed auto-login. You know, the "Remember me" check box so that you don't have to login each time you visit the application.  I found a nice article written by Matt McCray describing how this was implemented for TaskThis.com at http://www.mattmccray.com/archives/category/software/rails/taskthis/. Even further he provides the full source code for the application.  I didn't take directly his auto_login.rb module but was greatly inspired by it. I also used the _Login Engine Plugin_ that was not providing this feature, maybe this changed, so it could be simpler, but how simple implementing the auto-login can be. Note these are not the full classes just pertinent code extracts.
+
+
+
+*1. Remember me*
+
+When the user login and checks the "Remember me" checkbox, the :save_login parameter is set, the User instance remember_me method invoked and the :auth_token cookie set.
+
+<typo:code lang="ruby">
+class AccountController < ApplicationController
+  def login
+    case @request.method
+      when :post
+      if @session[:user] = User.authenticate(@params[:user_login], @params[:user_password])
+        flash['notice']  = "Login successful"
+        if @params[:save_login] == "1"
+          @session[:user].remember_me
+          cookies[:auth_token] = { :value => @session[:user].remember_token , :expires => @session[:user].remember_token_expires }
+        end
+        redirect_back_or_default :controller => "time"
+      else
+        flash.now['notice']  = "Login unsuccessful"
+        @login = @params[:user_login]
+      end
+    end
+  end
+  
+  def logout
+    @session[:user].forget_me if @session[:user]
+    @session[:user] = nil
+    cookies.delete :auth_token
+  end
+end
+</typo:code>
+
+*2. login_from_cookie*
+
+The next time the user visits the website the "login_from_cookie" filter is triggered. This method checks that the user is not logged in and that the :auth_token cookie is set. If that's the case the user matching the :auth_token is searched and the token_expiration verified the the user is automatically logged in. Et voila!
+I guess auto_login would be more appropriate as method name.
+
+<typo:code lang="ruby">
+class ApplicationController < ActionController::Base
+   before_filter :login_from_cookie
+   def login_from_cookie
+      return unless cookies[:auth_token] && @session[:user].nil?
+      user = User.find_by_remember_token(cookies[:auth_token]) 
+      if user && !user.remember_token_expires.nil? && Time.now < user.remember_token_expires 
+         @session[:user] = user
+      end
+   end
+end
+</typo:code>
+
+*3. the User class*
+
+The User class has two methods to set and remove the token from the database. It's pretty secure as from the token the user cannot be identified without having the salt, the email, and the token expiration, which is most unlikely to be recreated. It could be even more secure by just encrypting some random unique identifier. The only issue I encountered was that the user class always forces the password validation and encryption when saving.   For now I just bypass validation and encryption when setting and clearing the remember_me token. 
+
+<typo:code lang="ruby">
+class User < ActiveRecord::Base
+  def remember_me
+    self.remember_token_expires = 2.weeks.from_now
+    self.remember_token = Digest::SHA1.hexdigest("#{salt}--#{self.email}--#{self.remember_token_expires}")
+    self.password = ""  # This bypasses password encryption, thus leaving password intact
+    self.save_with_validation(false)
+  end
+  
+  def forget_me
+    self.remember_token_expires = nil
+    self.remember_token = nil
+    self.password = ""  # This bypasses password encryption, thus leaving password intact
+    self.save_with_validation(false)
+  end
+end
+</typo:code>

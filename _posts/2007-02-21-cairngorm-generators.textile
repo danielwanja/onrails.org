@@ -1,0 +1,90 @@
+---
+layout: post
+title: !binary |-
+  Q2Fpcm5nb3JtIEdlbmVyYXRvcnM=
+typo_id: 253
+---
+I looked into <a href="http://labs.adobe.com/wiki/index.php/Cairngorm">Cairngorm</a> a while ago (version 0.95 I believe, pre-ModelLocator area) and didn't like the fact that you couldn't use Flex bindings at that time.  I recently gave it a second look I liked what I saw. Using Cairngorm is at first very verbose but it provides you with a clear way of organizing your code, which is very beneficial on larger projects. Cairngorm is well documented and there are several nice examples available. Also checkout <a href="http://www.cairngormdocs.org/">http://www.cairngormdocs.org/</a>. So yesterday introduced Cairgorm on two Flex projects I am working on. 
+
+The first project is a larger Flex 1.5 project (65 actionscript classes, 75 Data transfer object, >100 Mxml views) that I need to migrate to Flex 2.0. I though "great time to start with Cairngorm". So the first step was to look at all the user gestures for all the screens and create a list of events, map these events to commands, create 3 delegates and services to handle all the remote calls.  On paper that was pretty fast to do, but I didn't want to create all the Cairngorm supporting class by hand. Handily I found the following generator that is a PHP application:
+
+<block>
+<a href="http://www.ericfeminella.com/blog/2007/01/04/introducing-cairngen/">Cairngen</a>
+</block>
+
+<br/>
+It targets currently only Cairngorm 2.0 and not the newer Cairngorm 2.1. So after generate the supporting classes I had to manually do some changes. But thanks for this tool.
+
+
+The second project is a smaller Flex application backed by a Ruby on Rails server. And I found the following Ruby on Rails Cairngorm generators at http://code.google.com/p/cairngorm-rails-generator/
+
+Simply copy the generators to your "/vendor/generators" folder, the generators folder will then contain the following generators:
+
+<typo:code>
+cairngorm
+command
+delegate
+event
+vo
+worbservice
+</typo:code>
+
+Note there are several places in Rails you can set generators, but that did the trick for me. The I created  a "src" folder in my Rails root folder and issues the following commands:
+
+Then you can use these different generator commands to build the structure you require, the events, commands, delegates and more.
+<typo:code>
+   ./script/generate cairngorm org/onrails/myspyder   
+   ./script/generate delegate  org/onrails/myspyder server
+   ./script/generate command   org/onrails/myspyder show_page_watch server
+   ./script/generate event     org/onrails/myspyder show_page_watch 
+</typo:code>
+
+I issued the generate script for each of the commands that application needs to support. The main controller now looks as follows (still very early in the development phase)
+
+<typo:code>
+package org.onrails.myspyder.control
+{
+	import com.adobe.cairngorm.control.FrontController;
+	import com.adobe.cairngorm.control.CairngormEventDispatcher;
+	import org.onrails.myspyder.control.*;
+	import org.onrails.myspyder.command.*;
+	
+	public class MySpyderController extends FrontController
+	{
+		public function MySpyderController()
+		{
+			initialiseCommands();
+		}
+		
+		public function initialiseCommands() : void
+		{
+			// Application Tabs
+			addCommand( ShowAccountEvent.EVENT_SHOW_ACCOUNT, ShowAccountCommand );
+			addCommand( ShowPagesEvent.EVENT_SHOW_PAGES, ShowPagesCommand );
+			addCommand( ShowSettingsEvent.EVENT_SHOW_SETTINGS, ShowSettingsCommand );			
+			
+			// Page List
+			addCommand( ReloadPagesEvent.EVENT_RELOAD_PAGES, ReloadPagesCommand );
+			addCommand( AddPageEvent.EVENT_ADD_PAGE, AddPageCommand );
+			addCommand( ReloadPageEvent.EVENT_RELOAD_PAGE, ReloadPageCommand );
+			addCommand( RemovePageEvent.EVENT_REMOVE_PAGE, RemovePageCommand );
+			addCommand( SavePageEvent.EVENT_SAVE_PAGE, SavePageCommand );
+
+			// Page Details
+			addCommand( ShowPageWatchEvent.EVENT_SHOW_PAGE_WATCH, ShowPageWatchCommand );
+			addCommand( ShowPageWatchResultEvent.EVENT_SHOW_PAGE_WATCH_RESULT, ShowPageWatchResultCommand );
+			
+			// Html Section
+			addCommand( ShowOriginalPageEvent.EVENT_SHOW_ORIGINAL_PAGE, ShowOriginalPageCommand );
+			addCommand( ShowPageSectionEvent.EVENT_SHOW_PAGE_SECTION, ShowPageSectionCommand );
+			addCommand( SelectPageSectionEvent.EVENT_SELECT_PAGE_SECTION, SelectPageSectionCommand );
+			
+		}	
+						
+	}
+	
+}
+</typo:code>
+
+Let me know your experience with Flex and Cairngorm. 
+

@@ -1,0 +1,220 @@
+---
+layout: post
+title: !binary |-
+  MzYwIEZsZXggLSBEYXkgMiAoVHVlc2RheSkgLSBMaXZlIEJsb2dnaW5n
+typo_id: 4896
+---
+As you saw yesterday afternoon I didn't blog too much, so let's how today goes. The party last night was really fun, lot's of networking, rock band playing and just a nice general geek atmosphere.
+
+<h2>Evolution of RIA Design Principals</h2>
+
+Right now the "Evolution of RIA Design Principals" panel is about to start.
+
+Panel is:
+
+* Chet Haase - Senior Computer Scientists at Adobe
+* Bill Scott - Director UI Engineering at Netflix
+* Ehud Waizer - SAP
+* Paul Guirata - Catalyst Resources
+
+Context: oriented to customer facing applications. Not games.
+
+<h3>Chet Haase</h3>
+
+He works on effects at Adobe. Effects used in a subtle way can make the user more effective. 
+
+What are the top 3 rules
+
+# Transitioning
+# Anticipatory
+# well-timed.
+
+Don't Lose the User.
+
+<h3>Bill Scott</h3>
+
+Principles for Interesting Moments
+
+* Input where you output
+* Require a light footprint
+* Stay in the flow
+* Offer invitations
+* Be reactive
+* Use transitions
+
+<h3>Paul Giurata</h3>
+
+Modular
+Reusable
+* Panel vs Page
+* Panels being reusable application(s)
+* Panels being re-used down to the code level
+* Panels potentially being entirely separate applications
+
+Bill mentions <a href="http://www.perfettimedia.com/">Christine Perfetti</a> has a <a href="http://www.uxideas.com/shows/usability_tests_nutshell/">few videos</a> on usability testing.
+
+<h3>Compiled Favorite Principles</h3>
+
+* Transitioning (Animations)
+* Anticipatory
+* Timing
+* Don't Lose the User
+* Interesting Moments
+* Modular
+* Reusable
+
+
+Consistency .via. developers working from the same code. Not a style guide as it's open for interpretation.
+
+<h2>Whats New in Flex 4 thatâ€™s NOT Spark! - Deepa Subramaniam</h2>
+
+Deepa was on the engineering team for 7 years and now just got promoted as product manager. 
+
+She will put the slides on her <a href="http://iamdeepa.com/blog/">blog</a>. So I will go easy with the notes.
+
+We will talk about:
+
+* Enhanced States
+* Pixel Bender Integration
+* Text (TLF)
+* 2-way Data Binding
+* Advanced CSS
+* OSMF
+* MXItemRenderer
+* RSLs
+* Charting Enhancements
+* ASDoc
+* MXML Vector
+* Compile time FXG Optimization
+* Improved Compiler
+
+<h3>2-Way Databinding</h3>
+
+Inline declaration using the syntax, @{bindable_property}
+
+<pre>
+<s:TextInput id="t1" text="@{t2.text}" />
+<s:TextInput id="t2" />
+</pre>
+
+<h3>Enhanced States Syntax</h3>
+
+* AddChild/RemovedChild replaced with includeIn/excludeFrom
+* State Groups
+
+<pre>
+<m:states>
+ <m:Sate name="A"/>
+ <m:Sate name="B"/>
+ <m:Sate name="C"/>
+</m:states>
+
+<Button label="b1" includeIn="A,B" />
+<Button label="b2" includeIn="C" />
+</pre>
+
+<h3>Text</h3>
+
+* FTE - Flash Text Engine in FP10
+* TLF - Text Layout Framework, set of ActionScript classes build atop FTE. Is XML-based markup
+
+Each text element maps to a class
+<pre>
+<div>		flash.textLayout.elements.DivElement
+<p>			flash.textLayout.elements.ParagraphElement
+<span>		flash.textLayout.elements.SpanElement
+<tab>		flash.textLayout.elements.TabElement
+</pre>
+
+TLF Partitioning:
+
+* Simple, plain text
+* Rich text
+* Rich editable text
+* Rich, editable, selectable text
+
+<h3>Pixel Bender Integration</h3>
+
+* Pixel Bender: language for hardware-indepdent image processing algorithm
+* Shader: compiled instance of a Pixel Bender kernel
+* Flex introduces the ShaderFilter class. Simplifies   pixel bender such that they can be invoked in MXML 
+
+<h3>Advanced CSS</h3>
+
+* Flex 3: type and class selectors
+* Flex 4: Multiple class selectors, id selectors, descendant selectors, pseudo-selectors, pseudo-state selectors
+
+Eg pseudo-state selectors
+
+<pre>
+@namespace s "library://ns.adboe.com/flex/spark";
+
+s|Button:up {
+  color:#000000;
+}
+
+s|Button:down {
+  color:#FFFFFFF;
+}
+</pre>
+
+<h3>OSFM</h3>
+
+* Generic framework for managing media in Flash applications
+* Offers playback functionality, exposed in the Spark video component
+* replaces FLVPlayback
+* org.osmf.media.MediaPlayer
+* Play, pause, stop, loop, seek, volume, autoLoop, autoPlay, ...
+
+<h3>MXItemRenderer</h3>
+
+* Spark ItemRenderers for use with MX List-based components
+* Extends Spark ItemRenderer and handles the contractual differences
+
+<h3>Charting Enhancements</h3>
+
+* FilterFunctions for chart types. Can specify custom filter functions against the data set
+* Inverted axis support
+* RendererDirection in PieSeries
+* Performance related bug fixes
+
+<h3>RSLs</h3>
+
+* By default RSL is turned on.
+* Default linked HelloWorld is 78% smaller
+* How to <a href="http://blogs.adobe.com/dloverin/2010/01/how_to_monkey_patch_when_using_flex_rsls.html">monkey patch when using RSLs</a>. If you monkey patch you loose the benefits off RSLs
+* Flex is split in 6 RSLs: textlayout, osmf, framework, spark, sparkskins, rpc
+
+<h3>MXML Vector</h3>
+
+* New type
+* Like Arrays but contents are restricted to a single base type
+* Faster than array
+
+<pre>
+<fx:Vector id="myVector" type="String">
+  <fx:String>hi</fx:String>
+  <fx:String>bye</fx:String>
+</fx:Vector>
+</pre>
+
+<h3>Compile-time FGX Optimization</h3>
+
+* FXG directly to SWF representation
+* Faster and smaller
+* .fxg or past FXG into an MXML Component uses compile-time FXG Optimization
+
+<h3>ASDoc</h3>
+
+* Comments in MXML
+* Support DITA creation
+* Max, Win, Linux
+
+<h3>Improved Compiler</h3>
+
+* Incremental compilation. 50-80% better
+* Full compilation: 30-40% better (large apps)
+* Compiler Memory Usage: large apps are 30% better. multi-project apps are 70% better. Small apps are similar to Flex 3
+
+
+

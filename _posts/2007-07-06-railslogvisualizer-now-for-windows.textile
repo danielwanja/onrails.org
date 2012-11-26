@@ -1,0 +1,19 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNMb2dWaXN1YWxpemVyIG5vdyBmb3IgV2luZG93cy4=
+typo_id: 2412
+---
+I got around and fixed the Windows specific issue as <a href="http://onrails.org/articles/2007/07/03/railslogvisualizer-meets-adobe-air#comments">Philipp</a> pointed out. I also had to take into account the File.lineEnding in order to make sure the parsing works on OSX and Windows.
+
+If you haven't yet, first <a href="http://labs.adobe.com/downloads/air.html">download the Adobe Integrated Runtime (AIR) 
+</a>
+
+Then download: <a href="http://onrails.org/files/RailsLogVisualizer0.6.air">RailsLogVisualizer0.6.air</a>
+
+After the log file is loaded the parsing takes some time and the UI doesn't yet provide feedback for the progress. See be a little patient. 
+
+Please let me know how the RailsLogVisualizer works for you!
+
+Enjoy!
+Daniel.

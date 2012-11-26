@@ -1,0 +1,210 @@
+---
+layout: post
+title: !binary |-
+  QWR2YW5jZWQgUnVieSAtIERheSAz
+typo_id: 4305
+---
+<div style="text-align:center;"><img src="http://onrails.org/files/20090311_avancedruby.jpg" alt="20090311_avancedruby.jpg" border="0" width="500"/></div>
+
+The first two days of the training were really excellent. Great pace, clear explanations and samples, very technical, Chad and Dave really rock at Ruby.
+
+<h2>Making Domain-Specific Languages</h2>
+
+We start with a discussion on DSL versus an API.
+
+<h3>Meat-and-Potato DSLs</h3>
+
+* Block based API.
+* Directly manipulating domain model classes
+* Defining classes and methods
+* Manually typing repetitive, low-level code
+
+Example is Rake. Rake is a dependency oriented programming language.
+
+Eexample from Dhaka (a paraser generator)
+
+<typo:code lang="ruby">for_pattern("\n") do
+ create_token("newline")
+end
+</typo:code>
+
+<h3>method_missing Trick</h3>
+
+<typo:code lang="ruby">require 'pp'
+
+class CommandListener
+  def initialize
+    @commands = []
+  end
+    
+  def method_missing(*args)
+    @commands << args
+    self
+  end
+end
+
+listener = CommandListener.new
+
+listener.instance_eval do
+  this object accepts whatever you type and stores it
+end
+pp listener</typo:code>
+
+outputs:
+
+<pre>
+#<CommandListener:0x80264
+ @commands=
+  [[:you, CommandListener],
+   [:whatever, #<CommandListener:0x80264 ...>],
+   [:accepts, #<CommandListener:0x80264 ...>],
+   [:object, #<CommandListener:0x80264 ...>],
+   [:this, #<CommandListener:0x80264 ...>],
+   [:it],
+   [:stores, #<CommandListener:0x80264 ...>]]>
+</pre>
+
+<typo:code lang="ruby">listener = CommandListener.new
+listener.instance_eval do
+  this.object.accepts.whatever.commands.and.stores.it
+end  
+
+pp listener</typo:code>
+
+outputs:
+
+<pre>
+#<CommandListener:0x712b4
+ @commands=
+  [[:this],
+   [:object],
+   [:accepts],
+   [:whatever],
+   [:commands],
+   [:and],
+   [:stores],
+   [:it]]>
+</pre>
+
+Note any keyword can be used with method_missing...E.g. <em>freeze</em> is not a missing method.
+
+Now by using a BlankSlate object we can avoid this issue:
+
+<typo:code lang="ruby">class BlankSlate
+  instance_methods.each do |method|
+    undef_method(method) unless method =~ /^__/ || method == 'instance_eval'
+   end
+end
+</typo:code>
+
+We can now create a command listener that can use any commands:
+
+<typo:code lang="ruby">require 'pp'
+
+class CommandListener < BlankSlate
+  def initialize
+    @commands = []
+  end
+
+  def method_missing(*args)
+    @commands << args unless [:inspect, :to_s].include? args.first 
+    self
+  end
+  
+  def pretty_print(pp)
+    pp.output.write @commands.inspect
+  end
+    
+end
+
+listener = CommandListener.new
+
+listener.instance_eval do
+  You can even type freeze!
+end
+pp listener</typo:code>
+
+And we get the following output:
+
+<pre>[[:freeze!], [:type, #<CommandListener:0x7ee28>], [:even, #<CommandListener:0x7ee28>], [:can, #<CommandListener:0x7ee28>], [:You, #<CommandListener:0x7ee28>]]</pre>
+
+On the same principals we just create a morse encoder, and of course Dave had to show off and interface with the speech function of OSX and another version that interfaces with the MIDI controller.
+
+<h2>Exotic Control Flow</h2>
+
+Creating a loop with continuations
+
+<typo:code lang="ruby">def start_loop
+  callcc{|c|c }
+end
+
+def end_loop(c)
+  c.call(c)
+end
+
+
+i = 0
+again = start_loop
+
+  puts i
+  i += 1
+
+end_loop(again) unless i > 5</typo:code>
+
+<h2>Moving on...</h2>
+
+We voted on what to cover next as we won't have time to cover every thing...and the winners are:
+
+<pre>
+* Concurrency                  ..................
+* Debugging/Profiling          ................
+* JRuby                        ......
+* Ruby Extras                  ...........
+* Distributed Programming      ......................
+</pre>
+
+<h2>Distributed Programming</h2>
+
+<h3>DRb</h3>
+
+<strong>Marshaling</strong>
+
+>> h =  {:x => 1}
+>> Marshal.dump(h)
+=> "\004\b{\006:\006xi\006"
+>> Marshal.load(_)
+=> {:x=>1}
+
+<strong>DRB Server</strong>
+
+<typo:code lang="ruby">require 'drb/drb'
+require 'ostruct'
+
+DRb.start_service("druby://localhost:4321", OpenStruct.new)
+DRb.thread.join</typo:code>
+
+<strong>DRb Client</strong>
+
+require 'drb'
+<typo:code lang="ruby">DRB.start_service
+o = DRbOject.new_with_url("druby:''localhost:4321")
+o.last_accessed = Time.now
+o.some_other_arbitrary_method = "Set this on the open struct"</typo:code>
+
+By default Pass-by-value, but can be Pass-by-reference can be enabled by including DRbUndumped.
+
+
+* Rinda
+* Ring
+
+...
+
+That's all Folk! ...my hands/brain where running tired during the last hour :-)
+
+That was an incredible 3 days thanks to Chad and Dave. So if you want to dive deeper in Ruby, the <a href="http://pragmaticstudio.com/ruby/">Advanced Ruby </a> is the best way to get there!
+
+Enjoy!
+Daniel
+
+
+

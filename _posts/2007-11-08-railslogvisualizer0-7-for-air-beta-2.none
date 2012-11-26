@@ -1,0 +1,53 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNMb2dWaXN1YWxpemVyMC43IGZvciBBSVIgYmV0YSAyLg==
+typo_id: 2735
+---
+I recompiled the RailsLogVisualizer for AIR beta. I added drag&drop of log files to bypass an AIR bug on Leopard. File.browseForOpen doesn't trigger the Event.SELECT when the file is selected. I haven't yet tried this version of the application on older versions of OSX or on Windows. Let me know how it works. Also the feedback when loading large log files could be improved, as the application seems to freeze once the progress bar is complete. Just be a little patient as the AVM is working hard for you to compute all these number. 
+
+    <h3>Install RailsLogVisualizer0.7.air</h3>
+    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+         id="RailsLogVisualizer" width="215" height="138"
+         codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+      <param name="movie" value="http://myspyder.net/tools/railslogvisualizer/badge.swf" />
+      <param name="FlashVars" value="appUrl=http://myspyder.net/tools/railslogvisualizer/RailsLogVisualizer0.7.air&airversion=1.0.M5" />
+      <embed src="http://myspyder.net/tools/railslogvisualizer/badge.swf" quality="high" bgcolor="#ffffff"
+                 FlashVars="appUrl=http://myspyder.net/tools/railslogvisualizer/RailsLogVisualizer0.7.air&airversion=1.0.M5"
+                 width="215" height="138" name="RailsLogVisualizer" align="middle"
+                 play="true"
+                 type="application/x-shockwave-flash"
+                 pluginspage="http://www.adobe.com/go/getflashplayer"> </embed>
+    </object>
+
+    <h3>Install Manually</h3>
+    1) Instal Adobe AIR beta 2. (See release notes if previous version was installed)<br/>
+    <a href="http://download.macromedia.com/pub/labs/air/air_b2_mac_100107.dmg">Download AIR for OSX</a> <a href="http://download.macromedia.com/pub/labs/air/air_b2_win_100107.exe">Download AIR for Windows</a><br/>
+    Learn more on <a href="http://labs.adobe.com/technologies/air/">AIR</a> <br/>
+    <br/>
+    2) Download and install <a href="RailsLogVisualizer0.7.air">http://myspyder.net/tools/railslogvisualizer/RailsLogVisualizer0.7.air</a> 
+
+<p style="clear:both" />
+
+For <a href="http://time.onrails.org/">time.onrails.org</a> the log file is currently 98Mb and is loaded and process in less than a minute. Here are the loading details:  
+<pre>
+Loaded 98571986bytes in 28093 milliseconds.
+Parsing file. Please Wait this may take some time....
+Parsing. Split 1639453entries in 1447 milliseconds.
+found:220767 in 1925 milliseconds.
+Aggregating data.
+	aggregated:220767 in 13426 milliseconds.
+	Aggregated:89135
+	aggregated String :4440464(bytes) in 2790 milliseconds.
+</pre>
+
+Then you can navigation through time and see how many request where processed and drill down in specific action and specific methods. For example, here we can quickly see that for October 99 people signed up, 869 did login, 22 forgot their password.
+ 
+<div style="text-align:center;"><img src="http://onrails.org/files/20071106_railslogvisualizer.jpg" alt="20071106_railslogvisualizer.jpg" border="0" width="480" height="373" /></div>
+
+Enjoy,
+Daniel.
+
+
+
+

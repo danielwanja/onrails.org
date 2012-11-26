@@ -1,0 +1,45 @@
+---
+layout: post
+title: !binary |-
+  VXNhZ2VSZXBvcnQgRG93bmxvYWRlciBmb3IgQW1hem9uIFdlYiBTZXJ2aWNl
+  c1RNLiBBIHNpbXBsZSB0b29sIHRvIGRvd25sb2FkIGFsbCB5b3UgdXNhZ2Ug
+  cmVwb3J0cyB3aXRoIG9uZSBjbGljay4gZWMyLCBzMywgIHNucywgc3FzIGFu
+  ZCBtb3Jl
+typo_id: 5035
+---
+UsageReport Downloader for Amazon Web ServicesTM is a simple tool to download all you usage reports with one click. 
+
+Install <a href="http://appsden.com/usagereport/">UsageReport Downloader</a>
+
+<div style="text-align:center;"><img src="http://onrails.org/files/mainui.png" alt="mainui.png" border="0" width="500"  /></div>
+
+The files are download in your documents folder. You can change the default folder. You selection is kept for the next time.
+
+Click the Download XML or Download CSV button to choose which format the report should be downloaded from and off you go...
+
+<div style="text-align:center;"><img src="http://onrails.org/files/downloading.png" alt="downloading.png" border="0" width="346" height="299" /></div>
+
+All you files are download to the select download folder (here  /Users/daniel/Documents/usagereport/downloads/Current\ Billing\ Period)
+
+<div style="text-align:center;"><img src="http://onrails.org/files/downloadedfiles.png" alt="downloadedfiles.png" border="0" width="339" height="164" /></div>
+
+When the application start it checks if you already logged in and you will see the following message.
+
+<div style="text-align:center;"><img src="http://onrails.org/files/pleasewait.png" alt="pleasewait.png" border="0" width="381" height="34" /></div>
+
+ You can stay logged in between launching the application, we recommend that you log out once you download all you files. 
+
+If you need to login just enter your email and amazon password as usual for https://aws.amazon.com. 
+
+<div style="text-align:center;"><img src="http://onrails.org/files/usernamepassword.png" alt="usernamepassword.png" border="0" width="480" height="147" /></div>
+
+If you use the authentication tokens for signing in you will be presented this additional screen:
+
+<div style="text-align:center;"><img src="http://onrails.org/files/token.png" alt="token.png" border="0" width="451" height="120" /></div>
+
+Et voilaâ€¦Happy downloading!
+
+Please contact me at daniel@appsden.com for any bugs, issues, questions.
+
+Enjoy!
+Daniel Wanja

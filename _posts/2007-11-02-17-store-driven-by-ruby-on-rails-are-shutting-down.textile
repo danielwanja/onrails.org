@@ -1,0 +1,12 @@
+---
+layout: post
+title: !binary |-
+  MTcgc3RvcmUgZHJpdmVuIGJ5IFJ1YnkgT24gUmFpbHMgYXJlIHNodXR0aW5n
+  IGRvd24u
+typo_id: 2689
+---
+I usually prefer announcing good news but it seems that one of our former customer, Gatelys, is closing doors. We did some work for them last year to create an eCommerce platform in Ruby On Rails that was driving most of their website. From a technological point this was quite a success. The website was able to handle nicely quite some heavy traffic. It is unfortunate to see these sites disappear as I considered them to be a success for Ruby On Rails.  But I understand that they had quite some business related issues. Even I was getting some emails from disgruntled customers, and even some of the writers on this blog where not fully paid for their work. I must admit that the people I worked with on the technical side were awesome and a real pleasure working with. I know they will be successful in whichever endeavor there will undertake.
+ 
+Here are the closed stores: Gatelys.com, Sleek Spaces, Home Fitness Club, Ray's Golf Shop, Monster Bounce, Swingsets Direct, Back Relief Store, Futons Store, National Table Tennis, Wicker And Wine, Bedroom King, Planet Grind, Playful Rooms, Duffy's Gameroom, Full House Poker Supply, Grill Gods, MVP Hoops.
+
+<img src="http://onrails.org/files/20071101_GatelysStores.jpg" alt="20071101_GatelysStores.jpg" border="0" width="495" />

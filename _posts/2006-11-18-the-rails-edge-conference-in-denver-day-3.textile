@@ -1,0 +1,65 @@
+---
+layout: post
+title: !binary |-
+  VGhlIFJhaWxzIEVkZ2UgQ29uZmVyZW5jZSBpbiBEZW52ZXIgLSBEYXkgMw==
+typo_id: 193
+---
+I am a bit late (20minutes) to the conference as I had an iChat with my nieces that turned 3 today. <br/>
+
+<b>THE RAILS TIMES by Mike Clark and Bruce Williams</b><br />
+
+So I seems I haven't missed to much so far. Mike Clark and Bruce Williams are presenting what's new in Rails. They call it it "THE RAILS TIMES", and the first slide is a news paper front page. 
+<ul>
+<li>HABTM Ousted in favor of Rich Models using has_many :through. </li>
+<li>Many deprecations telling you how to prepare for Rails 2.0. </li>
+<li>Routes get named.</li>
+<li>Extra: Ruby generates javascript. <i> page[:tags].reload # reload _tags.rhtml partial.</i></li>
+<li>Serial(ization) Killers At Large: YARML, XML, JSON</li>
+<li>RSS is the next big thing: <i>render_rss_feed_for(@people, options)</i></li>
+<li>The future is CRUD:  <i>ruby script/generate scaffold_resource article</i>.  <i>map.resources :articles</i></li>
+<li>Conventions Flourish: see simply_helpful. <i>form_for @person do end </i></li>
+<li>BULLTIN: Apps respond-to Clients: <i>respond_to do |format| format.html, format.js, format.xml, format.yaml</i>. Custom format can also be added.</li>
+<li>CORBA? RMI? No, ActiveResource!: <i>class Person &lt; ActiveResource::Base</i></li>
+<li>Security Alert! Parameter Filtering - <i>filter_parameter_logging :password, :login, :user</i></li> 
+<li>Installation Typo Triggers Global App Meltdown:<i> rake rails:freeze:gems</i></li>
+<li>Manking Attacked by Mongrel: <i>gem install mongrel</i></li>
+<li>Tomorrow's Edition? : Rails 2.0? REST? </li>
+</ul>
+
+<p/>
+<b>The Meaning of CRUD by Chad Fowler</b><br />
+
+This is an awsome talk where Chad is going into the impact that a RESTFul approach has on your development and how to write your application using the new named routes and RESTfull controllers.
+
+<p/>
+<b><a href="http://streamlinedframework.com/">Streamlined</a> by Justin Gehtland</b><br />
+Justin goes through many of the options on how to manipulate declaratively a Streamlined driven UI. 
+
+Road map:
+
+* 0.0.6 new look (soon)
+* 0.0.7 control types for fields
+* 0.0.8 plugin instead of generator
+* 0.1 99% rcov, compatibility
+
+Features to look for
+* visual configuration
+* declarative tabbed ui 0.0.8?
+* generated columns sortable
+* context specific ui (different for list, show , edit...)
+* rich text editor (TinyMCE)
+
+
+<p/>
+<b>Deployment by James Duncan Davidson</b><br />
+
+<b>Start Early</b> deploying your applications. Find all the "interesting" deployment problems up front. You'll know how to do it when the times comes. You'll get into the deployment rhythm. 
+
+<b>How to do it:</b> not using WEBrick, CGI, FastCGI...but proxy to Mongrel (ya-huh!). Front End use Apache, Lighttpd, Pound, Pen, or hardware load balancer.  Use Capistrano. <b>The Golden Path</b> assumes Capistrano, Unix (NOT Windows), subversion. Apache 2.2.x (myproxy balance), Ruby Termios Library, MySQL 5. Duncan then went on to a live demo, connected to his Subversion repository in Portland using the Hotels network deploying to an EC2 (Amazon Elastic Computing Cloud) . So pretty gutsy demo but the demo went on pretty well.
+
+<p/>
+<b>CONFERENCE CONCLUSION!</b><br/>
+Awesome conference, well worth the money. Not only was it well organized but the talks where just loaded of useful information. Thanks to all the presenters!
+
+
+

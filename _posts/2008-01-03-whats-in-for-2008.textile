@@ -1,0 +1,23 @@
+---
+layout: post
+title: !binary |-
+  V2hhdCdzIGluIGZvciAyMDA4
+typo_id: 3188
+---
+Thank you and Happy New Year to all the readers. 2007 was impressive over 101,740 page views on this blog. I am always amazed that people come read what is on this blog, as it's often written very late at night or on the spur of the moment. Thank you again. As usual there are many objectives I didn't reach in 2007, but the ride was worthwhile. So without commitments :-) here are a couples of things I like to work on (and blog about) in 2008:
+
+* MySpyder.net with Lee, Sol, and Lomax we started a side project early last year. It's looking really promising but we recently went back to the drawing board to be able to scale massively from a server side point of view. Many blog entries originate from this project. I hope that we get this project back on track and be able to show something cool in a couple of month.
+
+* Flex On Rails - the book. One must be nuts to write a book, so I though why not give it a try. It's definitively a long process but I have some partners in crime that seem even crazier than me...so there is hope that we get something cool out the doors. 
+
+* Flex Dynamic Scaffolding for Rails. This is more a thought, but I would love to create a small Scaffolding framework showing off the potential of Flex. 
+
+* RailsLogVisualizer plugin. A nice plugin to shows real time usage of a Rails application.
+
+* Amazon Web Services. Build a nice application that makes uses of S3, EC2, SimpleDB and DevPay. I should be able to find a problem to my solution.
+
+
+Have a great year everybody!
+Daniel
+
+

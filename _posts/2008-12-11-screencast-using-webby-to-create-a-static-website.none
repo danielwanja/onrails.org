@@ -1,0 +1,13 @@
+---
+layout: post
+title: !binary |-
+  U2NyZWVuY2FzdDogVXNpbmcgV2ViYnkgdG8gY3JlYXRlIGEgc3RhdGljIHdl
+  YnNpdGUu
+typo_id: 4165
+---
+I am currently using <a href="http://webby.rubyforge.org/">Webby</a>  to generate a static website. I think it's a pretty cool tool, so I made a small video to show how to get started with it and explain what it does. Check it out:
+
+<object width="400" height="300"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=2492090&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=2492090&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="300"></embed></object><br /><a href="http://vimeo.com/2492090">Screencast: Using Webby to create a static website</a> from <a href="http://vimeo.com/user507500">daniel wanja</a>.
+
+Enjoy!
+Daniel.

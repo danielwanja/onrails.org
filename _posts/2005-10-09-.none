@@ -1,0 +1,206 @@
+---
+layout: post
+title: !binary |-
+  ZHZkcy5vbnJhaWxzLm9yZyAtIEludGVncmF0aW5nIEZsYXNoIGFuZCBSdWJ5
+  IE9uIFJhaWxz
+typo_id: 6
+---
+<h1>dvds.onrails.org</h1>
+<style>
+    pre {font-family:"Courier New", Courier, Arial; font-size: 12px;}
+    .operator {color: #000000;}
+    .keyword {color: #993300;}
+    .identifier {color: #000087;}
+    .properties {color: #000087;}
+    .identifier2 {color : #000087;}
+    .linecomment, .blockcomment {color: #808080;}
+    .string {color: #0000FF;}
+</style>
+<style type="text/css">
+<!--
+p.MsoNormal {
+margin:0in;
+margin-bottom:.0001pt;
+font-size:12.0pt;
+font-family:Times;
+}
+-->
+</style>
+The purpose of the DvdReleases demo application is to investigate some of the possibilities to integrate a Flash Component with a Ruby On Rails application.</p>
+<p>We will describe:</p>
+<ul>
+  <li>Enabling flash and javascript integration</li>
+  <li>Embedding the FlashTag in the .rhtml file. </li>
+  <li>passing initial values to a Flash component from an ActiveView.</li>
+  <li>embedding multiple Flash components in a .rhtml file.</li>
+  <li>Invoking remotly an ActionController from a Flash component.</li>
+  <li>Calling a javascript function from a Flash component.</li>
+</ul>
+<p>The application is quite simple and provides a list of dvd releases allowing to rate from 1 to 5 the individual dvds. The data has been downloaded from <a href="http://hometheaterinfo.com/dvdlist.htm">http://hometheaterinfo.com/dvdlist.htm</a>. As this is only a demo, you can vote several times. So, which is your favorites Dvd title?</p>
+<h2>Enabling flash and javascript integration for you Ruby on Rails application. </h2>
+<p>Macromedia provided the <a href="http://weblogs.macromedia.com/flashjavascript/">Flash/Javascript Integration Kit </a>a  javascript library to embeded Flash with an .rhtml and javascript page.</p>
+<ol>
+  <li><a href="http://weblogs.macromedia.com/flashjavascript/downloads/FlashJavascriptGateway.zip">download</a> the integration kit.</li>
+  <li>copy <em>JavaScriptFlashGateway.js</em> to rails <em>public/javascript</em> folder.</li>
+  <li>copy <em>JavaScriptFlashGateway.swf</em> to the <em>public</em> folder of your rails app.</li>
+  <li>copy your component, <em>RateMovie.swf </em>in our case, to the <em>public</em> folder of your rails app.
+</li>
+</ol>
+<p>Then in your .rhtml view (list.rhtml in our example) add to the &lt;head&gt; section the following line to enable the Flash Javascript gateway: </p>
+<blockquote>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;%= javascript_include_tag </span><span style="font-family:Monaco;font-size:10.0pt;color:#891315;">&quot;JavaScriptFlashGateway&quot;</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"> %&gt;</span><span style="font-size:10.0pt;"></span></p>
+</blockquote>
+<h2>Embedding the FlashTag in the .rhtml file</h2>
+<p>Then declare the following javascript code to the list.rhtml file. </p>
+<blockquote>
+  <p><span style="font-family:Monaco;font-size:10.0pt;color:#891315;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;script type=&quot;text/javascript&quot;&gt;</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"></span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var uid = new Date().getTime();&nbsp; // uniq</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function insertFlashComponent(dvd_id, vote, average) {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var tag = new FlashTag('../RateMovie.swf', </span><span style="font-family:Monaco;font-size:10.0pt;color:blue;">137</span><span style="font-family:Monaco;font-size:10.0pt;color:black;">, </span><span style="font-family:Monaco;font-size:10.0pt;color:blue;">50</span><span style="font-family:Monaco;font-size:10.0pt;color:black;">); // last two arguments are height and width</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tag.setFlashvars('lcId='+uid+'</span><span style="font-family:Monaco;font-size:10.0pt;color:blue;">&amp;dvdid='+dvd_id+'&amp;dvdvotes='+vote+'&amp;dvdaverage='+average+'');</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"></span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tag.write(document);</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function hightlightVote(dvd_id) {</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; new Effect.Highlight('flashdiv'+dvd_id);</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-family:Monaco;font-size:10.0pt;color:#891315;">&lt;/script&gt;</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"></span></p>
+</blockquote>
+<p>The <em>insertFlashComponent </em>javascript method write the FlashTag dynamically to the html document when invoked.</p>
+<h2>Passing initial values to a Flash component from an ActiveView.</h2>
+<p>The <em>insertFlashComponent</em> method takes the initial parameters of the Flash component. </p>
+<blockquote>
+  <p><span class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp; <strong>insertFlashComponent(&lt;%= dvd_id %&gt;, &lt;%= dvd_vote %&gt;, &lt;%= dvd_average %&gt;);</strong></span></span></p>
+</blockquote>These parameters can now be access from flash from the _root object as follows:
+<blockquote>
+  <pre><span class="identifier">_root</span>.dvdid, <span class="identifier">_root</span>.dvdvotes, <span class="identifier">_root</span>.dvdaverage
+</pre>
+</blockquote>
+<h2>Embedding multiple Flash components in a .rhtml file.</h2>
+<p>This is how each of the Dvds selected by the ActionController is displayed in the table body </p>
+<blockquote>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&lt;tbody&gt;</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&lt;% </span><span style="font-family:Monaco;font-size:10.0pt;color:#760F50;">for</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"> dvd </span><span style="font-family:Monaco;font-size:10.0pt;color:#760F50;">in</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"> @dvds %&gt;</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp; &lt;tr&gt;</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp; &lt;% </span><span style="font-family:Monaco;font-size:10.0pt;color:#760F50;">for</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"> column </span><span style="font-family:Monaco;font-size:10.0pt;color:#760F50;">in</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"> Dvd.content_columns[0,</span><span style="font-family:Monaco;font-size:10.0pt;color:blue;">3</span><span style="font-family:Monaco;font-size:10.0pt;color:black;">] %&gt;</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;div id=</span><span style="font-family:Monaco;font-size:10.0pt;color:#891315;">&quot;flashdiv&lt;%= dvd.id %&gt;&quot;</span><span style="font-family:Monaco;font-size:10.0pt;color:black;">&gt;&lt;%=h dvd.send(column.name) %&gt;&lt;/div&gt;&lt;/td&gt;</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp; &lt;% </span><span style="font-family:Monaco;font-size:10.0pt;color:#760F50;">end</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"> %&gt;</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;td&gt;</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;script type=</span><span style="font-family:Monaco;font-size:10.0pt;color:#891315;">&quot;text/javascript&quot;</span><span style="font-family:Monaco;font-size:10.0pt;color:black;">&gt;</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &lt;% dvd_id = dvd.id</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dvd_vote = dvd.vote!=</span><span style="font-family:Monaco;font-size:10.0pt;color:#760F50;">nil</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"> ? dvd.vote.votes : </span><span style="font-family:Monaco;font-size:10.0pt;color:#891315;">&quot;0&quot;</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"></span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dvd_average = dvd.vote!=</span><span style="font-family:Monaco;font-size:10.0pt;color:#760F50;">nil</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"> ? dvd.vote.average : </span><span style="font-family:Monaco;font-size:10.0pt;color:#891315;">&quot;null&quot;</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"></span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %&gt;</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>insertFlashComponent(&lt;%= dvd_id %&gt;, &lt;%= dvd_vote %&gt;, &lt;%= dvd_average %&gt;);</strong></span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/script&gt;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/td&gt;</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp; &lt;td&gt;&lt;div id=</span><span style="font-family:Monaco;font-size:10.0pt;color:#891315;">&quot;mydiv&lt;%= dvd.id %&gt;&quot;</span><span style="font-family:Monaco;font-size:10.0pt;color:black;">&gt;&nbsp; &lt;%= link_to_remote(</span><span style="font-family:Monaco;font-size:10.0pt;color:#891315;">&quot;show&quot;</span><span style="font-family:Monaco;font-size:10.0pt;color:black;">, </span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :update =&gt; </span><span style="font-family:Monaco;font-size:10.0pt;color:#891315;">&quot;mydiv#{dvd.id}&quot;</span><span style="font-family:Monaco;font-size:10.0pt;color:black;">, </span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :url =&gt; { :action =&gt; </span><span style="font-family:Monaco;font-size:10.0pt;color:#891315;">'show_in_place'</span><span style="font-family:Monaco;font-size:10.0pt;color:black;">,&nbsp; :id =&gt; dvd.id&nbsp; }) %&gt;&lt;/div&gt;</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/td&gt;</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp; &lt;/tr&gt;</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&lt;% </span><span style="font-family:Monaco;font-size:10.0pt;color:#760F50;">end</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"> %&gt;</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&lt;/tbody&gt;</span></p>
+</blockquote>
+<h2>Invoking remotly an ActionController from a Flash component.</h2>
+<p>Now let's look at the Flash Component that allows you to rate your favorite Dvd. </p>
+<p>
+  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="136" height="49">
+    <param name="movie" value="http://dvds.onrails.org/RateMovie.swf">
+    <param name="quality" value="high">
+    <embed src="http://dvds.onrails.org/RateMovie.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="136" height="49"></embed>
+  </object>
+</p>
+<p>Initially the components show the current number of votes and the average of all votes. When moving the mouse over, it tracks if you rating the moving from 1 to 5. On release of the mouse button it sends your vote to the ActionController.</p>
+<p>The component is an instance of <em>VotePanelClass </em>Actionscript class. The code extract here after shows how the initial values passed to the javascript <em>insertFlashComponent</em> can be retrieve from the Flash component by using the _root.dvdid, _root.dvdvotes, and _root.dvdaverage variables. </p>
+<blockquote>
+  <pre><span class="keyword">class</span> VotePanelClass <span class="keyword">extends</span> <span class="identifier2">MovieClip</span> {
+        
+        <span class="keyword">function</span> <span class="identifier2">onLoad</span>() {
+                stars = [s0, s1, s2, s3, s4];
+                <span class="keyword">for</span> (<span class="keyword">var</span> i=0; i<stars.><span class="identifier2">length</span>; i++) stars[i].setRank(i+1);
+                setParams(<span class="identifier">_root</span>.dvdid, <span class="identifier">_root</span>.dvdvotes, <span class="identifier">_root</span>.dvdaverage);
+                setState(ShowVoteStateClass);
+        }
+        
+        <span class="keyword">public</span> <span class="keyword">function</span> submitVote(vote:<span class="identifier">Number</span>) {
+                currentVote = vote;
+                <span class="identifier2">message</span> = <span class='string'>"Sending vote..."</span>
+                setState(WaitStateClass);
+                <span class="keyword">var</span> voteCall = <span class="keyword">new</span> RubyCall(<span class="identifier">this</span>, voteResult);
+                <strong>voteCall.<span class="identifier2">execute</span>(<span class='string'>"/admin/vote_for_dvd/"</span>+dvdId+<span class='string'>"?rank="</span>+vote);</strong>
+        }
+        
+        <span class="keyword">public</span> <span class="keyword">function</span> voteResult(<span class="identifier2">result</span>) {
+                <span class="keyword">if</span> (<span class="identifier2">result</span>.success) {
+                        <span class="identifier2">message</span> = <span class="identifier">null</span>;
+                        votes = <span class="identifier2">result</span>.<span class="identifier2">data</span>.votes;
+                        average = <span class="identifier2">result</span>.<span class="identifier2">data</span>.average;
+                        getUrl(<span class='string'>"javascript:hightlightVote('"</span>+dvdId+<span class='string'>"')"</span>);
+                } <span class="keyword">else</span> {
+                        <span class="identifier2">message</span> = <span class='string'>"Send Error!"</span>;
+                }
+                setState(ShowVoteStateClass);
+        }
+        
+}
+</pre>
+</blockquote>
+<p>To invoke the ActionController we simply use the standard Flash LoadVar class that issues a HttpRequest. We did wrap the LoadVar in the following class:</p>
+<blockquote>
+  <pre><span class="keyword">import</span> <span class="identifier2">mx</span>.utils.Delegate;
+
+<span class="keyword">class</span> RubyCall {
+        
+        <span class="keyword">var</span> callback:<span class="identifier">Function</span>;
+        
+        <span class="keyword">function</span> RubyCall(obj, func) {
+                callback = Delegate.create(obj, func);
+        }
+        
+        <span class="keyword">function</span> <span class="identifier2">execute</span>(<span class="identifier">url</span>:<span class="identifier">String</span>) {
+                <span class="keyword">var</span> result_lv:<span class="identifier">LoadVars</span> = <span class="keyword">new</span> <span class="identifier">LoadVars</span>();
+                result_lv.delegate = <span class="identifier">this</span>;
+                result_lv.<span class="identifier2">onLoad</span> = <span class="keyword">function</span>(success:<span class="identifier">Boolean</span>) {
+                        <span class="identifier">this</span>.delegate.<span class="identifier2">onResult</span>(success, <span class="identifier">this</span>);
+                };
+                <span class="keyword">var</span> send_lv:<span class="identifier">LoadVars</span> = <span class="keyword">new</span> <span class="identifier">LoadVars</span>();
+                send_lv.<span class="identifier">sendAndLoad</span>(<span class="identifier">url</span>, result_lv, <span class='string'>"POST"</span>);
+        }
+        
+        <span class="keyword">function</span> <span class="identifier2">onResult</span>(success:<span class="identifier">Boolean</span>, lv:<span class="identifier">LoadVars</span>) {
+                callback({success:success, <span class="identifier2">data</span>:lv});
+        }
+        
+}
+</pre>
+</blockquote>
+<p>The following call invokes the controller and pass the dvdId and rank. </p>
+<blockquote>
+  <pre>voteCall.<span class="identifier2">execute</span>(<span class='string'>"/admin/vote_for_dvd/"</span>+dvdId+<span class='string'>"?rank="</span>+vote);
+</pre>
+</blockquote>
+<p>From Ruby the <em>admin_controller.vote_for_dvd</em> method is invoked (@todo: change admin_controller to dvd_controller)</p>
+<blockquote>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-family:Monaco;font-size:10.0pt;color:#760F50;">def</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"> vote_for_dvd</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @dvd = Dvd.find(@params[:id], :</span><span style="font-family:Monaco;font-size:10.0pt;color:#760F50;">include</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"> =&gt; :vote)</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rank = @params[:rank].to_i</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vote = @dvd.vote</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vote.votes += </span><span style="font-family:Monaco;font-size:10.0pt;color:blue;">1</span><span style="font-family:Monaco;font-size:10.0pt;color:black;"></span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vote.average += (rank/vote.votes) </span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @dvd.save</span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; render(:layout =&gt; </span><span style="font-family:Monaco;font-size:10.0pt;color:#760F50;">false</span><span style="font-family:Monaco;font-size:10.0pt;color:black;">, :action =&gt; </span><span style="font-family:Monaco;font-size:10.0pt;color:#891315;">'submit_vote'</span><span style="font-family:Monaco;font-size:10.0pt;color:black;">) </span></p>
+  <p class="MsoNormal"><span style="font-family:Monaco;font-size:10.0pt;color:black;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-family:Monaco;font-size:10.0pt;color:#760F50;">end</span></p>
+</blockquote>
+<h2>Calling a javascript function from a Flash component.</h2>
+<p>Finally we call javascript from the Flash component just to demonstrate that it can be done. </p>
+<blockquote>
+  <pre>getUrl(<span class='string'>"javascript:hightlightVote('"</span>+dvdId+<span class='string'>"')"</span>);
+</pre>
+</blockquote>
+<h2>Conclusion</h2>
+<p>In this demo we just scratched the surface on how Flash and Ruby on Rails can be integrated. The same example we showed can easily be written in plain Javascript. However on many projects you could use these techniques to add richer components like charts and other graphical representations of data. </p>
+<p>There are some nice opensource frameworks that allow to generate Flash component directly from a Ruby application, there is the AMF4R library that enable passing typed objects between Ruby and Flash, there is the Flash Player 8 comming out with a new External Interface that opens great new possiblities. So this is just the start!</p>
+<p>Enjoy!<br/>Daniel and Lee.</p>
+<p>&nbsp;	</p>

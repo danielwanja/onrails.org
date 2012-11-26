@@ -1,0 +1,9 @@
+---
+layout: post
+title: !binary |-
+  TXkgUmFpbHNDb25mIFNjaGVkdWxl
+typo_id: 3535
+---
+Railsconf now has an <a href="">iCal version</a> of the schedule. if you are logged in you can even select individual sessions and you will then have your personal schedule available in iCal format. I know..I know...it's a little early, but hey, I wanted to see what's talks they have, and there is really a bunch of goods ones. Here is my selection so far
+
+<div style="text-align:center;"><img src="http://onrails.org/files/20080508_RailsConfSchedule.jpg" alt="20080508_RailsConfSchedule.jpg" border="0" width="520" /></div>

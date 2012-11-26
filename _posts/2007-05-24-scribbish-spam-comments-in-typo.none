@@ -1,0 +1,186 @@
+---
+layout: post
+title: !binary |-
+  U2NyaWJiaXNoIFNwYW0gQ29tbWVudHMgaW4gVHlwbw==
+typo_id: 1867
+---
+We've been getting a bunch of comment spam lately and they are still displayed when correctly marked as spam in <a href="http://typosphere.org/">Typo 4.0.3</a> with the <a href="http://quotedprintable.com/pages/scribbish">Scribbish 2.0</a> theme.  I believe this is fixed in Scribbish 3.0, but I'm not sure if it's compatible with our version of Typo.  Here's a small patch to the Scribbish theme that only displays published comments instead of all comments.
+
+<style type="text/css">
+/* Stylesheet generated from TextMate theme
+ *
+ * All Hallow's Eve
+ * 
+ *
+ */
+
+/* Mostly to improve view within the TextMate HTML viewer */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+pre.textmate-source {
+  margin: 0;
+  padding: 0 0 0 2px;
+  font-family: Monaco, monospace;
+  font-size: 16px;
+  line-height: 1.3em;
+  word-wrap: break-word;
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -o-pre-wrap;
+}
+
+pre.textmate-source.all_hallow_s_eve {
+  color: #FFFFFF;
+  background-color: #000000;
+}
+
+pre.textmate-source .linenum {
+  width: 75px;
+  padding: 0.1em 1em 0.2em 0;
+  color: #888;
+  background-color: #eee;
+}
+pre.textmate-source.all_hallow_s_eve span {
+   padding-top: 0.2em;
+   padding-bottom: 0.1em;
+}
+pre.textmate-source.all_hallow_s_eve ::selection {
+  background-color: rgba(115, 89, 126, 0.88);
+}
+/* Text base */
+pre.textmate-source.all_hallow_s_eve .text {
+  color: #FFFFFF;
+  background-color: #434242;
+}
+
+/* Source base */
+pre.textmate-source.all_hallow_s_eve .source {
+  color: #FFFFFF;
+  background-color: #000000;
+}
+
+/* Comment */
+pre.textmate-source.all_hallow_s_eve .comment {
+  color: #9933CC;
+}
+
+/* Constant */
+pre.textmate-source.all_hallow_s_eve .constant {
+  color: #3387CC;
+}
+
+/* Keyword */
+pre.textmate-source.all_hallow_s_eve .keyword {
+  color: #CC7833;
+}
+
+/* Pre-processor Line */
+pre.textmate-source.all_hallow_s_eve .meta_preprocessor_c {
+  color: #D0D0FF;
+}
+
+/* Pre-processor Directive */
+pre.textmate-source.all_hallow_s_eve .keyword_control_import {
+}
+
+/* Function name */
+pre.textmate-source.all_hallow_s_eve .entity_name_function {
+}
+
+/* Function argument */
+pre.textmate-source.all_hallow_s_eve .variable_parameter {
+  font-style: italic;
+}
+
+/* Block comment */
+pre.textmate-source.all_hallow_s_eve .source .comment_block {
+  color: #FFFFFF;
+  background-color: #9B9B9B;
+}
+
+/* String */
+pre.textmate-source.all_hallow_s_eve .string {
+  color: #66CC33;
+}
+
+/* String escapes */
+pre.textmate-source.all_hallow_s_eve .string .constant_character_escape {
+  color: #AAAAAA;
+}
+
+/* String (executed) */
+pre.textmate-source.all_hallow_s_eve .string_interpolated {
+  color: #000000;
+  background-color: #CCCC33;
+}
+
+/* Regular expression */
+pre.textmate-source.all_hallow_s_eve .string_regexp {
+  color: #CCCC33;
+}
+
+/* String (literal) */
+pre.textmate-source.all_hallow_s_eve .string_literal {
+  color: #CCCC33;
+}
+
+/* String escapes (executed) */
+pre.textmate-source.all_hallow_s_eve .string_interpolated .constant_character_escape {
+  color: #555555;
+}
+
+/* Type name */
+pre.textmate-source.all_hallow_s_eve .entity_name_type {
+  text-decoration: underline;
+}
+
+/* Class inheritance */
+pre.textmate-source.all_hallow_s_eve .entity_other_inherited-class {
+  font-style: italic;
+  text-decoration: underline;
+}
+
+/* Tag name */
+pre.textmate-source.all_hallow_s_eve .entity_name_tag {
+  text-decoration: underline;
+}
+
+/* Tag attribute */
+pre.textmate-source.all_hallow_s_eve .entity_other_attribute-name {
+}
+
+/* Support function */
+pre.textmate-source.all_hallow_s_eve .support_function {
+  color: #C83730;
+}
+
+
+
+</style>
+  <pre class="textmate-source all_hallow_s_eve">
+<span class="source source_diff"><span class="meta meta_diff meta_diff_header meta_diff_header_from-file"><span class="punctuation punctuation_definition punctuation_definition_from-file punctuation_definition_from-file_diff">---</span> themes/scribbish/views/articles/_comment.rhtml  2007-05-24 10:36:20.000000000 -0600
+</span><span class="meta meta_diff meta_diff_header meta_diff_header_to-file"><span class="punctuation punctuation_definition punctuation_definition_to-file punctuation_definition_to-file_diff">+++</span> themes/scribbish/views/articles/_comment_no_spam.rhtml  2007-05-24 10:35:14.000000000 -0600
+</span><span class="meta meta_diff meta_diff_range meta_diff_range_unified"><span class="punctuation punctuation_definition punctuation_definition_range punctuation_definition_range_diff">@@</span> <span class="meta meta_toc-list meta_toc-list_line-number meta_toc-list_line-number_diff">-1,5 +1,6</span> <span class="punctuation punctuation_definition punctuation_definition_range punctuation_definition_range_diff">@@</span>
+</span> &lt;ol id="comments" class="comments"&gt;
+<span class="markup markup_deleted markup_deleted_diff"><span class="punctuation punctuation_definition punctuation_definition_inserted punctuation_definition_inserted_diff">-</span>  &lt;% for comment in @article.comments -%&gt;
+</span><span class="markup markup_inserted markup_inserted_diff"><span class="punctuation punctuation_definition punctuation_definition_inserted punctuation_definition_inserted_diff">+</span>  &lt;% if @article.published_comments.any? -%&gt;
+</span><span class="markup markup_inserted markup_inserted_diff"><span class="punctuation punctuation_definition punctuation_definition_inserted punctuation_definition_inserted_diff">+</span>    &lt;% for comment in @article.published_comments -%&gt;
+</span>     &lt;li class="comment" id="comment-&lt;%= comment.id %&gt;"&gt;
+       &lt;div class="author"&gt;
+         &lt;%= content_tag(:div, gravatar_tag(comment.email)) if config_value(:use_gravatar) and comment.email %&gt;
+<span class="meta meta_diff meta_diff_range meta_diff_range_unified"><span class="punctuation punctuation_definition punctuation_definition_range punctuation_definition_range_diff">@@</span> <span class="meta meta_toc-list meta_toc-list_line-number meta_toc-list_line-number_diff">-10,5 +11,8</span> <span class="punctuation punctuation_definition punctuation_definition_range punctuation_definition_range_diff">@@</span>
+</span>         &lt;%= comment_html(comment) %&gt;
+       &lt;/div&gt;
+     &lt;/li&gt;
+<span class="markup markup_inserted markup_inserted_diff"><span class="punctuation punctuation_definition punctuation_definition_inserted punctuation_definition_inserted_diff">+</span>    &lt;% end -%&gt;
+</span><span class="markup markup_inserted markup_inserted_diff"><span class="punctuation punctuation_definition punctuation_definition_inserted punctuation_definition_inserted_diff">+</span>  &lt;% else -%&gt;
+</span><span class="markup markup_inserted markup_inserted_diff"><span class="punctuation punctuation_definition punctuation_definition_inserted punctuation_definition_inserted_diff">+</span>    &lt;li class="dummy_comment" style="display:none"&gt;No comments&lt;/li&gt;
+</span>   &lt;% end -%&gt;
+ &lt;/ol&gt;
+</span>
+</pre>
+

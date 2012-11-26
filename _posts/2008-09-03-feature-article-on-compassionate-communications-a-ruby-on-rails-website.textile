@@ -1,0 +1,13 @@
+---
+layout: post
+title: !binary |-
+  RmVhdHVyZSBhcnRpY2xlIG9uIENvbXBhc3Npb25hdGUgQ29tbXVuaWNhdGlv
+  bnMsIGEgUnVieSBvbiBSYWlscyB3ZWJzaXRlLg==
+typo_id: 3972
+---
+A while back I worked with Lee and Sean on <a href="http://www.compassionatecommunications.com/">Compassionate Communications</a> which was featured in an interview/article in the <a href="http://www.nctimes.com/articles/2008/09/03/lifeandtimes/z8a0df10c4ac0a197882574b20076a4c1.txt">San Diego North County Times</a> last week. Read it <a href="http://www.nctimes.com/articles/2008/09/03/lifeandtimes/z8a0df10c4ac0a197882574b20076a4c1.txt">here</a>.
+
+
+
+
+

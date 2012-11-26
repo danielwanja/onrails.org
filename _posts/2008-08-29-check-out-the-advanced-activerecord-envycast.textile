@@ -1,0 +1,10 @@
+---
+layout: post
+title: !binary |-
+  Q2hlY2sgb3V0IHRoZSBBZHZhbmNlZCBBY3RpdmVSZWNvcmQgRW52eWNhc3Q=
+typo_id: 3965
+---
+
+I just went through the first <a href="http://envycasts.com/">screencast</a> from the <a href="http://www.railsenvy.com/">Rails Envy</a> guys'. I wasn't sure if I would liked the fact that they used a green screen approach, but thought I would support their effort as I really like their weekly podcast. Guess what? It's a really good screen cast, very informative, high quality and well done. Wait, there is more, they have a cool Cheat Sheet that comes with the download. Well worth the money, go <a href="http://envycasts.com/">check it out</a>.
+
+<div style="text-align:center;"><img src="http://onrails.org/files/20080829_EnvyCast.jpg" alt="20080829_EnvyCast.jpg" border="0" width="480" height="396" /></div>

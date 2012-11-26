@@ -1,0 +1,139 @@
+---
+layout: post
+title: !binary |-
+  TVdSQyAyMDEwIC0gTm90ZXMgZnJvbSBEYXkgMS4=
+typo_id: 4899
+---
+<a href="http://twitter.com/jakep36">Jake Parsell</a> took some really great notes using Google Wave. I know the videos will be available shortly but in the mean time if you want to figure out what you may want to watch you can find out more details below:
+
+  <style type="text/css">
+#wave p.p1  {margin-left: 0.0px; font: 26.0px Arial}
+#wave p.p2  {margin-left: 0.0px; font: 13.0px Arial; min-height: 15.0px}
+#wave p.p3  {margin-left: 0.0px; font: 20.0px Arial}
+#wave p.p4  {margin-left: 17.0px; font: 13.0px Arial; color: #0e3ea8}
+#wave p.p5  {margin-left: 17.0px; font: 13.0px Arial}
+#wave p.p6  {margin-left: 34.0px; font: 13.0px Arial}
+#wave p.p7  {margin-left: 17.0px; font: 13.0px Arial; min-height: 15.0px}
+#wave p.p8  {margin-left: 0.0px; font: 20.0px Geneva; color: #234455}
+#wave p.p9  {margin-left: 34.0px; font: 13.0px Geneva; color: #234455}
+#wave p.p10 {margin-left: 34.0px; font: 13.0px Arial; min-height: 15.0px}
+#wave p.p11 {margin-left: 51.0px; font: 13.0px Arial}
+#wave p.p12 {margin-left: 68.0px; font: 13.0px Arial}
+#wave p.p13 {margin-left: 34.0px; font: 13.0px Arial; color: #0e3ea8}
+#wave p.p14 {margin-left: 85.0px; font: 13.0px Arial}
+#wave p.p15 {margin-left: 51.0px; font: 13.0px Arial; min-height: 15.0px}
+span.s1 {font: 20.0px Geneva; color: #234455}
+span.s2 {font: 20.0px Geneva; color: #003366}
+span.s3 {font: 13.0px Geneva; color: #234455}
+span.s4 {font: 13.0px Arial; text-decoration: underline ; color: #0e3ea8}
+span.s5 {text-decoration: underline ; color: #0e3ea8}
+span.s6 {color: #000000}
+span.s7 {text-decoration: underline}
+span.s8 {background-color: #ffe500}
+  </style>
+
+<div id="wave">
+<p class="p1"><b>MWRC</b></p>
+<p class="p2"><br></p>
+<p class="p3"><span class="s1">Giles Bowkett</span><b> - making some music with ruby </b><span class="s2">Archaeopteryx</span></p>
+<p class="p4"><span class="s3">- <a href="http://gilesbowkett.blogspot.com/2008/02/archaeopteryx-ruby-midi-generator.html"><span class="s4">Giles Bowkett: Archaeopteryx: A Ruby MIDI Generator</span></a></span></p>
+<p class="p5">- learn probability matrix</p>
+<p class="p5">- google is easy if you understand prob matrix</p>
+<p class="p5">- google spell check in 21 lines of python</p>
+<p class="p5">- wonder how easy OCR would seem in this context?</p>
+<p class="p5">- don't understand python community.... why are there not more dick jokes about pythons?</p>
+<p class="p6">- how is there not a web framework called trouser snake?</p>
+<p class="p5">- oh yeah... better talk about lambdas</p>
+<p class="p7"><br></p>
+<p class="p3"><span class="s1">James Golick</span><b> - Cooking with Chef - @jamesgolick </b><a href="http://github.com/jamesgolick"><span class="s5"><b>github.com/jamesgolick</b></span></a></p>
+<p class="p4"><span class="s6">- <a href="http://www.rubyinside.com/chef-tasty-server-configuraiton-2162.html"><span class="s7">Chef: Quick and Tasty Ruby Powered Server Configuration</span></a></span></p>
+<p class="p5">- sysadmin work is boring</p>
+<p class="p5">- too many config languages</p>
+<p class="p5">- amazed if anyone can get nagios working on a consistent basis</p>
+<p class="p5">- ues recipes to install packages</p>
+<p class="p5">- recipes written in ruby</p>
+<p class="p5">- create services -&gt; status, restart, reload, etc.</p>
+<p class="p5">- templates to create config files</p>
+<p class="p6">- erb</p>
+<p class="p5">- notifies restart if config changes</p>
+<p class="p6">- autoreload on save very handy for things like dynamic lists of ips that change when you start a new EC2 instance</p>
+<p class="p5">- makes setting up stuff like haproxy and heartbeat easier</p>
+<p class="p5">- security</p>
+<p class="p6">- easy to include iptables</p>
+<p class="p6">- <span class="s8">always turn off password ssh logins</span> - easier to remember when part of your cookbook</p>
+<p class="p5">- look into chef server and chef client</p>
+<p class="p7"><br></p>
+<p class="p8">Joe Damato - RVM</p>
+<p class="p9">- <a href="http://rvm.beginrescueend.com/"><span class="s7">RVM: Ruby Version Manager - RVM Ruby Version Manager - Documentation</span></a></p>
+<p class="p6"><span class="s3">- </span>RVM gemset - different gemsets for the same ruby version per project</p>
+<p class="p6">- create rvmrc to switch env automatically when you cd into a project directory</p>
+<p class="p6">- export gemsets?</p>
+<p class="p6">- should you use gemsets or just bundler</p>
+<p class="p10"><br></p>
+<p class="p8">Loren Segal - Documentation with YARD</p>
+<p class="p9">- <a href="http://yardoc.org/"><span class="s7">YARD 0.5.3 - The Longest</span></a></p>
+<p class="p6">- Yet Another Ruby Documentor</p>
+<p class="p6">- Talk about documentation in general</p>
+<p class="p11">- Documentation to help you think about your API</p>
+<p class="p11">- What makes documentation good?</p>
+<p class="p12">- consistency -&gt; pick a style and stick with it</p>
+<p class="p12">- correct -&gt; it can be wrong and should be audited</p>
+<p class="p12">- coherent</p>
+<p class="p6">- YARD</p>
+<p class="p11">- meta-data</p>
+<p class="p11">- @param [Symbol] req_type :get or :post</p>
+<p class="p11">- ....</p>
+<p class="p11">- yard-respec</p>
+<p class="p12">- shows rspec specs alongside method docs</p>
+<p class="p11">- yard-sinatra</p>
+<p class="p12">- shows your routes for api</p>
+<p class="p10"><br></p>
+<p class="p2"><br></p>
+<p class="p8">Michael Jackson - Rack for web developers</p>
+<p class="p13"><span class="s6">- <a href="http://rack.rubyforge.org/"><span class="s7">Rack: a Ruby Webserver Interface</span></a></span></p>
+<p class="p6">- Read the Spec</p>
+<p class="p6">- blah, blah, blah</p>
+<p class="p6">- rack is cool in that it allows web frameworks to communicate with web servers, but not sure you care that much unless making a web framework</p>
+<p class="p10"><br></p>
+<p class="p3"><b>Yehuda Katz - Modularity - Lessons learned from Rails 3</b></p>
+<p class="p6">- Try to become modular too soon and you will be wrong</p>
+<p class="p6">- Become modular once lack of modularity is hurting you, then decouple</p>
+<p class="p6">- Constants -&gt; Globals</p>
+<p class="p6">- router.url_for in rails 3</p>
+<p class="p6">- easier to track down where instance variables came from than Globals</p>
+<p class="p6">- eliminate things that are global</p>
+<p class="p11">- tests are the canary in the coal mine</p>
+<p class="p11">- instead of hard coding contants, pass things around</p>
+<p class="p11">- be subspicious of Contant.foo</p>
+<p class="p6">- stop caring about object allocations</p>
+<p class="p11">- object allocations are essentially free</p>
+<p class="p6">- Render</p>
+<p class="p11">- Controller -&gt; ViewPathSet -&gt; ViewPath -&gt; Template (on file system)</p>
+<p class="p11">- Used to assume actual file path</p>
+<p class="p12">- hard to cache</p>
+<p class="p12">- Template.new takes a path</p>
+<p class="p11">- Now</p>
+<p class="p12">- Caller -&gt; LookupContext -&gt; ViewPaths -&gt; PathResolver-&gt; Resolver -&gt; Template</p>
+<p class="p12">- Template.new takes a source</p>
+<p class="p12">- Could overide PathResolver to pull from database or S3 or something</p>
+<p class="p14">- could be useful in making a CMS system with Rails</p>
+<p class="p6">- Use Modules</p>
+<p class="p11">- don't put methods you want people to be able to override in a class, make a module</p>
+<p class="p11">- then you cna call super</p>
+<p class="p11">- Use ActiveSupport::Concern</p>
+<p class="p15"><br></p>
+<p class="p3"><b>Paul Sadauskas - HTTP</b></p>
+<p class="p6">- read the spec :-)</p>
+<p class="p6">- prevent the requests that you don't have to answer</p>
+<p class="p6">- Persistent Connections - so you don't have to create a new TCP connection for every request --- keepalive=onC</p>
+<p class="p6">- Caching</p>
+<p class="p11">- how do you decide when something is stale?</p>
+<p class="p15"><br></p>
+<p class="p15"><br></p>
+<p class="p3"><span class="s1">Jeff Casimir </span><b>- Ruby Processing</b></p>
+<p class="p6">- dynamically generate images in ruby app</p>
+<p class="p6">- uses jruby</p>
+<p class="p6">- first built to create verticle column headers</p>
+<p class="p6">- Distributed Programming with Ruby -&gt; to learn how to send jobs to ruby processing from rails</p>
+<p class="p6">- Beanstalkd -&gt; simple fast background processing -&gt; brew install beanstalkdÂ </p>
+</div>

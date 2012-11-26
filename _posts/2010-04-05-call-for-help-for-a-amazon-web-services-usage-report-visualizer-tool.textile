@@ -1,0 +1,43 @@
+---
+layout: post
+title: !binary |-
+  Q2FsbCBmb3IgaGVscCBmb3IgYSBBbWF6b24gV2ViIFNlcnZpY2VzIFVzYWdl
+  IFJlcG9ydCB2aXN1YWxpemVyIHRvb2wg
+typo_id: 5033
+---
+I've cross posted this call for help on the <a href="http://developer.amazonwebservices.com/connect/thread.jspa?threadID=44752">Amazon Web Service Discussion Forum</a>.
+
+I need your help understanding your usage reports logs for a visualization tool I'm currently developing. 
+
+I've been reading this forum for a while and found great information on it. The tool in question is for all Amazon services not just ec2, but I thought the ec2 forum was the most appropriate. Let me know if that's not the case. 
+
+I've been working for a while on a desktop application to visualize your amazon web services usage logs, and it's far from ready, however I should have reached out way earlier an figured out what others would like in such a tool and also I need help to make sure that I can visualize data for larger account and for accounts that use different services. 
+
+As a disclaimer, the tool will not be a free tool, but it will be very affordable but I didn't figure the pricing out yet as I'm not exactly sure what functionality I can make work. Currently I'm having difficulties figuring out how I will make the pricing calculator work correctly after the recent announcement of the Combined AWS Data Transfer Pricing. So the first version of the tool will focus more on visualizing usage rather than calculating price. 
+
+So my call for help is to find out more information about your usage report logs. I'm looking for people that have larger accounts than my current usage. I currently have a few servers and pay a little more than $200 a month. I use ec2, sdb, sqs, rds, s3, but not cf. So I'm looking for a couple of different scenarios with people that pay $2000/month or even way larger usage would be great. 
+
+The best help would be if I can have a copy of to the monthly usage logs by hour in XML format. I would understand if you don't want to give out that information. Please contact me if you are hesitant or need more information so I make clear what I'm trying to achieve and how I will proceed. If I don't find anyone out there to share this information I would be able to create a tool that just extracts anonymous statistic from your logs that would help answer the different questions I have. Let me know if that would be something you are willing to share. 
+
+You can also just help by letting me know what size each of you log files is for each of the services when downloading it in XML format. And how many lines each of the files contains. That would verify some of the assumptions I'm currently making. 
+
+To access your logs you must login to your aws.amazon.com account go to the Account page and select Usage Reports from the right menu. Select one of the service from the dropdown, the list includes the following: 
+
+* Amazon CloudFront, Amazon Elastic Compute Cloud 
+* Amazon Simple Storage Service 
+* Amazon RDS Service 
+* Amazon SimpleDB 
+* Amazon Simple Queue Service 
+* Amazon Virtual Private Cloud 
+
+Then your are presented with the Download Usage Report form. For the Time Period field select "Last Month". Then press the "Download report (XML)" button. This downloads the file my tool will analyze. Download it for each of the services. 
+
+My tool, tentatively named Usage Report for Amazon Web Servicesâ„¢, is a desktop application that doesn't require any server side installation that with one click lets you download directly from Amazon website all the usage reports and give a summary of the usage and allows to view each service individually by providing usage charts and time series of what was used when. 
+
+You can find my not so interesting notes on the development progress of my tool at http://awsusageanalyzr.tumblr.com/. The tool will be made available via http://appsden.com. My other blog is http://onrails.org, I'm a Flex and Ruby on Rails developer in Denver. 
+
+
+Any help is appreciated. 
+
+Daniel Wanja 
+d@n-so.com 

@@ -1,0 +1,94 @@
+---
+layout: post
+title: !binary |-
+  UnVieUNvbmYgMjAwNiAtIERheSAx
+typo_id: 168
+---
+
+<table>
+<tr><td>Thursday night the crew (Chad, Rich, ..) preparing the name tags.</td></tr>
+<tr><td><img src="http://onrails.org/files/nametags.jpg" border="0" height="166" width="208" alt="nametags.jpg" align="right" />
+<img src="http://onrails.org/files/nametags2.jpg" border="0" height="166" width="208" alt="nametags2.jpg" align="right" /></td></tr>
+
+<tr><td>It's starting stay tunned.</td></tr>
+<tr><td><img src="http://onrails.org/files/RubyConfDenverLogo.jpg" border="0" height="102" width="153" alt="RubyConfDenverLogo.jpg" align="right" /></td></tr>
+
+<tr><td>8:57am The room is pretty full.</td></tr>
+<tr><td><img src="http://onrails.org/files/starting.jpg" border="0" height="180" width="240" alt="starting.jpg" align="right" /></td></tr>
+
+<tr><td>RubyConf T-Shirt && Lee</td></tr>
+<tr><td><img src="http://onrails.org/files/lee.jpg" border="0" height="180" width="240" alt="lee.jpg" align="right" /><br/>T-Shirt design by Bruce Williams.</td></tr>
+
+<tr><td>Erlang: The Movie</td></tr>
+<tr><td>We are in advance on the schedule, so Rich Kilmer decided to show a video on scripting languages that is in the same vain as DHH's webcast that really brought TextMate and Ruby on Rails into limelight. You can see it on youtube
+<a href="http://video.google.com/videoplay?docid=-5830318882717959520">here</a>. Erlang is 10x more productive, 7x shorter programs. :-)</td></tr>
+
+<tr><td>10am: The History of Ruby, by Masayoshi Takahashi</td></tr>
+<tr><td>Why is Takahashi  presenting The History of Ruby and not "matz"? Because Matz loves the Ruby, not the history of Ruby. By the way Masayoshi  is the inventor of the <a href="http://presentationzen.blogs.com/presentationzen/2005/09/living_large_ta.html"> Takahashi "Method"</a><br/>
+This presentation is a detailed and well informed recollection of how the Ruby community was created and spread from Japan to the rest of the world. Here are Lee's notes that will give you an idea but don't give justice to the presentation it self:<br/>
+<pre>
+History of Ruby - Masayoshi Takahashi (from the Takahashi Method)
+    - 5 periods of Ruby history
+        - Pre-history
+            - Feburary 24, 1993 - "Ruby" name proposed by Keiju
+        - Ancient Age
+            - Ruby 0.95 released December 21, 1995
+            - "Rubyist" first used August 9, 1996
+        - Middle Age
+            - Ruby spread in Japan since all the developers spoke
+                  Japanese, developers could learn English (for other
+                  languages) or learn Ruby
+        - Modern Age
+            - Ruby outside Japan
+            - 2/16/2002 - English ML volume overtook Japanese ML
+        - Contemporary Age (Rails Age)
+            - RoR - The killer application on Ruby
+</pre>
+</td></tr>
+
+<tr><td>11am: Sydney & Rubinius - An experiment in improving, by Evan Phoenix (a.k.a Evan Webb)</td></tr>
+<tr><td>
+<pre>
+    - Current interpreter: dump truck - reliable, sometimes slow,
+          can throw everything in it
+    - YARV: fire engine - shiny and fast
+    - Rubinius: Dune buggy - fun but you'll get sand in your eyes
+    - Simple == Powerful
+    - Sydney
+        - What was it?
+            - giant patch to 1.8.2
+            - reentrant and threadsafe
+        - Hit dead end
+    - Rubinius
+        - Prototype A
+            - ported most of Smalltalk blue book to Ruby
+            - worked but slow
+        - Prototype B
+            - implemented bytecode interpreter and compiler
+        - Prototype S
+            - hand translation of proto-B into C code
+        - Evan has a nice conversational style to his talk
+    - SegfaultProtection
+        - protects extensions from crashing
+        - turns a segfault into a raised exception
+    - Bytecode interpreter architected via TDD
+</pre>
+</td></tr>
+
+<tr><td>1:30pm Programming Graphics with Ruby, by Geoffrey Grosenbach</td></tr>
+<tr><td>The presentation went through many visual examples, showed the code behind some of them. The presenter mentioned the following libraries: Scruffy - generates SVG, gnuplot, mrplot, asset_compiler from Jeremy Voorhis - Rake tasks for image manipulation, and his own library Gruff (which is pretty cool), sparkline. He went on showing how the different screencast headers on peopcode.com are generated using RMagick.</td></tr>
+
+<tr><td>2pm: Life After mkmf, Kevin Clark</td></tr>
+<tr><td>Iron Mongrel: Fuzzing, Auditing, Thrashing, Risk and The Ways Of Mongrel Destruction, Zed Shaw</td></tr>
+
+<tr><td>More notes to come, my neighbor at the conference and former colleague Tom is taking good notes...I will point to his blog as soon as he gets a network connection. Also check out <a href="http://www.nicholaswright.org/blog/articles/2006/10/20/rubyconf-2006-day-1-part-1">Nick Blogs</a>. We gave him so much crap after RailsConf where he was bragging about how much he would blog on it and didn't do any writing that he is currently trying to prove us wrong, but provides some good information.</td></tr>
+<tr><td>7:30pm - Yukihiro "matz" Matsumoto Roundtable</td></tr>
+<tr><td></td></tr>
+<tr><td></td></tr>
+<tr><td></td></tr>
+
+</table>
+
+
+
+Note that as you notice the picture are taken with a phone or photobooth.

@@ -1,0 +1,21 @@
+---
+layout: post
+title: !binary |-
+  V2VsY29tZSB0byBNWE5BIHJlYWRlcnMu
+typo_id: 238
+---
+<a href="http://onrails.org/">OnRails.org</a> has been added to Adobe's xml news aggregator. You may wonder why a Ruby on Rails blog on Adobe's aggregator and what my involvement with Flex is.  Read my <a href="http://onrails.org/articles/2007/02/07/certified-flex-2-0-developer">previous</a> post to see why I believe Flex and Rails are a great match. 
+<p/>
+I used Flex since it was called Royale and develop 2 Flex application for customers that are currently in production. I am also currently working on three new projects that involve Flex, two off them are using Ruby on Rails as back end and one uses java. The java project is still using Flex 1.5. One is for <a href="http://onrails.org/articles/2007/02/07/sneak-peek-digital-seed-an-elearning-application-build-ruby-on-rails-and-flex">Digital Seed</a> and another is code named "MySpyder" for now and is just in it's infancy. 
+<p/>
+I used to have a blog call f2ee.com (I gave away the domain name a while ago) named Flex+Flash Enterprise Edition which was solely focus on Flex. The only reminiscence left is on the <a href="http://web.archive.org/web/20050324150322/www.f2ee.com/blojsom/blog/default/">wayback machine</a> and two compiled demos, one <a href="http://web.archive.org/web/20050413030138/f2ee.com/flex15/portoflioReader/test2.swf">PortfolioReader</a>  and some <a href="http://web.archive.org/web/20050413000233/f2ee.com/flex15/uiPatterns/t101_formView.swf">Scafolding Demo</a> using Flex. I don't even think I know where the source code of these demos is. Early 2005, I have also created with Lee <a href="http://flexonrails.com/">Flex::OnRails</a> (don't use it, use WebORB) a framework to integrate Flex (and Flash) with Ruby using AMF4R. 
+<p/>
+More recently I open sourced the <a href="http://web.archive.org/web/20050413000233/f2ee.com/flex15/uiPatterns/t101_formView.swf">RailsLogVisualizer</a> on rubyforge. This is a Flex a desktop application for OSX (I wish <a href="http://labs.adobe.com/wiki/index.php/Apollo">Apollo</a> was out) with a embedded Ruby server (not Rails).
+<p/>
+On this blog I wrote several entries related to Flash and Flex, like <a href="http://onrails.org/articles/2005/07/31/dvdreleases-integrating-flash-with-ruby-on-rails">Integrating Flash with Ruby on Rails</a> and <a href="http://onrails.org/articles/2006/10/29/part-1-using-weborb-to-access-activerecords-from-a-flex-application">Using WebORB to access ActiveRecords from a Flex application</a>.
+<p/>
+Next month I'll be going to the <a href="ttp://360flex.org">360flex</a> conference and I'll be blogging on the Flex Data Services related presentations.
+
+Welcome!
+Daniel Wanja.
+ 

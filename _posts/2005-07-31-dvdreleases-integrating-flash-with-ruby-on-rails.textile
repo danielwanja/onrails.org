@@ -1,0 +1,19 @@
+---
+layout: post
+title: !binary |-
+  ZHZkcy5vbnJhaWxzLm9yZyAtIGludGVncmF0aW5nIEZsYXNoIHdpdGggUnVi
+  eSBvbiBSYWlscw==
+typo_id: 2
+---
+The purpose of the DvdReleases demo application is to investigate some of the possibilities to integrate a Flash Component with a Ruby On Rails application. 
+We will describe: 
+* Enabling flash and javascript integration 
+* Embedding the FlashTag in the .rhtml file. 
+* passing initial values to a Flash component from an ActiveView. 
+* embedding multiple Flash components in a .rhtml file. 
+* Invoking remotly an ActionController from a Flash component. 
+* Calling a javascript function from a Flash component. 
+
+"Keep Reading>>":/pages/applications/dvds
+
+"Click here to Try it!>>":http://dvds.onrails.org/admin

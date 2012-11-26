@@ -1,0 +1,15 @@
+---
+layout: post
+title: !binary |-
+  RnVsbCB0aW1lIFJ1YnkgT24gUmFpbHMgSm9iIGluIERlbnZlci4=
+typo_id: 131
+---
+One of my customers in Denver is looking for an experienced full-time Rails developer. The company is called , Gatelys/Etail Source.  You will be part of a small, experienced, and agile development team that has developed three pretty cool Rails eCommerce applications. This is the posting they published on the job board of 37signals (http://jobs.37signals.com/jobs/323):
+
+
+<p class="meta">
+<b>Description</b>
+â€¨Small (but quickly growing) eCommerce startup seeks enthusiastic full-time senior-level Rails developer / system engineer. Special focus on performance optimization and tuning. Denver area resident preferred, but not mandatory. Salary will be competitive, depending on qualifications.<br/>
+<b>To apply</b>
+â€¨Send resume and salary requirements to jobs@gatelys.com, attention Solomon.
+</p>

@@ -1,0 +1,45 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIDIwMDYgLSBIZXJlIHdlIGNvbWUh
+typo_id: 115
+---
+Looking forward meeting you all in Chicago! There will be tons of great presentations, here is my selection:
+<p/>
+<table>
+<tr><th>Friday </th></tr>
+<tr><td> 10:45 </td><td> Introduction to Capistrano </td></tr>
+<tr><td/><td> Mike Clark is just a great presenter </td></tr>
+<tr><td> 13:15 </td><td> ?? </td></tr> 
+<tr><td/><td>  Not sure yet  </td></tr> 
+
+<tr><td> 14:30 </td><td> Monitoring Rails Applications in Production Environments </td></tr> 
+<tr><td/><td> Too important to skim that one </td></tr> 
+
+<tr><td> 15:45 </td><td> Sneaking Rails into the (legacy) system </td></tr>
+<tr><td/><td> or Goeffrey's Rails Deployment on Shared Hosts</td></tr>
+
+<tr><th> Saturday </th></tr>
+<tr><td> 09:00 </td><td> Ajax on Rails </td></tr>
+<tr><td/><td> Let's see what the 'man' has to say </td></tr>
+
+<tr><td> 10:15 </td><td> Lessons from Blinksale and IconBuffet </td></tr>
+<tr><td/><td> I am eagerly waiting for some information on the Blinksale API </td></tr>
+
+<tr><td> 11:30 </td><td> Lucene Eye for the Ruby Guy </td></tr>
+<tr><td/><td> We are using successfully Ferret, but Lee did all the programming, so it's time I do some catching up </td></tr>
+
+<tr><td> 14:45 </td><td> Testing Migrations </td></tr>
+<tr><td/><td> I hesitate between this and the two other talks, but I got bit a couple of time with migrations. So any good advice is welcome. </td></tr>
+
+<tr><th> Sunday </th></tr>
+<tr><td> 9:00 </td><td> Beyond DHTML: Introducing Laszlo on Rails </td></tr>
+<tr><td/><td> I am big fan of Flex and Laszlo, now that Laszlo can generate DHTML, let's see what Mike has to say. </td></tr>
+
+<tr><td> 10:15 </td><td> Just the Facts (and Dimensions) -- using Rails with your OLAP data model </td>
+</tr>
+<tr><td/><td> I had the chance of beeing part of a team that pionered the field  before it was called that (back in 1987). And now I need to do some more data analysis for the soon to be releases OSX RailsLogAnalyser application (Flex+Rails). Looking forward to this talk. </td></tr>
+
+<tr><td> 11:30 </td><td> Rails Takes on the Enterprise with SOA </td></tr>
+<tr><td/><td> Rails is a tuff sell to the enterprise. They invested to much into Java and .Net, so even if Rails is often a good fit, it's not even considered. So any additional ammunition to enter existing enterprises is welcome</td></tr>
+</table>

@@ -1,0 +1,67 @@
+---
+layout: post
+title: !binary |-
+  TW92aW5nIG9ucmFpbHMub3JnIHRvIFR5cG8gNS40LngsIFJhaWxzIDIuMy44
+  IG9uIEhlcm9rdQ==
+typo_id: 5053
+---
+<p>
+	So why Heroku and why not leave my server on slicehost? I don&#39;t have any issue with the slice but I want to upgrade the version of Typo just to stay uptodate and while at it wanted to explore a little. So of course I found an article on <a href="http://joelgreutman.com/2010/05/21/getting-typo-5-4-running-on-heroku">Getting Typo 5.4 running on Heroku</a> So I gave it a try. The interesting part is that <a href="http://onrails.org">onrails.org</a> has been around since forever and I also had tomigrate the database. Onrails.org was running on a version of Typo 4. h2. setting the blog up locally First I&#39;ve downloaded my older typo MySQL database and restored it locally. I&#39;ve copied Typo from <a href="http://rubyforge.org/frs/download.php/70057/typo-5.4.4.zip">here</a> or you can clone the Typo git repository.</p>
+<pre>$ git clone http://github.com/fdv/typo.git 
+</pre>
+<p>
+	I changed the database.yml to point to my database. Did a rake gems:install, followed by a rake d:migrate and had now a local install of my blog. h2. creating a heroku app The goal was to try to deploy the blog to heroku. So here you can create an empty</p>
+<pre>$ heroku create onrails
+git@heroku.com:onrails.git
+$ git init
+$ git add .
+$ git commit -m &quot;Adding onrails.org using typo 5.4.4&quot;
+</pre>
+<p>
+	I then followed joels&#39; <a href="http://joelgreutman.com/2010/05/21/getting-typo-5-4-running-on-heroku"> article</a> to &quot;heroku&quot;fy Typo. So I basically created afew empty folders and replaced FileUtils by FileUtils::NoWrite. Note sure if that last change would cripple Typo but things seems to work fine. Then I created a .gems files that is used by heroku instead of Bundler.</p>
+<pre>.gems
+	rails = 2.3.8
+	htmlentities  
+	json 
+	calendar_date_select 
+	bluecloth  ~&gt; 2.0.5
+	coderay  ~&gt; 0.8
+	mislav-will_paginate  ~&gt; 2.3.11 --source gems.github.com
+	RedCloth  ~&gt; 4.2.2
+	panztel-actionwebservice  = 2.3.5
+	addressable ~&gt; 2.1.0
+	mini_magick  ~&gt; 1.2.5
+</pre>
+<p>
+	Finally I deployed the app with an empty database:</p>
+<pre>$ git remote add heroku git@heroku.com:onrails.git
+$ git push heroku master
+$ heroku rake db:migrate   # with empty db
+</pre>
+<p>
+	That&#39;s it that gets you an install of Typo on Heroku. Note, keep reading for a few gotcha&#39;s I found in regards to Rails 2.3.8. h2. Rails 2.3.8 on heroku At the time of this writing Rails 2.3.8 wasn&#39;t the default on Heroku, but fortunaely they support a different stack with Rails 2.3.8. To switch I just had to do the following:</p>
+<pre>$ heroku stack:migrate bamboo-ree-1.8.7
+</pre>
+<p>
+	h2. Migrating the local MySQL database to Heroku&#39;s Postgres database. It&#39;s a rather straight forward process...just do</p>
+<pre>$ heroku db:push
+</pre>
+<p>
+	This converted the database and replaced the remote database with my local data on Heroku. It converts my MySQL database to a Postgress database without having to speify anything...But there was on gotcha. The Sidebar table id column turned out as &quot;text&quot; instead of an &quot;integer&quot;. And this caused some of the admin functionality to fail, i.e. reconfiguring the sidebar. The other tables where converted correctly and I saw that the local Sidebar id column was slightly different than the other id columns. For some reasons the sidebar table id column type was a &quot;signed int&#39; and that translated to a text field when doing the db:push. So I just unchecked the signed flag ad the db:push went smoothly. h2. legacy permalinks Somehow the articles and category links are all prefixed with &quot;/articles&quot; on onrails.org. I don&#39;t know if that was due to some default setting in Typo 4 or due to the fact that I started with a way earlier version of Typo. In any case I preferred to use the new links formats that just drops the &quot;/articles&quot;, but that would also mean breaking a lot of incoming links. So I just configured Typo to support the legacy permalinks via these addd routes <typo:code> # Legacy permalink format support map.connect &#39;/articles/:year/:month&#39;, :controller =&gt; &#39;articles&#39;, :action =&gt; &#39;index&#39;, :year =&gt; /\d{4}/, :month =&gt; /\d{1,2}/ map.connect &#39;/articles/:year/:month/page/:page&#39;, :controller =&gt; &#39;articles&#39;, :action =&gt; &#39;index&#39;, :year =&gt; /\d{4}/, :month =&gt; /\d{1,2}/ map.connect &#39;/articles/:year&#39;, :controller =&gt; &#39;articles&#39;, :action =&gt; &#39;index&#39;, :year =&gt; /\d{4}/ map.connect &#39;/articles/:year/page/:page&#39;, :controller =&gt; &#39;articles, :action =&gt; &#39;index&#39;, :year =&gt; /\d{4}/ # Legacy permalink format support map.resources :categories, :except =&gt; [:show, :update, :destroy, :edit], :path_prefix =&gt; &#39;/articles&#39; map.resources :categories, :as =&gt; &#39;category&#39;, :only =&gt; [:show, :edit, :update, :destroy], :path_prefix =&gt; &#39;/articles&#39; map.connect &#39;/articles/category/:id/page/:page&#39;, :controller =&gt; &#39;categories&#39;, :action =&gt; &#39;show&#39; </typo:code> Now the blog supports both new and old formats. Note that the url fo the articles can be modified in the settings, but I didn&#39;t find settings for the category permalinks and supporting both old and new format gives me a smooth transition forward. h2. Rails and Issue with Typo workaround? I was getting the following error when doing certain actions on the blog: <typo:code> ActionView::TemplateError (undefined method `interpolate_without_deprecated_syntax&#39; for #<i18n::backend::simple:0x2b8d1ef90700>) on line #5 of themes/scribbish/views/articles/_coment.html.erb: </i18n::backend::simple:0x2b8d1ef90700></typo:code> So I assumed this was some compatibility between Typo and Rails and Typo had a workaround defined in the environment.rb file file. As I use Rails 2.3.8 I disabled that workaround and everything seems to work again: So I just removed the followed lines from the enviroment.rb file:</p>
+<pre>environment.rb
+class I18n::Backend::Simple
+  def interpolate(locale, string, values = {})
+    interpolate_without_deprecated_syntax(locale, string, values)
+ end
+end
+</pre>
+<p>
+	h2. custom domain I&#39;m sure there are a few more details I missed and hope my readers will point them out, but let&#39;s jump and turn the switch on. So you need to switch on custom domains on heroku as follows:</p>
+<pre>$heroku addons:add custom_domains
+$ heroku domains:add www.onrails.org
+Added www.onrails.orgas a custom domain name to onrails.heroku.com 
+$ heroku domains:add onrails.org
+Added onrails.orgas a custom domain name to onrails.heroku.co
+</pre>
+<p>
+	Then I went on to pointed my dns to Heroku. The move is complete but the dns change to point to heroku still may take some time. So if you see the Scribbish theme you are still on the old server and if you see the Elegant Grunge theme you are right here on Heroku. Enjoy, Daniel <b>UPDATE 1:</b> the dns updated www.onrails.org and onrails.org at different time. And all the images of the new sites where using urls of the old site and everything looked pristine. No mre&hellip;So a hidden issue is that Typo let&#39;s you upload files like images which are stored in the resources table and also copied to to the public/files folder. This is a convenient way to serve files and images for your blog entries. Well, that won&#39;t work very well while on heroku especially since we really made the file system read only. I need to read more on how to enable page caching on Heroku and see if it is compatible with Typo. If not&hellip; I will need to revert back to my previous host. For now I&#39;ll jst add the files via git...and that&#39;s not a solution.</p>

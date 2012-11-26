@@ -1,0 +1,101 @@
+---
+layout: post
+title: !binary |-
+  RmxleCBEeW5hbWljICBTY2FmZm9sZGluZyBmb3IgUnVieSBvbiBSYWlscy4=
+typo_id: 2489
+---
+No I am not announcing the next killer scaffolding framework but I had a couple of hours available today so I just explored some of the cool features or Ruby On Rails and Flex. The part I was most interested in (today) is dynamic user interface creation and not generating and application like several scaffolding frameworks are doing. So I was able to create a UI that adapts to a given model of a Rails application. Of course I didn't go as far as I wished, but I thought I could share it with my readers as I usually get valuable feedback. Right now the application doesn't  even manage data. That will be the next step. 
+
+<img src="http://onrails.org/files/20070804_FlexScaffolding.jpg" border="0"  width="500" alt="20070804_FlexScaffolding.jpg" align="" />
+In a first phase I have adapted <a href="http://railroad.rubyforge.org/">RaildRoad</a> Rails model class diagram generation tool to generate an xml definition that the UI would use to create it's components. I generated an xml model for <a href="http://trac.streamlinedframework.org/wiki/SampleProject">Sports</a> a sample application provided with Streamlined and <a href="http://typosphere.org/">Typo</a> a blog server. 
+
+The UI generation from the typo model is quite cpu intensive. There is not lazy instanciation of components, when you select the model, all the Tabs, lists and forms are created.
+
+You can <a href="http://nouvelles-solutions.com/onrails/flexscaffolding/FlexScaffolding#">run the application</a> and press view source from the context menu. Or you can see the source <a href="http://nouvelles-solutions.com/onrails/flexscaffolding/srcview/index.html">here</a>. The generated xml can be seen <a href="http://nouvelles-solutions.com/onrails/flexscaffolding/srcview/source/sports_models.xml.txt">here</a> and <a href="http://nouvelles-solutions.com/onrails/flexscaffolding/srcview/source/typo_models.xml.txt">here</a>
+
+In a second phase I created a Flex application that generates a UI from the given xml. 
+
+I was writing this blog entry while coding, so if you are more curious about how all this works, keep on reading.
+
+<h1>Getting the schema of your ActiveRecords</h1>
+
+We will generate an xml version of the schema that Flex can use to assemble a UI. So we need to find out info about each ActiveRecord of the application, it's association with other ActiveRecords, and all it's attributes. Later on would also be nice to identify the validation rules, so that we can build some validations on the fly without having to do a server round trip for some of the basic validations, (required, length, confirmation, regex). Supporting the various acts_as could also provide lots of functionality that doesn't need to be coded over and over.
+
+I will use the Streamlined Sports example database to experiment with. Later on we may have a look at Typo a blog server.
+
+Let's use the community to see how to parse the ActiveRecord. I am now checking out <a href="http://railroad.rubyforge.org">RailRoad (0.4.0)</a> a class diagram generator for Rails. Railroad has the ModelsDiagram class that gather the information we need and then uses the DiagramGraph class to generate a _dot_ format file that in turn is used to generate .svg or .png of the diagram. We are not interested in the dot generation, but will just 'adapt' the to_dot method to get the xml we need. So I simply reopened the class and created a new <i>to_dot</i> method as follows:
+
+<typo:code lang="ruby">
+# http://chadfowler.com/2007/8/3/enumerable-injecting
+module Enumerable
+  def injecting(s)
+    inject(s) do |k, i|
+      yield(k, i); k
+    end
+  end
+end
+
+class DiagramGraph
+
+  def to_dot
+    return definition.to_xml(:root => 'active_records', :dasherize => false)
+  end
+  
+  #Let organize the data in a way closer to the xml we want to generate.
+  def definition
+    active_records = {}
+    @nodes.each do |node| 
+      attributes = node[2].injecting({}) {|accumulator, value| k,v=value.split(" :"); accumulator[k] = v}
+      class_name = node[1]
+      active_records[class_name] = { :name => class_name, :attributes => attributes, :relations => [] }
+    end
+    @edges.each do |edge| 
+      association_type = edge[0]
+      from_class_name = edge[1]
+      to_class_name = edge[2]
+      active_records[from_class_name][:relations] << {association_type.to_sym => to_class_name}
+    end
+    active_records
+  end  
+  
+end
+</typo:code>
+
+The _definition_ method generates a hash map with the information of the model. The _to_xml_ is all that is needed to get an <a href="http://nouvelles-solutions.com/onrails/flexscaffolding/srcview/source/sports_models.xml.txt">xml version</a> of the data that the map contains. 
+
+<typo:code lang="ruby">
+definition.to_xml(:root => 'active_records', :dasherize => false)
+</typo:code>
+
+<h1>Dynamically Generate a Flex UI</h1>
+
+Let looks at the model.
+
+<pre>
+Player has_many Sponsor
+Coach has_many Sponsor
+Team has_one Coach
+           has_many Player
+Sponsor has nobody!
+</pre>
+
+The UI generation should be lot smarter and configurable. For now I have taken the approach to create one view for each model. This view shows all the records in a data grid and the detail of the selected record in a form view. All associations of the record are represented by a Tab Navigator. You will notice that this is not very practical for the Typo datamodel. We should have main ActiveRecords that are entry points to the application.  Also the depth of the active record view is one association down but could be driven by definition i.e. Team => Coach => Sponsor, similar to the :include option of the find methods. We should be able to flatten a "to one" relation and have all the attributes of the association in the same view than the source ActiveRecord.
+
+You can <a href="http://nouvelles-solutions.com/onrails/flexscaffolding/FlexScaffolding">run the application</a> and <a href="http://nouvelles-solutions.com/onrails/flexscaffolding/srcview/index.html">view the source</a>.
+
+The main application, FlexScaffolding, adds dynamically a ActiveRecordsView for each ActiveRecord in the model to the Tab navigator. That's too many tabs for the Typo model...
+
+<typo:code>
+    private function generateView():void {
+          for each (var activeRecord:XML in definition.children()) {
+               var arView:ActiveRecordsView = new ActiveRecordsView();
+               arView.definition = activeRecord;
+               mainView.addChild(arView);
+          }        
+    }       
+</typo:code>
+
+The ActiveRecordsView.mxml does the main work of generating the UI. It's not very big (66 lines), but is also limited for now. I let you check out the source code if you a curious. Next on the list is to map too more data types (ie a "text" ActiveRecord attribute should be mapped to a TextArea, date and datetime should be support). I need to add configuration options where the defaults can be overridden. I need to create a Rails controller that uses the same  xml model to expose the data to the view. There shouldn't be the need to hand code RESTFul controllers. Or maybe the UI should be build from the routes...
+
+That's all for now. Enjoy!
+Daniel Wanja

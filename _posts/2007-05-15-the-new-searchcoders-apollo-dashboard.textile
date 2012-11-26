@@ -1,0 +1,12 @@
+---
+layout: post
+title: !binary |-
+  VGhlIE5ldyBTZWFyY2hDb2RlcnMgQXBvbGxvIERhc2hib2FyZA==
+typo_id: 1005
+---
+<img src="http://onrails.org/files/20070514_searchcodersicons.jpg" border="0" height="172" width="497" alt="20070514_searchcodersicons.jpg" align="" />
+
+The new version of SearchCoders is not just a pretty face, Tom and Robert also worked hard adding quite some neat and useful functionality like chatroom, notes and favorites. Searching is faster than ever. The new Searchcoders.com <a href="http://www.searchcoders.com/flex/">Dashboard</a> is Still the best way to find useful Flex related information on the net.
+
+<img src="http://onrails.org/files/20070514_searchcoders.jpg" border="0" height="332" width="320" alt="20070514_searchcoders.jpg" align="" />
+

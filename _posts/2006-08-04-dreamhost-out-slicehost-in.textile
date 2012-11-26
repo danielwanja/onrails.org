@@ -1,0 +1,15 @@
+---
+layout: post
+title: !binary |-
+  RHJlYW1ob3N0IG91dCwgU2xpY2Vob3N0IGluLg==
+typo_id: 125
+---
+I must say I like Dreamhost but we had too much downtime recently. Even if we offer time.onrails.org for free it must be up and running when the users need it. This is especially true for a time management application. When you are done with your workday, one click and go home. Lee and I are using time.onrails.org daily for all of our customer projects and recently it has been down once too many time. In addition it's getting really slow, but then again with a $9 a month shared host plan, I must admit we went already a long way. So time to move on and find a better solution. 
+
+We went the last two days on the search for a new hosting provider that would provide dedicated or virtual private servers. There is lots of offerings out there and good information. Lee stumble upon slicehost.com and liked the idea of a small hosting company, that diggs Ruby on Rails, and is about to be launched. They are small and hopefully will work hard to make it. I was not too convinced so we decided to contact them, and had a nice chat with them over their campfire support room.  See the <a href="http://onrails.org/files/20060804_slicehost.html" >campfire transcript</a>. I gave them a hard-time, but they provided us with lots of good information. Check them out if you want to find out what's going on at <a href="http://slicehost.com/">slicehost</a>
+
+Transcript: <a href="http://onrails.org/files/20060804_slicehost.html">http://onrails.org/files/20060804_slicehost.html</a>
+
+So time.onrails.org users, thank for your patience. In the next month we will move over our application to a way faster environment.
+
+<strong>Update:</strong> time.onrails.org has been moved.  If you sign up with slicehost because of us, feel free to say we referred you.  :)  Just use this <a href="https://manage.slicehost.com/customers/signup?refferer=629092">referrel link</a>.

@@ -1,0 +1,8 @@
+---
+layout: post
+title: !binary |-
+  VGltZS5vbnJhaWxzLm9yZyBub3cgd2l0aCBCbGlua3NhbGUgaW50ZWdyYXRp
+  b24u
+typo_id: 163
+---
+Blinksale is the easiest way to send invoices online. Now time.onrails.org is the easiest way to create Blinksale invoices. Check <a href="http://time.onrails.org/doc/blinksale/blinksale.html">http://time.onrails.org/doc/blinksale/blinksale.html</a> for more details.

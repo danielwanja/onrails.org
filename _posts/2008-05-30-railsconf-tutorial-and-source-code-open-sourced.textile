@@ -1,0 +1,67 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIHR1dG9yaWFsIGFuZCBzb3VyY2UgY29kZSBvcGVuIHNvdXJj
+  ZWQ=
+typo_id: 3639
+---
+Thanks to everyone that attended the Powering AIR with Rails talk. That was really cool. I didn't realize how hard it is to give such talks,  but hey...party time now. It's fun to give a presentation the first day at a conference, we can now enjoy the rest of the conference.
+
+You can find the slides and the source code at:
+
+	<a href="http://github.com/danielwanja/railsconf2008">http://github.com/danielwanja/railsconf2008</a>
+
+We presented the following 10 AIR applications:
+
+<pre>
+01_AIRBrowser 
+  mx:HTML
+  dougmccune CoverFlowContainer
+
+02_HelloBlog
+  ActionScript/Javascript Brige
+  Drag Drop API
+
+03_WebSnippet
+  javascript injection using HTMLComponent
+  File
+  Sprite/drawing API
+  Window API
+  Bitmap manipulation
+  
+04_HTMLFileBrowser
+  File System Access
+  AIRAliases.js
+
+05_OfflineCampfire
+  Windowing API
+  flash.desktop.NativeApplication
+  DockIcon
+  SharedObject
+
+06_S3Browser
+  flash.filesystem.File.upload
+  HTTPService + REST (list, create, delete)  
+  attachment_fu (S3)
+  
+07_SQLExample
+  sql lite from AIR
+  
+08_PhotoBooth
+  flash.media.Camera
+  flash.media.Video
+  flash.net.URLLoader
+  attachment_fu (file)
+
+09_TwitterSpider
+  Charting API
+  DataGrid/Filtering
+  
+10_TwitterFriends
+  com.adobe.flex.extras.controls.springgraph
+  twitter4r
+</pre>
+
+Enjoy,
+
+Daniel and Tony!

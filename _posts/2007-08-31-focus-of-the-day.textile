@@ -1,0 +1,22 @@
+---
+layout: post
+title: !binary |-
+  Rm9jdXMgb2YgdGhlIGRheS4=
+typo_id: 2593
+---
+I am writing this to make sure I stay focused today. There are currently four projects in my head... MySpyder.net sorry, but not you today. That's three left. Then there is MunchAway which I need to put on hold unil Monday, where I should Ajaxify the login. Ok, that leaves the "BOOK" and Digital-Seed.
+
+For the book I should 
+
+1) write a script to generate the whole model and controllers using generate scaffolding...that will let me rerun it a couple of times until we get it right. I.e. rake scaffold:migrate [VERSION=n] allowing to add and remove stuff...this should also  take care of nested resource.
+
+2) Write some initial rSpecs to ensure that the model is right
+
+
+For DigitalSeed I need
+
+1) integrate the LayoutManager functionality into the base application
+
+2) Refine the Widget drap&drop to visually indicate where the dragged item will appear if dropped.
+
+The Book will be for tonight once the kids and wife are asleep...so let's get started with Digital-Seed!

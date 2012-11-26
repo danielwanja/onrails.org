@@ -1,0 +1,128 @@
+---
+layout: post
+title: !binary |-
+  TW92aW5nIChhZ2FpbikgaHR0cDovL29ucmFpbHMub3JnIGZyb20gSGVyb2t1
+  IHRvIEVDMg==
+typo_id: 5055
+---
+If you read this then this blog is now running Typo 5.5 on Rails 2.3.9 on EC2.
+
+I really love the ease of deployment to heroku and the fact that they manage the whole stack. However I receive regularly emails from Heroku stating that I get a specific number of "backlog too deep errors" indicating the app is receiving more requests than it is capable of responding to, or in other words that  that my blog is outgrowing their developer instance. So I have the option to increment the number of requests my application can handle, which is easy thanks to the the heroku command line: heroku dynos +1 --app onrails. So I can increase the HTTP performance by cranking up the "dynos" to 2 which would be an additional  $36 a month. I still think it's a good deal for a managed environment. 
+
+However you also saw on my <a href="http://onrails.org/2010/07/12/moving-http-onrails-org-to-typo-5-4-x-rails-2-3-8-on-heroku">last blog entry</a> that there are other issues with running Typo on Heroku and therefore I started playing with running Rails on EC2. And I like what I see and now that Amazon has an official and secured Amazon Linux AMI, I'll be using that. Here are a few notes on how I did set it up.
+
+I started with the new Basic 32-bit Amazon Linux AMI 1.0 (http://aws.amazon.com/amazon-linux-ami/). I take basically only a few clicks to get a server started. You can use the ec2 console (https://console.aws.amazon.com/ec2) to create and connect to the server, however you need to use ec2-user instead of root to connect due to the way the Amazon Linux AMI is setup.
+
+Note Lee is right that if I continue to moving host I should create a Chef recipe for this.
+
+<strong>Install dev tools</strong>
+
+$ sudo yum install git
+$ sudo yum install make gcc-c++ zlib-devel openssl-devel
+$ sudo yum install ruby-devel ruby-libs ruby-mode ruby-rdoc ruby-irb ruby-ri ruby-docs
+
+<strong>Install MySQL</strong>
+
+$ sudo yum install mysql mysql-server
+$ sudo /etc/init.d/mysqld restart
+$ mysql_secure_installation
+$ sudo yum install  mysql-libs mysql-devel
+
+<strong>Install ruby-mysql</strong>
+
+$ sudo gem install mysql  --no-ri --no-rdoc
+
+<strong>Install rubygems</strong>
+
+$ wget http://production.cf.rubygems.org/rubygems/rubygems-1.3.7.zip 
+$ tar xzvf rubygems-1.3.7.tgz
+$ cd rubygems-1.3.7
+$ sudo ruby setup.rb
+$ cd ..
+
+<strong>Install Rails (note I use 2.3.9 for Typo )</strong>
+
+$ sudo gem install rails --no-ri --no-rdoc
+$ sudo gem install rails --no-ri --no-rdoc -v=2.3.9
+
+<strong>Install Apache (2.2.15</strong>)
+
+$ sudo yum install httpd
+
+<strong>Install Passenger</strong>
+
+$ sudo gem install passenger --no-ri --no-rdoc 
+$ sudo yum install httpd-devel
+$ passenger-install-apache2-module
+
+<strong>Configure Passenger</strong>
+
+nano /etc/httpd/conf/httpd.conf  
+
+<typo:code lang="ruby">
+   LoadModule passenger_module /usr/lib/ruby/gems/1.8/gems/passenger-2.2.15/ext/apache2/mod_passenger.so
+   PassengerRoot /usr/lib/ruby/gems/1.8/gems/passenger-2.2.15
+   PassengerRuby /usr/bin/ruby
+</typo:code>
+
+Suppose you have a Rails application in /somewhere. Add a virtual host to your
+Apache configuration file and set its DocumentRoot to /somewhere/public:
+
+<typo:code lang="xml">
+  <VirtualHost *:80>
+      ServerName www.yourhost.com
+      DocumentRoot /somewhere/public   
+      <Directory /somewhere/public>
+         AllowOverride all             
+         Options -MultiViews  
+      </Directory>
+   </VirtualHost>
+</typo:code>
+
+
+<strong>Installing Typo (from source)</strong>
+
+see http://wiki.github.com/fdv/typo/install-typo-from-sources
+
+$ wget http://rubyforge.org/frs/download.php/71779/typo-5.5.zip
+
+then unzip, that's it. That's your typo instance, now let's configure it's database.
+Note I moved it to /var/www/typo/
+
+Create config/database.yml i.e.
+<code>production
+  adapter: mysql
+  host: localhost
+  username: yourusername
+  password: secret
+  database: onrails_prod</code>
+
+Change the Rails version in config/environment.rb, replace 2.3.8 with 2.3.9
+
+RAILS_GEM_VERSION = '2.3.8' unless defined? RAILS_GEM_VERSION
+
+setups gems required for Typo:
+$ sudo rake gems:install
+
+
+<strong>Creating/Copying database:</strong>
+
+Note I migrated my blog so I need to copy the database to the new server.
+
+$ scp -i .ssh/linux_ami.pem  onrails_org.sql ec2-user@ec2-184-73-20-188.compute-1.amazonaws.com:onrails_org.sql
+$ mysql -u yourusername  -p
+  create database onrails_prod;
+  exit
+$ mysql -u yourusername -p onrails_prod < onrails_org.sql
+
+As I also update Typo to a new version I had to run a migration:
+
+$ rake db:migrate RAILS_ENV=production
+
+Note if you want a clean install you can just to a rake db:create and rake db:migrate.
+
+
+Et voila! Well Heroku made it simpler but I always have fun playing with EC2.
+
+Enjoy!
+Daniel

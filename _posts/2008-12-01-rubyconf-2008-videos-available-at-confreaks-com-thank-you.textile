@@ -1,0 +1,33 @@
+---
+layout: post
+title: !binary |-
+  UnVieUNvbmYgMjAwOCB2aWRlb3MgYXZhaWxhYmxlIGF0IGNvbmZyZWFrcy5j
+  b20gLSBUaGFuayB5b3Uh
+typo_id: 4155
+---
+I couldn't make it this year to RubyConf so I am really thankful to see that most of the presentations are online at <a href="http://rubyconf2008.confreaks.com/">confreaks</a>. It's just awesome that these videos are made available online and so quickly after the conference and for free. It's a real tribute to the Ruby community and it's open and sharing spirit. Thanks guys! My understanding is that the <a href="http://rubyconf.org/">rubyconf</a> pays <a href="http://www.confreaks.com/">Confreaks</a> to take, processes and distribute these videos.  Let me know if the arrangement is different, to give credit where credit is due. Thanks RubyConf and the presenters, and good job Confreaks.
+
+Here are the videos I selected for my commute this week.
+
+* <a href="http://rubyconf2008.confreaks.com/keynote.html">Keynote</a> - Dave Thomas
+* <a href="http://rubyconf2008.confreaks.com/questions-and-answers.html">Questions & Answers</a> - Yukihiro 'Matz' Matsumoto 
+
+* <a href="http://rubyconf2008.confreaks.com/introducing-red-sun-ruby-to-flash.html">Introducing Red Sun - Ruby to Flash</a> - Jonathan Branam 
+* <a href="http://rubyconf2008.confreaks.com/macruby-ruby-for-your-mac.html">MacRuby: Ruby for your Mac</a> - Laurent Sansonetti 
+* <a href="http://rubyconf2008.confreaks.com/os-x-application-development-with-hotcocoa.html">OS X Application Development with HotCocoa</a> - Rich Kilmer
+* <a href="http://rubyconf2008.confreaks.com/hacking-with-ruby2ruby.html">Hacking with ruby2ruby</a> - Marc Chung 
+* <a href="http://rubyconf2008.confreaks.com/using-git-in-ruby-applications.html">Using Git in Ruby Applications</a> - Scott Chacon 
+
+* <a href="http://rubyconf2008.confreaks.com/adrenaline-driven-development.html">Adrenaline-Driven Development</a> - Bruce Williams 
+* <a href="http://rubyconf2008.confreaks.com/fear-of-programming.html">Fear of Programming</a> - Nahaniel Talbott 
+* <a href="http://rubyconf2008.confreaks.com/recovering-from-enterprise.html">Recovering from Enterprise</a> - Jamis Buck 
+
+View the full list of videos available <a href="http://rubyconf2008.confreaks.com/">here</a>.
+
+You may wonder why I would watch videos during my commute. Effectively I drive 40 minutes each way to my customers (happen to be both near enough for me to drive and not tele-commute) and this gives me a chance to catch up on many of the excellent screencast and podcast out there. Now when one screencast really sticks out, I watch it again at night...without driving ;-). 
+
+This said I converted the confreaks small videos format (640 x 240) to the iPhone format using Quicktime pro, but I only get the sound...which is fine for my commute. Any hint on how I can convert them to also get the video going would be appreciated?
+
+Enjoy!
+Daniel
+

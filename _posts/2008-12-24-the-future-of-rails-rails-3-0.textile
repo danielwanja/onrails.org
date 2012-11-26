@@ -1,0 +1,17 @@
+---
+layout: post
+title: !binary |-
+  VGhlIGZ1dHVyZSBvZiBSYWlsczogUmFpbHMgMy4w
+typo_id: 4172
+---
+The Merb team joins force with the Rails core team  to work on Rails 3.0 and brings many of the modularity and performance concepts from Merb to Rails. At first I thought "Oh, no", that's gonna be a mess. But after reading several of the announcements I can see the benefits of the effort and this will make Rails more simple, more modular, more robust, better defined, and certainly faster. Bringing two different teams together is very difficult but the fact that both team are complementary and look for excellence in their work and managed to come up with a great vision of the future of Rails, got me excited about the future of Rails. They gonna make it happen. You can read more about here:
+
+* <a href="http://weblog.rubyonrails.org/2008/12/23/merb-gets-merged-into-rails-3">http://weblog.rubyonrails.org/2008/12/23/merb-gets-merged-into-rails-3</a>
+* <a href="http://rubyonrails.org/merb">http://rubyonrails.org/merb</a>
+* <a href="http://yehudakatz.com/2008/12/23/rails-and-merb-merge/">http://yehudakatz.com/2008/12/23/rails-and-merb-merge/</a>
+* <a href="http://brainspl.at/articles/2008/12/23/merb-is-rail">http://brainspl.at/articles/2008/12/23/merb-is-rail</a>s
+* <a href="http://merbist.com/2008/12/23/rails-and-merb-merge/">http://merbist.com/2008/12/23/rails-and-merb-merge/</a>
+
+Merry Christmas/Hanukkah/Hollidays!
+
+Daniel.

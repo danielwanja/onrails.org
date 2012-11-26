@@ -1,0 +1,60 @@
+---
+layout: post
+title: !binary |-
+  R29vZCBSb2JvdExlZyBwcmVzZW50YXRpb24gYXQgMzYwRmxleA==
+typo_id: 5058
+---
+Paul Robertson gave a RobotLeg presentation at 360Flex and put his slides online. I had to dive into a RobotLeg application the other and wanted a refresher and found his slides really great so I've extracted for your (and my) convenience some useful bullets points:
+
+* View
+** the View is represented by your view components and their Mediators
+** Mediators provide API for view components
+** Mediators listen for view component events
+** Mediators listen for framework events
+** Mediators dispatch framework events
+** view components are not coupled to their Mediators
+** Mediators are coupled to their view components
+** Mediators can access Service and Model classes directly
+
+* Actor
+** Actor is the base class for Model and Service classes
+** eventDispatcher is injected into Actor
+** Actor provides a dispatch(event) method
+** Actor is for your convenience
+
+* Model
+** Models extend Actor
+** Models provide an API for data
+** Models sit between application data and other actors
+** Models should not listen for framework events
+** Models dispatch framework events
+
+* Service
+** Services extend Actor
+** Services usually implement an interface
+** Services communicate with the outside world and provide an API to external services
+** Services can parse results from external services
+** Services do not store data
+** Services do not receive framework events
+** Services dispatch framework events
+
+* Controller
+** represented by the Command class
+** Commands are executed in response to framework events
+** Commands are stateless
+** Commands perform work on Service and Model classes and dispatch events (call other commands)
+** Commands receive data from the events that trigger them
+** Commands dispatch framework events
+** Commands do not receive framework events
+
+You can get the slides <a href="http://probertson.com/resources/2010/09/21/Robotlegs_360Flex_2010_DC.pdf">here</a> and also checkout <a href="http://probertson.com/articles/2010/09/21/robotlegs-hands-on-training-slides-and-examples/">his blog entry</a> for more info.
+
+These days everyone has his preferred Flex framework. Mine is still <a href="http://swizframework.org/">Swiz</a> as it doesn't impose a structure like Cairgorm or RobotLeg. I've also just started on a new project that uses <a href="http://www.spicefactory.org/parsley/">Parsley</a>, so I've soon done them all! 
+
+Enjoy!
+Daniel
+
+
+
+
+

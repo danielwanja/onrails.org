@@ -1,0 +1,9 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIDIwMDggaXMgc3RhcnRlZC4=
+typo_id: 3637
+---
+RailsConf this year has a pre-conference tutorials days which was optional and it's starting now. However attendance seems already pretty big and there was a quite long queue to the registrations desks. I am now at Denny's for my breakfast and will skip the first tutorial and meet with Tony to apply the finishing touch to our talk.  We have a lot of code to present, I hope we can cover all the details in the 3.5 hours we have. We will publish the slides and the source code of the 10 apps we are going to present, so if you didn't make it to RailsConf or our talk you still can get a glimpse at what we are presenting. The slides will have code extracts, but during the talk we will not use them as we will run and show the apps, so there is still good value if you attend the talk :-). See you there!
+
+Enjoy, Daniel.

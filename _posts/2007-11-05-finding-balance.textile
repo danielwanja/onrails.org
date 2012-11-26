@@ -1,0 +1,17 @@
+---
+layout: post
+title: !binary |-
+  RmluZGluZyBCYWxhbmNlLg==
+typo_id: 2699
+---
+Are you a Dad ? Are you thinking becoming one or about to become one? Many people I know in the software development field are Dads and still having fun doing software development, spending late night in front of the computer and getting woken up early by their kids...it's time to play.  My brother in law, RC, is not a software developer but a very successful business man, father of three, dedicates lots of time to his family, is coach on the team for his kids, and regularly manages to take week-ends of with his wife. How does it do all?  Well, he even found time to write a book about this. So I offered him to talk about it on my blog as I believe it's a good read. It's not only a book about finding balance between your family and work life, but also the influence you can have on your children and children around you. He gave out two chapters of the book and I published them (formatting is not perfect) on <a href="http://thenextgenerationofdads.com">http://thenextgenerationofdads.com</a>/. 
+
+TABLE OF CONTENTS<br>
+&#8232;<a href="http://thenextgenerationofdads.com/why/why.html">Why This Book?</a><br>
+<a href="http://thenextgenerationofdads.com/balance/balance.html">Chapter 1 : Finding Balance</a><br>
+Chapter 2 : Be an Example; Be a Man<br>
+Chapter 3 : The Importance of Play<br>
+Chapter 4 : Where Do We Draw the Line?<br>
+Chapter 5 : Dads and Daughters<br>
+Chapter 6 : Teaching Kids about the Real World<br>
+Chapter 7 : Raising Independent Thinkers<br>&#8232;Chapter 8 : Breaking the Cycle<br>

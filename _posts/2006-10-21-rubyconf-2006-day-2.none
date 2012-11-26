@@ -1,0 +1,63 @@
+---
+layout: post
+title: !binary |-
+  UnVieUNvbmYgMjAwNiAtIERheSAy
+typo_id: 169
+---
+<table>
+
+<tr><td>9am - Open Classes, Open Companies,by Nathaniel Talbott </td></tr>
+<tr><td>
+In this talk Nathaniel reflects upon how features of the Ruby language that make it so efficient can be applied to business. Duck Typing, Interpreted language, Flexibility, Succinctness, Reflection, Open classes. It's a great way to present business concepts to a bunch of Ruby developers. Obie also wrote down some <a href="http://jroller.com/page/obie?entry=nathaniel_talbott_open_classes_open">notes</a>.
+</td></tr>
+
+
+<tr><td>10am - Mac OS X and Ruby, by Laurent Sansonetti</td></tr>
+<tr><td>Laurent is from Apple. Author of 5 Ruby libraries and maintains Ruby inside of OSX. For OSX Leopard, Ruby will be bundled as an OSX framework (Ruby.framework). Support 64bit, universal binary.  IRB history support and line editing. Bundle gems (Rake, Rails, Mongrel, Capistrano, Libxml2, SQLit3, DNSDD,...). Ruby can control scriptable applications. 
+<pre>
+1. RubyAEOSA: app = OSX:AEDesc.application('iTunes')
+2. Applescript using RubyAEOSA: result = OSX.do_osascript "tel application 'iTunes'...
+3. RubyOSA: new project since June 2006. puts OSA.app('iTunes').current_track.name
+</pre>
+RubyOSA is the successor of RubyAEOSA, and is simpler to use and still efficient.
+<pre>
+require 'rbosa'
+itunes = OSA.app('iTunes')
+itunes.play
+# Let increase the volume...
+100.times { |i| itunes.sound_volume = i; sleep 0.1 }
+</pre>
+He will release version 0.1.0 today, it will be available as a gem.<br/>
+Now onto Cocoa. RubyCocoa, is not Cocoa specific can be used to bridge Ruby with Objective-C code. Is widely used in free and commercials products. Laurent now demos a small Cocoa application written using XCode, in Ruby, to select and control songs in iTunes. 
+</td></tr>
+
+<tr><td>Rinda in the real world, by Glenn Vanderbug</td></tr>
+<tr><td>Rinda is based on Linda, a distributed coordination system. Similar to JavaSpaces. Communication based on Drb.</td></tr>
+
+<tr><td>Lightning Talks</td></tr>
+<tr><td>Josh Susser having the flu, his session has been replaced by 9 x 5 minutes presentations.<br/>
+1. kylemaxwell.com - I missed this presentation.<br/>
+2. Ara T. Howard - ruby queue. Ruby based linux clustering solution used at NORA. nfs priority queue sqlite ruby.<br/> 
+3. Ben Bleything Shell-Style history for irb (in 75 lines). See at <a href="http://blog.bleything.net/">blog.bleything.net</a><br/>
+4. Andre Louis - wifi.earthcode.com. A community Wifi Cafe Listings allowing to enter cafes and ratings for working condition. Great site for the Rails developer on the go. Currently listing more than 1000 entries. With a open source zoom control for google maps.<br/>
+5. Ryan Davis - Hoe. A tool to compliment rake.<br/>
+6. Daniel Burger - Win32Util project. Memory Mapped IO on Windows with Ruby.<br/>
+7. Aaron Patterson, <a href="http://tenderlovemaking.com/">http://tenderlovemaking.com</a> (despite the site url, can be viewed at work). The presentation is named "I saw the sign" - Control a electrical sign panel from Ruby.<br/> 
+8. Charles Nutter - JRuby - presents the functionality of JRuby (0.9.1)<br/>
+9. Charles Queen, James Grey  - Heartbeat. Deploy your application from a web page. Using Capistrano and Rake tasks. see <a href="http://highgroove.com/">http://highgroove.com/</a><br/>
+10.Bryan Takita -  <a href="http://rubyforge.org/projects/fjson/">FJSON</a>, Fast JSON.<br/>
+ </td></tr>
+
+<tr><td>Web 2.0 Beyond the Browser, by Rich Kilmer</td></tr>
+<tr><td>Rich is presenting a Ruby based desktop runtime with a Rails based central service, named Indi. The UI is build in Flash.</td></tr>
+
+<tr><td></td></tr>
+<tr><td></td></tr>
+
+</table>
+
+Lot's of good information can be found on these blogs:
+<ul>
+<li><a href="http://blog.nicksieger.com/">http://blog.nicksieger.com/</a></li>
+<li><a href="http://www.halostatue.ca">http://www.halostatue.ca</a></li>
+</ul>

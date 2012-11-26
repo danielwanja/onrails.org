@@ -1,0 +1,16 @@
+---
+layout: post
+title: !binary |-
+  VXBncmFkZWQgU3ludGF4IEhpZ2hsaWdodGluZyBmb3IgU2NyaWJiaXNoIFRo
+  ZW1l
+typo_id: 1634
+---
+We were bored of the plain green on black syntax highlighting for our code blocks, not to mention sick of the weird borders around code comments, so I hunted around for a little to find something a little better.  The theme we're using, Scribbish, didn't have any CSS defined for Typo's code blocks, so I stole them from <a href="http://blog.wilf.me.uk/articles/2006/10/03/syntax-highlighting-for-scribbish">James Wilford's post</a>.  Thanks, James.
+
+Maybe we'll tweak the colors some more later, but these will do for now.
+
+<typo:code lang="ruby">
+class Scribbish < TypoTheme
+  include JamesWilfordCSS
+end
+</typo:code>

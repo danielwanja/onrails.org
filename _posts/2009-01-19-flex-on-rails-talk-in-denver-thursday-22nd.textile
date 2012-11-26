@@ -1,0 +1,20 @@
+---
+layout: post
+title: !binary |-
+  RmxleCBPbiBSYWlscyB0YWxrIGluIERlbnZlciAtIFRodXJzZGF5IDIybmQ=
+typo_id: 4202
+---
+Tony and I will be giving a talk on Flex on Rails at Derailed, the Denver Rails User Group. This will take place at <a href="http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=forest+room+denver&sll=37.0625,-95.677068&sspn=37.410045,79.365234&ie=UTF8&ll=39.759991,-105.011272&spn=0.035498,0.077505&t=h&z=14&iwloc=A">Forest Room 5</a> in LODO at 6:30pm, this coming Thursday 22nd.
+
+On the agenda. 
+
+* 6:30 - 7:00: Meet and mingle 
+
+* 7:00 - 8:30: Flex on Rails  - From the authors  Daniel Wanja and Tony Hillerson 
+
+* 8:30 - ...   : Book raffle and spirits. 
+
+We will show highlights of each of the chapters and samples from the book.
+
+I hope to see you there!
+Daniel

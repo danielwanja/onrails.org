@@ -1,0 +1,12 @@
+---
+layout: post
+title: !binary |-
+  aGFzaXBob25lLmNvbSAtIFN0YXRpc3RpY3MgYW5kIE92ZXJ2aWV3IG9mIGlQ
+  aG9uZSBhdmFpbGFiaWxpdHkgYXQgVVMgQXBwbGUgU3RvcmVz
+typo_id: 3847
+---
+As part of the iPhone 3G mania I checked out Apple iPhone 3G availability <a href="http://www.apple.com/retail/iphone/availability.html">website</a> and that's how I found where to buy my iPhone in Denver. I was however also wondering how many Apple store still had the iPhone in the US, so I wrote <a href="http://hasiphone.com">http://hasiphone.com</a> that provides an overview of the availability of the iPhone 3G in the US based on the data provided by Apple website. <div style="text-align:center;"><img src="http://onrails.org/files/20080717_hasiphone.png" alt="20080717_hasiphone.png" border="0" width="453" height="273" /></div>
+
+On the server an AIR application checks once a day the new availability data, crunches it up and saves it a a serialized datastructure to a ByteArray. The Hasiphone Flex application reads this data and visualizes it. Well, I spend 4 hours (which I didn't really have before my vacations) on it, so their may be some glitches here and there. Leave comment on this blog if you find any issues.
+
+Also a note of caution on the data. Like Apple's site mentions it's updated only once a day in the evening. One of the sales guy also mentioned to me that any iPhone that has an issue and cannot be sold but still is in stock may appear as available, thus their are stores that don't have any 3G to sell but still show up on the list.

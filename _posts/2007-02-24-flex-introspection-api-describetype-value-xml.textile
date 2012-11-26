@@ -1,0 +1,65 @@
+---
+layout: post
+title: !binary |-
+  RmxleCBpbnRyb3NwZWN0aW9uIEFQSTogZGVzY3JpYmVUeXBlKHZhbHVlOiop
+  OlhNTA==
+typo_id: 257
+---
+I am playing with the mx.automation framework provided by Flex. For that I need to associate each control with it's automation implementation. More on that on a subsequent blog entry.  But it some case I need to find the super class of a class 
+
+Let's take the following three classes:
+
+<typo:code>
+class A {}
+class B extends A {}
+class Tab extends Button {}
+</typo:code>
+
+Now we can create the following function:
+
+<typo:code>
+import flash.utils.describeType;
+private function superClass(clazz:Class):String {
+    return describeType(clazz).factory.extendsClass[0].@type;
+}
+</typo:code>
+
+
+
+Let run the following code
+
+<typo:code>
+trace("A super class:"+superClass(A));
+trace("B super class:"+superClass(B));
+trace("Tab super class:"+superClass(Tab));
+</typo:code>
+
+And we get the following output:
+
+<typo:code>
+A super class:Object
+B super class:com.nouvelles_solutions::A
+Tab super class:mx.controls::Button
+</typo:code>
+
+
+Let me know if there is an easier way.
+
+The build in <a href="http://livedocs.adobe.com/flex/2/langref/flash/utils/package.html#describeType()">describeType</a>  function takes a class as parameter and return an XML definition of a class. For example describeType(B) returns the following:
+
+<typo:code>
+<type name="com.nouvelles_solutions::B" base="Class" isDynamic="true" isFinal="true" isStatic="true">
+  <extendsClass type="Class"/>
+  <extendsClass type="Object"/>
+  <accessor name="prototype" access="readonly" type="*" declaredBy="Class"/>
+  <factory type="com.nouvelles_solutions::B">
+    <extendsClass type="com.nouvelles_solutions::A"/>
+    <extendsClass type="Object"/>
+    <method name="a" declaredBy="com.nouvelles_solutions::B" returnType="void">
+      <parameter index="1" type="String" optional="false"/>
+    </method>
+  </factory>
+</type>
+</typo:code>
+
+Pretty cool.

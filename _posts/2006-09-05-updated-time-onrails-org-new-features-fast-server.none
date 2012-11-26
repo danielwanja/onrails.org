@@ -1,0 +1,17 @@
+---
+layout: post
+title: !binary |-
+  VVBEQVRFRDogdGltZS5vbnJhaWxzLm9yZyAtIG5ldyBmZWF0dXJlcywgZmFz
+  dCBzZXJ2ZXIu
+typo_id: 144
+---
+Time.onrails.org, the simplest and most efficient time tracking application out there, just got better! <br/>
+<br/>
+
+<b>Speed:</b> We moved it to a new server. The application is now really responsive!<br/>
+<b>More Projects:</b> We also took the opportunity to extend the number of projects you can manage from 4 to 12 projects and sections from 12 to 52.<br/> 
+<b>Sorting and Filtering:</b> Added new functionality like project reordering and filtering.<br/> 
+<b>Project Sharing:</b> You can now share a read-only view of your projects for your customers or coworkers.<br/>
+<br/> 
+So, no time to loose, <a href="http://time.onrails.org">go try it out</a> and let us know what you think.
+

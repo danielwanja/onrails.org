@@ -1,0 +1,148 @@
+---
+layout: post
+title: !binary |-
+  MzYwIEZsZXggLSBEYXkgMiAoTW9uZGF5IE1vcm5pbmcpIC0gTGl2ZSBCbG9n
+  Z2luZw==
+typo_id: 4893
+---
+<table><tr><td>
+<img src="http://onrails.org/files/360flex_1_ebay.png" alt="360flex_1_ebay.png" border="0" width="221" height="166" />
+</td>
+<td>
+<img src="http://onrails.org/files/360flex_2_ebay.png" alt="360flex_2_ebay.png" border="0" width="124" height="166" />
+</td></tr></table>
+
+Actually today is the first day of the conference. Yesterday was a tutorial day which was really fun. Today there will be a bunch of 1h20m sessions throughout the day. The conference is at the ebay headquarters.
+
+<div><img src="http://onrails.org/files/360flex_3_keynote.png" alt="360flex_3_keynote.png" border="0" width="221" height="166" /></div>
+
+I was with three other guys from Denver and we nearly missed the start of the keynote as we took the light rail in the wrong direction. How can 4 engineers go so wrong? :-) Anyhow it doesn't seem we missed to much as it's starting with a talk from the sponsor (ebay/paypal) about the eBay developer program. 
+
+<h3>Keynote</h3>
+
+Now onto the main keynote by Deepa Subramaniam on the Adobe Flash Platform for her first keynote given ever.  She is the new Product Manager of the Flex SDK. 
+
+* The Flex 4 release is coming really soon.
+* Overview of Flex 4
+* Demo of spark components
+* Data-Centric Development
+* Video from the Flex team (geek funny)
+
+<div style="text-align:center;"><img src="http://onrails.org/files/360flex_4__Deepa.png" alt="360flex_4_ Deepa.png" border="0" width="337" height="202" /></div>
+
+It's great that Deepa become the project manager of Flex 4, she understand what's programming is about. She now continues her talk on the Open Screen project.
+
+Developing multi-screen applications (phone .vs. desktop...)
+
+Cross screen challenges/Cross device challenges
+
+* Screen size
+* Input mechanisms
+* Performance
+* Context/use case changes
+* Screen size, orientation
+* ...
+
+Flex can help - <strong>Slider</strong> (Mobile Flex Framework)
+
+* Deliver top quality experience
+* Across multiple platforms
+* Within performance constraints
+
+The Slider team is hard a work and hope to have a preview available this year :-(... I want it earlier!
+
+Growing Flex Ecosystem:
+* Functional Testing Tools
+* Performance and Load Test Tools
+* Flex Components
+* Frameworks
+* AMF servers
+* Tooling Extensions
+* Licensing+Encryption
+* Security Testing
+
+All data visualization components now available in the free open-source Flex SDK!
+
+Cool John is saying that they are recording the videos of each session. 
+
+
+<h3>Appocalypse Soon? The remaking of 'Flex Components' - Michael Labriola</h3>
+
+
+It's full house for Michael's talk. I'm not sure how much live blogging I should do has they are video tapping each session. 
+
+This session is part of his continuing quest to teach Flex from the inside out. To learn about the Flash Player and the Flex framework.
+
+Going to derive the Flex framework. Implement a custom component.
+
+* Flex 3 and Flex 4 components both descend from UIComponents
+
+
+Michael is not explain how the code execution is managed by the Flash Player and executed during a frame. 
+
+* All the basic Flex 3 methods also apply to Flex 4.
+* Flex 3: A base class and then a descendent class for each Layout. Problem i.e. verticalScrollPolicy="off" to avoid unwanted scrollbars.
+* Flex 4: doesn't derive layout behavior but can assemble it.  Frame (Horizontal, Vertical, Diagonal). So the visuals don't exist inside of the class.
+* Flex 4 are based on two separate pieces: the form and the function.
+
+* Separating these pieces favors composition over inheritance. By separating these we gain and we loose...
+* Gain: have one set of functionality look many different ways
+* Loose: a lot of dead weight and lots of extra classes
+* Two type of components: Controls and Containers
+* Flex 4: two types of things... those that can be skinned and those that cannot
+* Groups are the base type of container
+* Groups don't have visual identify
+* BasicLayout, HorizontalLayout, VerticalLayout, TileLayout
+
+New Hierarchy:
+
+<pre>
+UIComponent
+	SkinnalbeComponent
+	SkinnableContainerBase
+		SkinnableContainer
+			Applicaiton
+			Panel
+			Window
+		SkinnableDataContainer
+</pre>
+
+* Skins are classes defined in MXML
+* Applied to components using the skinClass or by CSS
+* Components: declare skin parts and declare skin states
+
+Skins: specify a HostComponent
+
+<pre>
+<fx:Metadata>
+   [HostComponent("spark.components.Button")]
+</fx:Metadata>
+</pre>
+
+Declare states
+
+<pre>
+   <s:states>
+	<s:State name="up" />
+	<s:State name="over" />
+   </s:states>
+</pre>
+
+
+* How it all works: components need to size themselves, need to be created at runtime, need to interact with parents and children
+* Instanciation: all Flex components start with a constructors. Constructors in Flex add event listeners and setup initial properties...That's it.
+* Display List: list of all the components that are on the screen at one point or another
+* Creating children: all visual children of a component are created in the createChildren method. The visual children of a component exists in the skin and so the skin is first created at this time.
+* Skin Methods: attachSkin, detachSkin, partAdded, partRemoved
+* Sizing: each component implements the measure() method. Flex works on the principle that children must be sized before their parent and it makes the sizing process potentially asynchronous. It works via a priority queue. Priority based on nest level.
+* Flex 4: children leave inside a skin and not the parent. The skin is a component, so we ask it the size of it's children. 
+* Measured Data: measure is only a suggestion. 
+* Sizing: parents size children. A component does not size itself.
+* Sizing and Positioning: sizing and positioning is done in a method called updateDisplayList(). 
+* UDL: components are given a size. One the size is given, the component is free to do what is wishes. For the most part, this information is simply passed down to the skin. Again recursion.
+
+This was a great talk and clarifies many things which is great timing as I'm starting to dive deeper into Flex 4.
+
+<a href="http://onrails.org/articles/2010/03/08/360-flex-day-2-monday-afternoon-live-blogging">To be continued...</a>
+
+

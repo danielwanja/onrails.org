@@ -1,0 +1,75 @@
+---
+layout: post
+title: !binary |-
+  QWN0aXZlUmVjb3JkJ3MgYWNjZXB0c19uZXN0ZWRfYXR0cmlidXRlc19mb3Ig
+  c3BlY2lmaWNhdGlvbg==
+typo_id: 4352
+---
+I was trying to figure out how to use the new AvtiveRecord accepts_nested_attributes_for functionality that enables saving nested active records. In fact I will try to use that functionality from a Flex application using the <a href="http://restfulx.github.com/">RestfulX</a> framework. 
+
+The cool thing about trying to understand Rails or ActiveRecord is that there are many tests available part of the source code which describe really well the framework. The functionality is provided by the  NestedAttributes module defined in /activerecord-2.3.2/lib/active_record/nested_attributes.rb.
+
+I just generated a basic specs from the associated test case which I included here after and this give a good idea of what the <i> accepts_nested_attributes_for</i> method supports:
+
+Nested Attributes In General
+* Base should have an empty reject new nested attributes procs
+* Should add a proc to reject new nested attributes procs
+* Should raise an argumenterror for non existing associations
+* Should disable allow destroy by default
+* A model should respond to underscore delete and return if it is marked for destruction
+
+Nested Attributes On A Has One Association
+* Should define an attribute writer method for the association
+* Should build a new record if there is no
+* Should not build a new record if there is no id and delete is truthy
+* Should not build a new record if a reject if proc returns false
+* Should replace an existing record if there is no
+* Should not replace an existing record if there is no id and delete is truthy
+* Should modify an existing record if there is a matching
+* Should take a hash with string keys and update the associated model
+* Should modify an existing record if there is a matching composite
+* Should delete an existing record if there is a matching id and delete is truthy
+* Should not delete an existing record if delete is not truthy
+* Should not delete an existing record if allow destroy is false
+* Should also work with a hashwithindifferentaccess
+* Should work with update attributes as well
+* Should not destroy the associated model until the parent is saved
+* Should automatically enable autosave on the association
+
+Nested Attributes On A Belongs To Association
+* Should define an attribute writer method for the association
+* Should build a new record if there is no
+* Should not build a new record if there is no id and delete is truthy
+* Should not build a new record if a reject if proc returns false
+* Should replace an existing record if there is no
+* Should not replace an existing record if there is no id and delete is truthy
+* Should modify an existing record if there is a matching
+* Should take a hash with string keys and update the associated model
+* Should modify an existing record if there is a matching composite
+* Should delete an existing record if there is a matching id and delete is truthy
+* Should not delete an existing record if delete is not truthy
+* Should not delete an existing record if allow destroy is false
+* Should work with update attributes as well
+* Should not destroy the associated model until the parent is saved
+* Should automatically enable autosave on the association
+
+Nested Attributes On A Has Many Association
+and Nested Attributes On A Has And Belongs To Many Association
+* Should define an attribute writer method for the association
+* Should take a hash with string keys and assign the attributes to the associated models
+* Should take an array and assign the attributes to the associated models
+* Should also work with a hashwithindifferentaccess
+* Should take a hash and assign the attributes to the associated models
+* Should take a hash with composite id keys and assign the attributes to the associated models
+* Should automatically build new associated models for each entry in a hash where the id is missing
+* Should not assign delete key to a record
+* Should ignore new associated records with truthy delete attribute
+* Should ignore new associated records if a reject if proc returns false
+* Should sort the hash by the keys before building new associated models
+* Should raise an argument error if something else than a hash is passed
+* Should work with update attributes as well
+* Should update existing records and add new ones that have no id
+* Should be possible to destroy a record
+* Should not destroy the associated model with a non truthy argument
+* Should not destroy the associated model until the parent is saved
+* Should automatically enable autosave on the association

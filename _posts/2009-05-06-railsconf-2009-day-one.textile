@@ -1,0 +1,154 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIDIwMDkgRGF5IE9uZQ==
+typo_id: 4383
+---
+I've just finished my first day of RailsConf 09.  Things have gotten started well -- I've met several interesting people, found some interesting people to follow on twitter.  I'll try to post as much as I can in the way of reviews for those of you attending by blog.
+
+Starting with the DHH Keynote.  David's talk was entitled "Rails 3 and the Real Secret to High Productivity".
+
+He started off by reviewing some of the so-called "mortal wounds" Rails has experienced:
+* It was deemed as not enterprise-ready, just a lot of hucksters trying to generate interest in Ruby to sell their own books, etc.
+* it encountered an "attack of the clones" in which several other languages/frameworks tried to duplicate (what they felt was) the one "key" feature that was the root cause of Rails' explosion in success and popularity
+* some early adopters switched back (Derek Sivers, CD Baby)
+* some early adopters encountered serious problems (Twitter), which may or may not have been Rails-specific issues, but were perceived as such
+* some people complained about "feature bloat" (Array#fourteenth, etc.)
+
+The takeaway from this review:  There is no one best tool for *every* job -- it's okay if not everyone chooses Rails.  Rails can't be distilled down to a single feature, it must be viewed as a sum of its components.  Emotions or reactions can be quite strong, but are usually not all that important/long-lasting.
+
+
+Next, he outlined some central ideas of the Rails 3 philosophy:
+* Lock up all the unicorns:  This is not a complete rewrite.  Many people might look at Rails 3 and be disappointed, expecting more radical changes.
+* No "Sacred Cows" allowed:  Everything is on the table for possible change in Rails 3.  That being said, it's important to note that any changes causing backward compatibility issues will need a *very* good justification to be accepted/implemented.
+* "Have it your way":  The default application generated under Rails 3 will rock, but you can ask for things to be done a different way and override the defaults.  This seems like a natural extension of the templates now available in Rails 2.
+
+He also covered some of the progress made to date in Rails 3.  It sounds like things are not going as fast as was hoped, but there is code available now in GitHub -- just no officially tagged release.
+
+Plans for Rails 3 include:
+* a new router, with the ability to route requests by subdomains, user-agent strings, etc.  also able to route to other rack machinery
+* XSS protection, in which any text output will be html-escaped by default, requiring you to explicitly request raw output if/when you need it.
+* JS will be unobtrusive and framework-agnostic.  This is one of the more exciting plans for me.  tags will be generated with the HTML 5 validating data-* attributes, which can be used as unobtrusive javascript hooks:
+
+h3. HTML
+<typo:code language="html">
+  <a href="/person/1" data-remote="true" data-method="delete">Delete This Person</a>
+</typo:code>
+  
+h3. JavaScript
+<typo:code language="javascript">
+  $(document.body).observe("click", function(event) { 
+    var element = event.findElement("a['data-remote']"); 
+    if (element) { 
+      var method = element.readAttribute("data-method") || "get"; 
+      new Ajax.Request(element.readAttribute("href"), { method: method }); 
+      event.stop(); 
+    } 
+  });
+</typo:code>
+  
+  also, much like the database adapters in ActiveRecord, there might be a "driver" layer between the Rails javascript calls and the underlying javascript framework, enabling easy adoption of jQuery, MooTools, or any alternative framework.
+* more agnosticism in ORM choice and generators
+* more refactoring of various "crufty" areas of the framework, speed related improvements
+
+Then, near the end, he got to the "secret to high productivity" part.  In a nutshell -- don't view the requirements as carved in stone.  If you are able to make (slight) changes to the requirements as originally communicated by the business, it may serve their purposes just as well as the original requirements but be drastically easier to implement.  As cool as Rails is, no framework is going to match the performance boost this can bring.
+
+h2. Don't Mock Yourself Out - David Chelimsky
+
+I went to David Chelimsky's talk on Mocks, but it was a bit too introductory-level.  He basically explained good reasons to use mocks -- from the title, I was expecting ways to determine if your mocks are becoming too heavy-handed, preventing you from actually testing any of your implementation!
+
+Here are the highlights:
+
+David Started with a review of the difference between mocks and stubs -- basically, mock objects care about which methods are or aren't called during the test, stubs are "dumb" containers to give canned responses to methods.  See "Martin Fowler's explanation":http://martinfowler.com/articles/mocksArentStubs.html#TheDifferenceBetweenMocksAndStubs for more information.
+
+Here are examples of when stubs might be useful:
+
+* isolation from non-determinism: when dealing with any randomly generated values, your tests face brittleness from non-determinism.  Similar for timestamps, date ranges, etc.
+* isolation from external dependencies: Anything that connects to an external resource (e.g. network/db) can benefit from (smart) mocking.  You should still test the "real" operation, but for adding permutations/edge case tests, mocks can speed up your test suite by multiple orders of magnitude.
+* polymorphic collaborators : (strategies / mixins/plugins) calling a method on the "main" object ends up delegating to a method somewhere else
+
+Here are examples of when mocks might be useful:
+
+* testing side effects (e.g. something gets logged)
+* testing caching / memoization -- ensure an expensive method gets called exactly once.
+* interface discovery : "outside-in" development : build a mock of something before it exists, use to discover the "ideal" interface, how you will be using this in the real world.
+
+At this point, we started getting to Rails-specific content.  David pointed out that if you are doing traditional Unit/Functional/Integration tests, it's not DRY-some parts of your app (e.g. model validations) are being tested multiple times across your test suite.  He recommends to split tests instead into business-facing / developer-facing specs, even using different frameworks where appropriate-for example, RSpec stories are more suited for business-facing specs, since they are close to the natural language of the domain experts.  For lower-level, developer-facing tests (e.g. database-level), it probably doesn't make sense to invest time writing stories--the developer *is* the domain expert.
+
+A couple of helpful tips -- if you care about *which* template gets rendered, but not necessarily the content (which could change!), you can stub the call to render, and set an expectation that it receives the correct partial name when called.  When doing Rails functional testing, you need to set up valid/invalid data to make sure both sides of create/update actions are executed.  Instead, you could stub the new/save/etc methods on the object to force the branch you want to test.
+
+Upcoming "stubble" project helps with this.
+
+
+h2. UI Fundamentals For Programmers - Ryan Singer
+
+Next, I saw Ryan Singer (37 Signals) talk about UI design concepts for developers.  This was a high-level talk to help developers with the approach to take to UI/design, not a how-to, recipe style talk.
+
+First of all, Ryan advocates taking a BDD, outside-in approach -- including the UI.  The UI is the closest thing to the user, so start there and work your way in, implementing backend functionality as you need.
+
+Next, overcome your natural tendency (as a developer) to be terse -- you should add ample text to guide your end user through the flow of your site/screens.  Don't rely on implicit meaning in forms/layouts as a guide, be explicit and explain what is expected of the user.
+
+You should form a model (conceptual model, not ActiveRecord model) of the domain problem that makes sense to the customer and is implementable (feasable).  Recommended reading:  Domain-Driven Design by Eric Evans.  (also Tufte for information display in general)
+
+Designers tend to think in "Screens" as the atomic unit of work.  This plays nicely into REST/Resource conventions, mapping e.g. displaying a particular object to the "show" action of your resource controller.  For multiple related objects, break the screen into multiple areas that each represent a resource.
+
+Be careful with contrast-make sure that you emphasize the most important elements on the page.  Watch colors, sizes, etc.  Don't present a visual "buffet line" -- aim more for a "gourmet meal".  Less is more.
+
+Every action a user can take on your site has three distinct parts, a beginning, a middle, and an end.  Think about where the user is when they need/want to take the action (where they are linked from).  For the middle, collect the data for the action, then consider what the user will want/need to do next.
+
+Some rules of thumb:  helpers should not generate blocks of HTML (although generating an HTML element is probably ok -- think image_tag);  Organize your CSS/JS around REST conventions for your application;  Treat ERb partials that generate HTML just as you would an image tag;  Use helpers to reveal intention.
+
+h2. Smacking Git Around - Scott Chacon
+
+Scott's talk (aka the Git Firehose) was just as awesome (and fast-paced) as last year.  Much too quick to take good notes, but I was able to capture a couple of useful tips & tricks:
+
+First, on the concept of reachability:  every commit that is an ancestor of your current commit.  Git uses this in the dot-dot syntax for git-log and subtracts the first from the second.  So @git log origin/master..master@ gives you everything in your local master not already pushed to the remote repo.  Or, after a fetch, reversing it (@git log master..origin/master@) gives you all commits you just pulled down that haven't been merged into local master.  Handy!  A couple of alternate syntaxes:  @git log branch_a --not branch_b@, or @git log branch_a ^branch_b@.  This is also extensible to more than two branches:  @git log origin/master master ^experiment@ would give you all commits on origin/master and/or master that are not in experiment.
+
+Second, he illustrated a common problem with diffing between branches in Git.  If you imagine a file existing in two branches, in which lines have been added on both branches, and you ask git for a diff, most often you want to know what has been added to the other branch that you don't have.  By default, though, the question git is answering is "how do I make this file look like the other file?", which includes deleting the lines you have added on the current branch -- probably not what you want.  In this instance, you can use the triple-dot syntax: @git diff master...topic@ (asking git "what would happen if I merged the two branches?")
+
+He talked about subtree merging as an alternative to submodules.  Basically, the process is:
+
+# add a remote to the project you want to add as a subtree and fetch:
+<typo:code language="sh">
+git remote add rails_remote git@github.com:myfork/rails
+git fetch rails_remote
+</typo:code>
+# check out a local branch of the other project:
+<typo:code language="sh">
+git checkout -b rails_branch rails_remote/master
+</typo:code>
+# return to your project and use git-read-tree to add the subtree, then add and commit:
+<typo:code language="sh">
+git checkout master
+git read-tree --prefix=vendor/rails -u rails_branch
+git add vendor/rails
+git commit
+</typo:code>
+
+This keeps your ability to make changes to the remote project and submit them back upstream:
+
+# make change(s) to in remote project and commit
+# go to remote project's local branch
+<typo:code language="sh">
+git checkout rails_branch
+</typo:code>
+# merge your changes in:
+<typo:code language="sh">
+git merge -s subtree --no-commit --squash master
+</typo:code>
+
+This obviates the need for braid/piston!  See http://tinyurl.com/braidgit for more info.
+
+Also mentioned was patch staging -- simple, but incredibly useful!  Say you've made multiple changes to the same file, and you want to commit some, but not all.  With patch staging (@git add -p@), you can select the hunks you want to stage for commit &mdash; awesome!
+
+More useful info, including how to give Git the ability to diff binary files (kinda, but it can work).  Slides are posted at http://tinyurl.com/gitrailsconf09
+
+h2. Quality Code with Cucumber - Alsak HellesÃ¸y 
+
+For the last session, I saw Alsak HellesÃ¸y's most excellent talk on Cucumber.  I was totally drained at this point, and took no notes.  He gave an example of how to get started with Cucumber, working through a sample scenario, doing outside-in development.    So far, I haven't used RSpec / BDD in anything serious, but I'm looking forward to trying this out -- looks pretty interesting.
+
+h2. Ruby Heros / Evening Keynote
+
+The day ended with the Ruby Hero awards, and then the DHH / Tim Ferriss (4 hour workweek) interview/keynote.  I think there was probably good content to be had in the keynote about refactoring your lifestyle.  Unfortunately, the sound was bad -- very muffled/echoy from where I was sitting.  Also, the pace was so much different from the firehose of information presented by the technical talks that it was like a panic stop in a formula one racer.
+
+Overall, a good but exhausting day here in Vegas.  If you're here, look me up and say hi, or give me a follow (rubysolo on Twitter).

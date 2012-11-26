@@ -1,0 +1,8 @@
+---
+layout: post
+title: !binary |-
+  RmxleCBBdXRvbWF0aW9uIE1hbmFnZXI=
+typo_id: 2463
+---
+At the beginning of the year I was investigating the new automation functionality Flex 2.0.1 brought to the table. So I looked into what it would take to implement a tool like QuickTest Pro and made some initial progress, but then got called back to reality and other projects. I mentioned this and several readers of this blog contacted me and asked If they could get the source code or if I could open source it.  Well, the code is not in any stage where I could open source it or even show it. It doesn't work under Flex 3 anymore. But as you asked for it, feel free to have a look at this "experiment". This code  is not an example on how to structure you code or the right way of doing things...it's rather some dark side coding during a late night session. Be warned only check this out if you are really curious or asked for it :-)  Use at your own risk, and don't ask too many questions: <a href="http://nouvelles-solutions.com/onrails/flextester/srcview/">view source here</a>. They are many parts I haven't even looked into it such as drag&drop, mouse movement emulation, text selection... so Good luck! Also note that Adobe removed from the source code the mx.automation.delegates folder in the Moxie release...These classes are required to make automation work, and I assumed they where part of the SDK and are an important part to understand how the automation is working. So I am not sure what the status on using these classes is. 
+

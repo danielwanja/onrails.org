@@ -1,0 +1,25 @@
+---
+layout: post
+title: !binary |-
+  aVBob25lIFdlYiBEZXZlbG9wbWVudA==
+typo_id: 2336
+---
+I haven't found much info on developing for the iPhone, but this <a href="http://stakeventures.com/articles/2007/06/19/repost-of-wwdc-iphone-safari-info">link</a>  provides some good info. Here are some extracts:
+
+* Safari User Agent for iphone:: Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A538a Safari/419.3
+* No Java, No Flash
+* HTML5
+* 10MB max html size for web page
+* Javascript limited to 5 seconds run time
+* Javascript allocations limited to 10MB
+* 8 documents maximum loaded on the iPhone due to page view limitations
+* Quicktime used for audio and video
+* stylesheet device width:480px
+* there are no scroll bars or resize knobs. the iphone will automatically expand the content
+* new telephone links allows you to integrate phone calls directly from your webpage. remember this is only on safari.
+* built in google maps client for integrated mapping from your website
+* iPhone screen size 480&#215;320
+* encode movie size 480&#215;360
+* Links to movies on a web page will take users directly to video full screen playback
+
+I didn't have to say in line to buy an iPhone, the Apple Store in Aspen Groove served everyone that was waiting in line in about 30 minutes, I just happened to go eat next to the Apple Store with my wife and kids ;-). So I just picked one up on the way to the Restaurant, zero wait. The store is open to midnight but there is not too much activity. I guess only geeks like me (or Sol) will try to pick one the first day, even while being  fully aware of the limitations or the price. And this despite that I told everyone that in no way I will get one.  Note, we have to test our different web applications on the new platform. ATT seems a little overwhelmed and iTunes provides me with a nice message that it will take a little longer and I will be notified by email when I can activate the phone. Note that I just received a follow-up email that telling me to that the phone will be activated by July 1st noon.  

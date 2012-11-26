@@ -1,0 +1,22 @@
+---
+layout: post
+title: !binary |-
+  V29ybGQgU2VyaWVzIFRpY2tldHMgVGltZSBsaW5l
+typo_id: 2677
+---
+As many, I tried to buy a couple of tickets to the World Series. Hey, it's coming to Denver. Go Rockies! Well, yesterday the online ticket sales was quite a debacle. 'They' blame it on a vicious attack...hmmm...well...EC2 could have helped, I guess they just didn't think that nearly everyone in the US would go on their website at 10am MDT, yesterday. Well, today things went well for them, and all the tickets sold in less than 3 hours. So what does this have to do with Rails? We are working on MySpyder.net, which allows to track changes on websites. So I create a watch on the "<a href="http://colorado.rockies.mlb.com/col/ticketing/postseason_2007.jsp">The Official Site of The Colorado Rockies</a>". I was hoping getting an advantage, find out before others that sell are back..Didn't work out that way. I didn't get tickets, but find here after how Myspyder.net saw the World Series Tickets online sales.MySpyder.net is not public yet as we need to ensure that we can handle the load :-)
+
+All times are in UTC. Ok, on to the events..as seen by Myspyder.net
+
+* 2007-10-23 03:30:17 Tickets go on sales tomorrow at 12pm
+* 2007-10-23 16:30:31 Oops, official press release announced regarding sales of Tickets.
+* 2007-10-23 18:00:17 Sales is back on!
+* 2007-10-23 20:30:22 27th Sold out, 26 Sold out.
+* 2007-10-23 21:01:07 Sold out :-(
+* 2007-10-23 21:30:46 Good news! Parking passes still available.
+
+
+
+<img src="http://onrails.org/files/world_series_tickets.gif" alt="world_series_tickets.gif" border="0" width="495" height="1404" />
+
+

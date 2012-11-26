@@ -1,0 +1,18 @@
+---
+layout: post
+title: !binary |-
+  QWxsIEhhbGxvdydzIEV2ZSBTeW50YXggSGlnaGxpZ2h0aW5n
+typo_id: 1872
+---
+Our syntax highlighting is now closer to <a href="http://macromates.com/">Textmate's</a> "All Hallow's Eve" theme.  This was taken from the latest version of <a href="http://www.quotedprintable.com/2006/10/5/all-hallows-eve">Scribbish 3.0</a>.  Here's our version of <a href="/stylesheets/theme/syntax.css">syntax.css</a>
+
+<typo:code lang="ruby">
+# Show off All Hallow's Eve theme
+module Theme
+  class AllHallowsEve < Base
+    def description
+      desc = "My TextMate theme"
+    end
+  end
+end
+</typo:code>

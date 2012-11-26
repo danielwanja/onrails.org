@@ -1,0 +1,47 @@
+---
+layout: post
+title: !binary |-
+  VGhlIFJhaWxzIEVkZ2UgQ29uZmVyZW5jZSBpbiBEZW52ZXIgLSBEYXkgMg==
+typo_id: 190
+---
+He we go again, day 2 is starting.
+<p/>
+
+<b>Rails the right tool for the job? by Mike Clark.</b><br/>
+Mike will address the following aspects of Rails:Sweet spots, Honey Pots, Tar Pits. Rails is a full-stack web framework, no need to choose the different parts of the stack it's ready to go from the start. It's Quick and Clean, like Martin Fowler would say. Mike adds quicker than J2EE and cleaner than PHP. <b>The sweet spot</b>: database backed web applications, green-field development, open-minded team, following the rails way.
+ <b>Honey Pots</b> is when you get into Rails because it's sweet, but then you get stuck. In other words the not so sweet spots: Legacy, Internationalization, messaging systems, heavy use of threading.<b>Tar Pits</b> two phase commits, off the shelf components, obfuscation, client installations, corporate standards.
+
+<p/>
+<b>Active Record Demystified by Marcel Molina Jr.</b><br />
+
+An in-depth tour of connection adapters, ActiveRecord::Base#save, and ActiveRecord::Base.find. <br/>
+
+<p/>
+<b>Building UI Frameworks by Bruce Williams.</b><br />
+Bruce worked on a large system with many views. Views are tedious and are time consuming to develop and took a large portion of the development of the 90000 Ruby code application they wrote. I will not talk about components, engines, markaby. Bruce will shares some of his frustrations and challenges. Views are hard to read, are hard to learn (ruby, rails, html, css, javascript+prototype). He extensively explain the difficulties that are faced when doing view development and mentions that it's all about <b>Pain Management.</b>. He continues by showing some examples and concepts to ease that pain by using  simply_helpful plugin, DSL for controllers, and block helpers than render partials.
+
+
+<p/>
+<b>Rake Your Secret Weapon by Jim Weirich.</b><br />
+
+<p/>
+<b>Burried Treasure by Dave Thomas</b><br />
+Tips and Tricks for Ruby & Rails Development. Dave goes through these following Rails goodies:
+<ul>
+<li>with_scope</li>
+<li>with_options</li>
+<li>returning</li>
+<li>&:xx - The Blockinator %w{ cat dog }(&:upcase) or users.map(&:name)</li>
+<li>Lookup Constants</li>
+<li>Formatting dates and number</li>
+<li>Enumerable extensions (i.e. group_by)</li>
+<li>Arrays: in_groups_of, to_sentence</li>
+<li>Strings: at, from , to, first, last, each_char</li>
+<li>Subversion integration: script/generate model mymodel <b>--svn</b> (adds it automatically to subversion)</li> 
+<li>The Console: app.get, app.response, helper, irb for default object, ActiveRecord::Base.logger = Logger.new STDOUT</li>
+<li>Routing: >>irb ActionController::Routing::Routes; puts routes</li>
+<li>TextMate: ctrl-h on a method to shows the rdoc. ctrl-shift-apple-s on an ActiveRecord shows the schema information. Code Completion. </li>
+</ul>
+
+
+

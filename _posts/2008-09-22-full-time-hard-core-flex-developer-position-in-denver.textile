@@ -1,0 +1,33 @@
+---
+layout: post
+title: !binary |-
+  RnVsbCB0aW1lIGhhcmQgY29yZSBGbGV4IERldmVsb3BlciBwb3NpdGlvbiBp
+  biBEZW52ZXIu
+typo_id: 3998
+---
+One of my customers, Fiserv Insurance Solutions, looks for an experienced Flex Developer for one of it's new project. In short they are looking for a good Flex developer. Here is an extract of the job post and you can read more about <a href="http://tbe.taleo.net/NA9/ats/careers/requisition.jsp?org=FISERV_INSURANCE&cws=1&rid=63">here</a>.
+
+We are seeking a senior level software developer proficient in ActionScript and Flex to join our team building the cutting-edge browser-based applications. Extensive experience with Rich Internet Application (RIA) development using Adobe Flex and ActionScript is required. You will be involved in designing and implementing a creative and innovative application platform with Adobe Flex which will be used to build very large projects (300+ screens). Qualified applicants will have 3+ years of in-depth ActionScript development experience developing RIA applications, and at least a year of full time, hard core Flex experience. Also required is experience with Flex Remoting (AMF) and experience with Flex frameworks such as Mate, PureMVC or Cairngorm.
+
+Knowledge and Desire Skills
+
+* Experience with Flex MVC frameworks: Mate, Cairngorm, etc.
+* Source control system
+* Agile development methodology, SCRUM preferred
+* Effective, creative problem solving skills
+* Strong organization skills, self-motivated, team player
+* Excellent verbal and written communication skills
+* MUST be proficient in ActionScript 3.0 and Adobe Flex development
+* Experience with custom component development
+* Extensive experience with AS3 & MXML
+* Experience building large, enterprise applications with Flex
+* Strong Object Oriented Programming expertise
+
+Deep understanding of Flex internals:
+
+* data binding
+* event system
+* data grids & custom renderers
+* module-based application development
+* internationalization & localization
+* AMF Remoting

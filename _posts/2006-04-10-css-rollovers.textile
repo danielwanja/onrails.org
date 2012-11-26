@@ -1,0 +1,84 @@
+---
+layout: post
+title: !binary |-
+  Q1NTIFRyYW5zcGFyZW50IFJvbGxvdmVycw==
+typo_id: 49
+---
+I was trying to implement some rollover effects when I stumbled over this  article at "mandarindesign":http://www.mandarindesign.com/opacity.html. I wrapped this functionality in the helper here after
+
+<typo:code lang="xml" linenumber="true"  title="The css">
+<style type="text/css">
+<!--
+div.transOFF {width: 100%; background-color: silver; border:1px solid black;}
+div.transON  {width: 100%; background-color: silver;opacity:.50;filter: alpha(opacity=50); -moz-opacity: 0.5; }
+-->
+</style>
+</typo:code>
+
+<typo:code lang="ruby" linenumber="true"  title="The rhtml template">
+<table width="200" border="0" style="border:1px solid black;">
+  <tr>
+    <td>Project</td>
+    <td>Dashboard</td>
+    <td>Charts</td>
+  </tr>
+  <tr>
+    <td><%= rollover_image('/images/index/project_icon.png', true) %></td> 
+    <td><%= rollover_image('/images/index/dashboard_icon.png') %></td> 
+    <td><%= rollover_image('/images/index/graph_icon.png') %></td> 
+  </tr>
+</table>
+
+</typo:code>
+
+<typo:code lang="ruby" linenumber="true"  title="The Helper">
+  def rollover_image(src, over=false)
+    transON, transOFF  =  over ? ['transOFF', 'transON'] : ['transON', 'transOFF']
+    content_tag "div", 
+                image_tag(src, :onmouseover => "this.className='#{transOFF}'", :onmouseout => "this.className='#{transON}'" ), 
+                :class => transON, 
+                :onmouseover => "this.className='#{transOFF}'",
+                :onmouseout => "this.className='#{transON}'"  
+  end
+</typo:code>
+
+
+<style type="text/css">
+<!--
+div.transOFF {width: 100%; background-color: silver; border:1px solid black;}
+div.transON  {width: 100%; background-color: silver;opacity:.50;filter: alpha(opacity=50); -moz-opacity: 0.5; }
+-->
+</style>
+
+<table width="200" border="0" style="border: 1px solid black;">
+<tbody>
+<tr>
+<td style="">
+Project
+</td>
+<td style="">
+Dashboard
+</td>
+<td>
+Charts
+</td>
+</tr>
+<tr>
+<td style="">
+<div onmouseover="this.className='transON'" onmouseout="this.className='transOFF'" class="transOFF">
+<img src="/files/project_icon.png?1144723836" onmouseover="this.className='transON'" onmouseout="this.className='transOFF'" alt="Project_icon" class="transOFF" style=""/>
+</div>
+</td>
+<td style="">
+<div onmouseover="this.className='transOFF'" onmouseout="this.className='transON'" class="transON" style="">
+<img src="/files/dashboard_icon.png?1144723723" onmouseover="this.className='transOFF'" onmouseout="this.className='transON'" alt="Dashboard_icon" class="transON" style=""/>
+</div>
+</td>
+<td>
+<div onmouseover="this.className='transOFF'" onmouseout="this.className='transON'" class="transON">
+<img src="/files/graph_icon.png?1144723748" onmouseover="this.className='transOFF'" onmouseout="this.className='transON'" alt="Graph_icon" class="transON"/>
+</div>
+</td>
+</tr>
+</tbody>
+</table>

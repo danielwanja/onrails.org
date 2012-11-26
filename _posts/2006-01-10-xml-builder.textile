@@ -1,0 +1,36 @@
+---
+layout: post
+title: !binary |-
+  WG1sIEJ1aWxkZXI=
+typo_id: 15
+---
+I created the new _Playground_ category on this blog to expose various aspects regarding Ruby On Rails that I am exploring. It may raise more questions than provide answers, but in any case don't hesitate to jump in and add your 2 cents.
+
+The _xml_builder_ method here after uses the _render_to_string method to create some xml structure. The xml_string could as well have been in a separate .rxml file and and a simple _render_ statement instead of _render_as_string_ could have saved one line of code. But hey, that's what the playground is for! 
+
+
+<typo:code lang="ruby">
+class PlaygroundController < ApplicationController
+  
+  def xml_builder
+    xml_string = <<-XML_END
+        xml.test do
+          xml.language(name)
+          xml.description("Rocks!")
+        end
+    XML_END
+    result = render_to_string(:inline => xml_string, :locals => { :name => 'Ruby'}, :type => :rxml) 
+    render_text result
+  end
+  
+end
+
+</typo:code>
+
+The output: 
+<typo:code lang="xml">
+<test>
+  <language>Ruby</language>
+  <description>Rocks!</description>
+</test>
+</typo:code>

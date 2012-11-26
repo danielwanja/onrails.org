@@ -1,0 +1,147 @@
+---
+layout: post
+title: !binary |-
+  R2VvaXAgZGF0YQ==
+typo_id: 111
+---
+As part of the Rails Log Analyzer I want to show where, geographically speaking, the different users come from. The following 'ingredients' were required to achieve this:
+<ul>
+<li>The geoip gem by Clifford Heat</li>
+<li>The GeoLiteCity.dat file download from http://www.maxmind.com/app/geolitecity</li>
+<li>A vectorial world map in Flash from http://www.fabiovisentin.com/world_map/vectorial_world_map.asp</li>
+<li>And the Flex mx:BubbleChart component</li>
+</ul>
+The result is the following
+
+<p>
+<img src="http://onrails.org/files/20060601_geoip1.gif" border="0" height="254" width="398" alt="20060601_geoip.gif"  />
+</p>
+<p>
+
+Note there are still some technical hurdles to overcome with the bubble chart as it behaves unexpectedly when setting the radius of the bubbles and the scaling of the world map as the background of the chart can not be precisely controlled. Also the world map needs to be zoomed in a little to make the graph more readable as not too much activity is going on at the south pole.
+
+<p>
+So now lets look at some code extracts.
+
+<p>
+<strong>Getting the geoip information [ruby]</strong>
+<p>
+When parsing the log we retrieve the city information related to an ip address
+<typo:code lang="ruby">
+	require 'geoip'
+
+	geo_ip = GeoIP.new("#{RAILS_ROOT}/data/GeoLiteCity.dat")
+    	parser.items.each_with_index do |item, index|
+		 geo_info = geo_ip.city(item['ip']) 
+             ...
+	end
+</typo:code>
+
+The _city_ method returns the following array
+<pre>
+         	[   hostname,			# 0 - Requested hostname
+         	    ip,				# 1- Ip address as dotted quad
+         	    CountryCode[code],	# 2 - ISO3166-1 code
+         	    CountryCode3[code],	# 3 - ISO3166-2 code
+         	    CountryName[code],	# 4 - Country name, per IS03166
+         	    CountryContinent[code],# 5 - Continent code.
+         	    region,			# 6 - Region name
+         	    city,				# 7 - City name
+         	    postal_code,		# 8 - Postal code
+         	    latitude,			# 9 - Latitude
+         	    longitude,			# 10 - Longitude
+         	] 
+</pre>
+
+<p>
+<strong>Generating the geo data series [ruby]</strong>
+The log file data is stored in sqlite database for ease of querying and aggregation. <i>This will also allow to wrap the application as a packaged OSX application with the database embedded in the application.</i> The following called is invoked by the controller that simply return the result of the query to the Flex application. 
+
+<typo:code lang="ruby">
+  def Hit.sqlite_data(from_date, to_date)
+  result = {}
+    query = { :name => "geoip",
+                  :sql  => "select count(*) as count, latitude, longitude, city, state, country from hits where #{scope} group by 2,3 order by 1 desc",
+                 :column_names => ['count', 'latitude', 'longitude', 'city', 'state', 'county']
+               }
+
+	result[query[:name]] = Hit.geoip_serie(data, query[:name],query[:column_names], result[:hit_count][:data][0][0].to_f)
+	result
+   end
+
+  def Hit.geoip_serie(serie, title, column_names, total_count)
+    result = {:title => title}
+    data = []
+    serie.each do |item|      
+      row = {'count' => (item[0].to_f / total_count)*100,
+             'latitude' => item[1],
+             'longitude' => item[2],
+             'city' => item[3],
+             'state' => item[4],
+             'country' => item[5],
+             }
+      row['count']  = 3 #if row['count'] < 1
+      #row['count']  = 5 if row['count'] > 5
+      data << row
+    end
+    result[:data] = data
+    result
+  end
+</typo:code>
+
+<p>
+<strong>Rendering the series [flex]</strong>
+<p>
+As seen in a previous article on how to exchange data between Flex and a Rails application using JSON,  the server returns the data as a string that is simply transformed to an actionscript object using JSON.decode. This object is then passed to a custom component named BubbleSerieChart (I know, I find a more descriptive name)
+
+<typo:code lang="ruby" title="Passing the series to a custom Flex component">
+	<local:BubbleSerieChart time_serie="{geoip}" serie_name="GeoIP" />
+</typo:code>
+
+<typo:code lang="ruby" title="The full source of the custom component.">
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel  xmlns:mx="http://www.adobe.com/2006/mxml" 
+	        title="{serie_name}" height="100%" width="100%">	
+
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+		    [Bindable]
+			public var time_serie:Object;
+			[Bindable]
+			public var serie_name:String;
+			
+			
+			private function getLabel(item:Object, field:String, index:uint, percentValue:Number):String
+        	{
+            	return item.key;
+        	}
+
+		]]>
+	</mx:Script>
+    <mx:BubbleChart id="chart" dataProvider="{time_serie}" showDataTips="true" width="100%" height="100%" >
+		<mx:backgroundElements> 
+				<mx:Array> 
+					<mx:Image source="@Embed('political_world_map_grey.swf')" /> 
+				</mx:Array> 
+		</mx:backgroundElements>
+
+
+        <mx:horizontalAxis>
+            <mx:LinearAxis minimum="-180" maximum="180" />
+        </mx:horizontalAxis>
+
+		<mx:verticalAxis>
+			<mx:LinearAxis  minimum="-90" maximum="90"/>
+		</mx:verticalAxis>
+	
+        <mx:series>
+            <mx:Array>
+                <mx:BubbleSeries xField="longitude" yField="latitude" radiusField="count"  maxRadius="5"/>
+            </mx:Array>
+        </mx:series>
+
+    </mx:BubbleChart>
+</mx:Panel>
+</typo:code>
+

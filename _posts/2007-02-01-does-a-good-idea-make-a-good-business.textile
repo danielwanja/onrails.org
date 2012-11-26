@@ -1,0 +1,38 @@
+---
+layout: post
+title: !binary |-
+  RG9lcyBhIGdvb2QgaWRlYSBtYWtlIGEgZ29vZCBidXNpbmVzcz8=
+typo_id: 228
+---
+On top of our Ruby on Rails consulting work we would like to create a small internet "service" business. Something like <a href="http://time.onrails.org/">time.onrails.org</a> but more fleshed out and supporting paying customers.  We are bringing on board Solomon White, which is an awesome Ruby on Rails developers, to help out.  So the other day we met and threw out some ideas of project we would consider doing. I think we came with a bunch of great ideas that each on their own could support a nice business or at least would be fun to develop. Often the feeling is that sharing these ideas would give away the "magic" ingredients that would make the new venture a success, that competition would outrun us and they will be first and take the whole market. I don't believe so. A very close friend created a spectacular Java/.Net integration framework. He is adamant about not revealing too much on how he created it or even that he created it.  The result is that potential customers don't "just" find him as they don't know that a solution to their problem is out there, and he must convince them really hard that he has the solution, and sometimes that they have a problem. In other scenarios a 'surprise' announcement, like Apple masters so well, has certainly a great impact as that creates lot's of buzz on the net and in the news. The reality is that we don't have Apples audience and no one is expecting a 'surprise' from us. I don't think that they are not many great ideas worth keeping secret Rather find a problem or need and make sure you create an awesome solution addressing it. While you create it, talk about it, spread the word, gather feedback, talk about the technical challenges you encounter, feel the interest that's out there. Then deliver. And deliver something exceptional ...sounds familiar? Well that concept is not invented here, but if we shine at taking one of "our" ideas, and providing an exceptional implementation I believe we can attract many users and create a nice business out of it. 
+ 
+So the steps in the process becomes something like this:
+
+	1. Investigate ideas (that's where we are at)
+	2. Choose idea.
+	3. Define project
+	4. Implement and spread the word.
+	6. Go live
+	7. Adapt and Improve
+
+Currently we are in the "investigation" phase for several of these ideas. In other words we are coding and having fun and testing out different things. So here is the list of our killers ideas (in no specific order):
+
+<b>RailsLogVisualer plug-in</b>: Realtime and aggregated log visualization of your Rails application. At the end of last year I wrote an offline <a href="http://railslogvislzr.rubyforge.org/">Rails Log Visualizer</a>. It's pretty basic but provides some interesting information about the different applications we have in production. While writing it I realized that it would not be too difficult to have a plugin that would collect and aggregate request data and be able to provide information on the specific controllers and actions of the application. Of course it would require to support clusters of Rails applications. This plugin would provide a nice drill-down approach to the log data analysis which differs from a more traditional log analysis approach. For now, check out <a href="http://nubyonrails.com/articles/2007/01/03/a-hodel-3000-compliant-logger-for-the-rest-of-us">Geoffrey's article</a> on how to add Rails support to <a href="http://haveamint.com/">Mint</a> for a nice way to analyze your log data on a deployed server. 
+
+<b>ScrumPlan</b>: An Agile Project management tool. I still do tons of enterprise work, and I really like how Scrum brings teams together. Scrum is very simple and a spreadsheet can be sufficient to get started, but I see the need for a simple dedicated tool to support the different activities that is simpler,  more efficient and elegant than the existing tools out there. Lee is not too hot on this idea as we don't use Scrum on our small projects.
+
+<b>FlexTester</b>: An automation/regression tool for Flex. A large part of this testing tools would be in Flex, but the tool would have a server side part that is written in Ruby on Rails to keeps track of tests runs, to drive continuous integration and so forth. Flex is not directly related to Rails but I also do a lot of Flex work. I just think it's a very nice way to create an UI, although in many case RJS does the trick as nicely and is "more" conventional. Flex is appropriate for enterprise applications (with many screens, many developers, lots' of functionality) and Adobe just added some framework level way to record and playback user events (see the <a href="http://livedocs.macromedia.com/flex/201/langref/mx/automation/package-detail.html">mx.automation package</a>). There is currently one very expensive tool out there to create regression tests for Flex. Another more affordable one would be welcome. I started playing with the mx.automation framework and I am evaluating the effort implementing such a tool.
+
+<b>TimeOnRails 2</b>: We have several hundred registered users (858 today) for time on rails and many use it on a daily basis. We received great feedback and also improvement requests. We use it our-selves on a daily basis and see many ways we want to improve and make it even more useful, especially on projects with multiple team members. Rather than just fixing the current code based which was implemented during the pre-RESTFull area, we want to rewrite it from the ground up. Note if we don't select that idea, I will need to fix promptly several small issues on time.onrails.org.
+
+<b>RailsCloud</b>: Rails hosting on a cloud. Ways to deploy or scale you Rails environment at the click of a button...This would leverage <a href="aws.amazon.com/ec2">Amazon's EC2</a>.
+
+
+<b>S3Backup</b>: Backup to S3 with a twist!
+
+ 
+<b>MySyder</b>: The last year we worked in the eCommerce field. It's pretty amazing what's going on in this field, and there is the need to provide better tools for vendor and online stores. As part of "investigating" this idea we defined a subset of functionality related to "watching specific html pages" that we can turn into an online service or product by it's self. 
+
+As you see we've got many ideas. I like Solomon's way of looking at these ideas..."Which one we do first?" ... More on that in the future.
+
+

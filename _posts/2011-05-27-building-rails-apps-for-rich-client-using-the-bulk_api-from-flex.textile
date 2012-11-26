@@ -1,0 +1,14 @@
+---
+layout: post
+title: !binary |-
+  QnVpbGRpbmcgUmFpbHMgQXBwcyBmb3IgUmljaCBDbGllbnQgLSBVc2luZyB0
+  aGUgYnVsa19hcGkgZnJvbSBGbGV4Lg==
+typo_id: 5084
+---
+In this screencast we are going to show how to build a Rails app in a couple of minutes that is optimized for Rich Client. The application is a todo application build in Flex connecting using the <a href="https://github.com/drogus/bulk_api">bulk_api</a> to the Rails server using my new <a href="https://github.com/danielwanja/bulk_data_source_flex">bulk data source Flex framework</a>.
+
+<iframe src="http://player.vimeo.com/video/24299809" width="400" height="300" frameborder="0"></iframe>
+
+Enjoy!
+
+Daniel

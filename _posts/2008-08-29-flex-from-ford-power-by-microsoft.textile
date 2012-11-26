@@ -1,0 +1,10 @@
+---
+layout: post
+title: !binary |-
+  RmxleCBmcm9tIEZvcmQsIFBvd2VyIGJ5IE1pY3Jvc29mdC4=
+typo_id: 3961
+---
+<img src="http://onrails.org/files/20080828_FlexByFord.png" alt="20080828_FlexByFord.png" border="0" width="517" height="256" />
+Is Ford is jumping on the Flex bandwagon? And powered by Microsoft?
+
+<img src="http://onrails.org/files/20080828_poweredByMicrosoft.png" alt="20080828_poweredByMicrosoft.png" border="0" width="135" height="57"  />

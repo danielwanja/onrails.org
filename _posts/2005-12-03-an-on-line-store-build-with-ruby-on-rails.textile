@@ -1,0 +1,11 @@
+---
+layout: post
+title: !binary |-
+  QW4gb24tbGluZSBzdG9yZSBidWlsZCB3aXRoIFJ1Ynkgb24gUmFpbHM=
+typo_id: 9
+---
+In this non-technical article I wanted to share my impressions of writing an online store with Ruby on Rails. "http://www.autumnriderstees.com/":http://www.autumnriderstees.com/
+
+h2. Background 
+
+On September 9th Lee's dad mentioned that he would receive a stock of new quality designer T-shirts with funny bikers logos on September the 22nd and asked Lee if he could setup an on-line store. Lee asked me if I could help out writing it in Ruby on Rails and if I thought it was feasible.  Hey, I just finished "Agile Web  Development with Rails", how hard could it be, the book contains everything we need. So "heck, yea, we can do it".  So Lee told his dad: "Sure, we'll do".  Well, it took us just a little longer, not much thought, considering we just met once a week for a month, and two weekends. But considering that Lee just started a new Rails gig, me just being father for the second time and a little sleep depraved, we manage to go-life on October the 16th at RubyConf 2005.  First Ruby and Rails is really cool, Dave Thomas books are invaluable in many aspects, not the least being that the most of the order processing part of the application is taken straight from book.

@@ -1,0 +1,7 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHMgMi4w
+typo_id: 3020
+---
+<a href="http://dev.rubyonrails.org/changeset/8328">Rails 2.0 is out</a>! Thanks guys for all the hard work, this release is just impressive. 

@@ -1,0 +1,14 @@
+---
+layout: post
+title: !binary |-
+  TVdSQyAtIE1vdXRhaW4gV2VzdCBSdWJ5IENvbmZlcmVuY2UgaXMgYWJvdXQg
+  dG8gc3RhcnQu
+typo_id: 4309
+---
+<div style="text-align:center;"><img src="http://onrails.org/files/20090313_mwrc_attrium1.jpg" alt="20090313_mwrc_attrium.jpg" border="0" width="500" /></div>
+
+The <a href="http://www.confreaks.com/">Confreaks</a> guys did setup their cameras, sound and lights, so you will certainly be able to see all the talks in a few weeks.
+
+The conference takes place in Salt Lake City, the scenery is impressive as the city is surrounded by high mountains...even for someone living in Denver. The picture above was taken just before the conference starts and shows the atrium we gonna spend the next two days in. The <a href="http://mtnwestrubyconf.org/2009/schedule">talks</a> looks really cool and tonight the <a href="http://blog.engineyard.com/2009/03/09/mountainwest-hackfest-featuring-solo">Engine Yard's Hackfest 2.0</a> in suite next to mine at the Hilton Salt Lake City Center.
+
+ 

@@ -1,0 +1,129 @@
+---
+layout: post
+title: !binary |-
+  T24gVGhlIChvbkFJUikgQnVzIC0gRGVudmVycyBzdG9wIGxpdmUgY292ZXJh
+  Z2Uh
+typo_id: 2455
+---
+<img src="http://onrails.org/files/20070720_onairtour.png" border="0" height="321" width="490" alt="20070720_onairtour.png" align="" />
+
+Not really on the bus but at the onairbustour stop in Denver. Check out Flickr Tags (onairbustour and onair2007denver). Today's agenda looks quite interested and there will lots of info regarding Adobe's AIR technology. The Keynote by Ryan Stewart will start in 1 minutes. I'll take some notes during the day...so check back!
+
+*Keynote*
+
+Ryan now shows <a href="http://pownce.com/">pownce</a> (I am still waiting for my invite...I tried to get one via <a href="http://www.inviteshare.com">inviteshare</a> but no success yet!). He shows the nice <a href="http://finetune.com/">finetune</a> application that has a nice AIR application to complement their website. He demoes a word processor (buzzword) created in Flex and AIR, ask your preview <a href="http://www.virtub.com/signup/">here</a>.
+
+Now Ryan shows the AIR Roadmap, next big steps is Max 2007. Beta 2 will be release around Max 2007 which will add functionality like Flash AIR Support. An AIR version support Linux appear in the AIR 1.x version.
+
+Now back to Mike Chambers that will provide a technical introduction on AIR and will create a Hello World application. At the end of the presentation Mike points to <a href="http://code.google.com/p/onairbustour/">http://code.google.com/p/onairbustour/</a> where the post the various applications they are building on the tour about the tour.
+
+*Kevin Hoyt - AIR application with javascript* 
+
+What a slacker Kevin is...only two slides :-) No it's pretty cool, Kevin is a hands on guys and is building some AIR javascript application live and shows some nice tricks.
+
+I won't transcode all the code he show, but there is a tight integration between javascript and actionscript. He shows how to call directly actionscript methods from javascript.
+
+<typo:code lang="javascript" title="Javascript calling Actionscript">
+function doSave() {
+	var file = air.File.desktopDirectory.resolve("denver.txt")
+	air.FileStream().open (...) // some code left out.
+}
+</typo:code>
+
+So this is javascript and the _air_ object allows access to Actionscript. In this case he is saving some text entered in htm l to the file system. Cool.
+
+He presents Aptana and shows that they have some AIR integration. Check out Kevin's <a href="http://blog.kevinhoyt.org/">blog</a>
+
+*Kevin Hoyt - Another session on script bridging.*
+
+Kevin now builds a web browser in AIR/Flex that uses the mx:HTML component.
+
+<typo:code>
+web.htmlControl.load(new URLRequest(address.text))
+<mx:HTML id="web" />
+</typo:code>
+
+The following provides access to any public actionscript class described in library.swf to javascript.
+<typo:code>
+<script src="library.swf" />
+</typo:code>
+
+Lunch!!!
+
+All right, I didn't catch up the beginning of Daniel Dura's talk...Sorry, I was _playing_ with my EVDO card.
+
+*Daniel Dura - AIR API Overview*
+
+Daniel describes the various apis and shows lots of code. He starts showing the different options the Window API offers (transparent, system, dialog, lightweight). He shows the Drag and Drop API (AIR to AIR, AIR to OS, OS to AIR, Desktop to AIR). It's pretty cool to see all these APIs in action. The Service Monitoring allows to detected network connection changes. 
+Database Support: just added SQL integration to the new beta. Fully local database. Can be used to sync data with an online application. You can store data while being offline.  He demonstrates an example written by <a href="http://coenraets.org">Christophe Conraets</a> show the SQLite integration (SQLQueue, SQLStatement). 
+
+
+*Salesforce.com*
+ 
+Salesforce and Flex was used to improve the User Experience they where providing before. 
+
+*Contest to give away schwag*
+
+Yea, Kevin Hoyt got taped at the back of bus...I rememberd that...answered Mike Chambers question..and won the following 7 books:
+<img src="http://onrails.org/files/20070720_onair_books.png" border="0" height="300" width="225" alt="20070720_onair_books.png" align="" />
+
+
+*Yahoo Media Innovation Group - Jason*
+
+Some demos of what Yahoo is doing with AIR. One application is _Minibar_, a Dashboard like widget.
+
+*Developing AIR Applications with Ajax Components - Andre Charland from Nitobi*
+
+*Why Ajax in AIR?*
+
+** Code Reuse, Skills Reuse, HTML is REALLY good at some things, Maintain UI Patterns, Javascript is growing.
+* What more can we do than the browser?
+** Files, Windows & Chrome, Drag&Drop, Copy&Paste, Offline, Background process, notifications, keyboard shortcuts.
+* Demo APP
+** Ajax Fisheye Menu (mac like dock)
+** Offline Sales Force
+
+*eBay San Dimas - Sean Chirstmann from EffectiveUI*
+
+San Dimas is eBay on the Desktop build with AIR. Why? What's the point? This is a big question for many AIR applications. New experience for customers and new functionality AIR provides. For example alerts, notifications and the live nature of Flash is a big deal to the user. 
+
+* Development Pattern
+** San Dimas is built on Cairngorm
+** Assets externalized to allow for new skins
+** String externalized for internationalization
+* eBay SDK Overview*
+** AS3 classes generated from eBay WSDL
+** Objects in AS3 are serialized into XML and sent to server
+** XML received from server is assembled into corresponding AS3 objects
+** Benefit from working with typed native objects that are bindable
+* Upcoming Features
+** eBay: Browsing, Selling
+** AIR: SQL database integration for category/attribute info
+** OS Alerts, System Tray
+
+see <a href="http://projectsandimas.com">http://projectsandimas.com</a>
+
+*Transitioning to the Desktop - Lee from frog design*
+
+The presentation will mostly focus on design. Lee also likes Microsoft products, so he can provide some perspective.
+Lee did the bus wrap for the tour. Some interactive part of the onAir website. His blog is the <a href="http://theflexblog.com/">theflexblog.com</a>
+
+Lee is actually showing some cool stuff done with AIR just to highlight animation and custom chrome performance. He will post these examples on his blog.
+
+*Buzzword*
+
+<img src="http://onrails.org/files/20070720_onair_buzzword.jpg" border="0" height="70" width="311" alt="20070720_onair_buzzword.jpg" align="" />
+
+Cool I just go my invite. Man just logged in and it's refreshing to  see such such a cool word processor. Hehe, bye-bye word! Well, I don't use Word anymore anyhow.
+
+*The Schedule for the rest of the onAIR tour*
+
+<img src="http://onrails.org/files/20070720_onair_thebus.png" border="0" height="299" width="400" alt="20070720_onair_thebus.png" align="" />
+
+*The bus in the bus!!!*
+
+<img src="http://onrails.org/files/20070720_onair_businbus.png" border="0" height="240" width="320" alt="20070720_onair_businbus.png" align="" />
+
+*The Kevin in the bus!!!*
+
+<img src="http://onrails.org/files/20070720_onair_viewfromthebug.png" border="0" height="320" width="240" alt="20070720_onair_viewfromthebug.png" align="" />

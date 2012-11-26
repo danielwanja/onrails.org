@@ -1,0 +1,16 @@
+---
+layout: post
+title: !binary |-
+  aGFzaXBob25lLmNvbSBub3cgd2l0aCBVUyBtYXA=
+typo_id: 3863
+---
+Thanks to the <a href="http://degrafa.com/">Degrafa</a> library I was able to add a "US Map of iPhone 3G" Availability in an hour to the <a href="http://hasiphone.com/">hasiphone.com</a> application.
+
+<div style="text-align:center;"><img src="http://onrails.org/files/20080721_hasiphoneusmap.png" alt="20080721_hasiphoneusmap.png" border="0" width="495"  /></div>
+
+Also I automated the extraction part of the data and check every hour if new data is there. I was assuming that the data changes only once a day and therefore all the delta (the + and - next to the availability) are based on previous day. This morning there were only four stores with iPhones, and hour ago 76 and now 78. So it seems that the data is updated more frequently or I have a bug in my extraction routing. Whatever the situation I am leaving on vacations for the next two weeks and won't take my notebook with me, so hopefully the data is correct. My good friend Sol will keep an eye on the extraction process to see that we get some daily data. Thanks Sol, ya da man.
+
+Enjoy!
+Daniel.
+
+<img src="http://degrafa.com/images/banners/degrafa-badge-88x35.gif" /> is cool

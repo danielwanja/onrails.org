@@ -1,0 +1,59 @@
+---
+layout: post
+title: !binary |-
+  cmVuZGVyIDp1cGRhdGUgdG8gfHBhZ2V8
+typo_id: 60
+---
+
+In the following test I was checkeing out of the javascript that is generated using the render :update call. Note that using a functional test  is also a nice way to explore some of the prototype_helper functionality.
+
+<pre>
+page.call 'mycall', 'a', 2, 3 	 # -->  mycall("a", 2, 3);'
+page.my_class.my_method 'a', 12    # -->  MyClass.myMethod("a", 12);
+</pre>
+Now one issue I had was figuring out how to pass a javascript variable to a javascript call. I.e. mycall(p1, p2). The only way I found it so to use the page << method. After a little hacking I managed to pass javascript variables to a method using the page.call.  See the use of the JsArugmentList class here after. Note it does get's a little cluttered and the page << remains easier to read. Please let me know if you find a more elegant way to achieve this.
+
+<typo:code lang="ruby" linenumber="true" title="rjs_test.rb">
+require File.dirname(__FILE__) + '/../test_helper'
+
+# Little hack to allow passing javascript variables as argument to page.call
+class JsArgumentList
+  def initialize(*arguments)
+    @arguments = arguments
+  end
+  def to_json
+    @arguments.join ', '
+  end
+end
+
+class RjsController < ActionController::Base
+  def rescue_action(e) raise e end;
+  # See prototype_helper.rb for implementation of the 'page' methods.
+  def page_call
+    render :update do |page|
+      page.call 'mycall', 'a', 2, 3
+      page.assign 'p1', 'str1'
+      page << 'mycall(p1, p2);' 
+      page.call 'mycall', JsArgumentList.new(:p1,:p2)  #equivalent to previous line
+      page.my_class.my_method 'a', 12 
+    end
+  end
+end
+
+class RjsControllerTest < Test::Unit::TestCase
+  def setup
+    @controller = RjsController.new
+    @request    = ActionController::TestRequest.new
+    @response   = ActionController::TestResponse.new
+  end
+  def test_page_call
+    get :page_call
+    javascript = @response.body.split("\n")
+    assert_equal 'mycall("a", 2, 3);',          javascript[0]
+    assert_equal 'p1 = "str1";',                javascript[1]
+    assert_equal 'mycall(p1, p2);',            javascript[2]
+    assert_equal 'mycall(p1, p2);',            javascript[3]
+    assert_equal 'MyClass.myMethod("a", 12);',  javascript[4]
+  end
+end
+</typo:code>

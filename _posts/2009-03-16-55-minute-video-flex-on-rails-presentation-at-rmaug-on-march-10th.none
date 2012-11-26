@@ -1,0 +1,17 @@
+---
+layout: post
+title: !binary |-
+  NTUgbWludXRlIHZpZGVvOiBGbGV4IG9uIFJhaWxzIHByZXNlbnRhdGlvbiBh
+  dCBSTUFVRyBvbiBNYXJjaCAxMHRo
+typo_id: 4316
+---
+This is the edited version of the talk Tony Hillerson and Daniel Wanja gave at the Rocky Mountain Adobe User Group on March 10th. There is an echo the first two minutes, then the sounds stabilize. We also had a software issue on Tony's notebook and display port issue on Daniel's, parts which I edited out. The demo gods where not with us that night :-), but we had fun and I hope we answered many of the questions the attendance had. Also we wanted to tailor the talk on Ruby on Rails rather than on Flex and be an open format, but we had more questions than anticipated and presented only 10% of the material we had. 
+
+<object width="400" height="300"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=3671443&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=3671443&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="300"></embed></object><br /><a href="http://vimeo.com/3671443">Flex on Rails presentation at RMAUG on March 10th</a> from <a href="http://vimeo.com/user507500">daniel wanja</a> on <a href="http://vimeo.com">Vimeo</a>.
+Note: during the first 2 minutes there is an echo. Sound skips from time to time throughout the video.
+
+The talk was recorded by RMAUG and posted on <a href="http://www.rmaug.com/community/forum/messageview.cfm?catid=5&threadid=124&messid=192">their blog</a>, and can be viewed using Connect <a href="http://realeyes.acrobat.com/p49039280/">here</a>.  
+
+Thanks again to everyone who attended!
+
+Daniel.

@@ -1,0 +1,12 @@
+---
+layout: post
+title: !binary |-
+  R3JhcGhzIHdpdGggR3J1ZmYgKGZvbGxvd3VwKQ==
+typo_id: 53
+---
+"The solution from the source":http://onrails.org/articles/2006/02/20/graphs-with-gruff#comments ;-) I checked it out and it now works as advertised, just add   g.minimum_value = 0 to the Gruff::Bar before rendering it (g.to_blob).
+
+Note that axis starting at zero. 
+
+| Without the minimum_value | With the minimum_value set to zero |
+| !/files/20060414_gruff_before_sm.gif! | !/files/20060414_gruff_after_sm.gif! |

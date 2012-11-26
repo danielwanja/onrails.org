@@ -1,0 +1,52 @@
+---
+layout: post
+title: !binary |-
+  TmFtZXNwYWNlcyBhbmQgUmFrZSBDb21tYW5kIENvbXBsZXRpb24=
+typo_id: 140
+---
+<strong>Update:</strong> <a href="http://onrails.org/articles/2006/11/17/rake-command-completion-using-rake">Now using rake and caching</a>
+
+<p>I got some basic rake command line completion working today using Jon Baer&#8217;s <a href="http://weblog.rubyonrails.org/2006/3/9/fast-rake-task-completion-for-zsh#comment-2361">comment</a>.  Very simple, very easy:</p>
+
+
+<typo:code>
+complete -W '`rakeâ€”silentâ€”tasks | cut -d â€ â€ -f 2`' -o default rake
+</typo:code>
+
+	<p>However this didn&#8217;t work for the namespaced tasks in a rails app like <code>rake test:units</code>.  Searching a little further I found a reference to some code <a href="http://i.conio.net/rake-completion.rb">Nicholas Seckar</a> wrote on <a href="http://project.ioni.st/post/212">project.ioni.st</a>.  This used ruby to find the possible tasks for command completion.  This looked promising, but it still didn&#8217;t work for namespaced tasks.  A little more googling led me to what looked like the perfect link: <a href="http://www.webtypes.com/2006/03/31/rake-completion-script-that-handles-namespaces">Rake-completion script that handles namespaces</a>.  Alas, it only handled one level of namespacing.  It worked nicely for <code>rake test:units</code>, but <code>rake tmp:ses&lt;TAB&gt;</code> would complete to <code>rake tmp:clear</code> instead of <code>rake tmp:sessions:clear</code>.  Also, <code>rake test:units &lt;TAB&gt;</code> would complete to <code>rake test:units units</code> instead of giving me all the tasks again, just in case you want to run multiple tasks form the command line.</p>
+
+
+	<p>So, now what?  Stand on the shoulders of others, naturally.  Here is what I&#8217;m using now that handles multiple namespaces and multiple tasks per command line:</p>
+
+
+<typo:code lang="ruby">
+#!/usr/bin/env ruby
+
+# Complete rake tasks script for bash
+# Save it somewhere and then add
+# complete -C path/to/script -o default rake
+# to your ~/.bashrc
+# Nicholas Seckar <nseckar@gmail.com>
+# Saimon Moore <saimon@webtypes.com>
+# http://www.webtypes.com/2006/03/31/rake-completion-script-that-handles-namespaces
+
+exit 0 unless File.file?(File.join(Dir.pwd, 'Rakefile'))
+exit 0 unless /^rake\b/ =~ ENV["COMP_LINE"]
+
+after_match = $'
+task_match = (after_match.empty? || after_match =~ /\s$/) ? nil : after_match.split.last
+tasks = `rake --silent --tasks`.split("\n")[1..-1].collect {|line| line.split[1]}
+tasks = tasks.select {|t| /^#{Regexp.escape task_match}/ =~ t} if task_match
+
+# handle namespaces
+if task_match =~ /^([-\w:]+:)/
+  upto_last_colon = $1
+  after_match = $'
+  tasks = tasks.collect { |t| (t =~ /^#{Regexp.escape upto_last_colon}([-\w:]+)$/) ? "#{$1}" : t }
+end
+
+puts tasks
+exit 0
+</typo:code>
+
+	<p><a href="http://onrails.org/files/rake-completion.rb">Enjoy</a></p>

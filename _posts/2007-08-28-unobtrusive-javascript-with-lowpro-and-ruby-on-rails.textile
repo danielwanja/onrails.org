@@ -1,0 +1,52 @@
+---
+layout: post
+title: !binary |-
+  VW5vYnRydXNpdmUgSmF2YXNjcmlwdCB3aXRoIExvd3BybyBhbmQgUnVieSBP
+  biBSYWlscw==
+typo_id: 2592
+---
+Check out http://www.danwebb.net/lowpro for more info on LowPro, a very elegant approach to do Unobtrusive Javascript with Ruby On Rails. Find hereafter a small example of how to add a custom behavior to link.
+
+The View
+<typo:code lang="ruby" title="_watch_results.erb" >
+  <%= javascript_include_tag 'prototype', 'lowpro', 'remote', 'application' %>  
+        <div id="result_list">
+          <ul>
+          <% for watch_result in @watch_results %>
+          <li>
+            <%= link_to watch_result.created_at.to_s(:db),  
+                      diff_watch_result_url(@watch, watch_result),
+                      {:id => dom_id(watch_result) }
+            %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+</typo:code>
+
+The Javascript
+<typo:code lang="ruby" title="application.js" >
+
+LoadWatchResult = Remote.Link({
+  onLoading : function() {
+    $('watch_result_difference').innerHTML='';
+    $('watch_result_difference').addClassName('pleaseWait');    
+  },
+  onComplete : function(e) {
+    var source = Event.element(e);
+    $('watch_result_difference').removeClassName('pleaseWait');
+    $$('div#result_list ul a.active').each(function (e) {e.removeClassName('active')});  
+    source.addClassName('active');
+  }
+});
+
+Event.addBehavior({
+  '#result_list ul li a': LoadWatchResult
+});
+</typo:code>
+
+The 'remote.js' provides additional behaviors creatde by Dan Wedb as part of LowPro (http://svn.danwebb.net/external/lowpro/trunk/behaviours/). The LoadWatchResult behavior we created in this example transforms a 'standard' link_to to a link_to_remote with additional behavior on the onLoading and onComplete of the remote call. The view stays clean.
+
+
+Enjoy!
+Daniel

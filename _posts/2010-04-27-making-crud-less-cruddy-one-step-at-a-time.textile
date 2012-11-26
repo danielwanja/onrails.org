@@ -1,0 +1,118 @@
+---
+layout: post
+title: !binary |-
+  TWFraW5nIENSVUQgbGVzcyAiQ3J1ZGR5Iiwgb25lIHN0ZXAgYXQgYSB0aW1l
+  IA==
+typo_id: 5037
+---
+One of the great "new" features of Rails (as of 2.3) is @accepts_nested_attributes_for@, allowing you to build cross-model CRUD forms without "cruddying" your controller.  There are some great examples out there about "how to":http://weblogs.manas.com.ar/spalladino/2010/03/03/handling-children-with-accepts_nested_attributes_for-in-rails/ "do":http://ryandaigle.com/articles/2009/2/1/what-s-new-in-edge-rails-nested-attributes "this":http://github.com/alloy/complex-form-examples, but I'd like to walk thorough a particular use case -- managing the "join" records in a @has_many :through@ relationship.
+
+Consider the following database schema:
+
+<typo:code lang="ruby">
+class Villain < ActiveRecord::Base
+  has_many :gifts
+  has_many :super_powers, :through => :gifts
+end
+
+class Gift < ActiveRecord::Base
+  belongs_to :villain
+  belongs_to :super_power
+
+  validates_uniqueness_of :super_power, :scope => :villain_id
+end
+
+class SuperPower < ActiveRecord::Base
+  has_many :gifts
+  has_many :villains, :through => :gifts
+end
+</typo:code>
+
+In our dataset, there are a relatively small number of super powers which we wish to present as a list of checkboxes on the villain management form.  Checking/unchecking the boxes will manage the gift records for that villain, effectively managing the list of super powers available to the baddy.
+
+To get started, we need to add @accepts_nested_attributes_for :gifts@ to the Villain class -- piece of cake.  To complete the implementation, we need to change the @params@ hash that our form generates.  Let's review the cases that we need to support and the associated @params@ hash format needed to implement the correct functionality.
+
+The first case is a super power record that is not currently associated with the villain.  Here, the UI should display an unchecked checkbox.  If we check it and submit the form, a gift record should be created linking the villain with the super power, making this bad guy that much badder.  Here is an example of the @params@ hash we should be sending to accomplish this:
+
+<typo:code>
+  {
+    'villain' => {
+      'name' => 'Lex Luthor',
+      ...
+      'gifts_attributes' => {
+        1 => { 'super_power_id' => 5 },
+        2 => { 'super_power_id' => 7 },
+        ...
+      }
+    }
+  }
+</typo:code>
+
+The alternate case is a super power this villain already possesses.  In this instance, the UI should display a checked checkbox, and if we uncheck it, the existing @gift@ record should be deleted, diminishing the villain's capacity for evil.  And our @params@ hash needs to look like:
+
+<typo:code>
+  {
+    'villain' => {
+      'name' => 'Two-Face',
+      ...
+      'gifts_attributes' => {
+        1 => { 'id' => 101, '_delete' => true },
+        ...
+      }
+    }
+  }
+</typo:code>
+
+Note that the keys for the @gifts_attributes@ hash are arbitrary; we can use any scheme to generate unique keys for the hash.
+
+So how can we craft a form that sends the @params@ hash that Rails wants to see?  Here's my implementation:
+
+<typo:code lang="ruby">
+  <%- SuperPower.all.each_with_index do |super_power, index| -%>
+    <label>
+      <%- if gift = @villain.gifts.find_by_super_power_id(super_power.id) -%>
+        <%= hidden_field_tag "villain[gifts_attributes][#{ index }][id]", gift.id %>
+        <%= check_box_tag "villain[gifts_attributes][#{ index }][_delete]", false, true %>
+        <%= hidden_field_tag "villain[gifts_attributes][#{ index }][_delete]", true %>
+      <%- else -%>
+        <%= check_box_tag "villain[gifts_attributes][#{ index }][super_power_id]", super_power.id %>
+      <%- end -%>
+
+      <%= super_power.name %>
+    </label><br />
+  <%- end -%>
+</typo:code>
+
+If the gift is detected, the villain has the super power, and we handle our second case from above, using the checkbox / hidden field hack Rails employs in the @check_box@ helper method to make sure a value is sent whether or not the checkbox is checked.  The else block handles the other case, setting up our @params@ hash to create the gift if the checkbox is checked.
+
+This works, but we probably don't want to copy and paste that code everywhere we use this pattern.  How can we reuse this in a DRY fashion?  Here's a helper method that encapsulates the logic:
+
+<typo:code lang="ruby">
+  def has_join_relationship(model, join_collection_name, related_item, collection_index, options={})
+    returning "" do |output|
+      relationship_name = options[:relationship_name] || related_item.class.table_name.singularize + "_id"
+      tag_prefix = "#{ model.class.class_name.underscore }[#{ join_collection_name }_attributes][#{ collection_index }]"
+
+      if join_item = model.send(join_collection_name).find(:first, :conditions => { relationship_name => related_item.id })
+        output << hidden_field_tag("#{ tag_prefix }[id]", related_item.id)
+        output << check_box_tag("#{ tag_prefix }[_delete]", false, true)
+        output << hidden_field_tag("#{ tag_prefix }[_delete]", true)
+      else
+        output << check_box_tag("#{ tag_prefix }[#{ relationship_name }]", related_item.id, false)
+      end
+    end
+  end
+</typo:code>
+
+Drop that in a helper, and then your form code becomes:
+
+<typo:code lang="ruby">
+  <%- SuperPower.all.each_with_index do |super_power, index| -%>
+    <label>
+      <%= has_join_relationship(@villain, :gifts, super_power, index) %>
+      <%= super_power.name %>
+    </label><br />
+  <%- end -%>
+</typo:code>
+
+Much nicer ... although I'm not sold on the name @has_join_relationship@.  Any suggestions?

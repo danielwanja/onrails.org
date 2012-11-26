@@ -1,0 +1,16 @@
+---
+layout: post
+title: !binary |-
+  RGV0ZXJtaW5lIFRlc3QgQ292ZXJhZ2Ugb24geW91ciBGbGV4IFByb2plY3Rz
+  IHdpdGggRmxleGNvdmVyLg==
+typo_id: 4121
+---
+This week I was playing with <a href="http://code.google.com/p/flexcover/">Flexcover</a> a test coverage tool for Flex...and it's really cool. If you you to determine how much test coverage you have in your Flex application then check out this screencast...maybe skip to the end where you will see flexcover in action. The first part is how to assemble the Flexcover SDK to use with FlexBuilder. Again this is a non-scripted screencast with several "oops" and a big Swiss-French accent which I hope you will find useful. 
+
+The key here is if you do Flex, write unit tests and use this test coverage tool.
+
+<object width="400" height="300"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=2185199&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=2185199&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="300"></embed></object><br /><a href="http://vimeo.com/2185199">Setting up Flexcover as test coverage tool for your Flex applications.</a> from <a href="http://vimeo.com/user507500">daniel wanja</a> on <a href="http://vimeo.com">Vimeo</a>.
+
+
+Enjoy,
+Daniel.

@@ -1,0 +1,62 @@
+---
+layout: post
+title: !binary |-
+  U2NyZWVuY2FzdDogVGVzdGluZyBGbGV4IEFwcHMgd2l0aCBDdWN1bWJlciAt
+  IFRha2UgMg==
+typo_id: 4625
+---
+I was not really happy with <a href="http://onrails.org/articles/2009/07/08/screencast-testing-flex-apps-with-cucumber">last week's screencast</a> I did on testing Flex with Cucumber.  Effectively doing screencast is not an easy endeavor and trying to it myself is making me appreciate all the other screencast I watch so much more. So last week I just wasn't comfortable while I recorded it, not sure why, but I thought I should try to capture it again. And the second time around I felt better, maybe I should alway take two takes (or even more :-). So here is the new one...
+
+<object width="400" height="300"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=5577569&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=5577569&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="400" height="300"></embed></object><p><a href="http://vimeo.com/5577569">Screencast: Testing Flex Apps with Cucumber - Take 2</a> from <a href="http://vimeo.com/user507500">daniel wanja</a>.<br/>
+
+
+To run this code you need to have all the gems installed. So config your Rails to run Cucumber with FunFx (in config/environments/test.rb):
+
+<typo:code lang="ruby">
+config.gem "rspec", :lib => false, :version => ">= 1.2.7"
+config.gem "rspec-rails", :lib => false, :version => ">= 1.2.7"
+config.gem "webrat", :lib => false, :version => ">= 0.4.4"
+config.gem "cucumber", :lib => false
+config.gem "funfx"
+config.gem "safariwatir"
+</typo:code>
+
+Config Cucumber to have @flex available (in features/support/env.rb)
+
+<typo:code lang="ruby">
+require 'funfx'
+require 'funfx/browser/safariwatir'
+
+browser = Watir::Safari.new
+browser.goto("http://localhost:3000")
+
+Before do
+  @flex = browser.flex_app('flashContent', 'flashContent')
+end
+
+at_exit do
+  browser.close
+end
+</typo:code>
+
+In the same file disable transactional fixtures
+
+<typo:code lang="ruby">
+Cucumber::Rails.use_transactional_fixtures
+</typo:code>
+
+Ensure that your Flex application is compiled with the funfx library and the automation library linked in.
+
+<typo:code lang="xml">
+<flex-config>
+  <compiler>
+	<include-libraries append="true">
+		<library>../../lib/funfx-0.2.2.swc</library>
+		<library>../../lib/automation.swc</library>
+		<library>../../lib/automation_agent.swc</library>
+		<library>../../lib/automation_dmv.swc</library>
+		<library>../../lib/automation_agent_rb.swc</library>
+	</include-libraries>
+  </compiler>
+</flex-config>
+</typo:code>

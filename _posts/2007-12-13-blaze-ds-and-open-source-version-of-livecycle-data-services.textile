@@ -1,0 +1,15 @@
+---
+layout: post
+title: !binary |-
+  QmxhemVEUyBhbmQgb3BlbiBzb3VyY2UgdmVyc2lvbiBvZiBsaXZlY3ljbGUg
+  ZGF0YSBzZXJ2aWNlcy4uLg==
+typo_id: 3035
+---
+That sounds cool. Read all about it here... 
+
+<a href="http://www.techcrunch.com/2007/12/12/adobe-releases-blaze-ds-open-source-version-of-livecycle-data-services/">http://www.techcrunch.com/2007/12/12/adobe-releases-blaze-ds-open-source-version-of-livecycle-data-services/</a>
+
+Maybe not. Techcrunch released this message on their blog but no text was attached and comments where closed. Maybe somebody clicked the submit button to quickly. Now I am curious...
+
+
+UPDATE: 10:17pm Denver time...it's official: <a href="http://www.adobe.com/aboutadobe/pressroom/pressreleases/200712/121307BlazeDS.html">http://www.adobe.com/aboutadobe/pressroom/pressreleases/200712/121307BlazeDS.html</a>

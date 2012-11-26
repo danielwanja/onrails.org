@@ -1,0 +1,27 @@
+---
+layout: post
+title: !binary |-
+  MzYwIEZsZXggLSBEYXkgMiAoTW9uZGF5IEFmdGVybm9vbikgLSBMaXZlIEJs
+  b2dnaW5n
+typo_id: 4895
+---
+<div style="text-align:center;"><img src="http://onrails.org/files/360flex_6_robot.png" alt="360flex_6_robot.png" border="0" width="400" height="300" /></div>
+ 
+<h3>Obey: Building a Rules Engine with AS3 and the Hamcrest API - Drew McClean & RJ Owen</h3>
+
+<div style="text-align:center;"><img src="http://onrails.org/files/360flex_7_rules.png" alt="360flex_7_rules.png" border="0" width="400" height="290" /></div>
+
+How are rules defined and implemented?
+
+Rules Engine Anatomy: Facts -> Rules [Conditions=>Actions] -> Output
+
+Battery is down!
+
+<h3>Flex + Phidgets = Beer - Kevin Hoyt</h3>
+
+Kevin's presentation was how to drive a <a href="http://www.phidgets.com/">phidgets</a> board to control dispensing beer to users with an rfid, taking a picture along the way and counting the numbers of beers that user had so far.  The board is driven from a Flex application. It was really impressive presentation.
+
+<h3>Intro to Flex Typography - Matt Guest</h3>
+
+* Flash Text Engine
+* Text Layout Framework

@@ -1,0 +1,10 @@
+---
+layout: post
+title: !binary |-
+  SnVuZSAtIFJhaWxzIE1vbnRo
+typo_id: 119
+---
+June was one of these 'Rails' month...With Lee we took on a new Rails project in the e-learning arena for some people with some really cool ideas. They wanted a html prototype at the end of the month, and overly optimistic as I am, I said why just a prototype, let's build the real thing. And we did. Now there is more to  the application before it can go life than what we just build, but we managed to go from concept to a real working front-end in an extremely short time. Wired frame UI, intense object modeling discussions, html prototype, then build it with Rails. Rails just get's out of your way and let's you build a web application as fast as your brain allows :-) We where really surprised how fast a great application can be build. This was only part time, as my main project is working on gatelys.com new ecommerce platform. An astonishing Rails application. I also worked a little on RailsLogAnalyzer, a 'Rails production log' visualization application using Rails and Flex on OSX. But for that one I will wait that the Flash Player 9 is out for OSX Intel. Then RailsConf 2006. That was awesome, meeting 700 Rails enthusiasts, the Rails core team, and many Rails developers from the Denver area. I can just say: "Rails has a bright future!".  But now is time for me to sit back, relax. I'll be on vacations for most of July. So see you then!
+
+
+ 

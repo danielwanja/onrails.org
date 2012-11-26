@@ -1,0 +1,10 @@
+---
+layout: post
+title: !binary |-
+  QWR2YW5jZWQgUmFpbHMgU3R1ZGlvOiBEYXkgMw==
+typo_id: 3711
+---
+We are onto the 3rd day of the training, and the guys are still kicking. We are now onto Asynchronous processing. That's good as I needed to catch up on what's out there. I didn't know about Starling. A light-weight queue server, might be a better solution than the heavier BackgroundRb based on the scenario you need to address. Any of you using Starling?  Chad now goes into creating a plugin...ReviewableFu! Now onto debugging. And Caching.
+<br/>
+Thanks guys awesome training, you covered tons of good material. Again, really worthwhile if you want to go to the next level with Rails.
+

@@ -1,0 +1,15 @@
+---
+layout: post
+title: !binary |-
+  RnV6enkgQ2xvY2sgMS4zIGZvciBpUGFkIC0gOSBkZXNpZ25lciBjbG9ja3Mg
+  YXQgYW4gYXdlc29tZSBwcmljZSAtIEZSRUU=
+typo_id: 5071
+---
+Fuzzy Clock is now free. I've added three new clocks, a Polar clock from  from the <a href="http://raphaeljs.com">RaphaÃ«l javascript library</a>, and two others are based on <a href="https://github.com/simonbaird/CoolClock">CoolClock</a>. In addition to three new clocks Fuzzy Clock now has a option to disable the Auto-Lock allowing the clock to run forever on a stand without having the lock screen appear.
+
+Check out this video to see the new features.
+
+<iframe src="http://player.vimeo.com/video/22325813?portrait=0" width="400" height="280" frameborder="0"></iframe>
+
+Enjoy!
+Daniel

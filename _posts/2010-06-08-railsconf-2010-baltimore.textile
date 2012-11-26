@@ -1,0 +1,53 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIDIwMTAgLSBCYWx0aW1vcmU=
+typo_id: 5051
+---
+<div style="text-align:center;"><img src="http://onrails.org/files/20100606_RailsConf_View.jpg" alt="20100606_RailsConf_View.jpg" border="0" width="500"  /></div>
+
+Here we go again RailsConf 2010 has started. The keynotes will be streamed online at http://railsconf.com and the <a href="http://en.oreilly.com/rails2010/public/schedule/proceedings">slides</a> of the presentation will also be posted there. I'll provide more links once they become available.
+
+This is the view from my hotel which is 5 minutes from the convention center where RailsConf is going on.
+
+<div style="text-align:center;"><img src="http://onrails.org/files/20100607_RailsConf_View_From_Hotel.jpg" alt="20100607_RailsConf_View_From_Hotel.jpg" border="0" width="400"  /></div>
+
+<div style="text-align:center;"><img src="http://onrails.org/files/20100607_RailsConf_Submarine.jpg" alt="20100607_RailsConf_Submarine.jpg" border="0" width="300" /></div>
+
+h2. Acceptance Testing with Cucumber
+
+I'm now following the <a href="http://en.oreilly.com/rails2010/public/schedule/detail/13613">Acceptance Testing with Cucumber</a> tutorial. You can find the app we built, a kanban manager, on <a href="http://github.com/dchelimsky/railsconf2010-app">github</a>. 
+
+Cucumber is executable documentation. Gurken is the DSL used to write your documentation in the form of
+
+<pre>
+Scenario:
+  Given
+  When
+  Then
+</pre>
+
+The app has different git branches for each stage of the application. Checkout the move-card-passing branch for the most complete functionality. It contains great examples of feature test.
+<pre>
+   master                               f294f72 patch number
+   remotes/origin/HEAD                  -> origin/master
+   remotes/origin/first-feature-failing 475eb7e words
+   remotes/origin/first-feature-passing e4ea67a gemfile
+   remotes/origin/latest                eacd855 Merge
+   remotes/origin/master                f294f72 patch number
+   remotes/origin/more-features-failing aa2d97b new failing features
+   remotes/origin/more-features-passing 03b6b44 added lane ordering
+   remotes/origin/move-card-failing     02fa766 add move_card feature
+*  remotes/origin/move-card-passing     8c1d751 move cards from one lane to another
+</pre>
+
+h2. BUILDING AN API WITH RAILS
+
+A <a href="http://en.oreilly.com/rails2010/public/schedule/detail/14502">great discussion</a> on building APIs using Ruby and Rails:
+ 
+* <a href="http://twitter.com/joshowens">joshowens</a> - <a href="http://fourbeansoup.com/">Four Bean Soup</a>
+* <a href="http://twitter.com/joeferris">joeferris</a> - <a href="http://joeferris.me/">thoughtbot</a>
+* <a href="http://twitter.com/bitsweat">bitsweat</a> - <a href="http://bitsweat.net/">37signals</a>
+* <a href="http://twitter.com/noradio">noradio</a> - <a href="http://twitter.com/">twitter</a>
+* <a href="http://twitter.com/technoweenie">technoweenie</a> - <a href="http://techno-weenie.net/">GitHub</a>
+* <a href="http://twitter.com/derekwillis">derekwillis</a> - <a href="http://www.nytimes.com/">The New York Times</a>

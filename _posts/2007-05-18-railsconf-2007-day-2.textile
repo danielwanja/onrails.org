@@ -1,0 +1,218 @@
+---
+layout: post
+title: !binary |-
+  UmFpbHNDb25mIDIwMDcgLSBEYXkgMg==
+typo_id: 1389
+---
+Note: Check out the RailsConf Wiki and the <a href="http://wiki.oreillynet.com/wiki/railsconf2007/index.cgi?PresentationSlides">presentation page</a>
+
+Chad Fowler is starting the keynote introduction. 1600 developers are at the keynote. He makes a passionate speech about how Rails is changing how we think about software and how Rails impacted the industry. An now Rich Kilmer introduces the person that introduced him to Textmate: DHH. 
+
+<h2>A peek at Rails 2.0</h2>
+
+Celebrating what we have
+
+* > 1 million downloads
+*  Hundreds of plugins
+* ~10k people on rubyonrails-talk
+* He asks who is getting paid in one form or another using Rails and a large part the participants raise their hands.
+( Books: many Rails books in many languages. Surpassed PHP, Perl and Python (source O'Reilly Radar).
+* http://workingwithrails.com/ indicates over 100 countries where people do Rails.
+* IDE: CodeGear, Textmate, NetBeans, JetBrains, Aptana 
+
+
+Rails 2.0
+
+* It's not gonna change everything you know, it's gonna be humble.  
+* No new 'great' idea.
+* The experiment worked! (RESTFul resource) 
+* The world of resources is a better, greener place.
+* Rails 2.0 will focus more on the REST convention
+* Routes
+
+<typo:code lang="ruby">
+map.namespace(:admin) do |admin
+  admin.resources :products,
+    :collection => {:inventory => :get},
+	:member => {:duplicte => :post},
+	:has_many => [:tags, :images, :variants],
+	:has_one => :seller
+end
+</typo:code>
+
+* David now demos the new scaffolding that use the resource approach of working with things.
+
+./script/generate scaffold persone name:string create_at:time
+
+* He adds new format format.csv to support exporting as comma separated text.
+You can easily connect to this services:
+<typo:code lang="ruby">
+require 'active_resource'
+class Person < ActiveResource::Base
+  self.site = "http://localhost:3000"
+end
+p = Person.find 1
+</typo:code>
+
+* Beyond CRUD you can custom methods, Person.find :all, :params => {:name => 'd'}
+* This all works today.
+* Action Web Service is no longer service with Rails 2.0. ActiveResource is.
+* Friends and allies: Ajax, REST, Atom, OpenID
+
+<b>9 other things I like about rails 2: </b>
+
+1) Breakpoints are back (ruby_debug) 
+
+2) HTTP Performance 
+
+<typo:code lang="ruby">
+<!-- :cache => true
+     gzips all javascript and stylesheet in one file 
+     i.e. prototype, css get zipped down to 35K from 200k
+-->
+<%= javascript_include_tag :all, :cache => true %>  
+<%= stylesheet_link_tag :all, :cache => true %>  
+</typo:code>
+
+3) Query cache. DHH loves free performance
+
+4) action.mime_type.renderer
+</typo:code>
+
+<typo:code lang="ruby">
+people/index.html.erb
+people/index.xml.builder
+people/index.rss.erb
+people/index.atom.builder
+def index
+	respond_to do |format|
+		format.html
+		format.xml
+		format.rss
+		format.atom
+	end
+end
+</typo:code>
+
+5) config/initializers. One file per configuration in initializers folder
+
+6) Sexy migrations (just nicer)
+<typo:code lang="ruby">
+create_table :people do |t|
+  t.integer :account_id
+  t.string :first_name, :last_name
+end
+</typo:code>
+7) HTTP Authentication. authenticate_or_request_with_http_basic
+
+8) The MIT assumption. ./script/generate plugin now generates a default MIT license file.
+
+9) Spring cleaning. Deprecated features of 1.2 will be removed. In-place editor will be moved to plugins.
+
+That's pretty much it. Thank you. 
+
+<h2>Building Community Focused Apps with Rails by Dan Benjamin</h2>
+
+Rails is the ideal platform for Web 2.0. Fast prototyping and proof of concept. Prototype becomes the product. Conducive to collaboration with developers and designers. Dan is going to talk about <a href="http://corkd.com/">Cork'd</a>. Currently 20000 users. 
+
+Make a Plan. 
+
+* Treat your application like a product and your idea like a business.  Just because it's a good idea doesn't mean it's gonna be automatically successful. 
+* Stay Agile. Resist big infrastructure.
+* Build the Right Team. Keep it light. 
+* Determine Ownership.
+* Have a Revenue Stream (ads don't count)
+* Focus on Simplicity. Don't build features just because you think they are cool.
+* Don't Release a Public Beta. They had two private betas. They learned from a handful set of people rather than from a large group.
+* Know Your Audience. Be your Audience
+
+Build the App.
+
+* Think Like a Designer.
+* Consider the Fold. 
+* Avoid Big Migrations. User entered data can be challenging.
+* Collaborate. 
+* The Rails Layouts Makes Designers Happy. 
+* Common Rails Collaboration Tools. Subversion, Capistrano, Campfire, Basecamp, Lighthouse. 
+* Don't Repeat Yourself: Use Plugins. acts_as_authenticated, attachment_fu, acts_as_taggable, exception_notification, open_id_authentication, ymlr4r geocode
+* Take "Code Vacations"
+
+Get Noticed
+
+* "It's Google's World, We Just Live in It."
+* Use Smart URLs. /wine/view/5748, /authors/danbenjamn
+* Leverage Markup. Google reads metatags.
+
+Recruit Members
+
+* Make It Obvious and Easy to Signup
+* Ask Only for What's Truly Necessary
+* Ask for Everything but Require (Almost) Nothing
+* Limit Non-Members
+
+Keep Them Coming Back for More
+
+* Make Frequent Improvements
+* Respond Positively to Your Members
+* Create A Developer Network
+* Share Your API
+* Find Good Partners
+* "If You Do Things Right, People Won't Know You've Done Anything At All."
+* Just Ship It
+
+<h2>How We Used Apollo and Rails to (start to) Build an Agile Project Management App by Christopher Haupt and Chris Balley</h2>
+
+They are part of Adobe's Consumer Hosted Applications and Online Services group. They use whatever technology is right for the job, Flex, Rails and dozens of other technologies. They use Scrum and are geographically dispersed teams, in Germany, India, US. 
+
+Why Did We Choose Apollo and Rails?
+
+* Learning Exercise
+* Offline Support
+* Maturing Tools
+* Leverage our Rails Experience
+* Cross Platform
+* Installers
+
+Why not AJAX?
+
+* Offline and Partially Connected
+* File System Access
+* Drag and Drop with Native OS
+
+Now they are demoing Maptacular, an Apollo applications. 
+
+Combining Apollo and Rails: Communication
+
+* Flash Side
+** AMF
+** SOAP
+** REST <== they used that
+* HTML Side
+** AJAX techniques
+* Hybrid
+** Ue DOM bridge to use the one you are comfortable with.
+
+Combining Apollo and Rails:  Quirks
+
+* Flex'isms
+* RESET can be a pain
+** Use _method hacks for PUT, DELETE, HEAD
+** Pass a body on everything other than GET
+* Some HTTP headers can't be used, or problematic on a GET
+* HTTP Status codes not accessible
+** Use URLoader to get HTTP Status Codes
+* dasherize-is-unhealthy-to-your-actionscript-code
+* Migrating to newer Apollo Builds
+** ApolloApplication .vs. Application (for transparency)
+
+Now they move on to Code Snippets. The sample code can be found on the Apollo Labs.
+
+* Online/Offline (Event.NETWORK_CHANGE). Notifies if network change but doesn't tell if network is up or not. Solution: use URLoader to ping the network (they ping google.com)
+* Video Capture, File IO, Doing your own Chrome
+
+Chris now demonstrate some community create applications.
+
+
+
+
+
