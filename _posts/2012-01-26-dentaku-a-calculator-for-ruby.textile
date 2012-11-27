@@ -1,7 +1,6 @@
 ---
 layout: post
-title: !binary |-
-  RGVudGFrdSAtIGEgY2FsY3VsYXRvciBmb3IgUnVieQ==
+title: Dentaku a calculator for Ruby
 typo_id: 5094
 ---
 I'm currently working on a project that requires the use of formulas or expressions to implement business rules (the original system is an Excel workbook), and I needed a way to implement some of the same functionality.  My first thought was to model the formulas in ActiveRecord, clause by clause, using something like `acts_as_nested_set` to handle hierarchies and grouping. However, I've done something similar before, and was never quite satisfied with the result -- it always felt "heavy" -- so I decided to try a different approach this time.

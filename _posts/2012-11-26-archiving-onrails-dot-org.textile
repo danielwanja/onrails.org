@@ -1,0 +1,10 @@
+---
+layout: post
+title: Archiving OnRails.org
+---
+
+Since I started blogging on my "corporate blog":http://n-so.com/blog I neglected this blog. It is a little ironic as I'm doing more Rails work than ever and I have a few blog posts comming up. I contacted "Lee Marlow":http://twitter.com/lmarlow and "Solomon White":http://twitter.com/rubysolo, my long time cohosts of this blog and authors of some of the most famous blog entries of this blog, and we decided to put it in _archival_ mode. We won't add new entries but thought that as there was some good and now historical material we could just keep around.
+
+Enjoy!
+
+- Daniel
