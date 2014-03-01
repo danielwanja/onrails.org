@@ -1,4 +1,4 @@
-baseurl: /onrails.org
+baseurl: /
 safe: true
 lsi: false
 pygments: true
